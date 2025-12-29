@@ -9,6 +9,8 @@ import {
   Shield, 
   Smartphone,
   HelpCircle,
+  Car,
+  UtensilsCrossed,
   LucideIcon
 } from "lucide-react";
 
@@ -556,6 +558,347 @@ export const services: Service[] = [
           "Outstanding bills clear karein port se pehle",
           "Postpaid mein NOC lag sakta hai",
           "Port ke time 2-4 ghante network nahi aata"
+        ]
+      }
+    ]
+  },
+  {
+    id: "voter",
+    title: "Voter ID Services",
+    titleHi: "वोटर आईडी सेवाएं",
+    description: "Voter ID banwana, correction, transfer",
+    icon: Vote,
+    category: "voter",
+    subServices: [
+      {
+        id: "new-voter-id",
+        title: "New Voter ID Card",
+        titleHi: "नया वोटर आईडी कार्ड",
+        description: "Naya Voter ID kaise banwayein",
+        eligibility: [
+          "Indian citizen jo 18 saal ka ho gaya ho",
+          "1st January ko 18 saal hone chahiye us saal ke",
+          "Ordinarily resident of the constituency"
+        ],
+        documents: [
+          "Age Proof - Birth Certificate, 10th Marksheet, Aadhaar",
+          "Address Proof - Aadhaar, Ration Card, Utility Bill, Rent Agreement",
+          "Passport size photo (recent, white background)",
+          "Aadhaar Card (linking ke liye)"
+        ],
+        steps: [
+          { step: 1, title: "voters.eci.gov.in Jaayein", description: "National Voter Service Portal kholein" },
+          { step: 2, title: "Register Karein", description: "Mobile number se new account banayein" },
+          { step: 3, title: "Form 6 Bharein", description: "New voter registration ke liye Form 6 select karein" },
+          { step: 4, title: "Personal Details Daalein", description: "Naam, DOB, gender, address sab bharein" },
+          { step: 5, title: "Documents Upload Karein", description: "Photo, age proof, address proof upload karein" },
+          { step: 6, title: "Declaration Submit Karein", description: "Self-declaration sign karke submit karein" },
+          { step: 7, title: "BLO Verification", description: "Booth Level Officer ghar aayenge verify karne" },
+          { step: 8, title: "Voter ID Collect Karein", description: "Approval ke baad EPIC card mil jayega" }
+        ],
+        officialWebsite: "https://voters.eci.gov.in",
+        officeName: "Election Commission of India / BLO",
+        warnings: [
+          "Voter ID application bilkul FREE hai",
+          "BLO verification mein ghar par rehna zaroori hai",
+          "Fake details dena criminal offence hai",
+          "Ye sirf guidance ke liye hai, form official website ya office par hi bharein"
+        ]
+      },
+      {
+        id: "voter-id-correction",
+        title: "Voter ID Correction",
+        titleHi: "वोटर आईडी करेक्शन",
+        description: "Naam, photo, address, DOB correction",
+        documents: [
+          "Current Voter ID Card",
+          "Proof of correct information (Birth Certificate, Aadhaar, Passport)",
+          "Recent passport size photo (agar photo change karna hai)"
+        ],
+        steps: [
+          { step: 1, title: "NVSP Portal Jaayein", description: "voters.eci.gov.in par login karein" },
+          { step: 2, title: "Form 8 Select Karein", description: "Correction of entries ke liye Form 8" },
+          { step: 3, title: "EPIC Number Daalein", description: "Apna Voter ID number enter karein" },
+          { step: 4, title: "Jo Correct Karna Hai Select Karein", description: "Name, Photo, DOB, Address - jo bhi galat hai" },
+          { step: 5, title: "Correct Details Bharein", description: "Sahi information daalein" },
+          { step: 6, title: "Document Upload Karein", description: "Supporting proof upload karein" },
+          { step: 7, title: "Submit Karein", description: "Application submit karke reference number note karein" }
+        ],
+        officialWebsite: "https://voters.eci.gov.in",
+        officeName: "National Voter Service Portal",
+        warnings: [
+          "Minor corrections 15-30 din mein ho jaati hain",
+          "Address change mein BLO verification hogi",
+          "Application status online track kar sakte hain"
+        ]
+      },
+      {
+        id: "voter-id-transfer",
+        title: "Voter ID Transfer (Shifting)",
+        titleHi: "वोटर आईडी ट्रांसफर",
+        description: "Naye address par voter registration transfer karein",
+        documents: [
+          "Current Voter ID Card",
+          "New Address Proof - Aadhaar, Rent Agreement, Utility Bill",
+          "Passport size photo"
+        ],
+        steps: [
+          { step: 1, title: "NVSP Portal Jaayein", description: "voters.eci.gov.in par login karein" },
+          { step: 2, title: "Form 6 Select Karein", description: "Shifting within constituency ya outside ke liye" },
+          { step: 3, title: "Old Details Confirm Karein", description: "Purani constituency details verify karein" },
+          { step: 4, title: "New Address Daalein", description: "Naya permanent address bharein" },
+          { step: 5, title: "Document Upload Karein", description: "New address proof upload karein" },
+          { step: 6, title: "Submit Karein", description: "Application submit karein" },
+          { step: 7, title: "BLO Verification", description: "Naye address par BLO verification hogi" }
+        ],
+        officialWebsite: "https://voters.eci.gov.in",
+        officeName: "National Voter Service Portal",
+        warnings: [
+          "Same constituency mein shift hone par Form 8A use karein",
+          "Different constituency mein Form 6 use karein",
+          "Purana registration automatically delete ho jayega"
+        ]
+      }
+    ]
+  },
+  {
+    id: "driving",
+    title: "Driving License Services",
+    titleHi: "ड्राइविंग लाइसेंस सेवाएं",
+    description: "DL apply, renewal, learner's license",
+    icon: Car,
+    category: "certificates",
+    subServices: [
+      {
+        id: "learner-license",
+        title: "Learner's License",
+        titleHi: "लर्नर लाइसेंस",
+        description: "Driving sikhne ke liye pehla step",
+        eligibility: [
+          "16 saal - gearless scooter (50cc tak)",
+          "18 saal - motorcycle aur car",
+          "18 saal - transport vehicle (badge ke saath)"
+        ],
+        documents: [
+          "Age Proof - Birth Certificate, Aadhaar, 10th Marksheet",
+          "Address Proof - Aadhaar, Passport, Utility Bill",
+          "Passport size photos (4-6)",
+          "Medical Certificate (Form 1A) - 40+ saal ke liye",
+          "Aadhaar Card"
+        ],
+        steps: [
+          { step: 1, title: "parivahan.gov.in Jaayein", description: "Sarathi portal kholein" },
+          { step: 2, title: "State Chunein", description: "Apna state aur RTO select karein" },
+          { step: 3, title: "Apply Online Click Karein", description: "New Learner's License option chunein" },
+          { step: 4, title: "Form Bharein", description: "Personal details, vehicle class bharein" },
+          { step: 5, title: "Documents Upload Karein", description: "Photo, signature, documents upload karein" },
+          { step: 6, title: "Slot Book Karein", description: "RTO visit ke liye appointment lein" },
+          { step: 7, title: "Fees Pay Karein", description: "Rs. 200-500 (state wise different)" },
+          { step: 8, title: "RTO Jaayein", description: "Documents verify honge aur computer test hoga" },
+          { step: 9, title: "LL Milega", description: "Test pass karne par LL issue hoga (6 mahine valid)" }
+        ],
+        officialWebsite: "https://parivahan.gov.in/parivahan/",
+        officeName: "Regional Transport Office (RTO)",
+        warnings: [
+          "LL ke bina driving karna illegal hai",
+          "LL 6 mahine ke liye valid hota hai",
+          "LL ke 30 din baad permanent DL ke liye apply kar sakte hain",
+          "Test mein traffic rules aur road signs poochhe jaate hain"
+        ]
+      },
+      {
+        id: "permanent-dl",
+        title: "Permanent Driving License",
+        titleHi: "परमानेंट ड्राइविंग लाइसेंस",
+        description: "LL ke baad permanent DL banwayein",
+        eligibility: [
+          "Valid Learner's License hona chahiye",
+          "LL issue hone ke 30 din baad apply kar sakte hain",
+          "LL expire hone se pehle apply karna zaroori"
+        ],
+        documents: [
+          "Learner's License (original)",
+          "Age Proof - Aadhaar, Birth Certificate",
+          "Address Proof - Aadhaar, Passport, Utility Bill",
+          "Passport size photos",
+          "Medical Certificate (Form 1A) - transport vehicle ke liye"
+        ],
+        steps: [
+          { step: 1, title: "parivahan.gov.in Jaayein", description: "Sarathi portal par jaayein" },
+          { step: 2, title: "DL Application Select Karein", description: "Apply for Driving License after LL" },
+          { step: 3, title: "LL Number Daalein", description: "Learner's License details bharein" },
+          { step: 4, title: "Form Bharein", description: "Vehicle class aur details confirm karein" },
+          { step: 5, title: "Slot Book Karein", description: "Driving test ke liye RTO appointment" },
+          { step: 6, title: "Fees Pay Karein", description: "Rs. 400-1000 (state aur vehicle class wise)" },
+          { step: 7, title: "Driving Test Dein", description: "RTO mein practical driving test hoga" },
+          { step: 8, title: "DL Download Karein", description: "Pass hone par DigiLocker mein DL aa jayega" }
+        ],
+        officialWebsite: "https://parivahan.gov.in/parivahan/",
+        officeName: "Regional Transport Office (RTO)",
+        warnings: [
+          "Driving test mein fail hone par 7 din baad re-test de sakte hain",
+          "DL 20 saal ke liye valid hota hai (50 saal umar tak)",
+          "50 saal ke baad 5 saal ke liye issue hota hai",
+          "DigiLocker DL physical card jaisa valid hai"
+        ]
+      },
+      {
+        id: "dl-renewal",
+        title: "DL Renewal",
+        titleHi: "डीएल रिन्यूअल",
+        description: "Expired DL renew karein",
+        documents: [
+          "Current Driving License (original)",
+          "Address Proof (agar address change hua)",
+          "Medical Certificate (Form 1A) - 40+ saal ke liye",
+          "Passport size photos"
+        ],
+        steps: [
+          { step: 1, title: "parivahan.gov.in Jaayein", description: "Sarathi portal kholein" },
+          { step: 2, title: "DL Renewal Select Karein", description: "Renewal of Driving License option" },
+          { step: 3, title: "DL Number Daalein", description: "Current DL details enter karein" },
+          { step: 4, title: "Details Verify Karein", description: "Personal aur vehicle details check karein" },
+          { step: 5, title: "Medical Certificate Upload Karein", description: "40+ ke liye medical form upload" },
+          { step: 6, title: "Fees Pay Karein", description: "Rs. 200-500 online pay karein" },
+          { step: 7, title: "New DL Aayega", description: "DigiLocker mein updated DL aa jayega" }
+        ],
+        officialWebsite: "https://parivahan.gov.in/parivahan/",
+        officeName: "Regional Transport Office (RTO)",
+        warnings: [
+          "Expire hone se 1 saal pehle se renewal kar sakte hain",
+          "5 saal tak late renewal mein penalty lagti hai",
+          "5 saal baad fresh DL apply karna padta hai",
+          "Transport vehicle DL ke liye medical test mandatory"
+        ]
+      }
+    ]
+  },
+  {
+    id: "ration",
+    title: "Ration Card Services",
+    titleHi: "राशन कार्ड सेवाएं",
+    description: "Ration card banwana, correction, member add",
+    icon: UtensilsCrossed,
+    category: "certificates",
+    subServices: [
+      {
+        id: "new-ration-card",
+        title: "New Ration Card",
+        titleHi: "नया राशन कार्ड",
+        description: "Naya ration card kaise apply karein",
+        eligibility: [
+          "Indian citizen jo state mein permanently rehta ho",
+          "Family ka koi existing ration card nahi hona chahiye",
+          "BPL ya APL category ke hisaab se card milega"
+        ],
+        documents: [
+          "Aadhaar Card (sabhi family members ka)",
+          "Address Proof - Electricity Bill, Rent Agreement, Gas Connection",
+          "Income Certificate (BPL ke liye)",
+          "Passport size photo (family head ki)",
+          "Bank Account Details"
+        ],
+        steps: [
+          { step: 1, title: "State Food Portal Jaayein", description: "Apne state ke food department portal par jaayein (nfsa.gov.in par links)" },
+          { step: 2, title: "New Ration Card Apply Karein", description: "Apply for New Ration Card option chunein" },
+          { step: 3, title: "Family Head Details Bharein", description: "Naam, Aadhaar, mobile number bharein" },
+          { step: 4, title: "Family Members Add Karein", description: "Sabhi members ka Aadhaar aur details daalein" },
+          { step: 5, title: "Documents Upload Karein", description: "Address proof, income proof upload karein" },
+          { step: 6, title: "Submit Karein", description: "Application submit karke reference number lein" },
+          { step: 7, title: "Verification", description: "Food department officer verification karega" },
+          { step: 8, title: "Ration Card Collect Karein", description: "Approval ke baad e-Ration Card download ya physical card milega" }
+        ],
+        officialWebsite: "https://nfsa.gov.in",
+        officeName: "State Food & Civil Supplies Department",
+        warnings: [
+          "Ration card banwana FREE hai, kisi ko paisa mat dein",
+          "Duplicate ration card rakhna illegal hai",
+          "Galat information dene par card cancel ho sakta hai",
+          "Ye sirf guidance ke liye hai, form official website ya office par hi bharein"
+        ]
+      },
+      {
+        id: "ration-card-correction",
+        title: "Ration Card Correction",
+        titleHi: "राशन कार्ड करेक्शन",
+        description: "Naam, address, member details correct karein",
+        documents: [
+          "Current Ration Card",
+          "Aadhaar Card (corrected information ke saath)",
+          "Supporting documents (birth certificate, marriage certificate)"
+        ],
+        steps: [
+          { step: 1, title: "State Portal Login Karein", description: "Apne state ke food portal par jaayein" },
+          { step: 2, title: "Correction Option Chunein", description: "Edit/Correction in Ration Card select karein" },
+          { step: 3, title: "Ration Card Number Daalein", description: "Existing card details enter karein" },
+          { step: 4, title: "Jo Correct Karna Hai Select Karein", description: "Name, DOB, Address, Photo - jo bhi galat hai" },
+          { step: 5, title: "Correct Details Bharein", description: "Sahi information daalein" },
+          { step: 6, title: "Document Upload Karein", description: "Proof upload karein" },
+          { step: 7, title: "Submit Karein", description: "Application submit karein" }
+        ],
+        officialWebsite: "https://nfsa.gov.in",
+        officeName: "State Food & Civil Supplies Department",
+        warnings: [
+          "Correction mein 15-30 din lag sakte hain",
+          "Major changes mein physical verification ho sakti hai",
+          "Ration distribution tab tak purane details se chalega"
+        ]
+      },
+      {
+        id: "add-member-ration",
+        title: "Add/Remove Member",
+        titleHi: "मेंबर जोड़ें/हटाएं",
+        description: "Ration card mein naya member add ya remove karein",
+        documents: [
+          "Current Ration Card",
+          "New member ka Aadhaar Card",
+          "Relationship proof - Marriage Certificate, Birth Certificate",
+          "Death Certificate (member remove ke liye)"
+        ],
+        steps: [
+          { step: 1, title: "State Portal Jaayein", description: "Food department portal par login karein" },
+          { step: 2, title: "Add/Delete Member Chunein", description: "Member modification option select karein" },
+          { step: 3, title: "Ration Card Details Daalein", description: "Card number aur family head details" },
+          { step: 4, title: "Member Details Bharein", description: "Naye member ka Aadhaar, naam, DOB, relation" },
+          { step: 5, title: "Documents Upload Karein", description: "Birth certificate, marriage certificate upload" },
+          { step: 6, title: "Submit Karein", description: "Application submit karein" },
+          { step: 7, title: "Verification", description: "Department se approval aayega" }
+        ],
+        officialWebsite: "https://nfsa.gov.in",
+        officeName: "State Food & Civil Supplies Department",
+        warnings: [
+          "Naye bacche ko birth certificate ke saath add karein",
+          "Shaadi ke baad wife/husband add kar sakte hain",
+          "Death ke baad member remove karna zaroori hai",
+          "Ek member sirf ek ration card mein ho sakta hai"
+        ]
+      },
+      {
+        id: "ration-card-transfer",
+        title: "Ration Card Transfer",
+        titleHi: "राशन कार्ड ट्रांसफर",
+        description: "Naye address par ration card transfer karein",
+        documents: [
+          "Current Ration Card",
+          "New Address Proof - Rent Agreement, Utility Bill",
+          "Aadhaar Card with updated address"
+        ],
+        steps: [
+          { step: 1, title: "Old State Portal Jaayein", description: "Jahan se shift ho rahe, wahan ke portal par" },
+          { step: 2, title: "Surrender/Transfer Request Karein", description: "Card surrender ya transfer option chunein" },
+          { step: 3, title: "NOC Lein", description: "No Objection Certificate generate karein" },
+          { step: 4, title: "New State Portal Jaayein", description: "Naye state/district ke portal par jaayein" },
+          { step: 5, title: "New Card Apply Karein", description: "NOC ke saath new card apply karein" },
+          { step: 6, title: "Documents Submit Karein", description: "New address proof aur old card details dein" },
+          { step: 7, title: "Verification", description: "New area mein verification hogi" }
+        ],
+        officialWebsite: "https://nfsa.gov.in",
+        officeName: "State Food & Civil Supplies Department",
+        warnings: [
+          "Same state mein transfer easy hai",
+          "Different state mein One Nation One Ration Card scheme se portability hai",
+          "Transfer mein 1-2 mahine lag sakte hain",
+          "ONORC se temporarily kisi bhi state mein ration le sakte hain"
         ]
       }
     ]
