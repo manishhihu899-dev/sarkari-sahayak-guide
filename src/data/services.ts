@@ -14,6 +14,7 @@ import {
   GraduationCap,
   Heart,
   Baby,
+  Skull,
   LucideIcon
 } from "lucide-react";
 
@@ -1394,6 +1395,162 @@ export const services: Service[] = [
           "False information dena punishable offense hai",
           "Court order ke liye lawyer ki zaroorat pad sakti hai",
           "Gram Panchayat certificate bhi helpful ho sakta hai"
+        ]
+      }
+    ]
+  },
+  {
+    id: "death-certificate",
+    title: "Death Certificate",
+    titleHi: "मृत्यु प्रमाणपत्र",
+    description: "Death registration aur certificate related services",
+    icon: Skull,
+    category: "certificates",
+    subServices: [
+      {
+        id: "new-death-certificate",
+        title: "New Death Certificate",
+        titleHi: "नया मृत्यु प्रमाणपत्र",
+        description: "Mrityu praman patra kaise banwayein",
+        eligibility: [
+          "Death ke 21 din ke andar registration FREE hai",
+          "21 din se 1 saal: Late fee ke saath registration",
+          "1 saal ke baad: Magistrate/SDM order zaroori",
+          "Hospital mein death ho toh hospital registration karta hai"
+        ],
+        documents: [
+          "Hospital death certificate / Medical certificate of cause of death",
+          "Deceased ka Aadhaar Card",
+          "Deceased ka Address Proof",
+          "Informant (khabar dene wale) ka ID proof",
+          "Proof of relationship with deceased",
+          "Cremation/Burial receipt (shamshan ghat ki raseed)",
+          "Affidavit (late registration ke case mein)",
+          "FIR copy (agar accidental/unnatural death ho)"
+        ],
+        steps: [
+          { step: 1, title: "Hospital se Form Lein", description: "Agar hospital mein death hui hai toh hospital se death registration form lein" },
+          { step: 2, title: "State Portal Visit", description: "crsorgi.gov.in ya state portal par jaayein" },
+          { step: 3, title: "Online Registration", description: "New user registration karke login karein" },
+          { step: 4, title: "Death Details Bharein", description: "Deceased ki details, death date/time/place, cause of death bharein" },
+          { step: 5, title: "Informant Details", description: "Khabar dene wale ki details aur relationship bharein" },
+          { step: 6, title: "Documents Upload", description: "Required documents upload karein" },
+          { step: 7, title: "Submit Application", description: "Application submit karein - ACK number note karein" },
+          { step: 8, title: "Verification", description: "Municipal office verify karega" },
+          { step: 9, title: "Certificate Download", description: "Verification ke baad 7-15 din mein download kar sakte hain" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / Gram Panchayat / Registrar of Deaths",
+        warnings: [
+          "21 din ke andar registration bilkul FREE hai - delay mat karein",
+          "Hospital mein death ho toh hospital khud register karta hai usually",
+          "Unnatural death (accident, suicide, murder) mein police formalities pehle hongi",
+          "Death certificate insurance claim, property transfer ke liye zaroori hai",
+          "Shamshan ghat ki raseed zaroor lein - important document hai"
+        ]
+      },
+      {
+        id: "death-certificate-correction",
+        title: "Death Certificate Correction",
+        titleHi: "मृत्यु प्रमाणपत्र में सुधार",
+        description: "Death certificate mein naam, date ya details correction",
+        documents: [
+          "Original Death Certificate",
+          "Correction ke liye application",
+          "Supporting documents (Aadhaar, Voter ID, etc. of deceased)",
+          "Affidavit notarized - sahi details ke saath",
+          "Applicant ka ID proof aur relationship proof",
+          "Hospital records (agar available ho)"
+        ],
+        steps: [
+          { step: 1, title: "Application Likhein", description: "Registrar ko application likhein stating exact correction needed" },
+          { step: 2, title: "Supporting Documents", description: "Sahi details prove karne wale documents collect karein" },
+          { step: 3, title: "Affidavit Banwayein", description: "Notary se Rs. 50-100 mein affidavit banwayein with correct details" },
+          { step: 4, title: "Online/Offline Apply", description: "State portal ya office mein correction application submit karein" },
+          { step: 5, title: "Fee Payment", description: "Correction fee pay karein (Rs. 50-200)" },
+          { step: 6, title: "Document Verification", description: "Office documents verify karega" },
+          { step: 7, title: "Corrected Certificate", description: "15-30 din mein corrected certificate milega" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / Registrar of Deaths",
+        warnings: [
+          "Minor corrections (spelling) easily ho jaate hain",
+          "Date of death change ke liye hospital records zaroori",
+          "Cause of death change medical board review maang sakta hai",
+          "Family members ki NOC zaroori ho sakti hai",
+          "Property disputes mein death certificate correction complicated ho sakti hai"
+        ]
+      },
+      {
+        id: "duplicate-death-certificate",
+        title: "Duplicate Death Certificate",
+        titleHi: "डुप्लीकेट मृत्यु प्रमाणपत्र",
+        description: "Death certificate kho jaane par duplicate kaise lein",
+        documents: [
+          "Application form for duplicate",
+          "Affidavit - certificate loss ke baare mein",
+          "Applicant ka ID proof",
+          "Relationship proof with deceased",
+          "Original registration details (agar ho)",
+          "Any old photocopy of original (helpful)"
+        ],
+        steps: [
+          { step: 1, title: "Affidavit Banwayein", description: "Notary se affidavit banwayein stating certificate lost/damaged" },
+          { step: 2, title: "State Portal Visit", description: "crsorgi.gov.in ya state portal par jaayein" },
+          { step: 3, title: "Duplicate Option Select", description: "Duplicate/Re-issue death certificate option select karein" },
+          { step: 4, title: "Details Bharein", description: "Death details, registration number (agar yaad ho) bharein" },
+          { step: 5, title: "Documents Upload", description: "Affidavit aur ID proof upload karein" },
+          { step: 6, title: "Fee Payment", description: "Duplicate fee online pay karein (Rs. 50-200)" },
+          { step: 7, title: "Download Certificate", description: "Verification ke baad download option aa jayega" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / Registrar of Deaths",
+        warnings: [
+          "Registration number se process bahut fast hota hai",
+          "Family ke kisi bhi member ko duplicate mil sakta hai",
+          "Property cases mein multiple copies ki zaroorat pad sakti hai",
+          "Duplicate certificate fully valid hota hai",
+          "Legal heir certificate saath mein banwana helpful hota hai"
+        ]
+      },
+      {
+        id: "delayed-death-registration",
+        title: "Delayed Death Registration",
+        titleHi: "विलंबित मृत्यु पंजीकरण",
+        description: "21 din ke baad death registration kaise karein",
+        eligibility: [
+          "21 din - 1 saal: Late fee ke saath Registrar kar sakta hai",
+          "1 saal ke baad: SDM/Magistrate order mandatory",
+          "Unnatural death: Police clearance zaroori"
+        ],
+        documents: [
+          "Affidavit - delayed registration ke reason ke saath",
+          "Deceased ka ID proof (Aadhaar, Voter ID, etc.)",
+          "Medical certificate of death (agar hospital mein hui thi)",
+          "Cremation/Burial certificate",
+          "2 witnesses ka statement aur ID",
+          "Applicant ka ID aur relationship proof",
+          "FIR/Police report (unnatural death mein)",
+          "Court order (1 saal ke baad ke cases mein)"
+        ],
+        steps: [
+          { step: 1, title: "Documents Collect Karein", description: "Death prove karne wale saare documents collect karein" },
+          { step: 2, title: "Affidavit Banwayein", description: "Delay ka reason likhte hue notarized affidavit banwayein" },
+          { step: 3, title: "Witnesses Arrange Karein", description: "2 witnesses jo death ke time present the unka statement lein" },
+          { step: 4, title: "Application Submit", description: "Registrar/SDM office mein delayed registration application dein" },
+          { step: 5, title: "Fee Payment", description: "Late fee pay karein (Rs. 50-500 depending on delay)" },
+          { step: 6, title: "Verification/Inquiry", description: "Field verification ya inquiry ho sakti hai" },
+          { step: 7, title: "Certificate Issue", description: "Verification ke baad 15-30 din mein certificate" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / SDM Office",
+        warnings: [
+          "Jitni jaldi apply karein utna aasaan hoga process",
+          "1 saal ke baad SDM/court order zaroori hai",
+          "Shamshan ghat ki raseed bahut important proof hai",
+          "False information dena punishable offense hai",
+          "Property transfer ke liye death certificate mandatory hai",
+          "Pension/insurance claim mein death certificate zaroor chahiye"
         ]
       }
     ]
