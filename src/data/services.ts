@@ -12,6 +12,8 @@ import {
   Car,
   UtensilsCrossed,
   GraduationCap,
+  Heart,
+  Baby,
   LucideIcon
 } from "lucide-react";
 
@@ -1116,6 +1118,282 @@ export const services: Service[] = [
           "Interest rates 8-12% ke beech usually",
           "CIBIL score accha hona chahiye co-applicant ka",
           "Abroad ke liye alag documentation chahiye"
+        ]
+      }
+    ]
+  },
+  {
+    id: "marriage-certificate",
+    title: "Marriage Certificate",
+    titleHi: "विवाह प्रमाणपत्र",
+    description: "Marriage registration aur certificate related services",
+    icon: Heart,
+    category: "certificates",
+    subServices: [
+      {
+        id: "new-marriage-certificate",
+        title: "New Marriage Certificate",
+        titleHi: "नया विवाह प्रमाणपत्र",
+        description: "Shaadi ka registration aur certificate kaise banwayein",
+        eligibility: [
+          "Dulha ki umar 21 saal ya usse zyada honi chahiye",
+          "Dulhan ki umar 18 saal ya usse zyada honi chahiye",
+          "Dono mein se koi bhi pehle se shaadishuda nahi hona chahiye (ya divorce/death proof ho)",
+          "Dono mentally fit hone chahiye",
+          "Dono ka ek hi religion hona chahiye (Special Marriage Act ke under alag provision)"
+        ],
+        documents: [
+          "Dono ka Aadhaar Card",
+          "Dono ka Age Proof - Birth Certificate / School Certificate",
+          "Dono ka Address Proof - Voter ID / Passport / Ration Card",
+          "Passport size photos - Dulha, Dulhan aur witnesses (4-4)",
+          "Shaadi ki photo (joint photo)",
+          "2 Witnesses ke ID proof (Aadhaar/Voter ID)",
+          "Shadi ka Invitation Card (optional but helpful)",
+          "Affidavit - dono ki marital status ke baare mein",
+          "Divorce Decree (agar pehle shaadi hui thi)",
+          "Death Certificate of spouse (agar widow/widower)"
+        ],
+        steps: [
+          { step: 1, title: "State Portal Visit Karein", description: "Apne state ke marriage registration portal par jaayein (e.g., igrsup.gov.in for UP, mahaeservices.gov.in for Maharashtra)" },
+          { step: 2, title: "Online Registration Karein", description: "New user registration karein aur login credentials banayein" },
+          { step: 3, title: "Application Form Bharein", description: "Marriage registration form mein dulha-dulhan aur witnesses ki details bharein" },
+          { step: 4, title: "Documents Upload Karein", description: "Sabhi required documents scan karke upload karein" },
+          { step: 5, title: "Fee Payment Karein", description: "Online fee payment karein (Rs. 100-500 state ke hisaab se)" },
+          { step: 6, title: "Appointment Book Karein", description: "Sub-Registrar office mein verification ke liye appointment lein" },
+          { step: 7, title: "Office Visit Karein", description: "Dulha, Dulhan aur dono witnesses Sub-Registrar office jaayein" },
+          { step: 8, title: "Verification Process", description: "Documents verify honge, signature aur photo liye jaayenge" },
+          { step: 9, title: "Certificate Download", description: "Verification ke baad 7-15 din mein certificate download kar sakte hain" }
+        ],
+        officialWebsite: "https://services.india.gov.in/service/detail/apply-for-marriage-registration",
+        officeName: "Sub-Registrar Office / Marriage Registration Office",
+        warnings: [
+          "Shaadi ke 1 saal ke andar registration karwana best hai",
+          "30 din ka notice period hota hai Special Marriage Act mein",
+          "Fake witnesses ya documents use karna criminal offense hai",
+          "Registration fee Rs. 100-500 ke beech hoti hai - zyada mat dein",
+          "Dono parties ka personally present hona zaroori hai",
+          "Court marriage aur religious marriage dono register ho sakti hain"
+        ]
+      },
+      {
+        id: "marriage-certificate-correction",
+        title: "Marriage Certificate Correction",
+        titleHi: "विवाह प्रमाणपत्र में सुधार",
+        description: "Marriage certificate mein naam ya details correction kaise karein",
+        documents: [
+          "Original Marriage Certificate",
+          "Correction ke liye application letter",
+          "Supporting documents (jis detail mein correction chahiye)",
+          "Affidavit notarized - correction ke baare mein",
+          "Dono spouses ka ID proof",
+          "Passport size photos",
+          "Court fee stamp (as applicable)"
+        ],
+        steps: [
+          { step: 1, title: "Application Likhein", description: "Sub-Registrar ko application likhein correction ke liye stating exact changes needed" },
+          { step: 2, title: "Supporting Documents", description: "Jo bhi correction chahiye uske supporting documents attach karein" },
+          { step: 3, title: "Affidavit Banwayein", description: "Notary se affidavit banwayein stating the correct details and reason for correction" },
+          { step: 4, title: "Office Visit", description: "Sub-Registrar office jaayein with application, affidavit, original certificate aur documents" },
+          { step: 5, title: "Fee Payment", description: "Correction fee pay karein (varies by state)" },
+          { step: 6, title: "Verification", description: "Office verify karega documents aur correction approve karega" },
+          { step: 7, title: "Corrected Certificate", description: "15-30 din mein corrected certificate mil jayega" }
+        ],
+        officialWebsite: "https://services.india.gov.in",
+        officeName: "Sub-Registrar Office",
+        warnings: [
+          "Minor corrections jaise spelling mistakes easily ho jaate hain",
+          "Major changes ke liye court order lag sakta hai",
+          "Original certificate saath mein le jaana zaroori hai",
+          "Dono spouses ki consent zaroori hai correction ke liye",
+          "False affidavit dena punishable offense hai"
+        ]
+      },
+      {
+        id: "duplicate-marriage-certificate",
+        title: "Duplicate Marriage Certificate",
+        titleHi: "डुप्लीकेट विवाह प्रमाणपत्र",
+        description: "Marriage certificate kho jaane par duplicate kaise lein",
+        documents: [
+          "FIR copy ya Police Complaint (agar certificate chori/kho gaya)",
+          "Affidavit - certificate loss ke baare mein",
+          "Dono spouses ka ID proof",
+          "Original registration number (agar yaad ho)",
+          "Date of marriage aur registration",
+          "Application form for duplicate",
+          "Passport size photos"
+        ],
+        steps: [
+          { step: 1, title: "FIR/Complaint Karein", description: "Police station mein FIR ya online complaint register karein for lost certificate" },
+          { step: 2, title: "Affidavit Banwayein", description: "Notary se affidavit banwayein stating certificate lost/damaged" },
+          { step: 3, title: "Application Form", description: "Duplicate certificate ke liye application form bharein" },
+          { step: 4, title: "Office Visit", description: "Sub-Registrar office jaayein jahan original registration hua tha" },
+          { step: 5, title: "Fee Payment", description: "Duplicate certificate fee pay karein (Rs. 200-500)" },
+          { step: 6, title: "Record Search", description: "Office records mein search hogi original registration ki" },
+          { step: 7, title: "Duplicate Issue", description: "7-15 din mein duplicate certificate issue hoga" }
+        ],
+        officialWebsite: "https://services.india.gov.in",
+        officeName: "Sub-Registrar Office",
+        warnings: [
+          "Original registration number se process fast hota hai",
+          "Bina FIR ke bhi kuch states mein duplicate milta hai",
+          "Purane records 100+ saal tak safe rehte hain usually",
+          "Duplicate par 'Duplicate' likha hota hai",
+          "Same legal validity hoti hai duplicate ki"
+        ]
+      }
+    ]
+  },
+  {
+    id: "birth-certificate",
+    title: "Birth Certificate",
+    titleHi: "जन्म प्रमाणपत्र",
+    description: "Birth registration aur certificate related services",
+    icon: Baby,
+    category: "certificates",
+    subServices: [
+      {
+        id: "new-birth-certificate",
+        title: "New Birth Certificate",
+        titleHi: "नया जन्म प्रमाणपत्र",
+        description: "Bacche ka birth certificate kaise banwayein",
+        eligibility: [
+          "Birth ke 21 din ke andar registration FREE hai",
+          "21 din se 1 saal: Late fee lagti hai",
+          "1 saal ke baad: Magistrate order zaroori",
+          "Hospital mein paida hue bacche ka hospital dwara registration hota hai"
+        ],
+        documents: [
+          "Hospital discharge slip / Birth report from hospital",
+          "Parents ka Aadhaar Card",
+          "Parents ka Marriage Certificate",
+          "Proof of Address - Ration Card / Voter ID / Electricity Bill",
+          "Mother ka vaccination record (MCH card)",
+          "Affidavit (agar late registration ho)",
+          "Home birth ke liye: Dai/ANM ka statement"
+        ],
+        steps: [
+          { step: 1, title: "Hospital se Form Lein", description: "Agar hospital mein delivery hui hai toh hospital se birth registration form lein" },
+          { step: 2, title: "State Portal Visit", description: "crsorgi.gov.in ya state portal par jaayein (e.g., edistrict.up.gov.in)" },
+          { step: 3, title: "Online Registration", description: "New user registration karke login karein" },
+          { step: 4, title: "Birth Details Bharein", description: "Bacche ki birth details, parents info, hospital info bharein" },
+          { step: 5, title: "Documents Upload", description: "Required documents upload karein" },
+          { step: 6, title: "Submit Application", description: "Application submit karein - ACK number note karein" },
+          { step: 7, title: "Verification", description: "Municipal office / Gram Panchayat verify karega" },
+          { step: 8, title: "Certificate Download", description: "Verification ke baad 7-15 din mein download kar sakte hain" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / Gram Panchayat / Registrar of Births",
+        warnings: [
+          "21 din ke andar registration bilkul FREE hai - delay mat karein",
+          "Hospital mein birth ho toh hospital khud register karta hai usually",
+          "Late registration mein fine aur legal process lagta hai",
+          "Birth certificate school admission ke liye mandatory hai",
+          "Ghar mein delivery ho toh ANM/Dai ka statement zaroori hai"
+        ]
+      },
+      {
+        id: "birth-certificate-correction",
+        title: "Birth Certificate Correction",
+        titleHi: "जन्म प्रमाणपत्र में सुधार",
+        description: "Birth certificate mein naam, date ya details correction",
+        documents: [
+          "Original Birth Certificate",
+          "Correction ke liye application",
+          "Supporting documents (School certificate, Aadhaar, etc.)",
+          "Affidavit notarized - sahi details ke saath",
+          "Parents ka ID proof",
+          "Hospital records (agar available ho)"
+        ],
+        steps: [
+          { step: 1, title: "Application Likhein", description: "Registrar ko application likhein stating exact correction needed" },
+          { step: 2, title: "Supporting Documents", description: "Sahi details prove karne wale documents collect karein" },
+          { step: 3, title: "Affidavit Banwayein", description: "Notary se Rs. 50-100 mein affidavit banwayein with correct details" },
+          { step: 4, title: "Online/Offline Apply", description: "State portal ya office mein correction application submit karein" },
+          { step: 5, title: "Fee Payment", description: "Correction fee pay karein (Rs. 50-200)" },
+          { step: 6, title: "Document Verification", description: "Office documents verify karega" },
+          { step: 7, title: "Corrected Certificate", description: "15-30 din mein corrected certificate milega" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / Registrar of Births",
+        warnings: [
+          "Minor corrections (spelling) easily ho jaate hain",
+          "Date of birth change ke liye zyada documentation chahiye",
+          "School records sabse strong proof mane jaate hain",
+          "Parents alive ho toh unki consent zaroori hai",
+          "1 saal ke baad ke changes ke liye court order lag sakta hai"
+        ]
+      },
+      {
+        id: "duplicate-birth-certificate",
+        title: "Duplicate Birth Certificate",
+        titleHi: "डुप्लीकेट जन्म प्रमाणपत्र",
+        description: "Birth certificate kho jaane par duplicate kaise lein",
+        documents: [
+          "Application form for duplicate",
+          "Affidavit - certificate loss ke baare mein",
+          "ID proof of applicant (parent ya person)",
+          "Address proof",
+          "Original registration details (agar ho)",
+          "Any old photocopy of original (helpful)"
+        ],
+        steps: [
+          { step: 1, title: "Affidavit Banwayein", description: "Notary se affidavit banwayein stating certificate lost/damaged" },
+          { step: 2, title: "State Portal Visit", description: "crsorgi.gov.in ya state portal par jaayein" },
+          { step: 3, title: "Duplicate Option Select", description: "Duplicate/Re-issue birth certificate option select karein" },
+          { step: 4, title: "Details Bharein", description: "Birth details, registration number (agar yaad ho) bharein" },
+          { step: 5, title: "Documents Upload", description: "Affidavit aur ID proof upload karein" },
+          { step: 6, title: "Fee Payment", description: "Duplicate fee online pay karein (Rs. 50-200)" },
+          { step: 7, title: "Download Certificate", description: "Verification ke baad download option aa jayega" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / Registrar of Births",
+        warnings: [
+          "Registration number se process bahut fast hota hai",
+          "Purane records digitize ho chuke hain mostly",
+          "1970 se pehle ke records manual search lag sakti hai",
+          "Duplicate certificate fully valid hota hai",
+          "Online apply karna office jaane se fast hai"
+        ]
+      },
+      {
+        id: "delayed-birth-registration",
+        title: "Delayed Birth Registration",
+        titleHi: "विलंबित जन्म पंजीकरण",
+        description: "21 din ke baad birth registration kaise karein",
+        eligibility: [
+          "21 din - 1 saal: Late fee ke saath Registrar kar sakta hai",
+          "1 saal - 5 saal: Additional documents aur higher fee",
+          "5 saal ke baad: Court/Magistrate order mandatory"
+        ],
+        documents: [
+          "Affidavit - delayed registration ke reason ke saath",
+          "Parents ka ID aur Address proof",
+          "School admission register (agar school gaya ho)",
+          "Vaccination records",
+          "Hospital records (agar ho)",
+          "Ration card showing child's name",
+          "2 witnesses ka statement aur ID",
+          "Court order (5 saal ke baad ke cases mein)"
+        ],
+        steps: [
+          { step: 1, title: "Documents Collect Karein", description: "Birth prove karne wale saare documents collect karein" },
+          { step: 2, title: "Affidavit Banwayein", description: "Delay ka reason likhte hue notarized affidavit banwayein" },
+          { step: 3, title: "Witnesses Arrange Karein", description: "2 witnesses jo birth ke time present the unka statement lein" },
+          { step: 4, title: "Application Submit", description: "Registrar office mein delayed registration application dein" },
+          { step: 5, title: "Fee Payment", description: "Late fee pay karein (Rs. 50-500 depending on delay)" },
+          { step: 6, title: "Verification", description: "Field verification ho sakti hai" },
+          { step: 7, title: "Certificate Issue", description: "Verification ke baad 15-30 din mein certificate" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / SDM Office",
+        warnings: [
+          "Jitni jaldi apply karein utna aasaan hoga process",
+          "5 saal ke baad court case file karna padta hai",
+          "School records bahut helpful hote hain proof ke liye",
+          "False information dena punishable offense hai",
+          "Court order ke liye lawyer ki zaroorat pad sakti hai",
+          "Gram Panchayat certificate bhi helpful ho sakta hai"
         ]
       }
     ]
