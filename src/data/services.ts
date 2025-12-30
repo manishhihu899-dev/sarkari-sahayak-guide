@@ -11,6 +11,7 @@ import {
   HelpCircle,
   Car,
   UtensilsCrossed,
+  GraduationCap,
   LucideIcon
 } from "lucide-react";
 
@@ -50,6 +51,7 @@ export const categories = [
   { id: "voter", name: "Voter ID", nameHi: "वोटर आईडी", icon: Vote },
   { id: "passport", name: "Passport & Visa", nameHi: "पासपोर्ट और वीज़ा", icon: Plane },
   { id: "certificates", name: "Certificates", nameHi: "प्रमाणपत्र", icon: FileText },
+  { id: "education", name: "Education & Scholarship", nameHi: "शिक्षा और छात्रवृत्ति", icon: GraduationCap },
   { id: "schemes", name: "Govt Schemes", nameHi: "सरकारी योजनाएं", icon: Gift },
   { id: "security", name: "Digital Security", nameHi: "डिजिटल सुरक्षा", icon: Shield },
   { id: "mobile", name: "SIM & Mobile", nameHi: "सिम और मोबाइल", icon: Smartphone },
@@ -899,6 +901,221 @@ export const services: Service[] = [
           "Different state mein One Nation One Ration Card scheme se portability hai",
           "Transfer mein 1-2 mahine lag sakte hain",
           "ONORC se temporarily kisi bhi state mein ration le sakte hain"
+        ]
+      }
+    ]
+  },
+  {
+    id: "education",
+    title: "Education & Scholarship Services",
+    titleHi: "शिक्षा और छात्रवृत्ति सेवाएं",
+    description: "Scholarship, caste certificate, income certificate help",
+    icon: GraduationCap,
+    category: "education",
+    subServices: [
+      {
+        id: "caste-certificate",
+        title: "Caste Certificate",
+        titleHi: "जाति प्रमाणपत्र",
+        description: "SC/ST/OBC jaati praman patra kaise banwayein",
+        eligibility: [
+          "SC, ST, OBC category ke log",
+          "State wise rules alag hain",
+          "Father ya grandfather ka caste certificate helpful hai"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Ration Card",
+          "Father/Grandfather ka Caste Certificate (agar available)",
+          "Birth Certificate",
+          "School Leaving Certificate (category mentioned)",
+          "Affidavit (notarized)",
+          "Passport size photos (2-3)",
+          "Residence Proof"
+        ],
+        steps: [
+          { step: 1, title: "State Portal Kholein", description: "Apne state ke e-District portal par jaayein (jaise UP: edistrict.up.gov.in)" },
+          { step: 2, title: "Register/Login Karein", description: "New account banayein ya mobile OTP se login karein" },
+          { step: 3, title: "Caste Certificate Option Chunein", description: "Apply for Services > Caste Certificate select karein" },
+          { step: 4, title: "Form Bharein", description: "Personal details, father's name, caste, address bharein" },
+          { step: 5, title: "Documents Upload Karein", description: "Scan karke sabhi documents upload karein" },
+          { step: 6, title: "Fees Pay Karein", description: "Minimal fees online pay karein (Rs. 10-50 usually)" },
+          { step: 7, title: "Application Track Karein", description: "Application ID se status check karte rahein" },
+          { step: 8, title: "Field Verification", description: "Tehsildar office se verification hogi" },
+          { step: 9, title: "Certificate Download", description: "Approve hone par DigiLocker ya portal se download karein" }
+        ],
+        officialWebsite: "https://serviceonline.gov.in",
+        officeName: "Tehsil / SDM Office / e-District Portal",
+        warnings: [
+          "Fake caste certificate banwana criminal offense hai",
+          "Verification mein 15-30 din lagte hain",
+          "Father/grandfather ka certificate hona bahut helpful hai",
+          "School records mein caste mentioned hona chahiye",
+          "Har state mein online portal alag hai - apne state ka dhundhein"
+        ]
+      },
+      {
+        id: "income-certificate",
+        title: "Income Certificate",
+        titleHi: "आय प्रमाणपत्र",
+        description: "Income certificate kaise banwayein scholarship ke liye",
+        eligibility: [
+          "Koi bhi Indian citizen",
+          "EWS category ke liye Rs. 8 lakh se kam annual income",
+          "Different schemes ke liye different income limits"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Ration Card",
+          "Salary Slip (agar job hai)",
+          "ITR Copy (agar file ki hai)",
+          "Self-declaration Affidavit (agar income proof nahi)",
+          "Bank Statement (last 6 months)",
+          "Passport size photos",
+          "Residence Proof"
+        ],
+        steps: [
+          { step: 1, title: "e-District Portal Kholein", description: "Apne state ke e-District portal par jaayein" },
+          { step: 2, title: "Login Karein", description: "Mobile number ya email se register/login karein" },
+          { step: 3, title: "Income Certificate Select Karein", description: "Apply for Certificate > Income Certificate" },
+          { step: 4, title: "Income Details Bharein", description: "Source of income, annual income, family members ki details" },
+          { step: 5, title: "Documents Upload Karein", description: "Income proof documents upload karein" },
+          { step: 6, title: "Fees Pay Karein", description: "Rs. 10-30 fees pay karein" },
+          { step: 7, title: "Verification", description: "Patwari/Tehsil level verification hogi" },
+          { step: 8, title: "Certificate Collect", description: "Online download ya CSC center se collect karein" }
+        ],
+        officialWebsite: "https://serviceonline.gov.in",
+        officeName: "Tehsil Office / SDM Office / e-District",
+        warnings: [
+          "Galat income declare karna punishable offense hai",
+          "Certificate ki validity 6 months to 1 year hoti hai",
+          "Har purpose ke liye fresh certificate chahiye usually",
+          "ITR file karna helpful hai income proof ke liye",
+          "Rural aur urban areas mein income limits different hain"
+        ]
+      },
+      {
+        id: "scholarship-application",
+        title: "Scholarship Applications",
+        titleHi: "छात्रवृत्ति आवेदन",
+        description: "NSP aur state scholarship kaise apply karein",
+        eligibility: [
+          "Students studying in recognized institutions",
+          "SC/ST/OBC/Minority/EWS category students",
+          "Income criteria as per scheme",
+          "Minimum attendance & marks requirements"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Caste Certificate (SC/ST/OBC ke liye)",
+          "Income Certificate (latest)",
+          "Previous year marksheet",
+          "Current year admission proof / Bonafide Certificate",
+          "Bank Account Details (student ke naam par)",
+          "Passport size photo",
+          "Institution Verification Letter"
+        ],
+        steps: [
+          { step: 1, title: "NSP Portal Jaayein", description: "scholarships.gov.in - National Scholarship Portal kholein" },
+          { step: 2, title: "New Registration", description: "Student ke naam se new account banayein" },
+          { step: 3, title: "Category Select Karein", description: "Pre-Matric, Post-Matric, ya Merit-cum-Means chunein" },
+          { step: 4, title: "Personal Details Bharein", description: "Aadhaar verified details, bank account, institution details" },
+          { step: 5, title: "Documents Upload", description: "Sabhi required documents scan karke upload karein" },
+          { step: 6, title: "Institute Verification", description: "Application submit hone par institute verify karega" },
+          { step: 7, title: "State Verification", description: "State nodal officer verify karega" },
+          { step: 8, title: "Scholarship Credit", description: "Approve hone par bank account mein directly aayega" }
+        ],
+        officialWebsite: "https://scholarships.gov.in",
+        officeName: "National Scholarship Portal (NSP)",
+        warnings: [
+          "Deadline miss mat karein - usually July-November mein hota hai",
+          "Ek student sirf ek scholarship le sakta hai (except merit-based)",
+          "Bank account student ke naam par hona chahiye",
+          "Fake documents se permanent ban ho sakta hai",
+          "Institute verification zaruri hai - college/school se confirm karein",
+          "State wise additional scholarships bhi check karein"
+        ]
+      },
+      {
+        id: "domicile-certificate",
+        title: "Domicile Certificate",
+        titleHi: "मूल निवास प्रमाणपत्र",
+        description: "Domicile/Residence certificate kaise banwayein",
+        eligibility: [
+          "State mein 3+ years se rehne wale",
+          "State mein born hue log",
+          "Parents ka domicile hona helpful hai"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Birth Certificate (state mein born ke liye)",
+          "Ration Card",
+          "Electricity Bill / Property Papers",
+          "10th/12th Marksheet (state board preferred)",
+          "Passport size photos",
+          "Affidavit (agar documents weak hain)"
+        ],
+        steps: [
+          { step: 1, title: "e-District Portal Kholein", description: "State ke e-District portal par jaayein" },
+          { step: 2, title: "Register Karein", description: "Mobile aur email se account banayein" },
+          { step: 3, title: "Domicile/Residence Certificate Chunein", description: "Apply for Certificate section mein jaayein" },
+          { step: 4, title: "Form Bharein", description: "Residence details, years of stay, purpose bharein" },
+          { step: 5, title: "Documents Upload", description: "Residence proof documents upload karein" },
+          { step: 6, title: "Fees Pay Karein", description: "Nominal fees online pay karein" },
+          { step: 7, title: "Verification", description: "Local authority verification karega" },
+          { step: 8, title: "Certificate Download", description: "Approved certificate download karein" }
+        ],
+        officialWebsite: "https://serviceonline.gov.in",
+        officeName: "Tehsil / SDM Office",
+        warnings: [
+          "Admission aur job ke liye bahut important hai",
+          "State quota benefits ke liye mandatory",
+          "Verification mein 15-30 din lag sakte hain",
+          "Electricity bill 3+ years old helpful hai",
+          "Permanent aur temporary domicile alag hote hain"
+        ]
+      },
+      {
+        id: "education-loan",
+        title: "Education Loan",
+        titleHi: "एजुकेशन लोन",
+        description: "Higher education ke liye bank loan kaise lein",
+        eligibility: [
+          "Indian citizen",
+          "Admission confirmed in recognized institution",
+          "Age: Usually 16-35 years",
+          "Co-applicant (parent/guardian) required"
+        ],
+        documents: [
+          "Aadhaar Card (student + co-applicant)",
+          "PAN Card",
+          "10th, 12th Marksheets",
+          "Admission Letter / Offer Letter",
+          "Fee Structure from institution",
+          "Co-applicant income proof",
+          "Bank statements (6 months)",
+          "Collateral documents (Rs. 7.5 lakh+ ke liye)",
+          "Passport size photos"
+        ],
+        steps: [
+          { step: 1, title: "Vidya Lakshmi Portal Jaayein", description: "vidyalakshmi.co.in - Common Education Loan Portal" },
+          { step: 2, title: "Register Karein", description: "Student ke naam se account create karein" },
+          { step: 3, title: "CELAF Form Bharein", description: "Common Education Loan Application Form online bharein" },
+          { step: 4, title: "Banks Select Karein", description: "Max 3 banks select karein application ke liye" },
+          { step: 5, title: "Documents Upload", description: "Required documents upload karein" },
+          { step: 6, title: "Bank Interview", description: "Selected bank branch visit karein for processing" },
+          { step: 7, title: "Loan Sanction", description: "Documents verify hone par loan sanction hoga" },
+          { step: 8, title: "Disbursement", description: "Institution ko directly fees transfer hogi" }
+        ],
+        officialWebsite: "https://www.vidyalakshmi.co.in",
+        officeName: "Vidya Lakshmi Portal / Banks",
+        warnings: [
+          "Interest subsidy available hai EWS students ke liye (PM Vidya Lakshmi Karyakram)",
+          "Rs. 7.5 lakh tak collateral free loan milta hai",
+          "Moratorium period hota hai - padhai ke dauran EMI nahi",
+          "Interest rates 8-12% ke beech usually",
+          "CIBIL score accha hona chahiye co-applicant ka",
+          "Abroad ke liye alag documentation chahiye"
         ]
       }
     ]
