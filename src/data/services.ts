@@ -15,6 +15,7 @@ import {
   Heart,
   Baby,
   Skull,
+  Building2,
   LucideIcon
 } from "lucide-react";
 
@@ -1551,6 +1552,208 @@ export const services: Service[] = [
           "False information dena punishable offense hai",
           "Property transfer ke liye death certificate mandatory hai",
           "Pension/insurance claim mein death certificate zaroor chahiye"
+        ]
+      }
+    ]
+  },
+  {
+    id: "property",
+    title: "Property & Land Records",
+    titleHi: "संपत्ति और भूमि रिकॉर्ड",
+    description: "Property transfer, mutation, encumbrance certificate",
+    icon: Building2,
+    category: "certificates",
+    subServices: [
+      {
+        id: "property-transfer",
+        title: "Property Transfer / Sale Deed",
+        titleHi: "संपत्ति हस्तांतरण / बिक्री पत्र",
+        description: "Property kharidne ya bechne ka kanooni process",
+        eligibility: [
+          "Property ka maalik ya uska legal heir",
+          "Valid ID proof holder",
+          "Property par koi dispute na ho",
+          "All dues (tax, loan) clear hon"
+        ],
+        documents: [
+          "Seller ki original sale deed / property documents",
+          "Buyer aur Seller ka Aadhaar Card + PAN Card",
+          "Property ka latest Encumbrance Certificate (EC)",
+          "Property tax payment receipt (latest)",
+          "NOC from housing society (agar applicable ho)",
+          "2 passport size photos (buyer aur seller dono ki)",
+          "2 Witnesses ke Aadhaar Card",
+          "Property ka valuation certificate",
+          "Power of Attorney (agar koi represent kar raha ho)"
+        ],
+        steps: [
+          { step: 1, title: "Document Verification", description: "Pehle seller ke saare property documents verify karein - sale deed, tax receipts, EC" },
+          { step: 2, title: "Property Valuation", description: "Circle rate ya market value check karein - isse stamp duty calculate hogi" },
+          { step: 3, title: "Stamp Duty Payment", description: "State ke hisaab se 5-7% stamp duty + 1% registration fee pay karein" },
+          { step: 4, title: "Sale Deed Drafting", description: "Lawyer se sale deed draft karwayein - saari terms clearly mention hon" },
+          { step: 5, title: "Sub-Registrar Appointment", description: "Local Sub-Registrar office mein online appointment book karein" },
+          { step: 6, title: "Registration", description: "Buyer, seller aur 2 witnesses Sub-Registrar office jaayein - biometric verification hogi" },
+          { step: 7, title: "Registered Deed Collection", description: "15-30 din mein registered sale deed collect karein" },
+          { step: 8, title: "Mutation Apply Karein", description: "Property apne naam karwane ke liye tehsil mein mutation apply karein" }
+        ],
+        officialWebsite: "https://igrsup.gov.in (UP) / https://igrs.karnataka.gov.in (Karnataka) / State ke hisaab se alag",
+        officeName: "Sub-Registrar Office / Tehsil Office",
+        warnings: [
+          "Property ke documents ka verification lawyer se zaroor karwayein",
+          "Encumbrance Certificate zaroor check karein - isse pata chalega property par koi loan ya case hai ya nahi",
+          "Stamp duty kam dikhana illegal hai - pakde gaye toh penalty + fine lagega",
+          "Cash mein zyada transaction avoid karein - banking channel use karein",
+          "Property par pending tax ya dispute check karein",
+          "Registered deed ke bina property legally aapki nahi manegi"
+        ]
+      },
+      {
+        id: "encumbrance-certificate",
+        title: "Encumbrance Certificate (EC)",
+        titleHi: "भारमुक्त प्रमाणपत्र (EC)",
+        description: "Property par koi loan ya legal dispute hai ya nahi - EC se pata chalta hai",
+        eligibility: [
+          "Property owner ya legal heir",
+          "Property buyer (verification ke liye)",
+          "Bank/financial institution (loan ke liye)",
+          "Legal representative with valid authorization"
+        ],
+        documents: [
+          "Property ke sale deed ki copy",
+          "Property owner ka Aadhaar Card",
+          "Property ka survey number / plot number",
+          "Application form (Sub-Registrar office se milega)",
+          "Fee payment receipt"
+        ],
+        steps: [
+          { step: 1, title: "Online Portal Jaayein", description: "State ke land records portal par jaayein (IGRS/Bhoomi/Bhulekh)" },
+          { step: 2, title: "EC Option Select Karein", description: "Encumbrance Certificate ya 'Search' option choose karein" },
+          { step: 3, title: "Property Details Bharein", description: "Survey number, village, taluk/tehsil ki details bharein" },
+          { step: 4, title: "Period Select Karein", description: "Kitne saal ka EC chahiye - usually 13 ya 30 saal ka lein" },
+          { step: 5, title: "Fee Payment", description: "Rs. 50-200 online pay karein (state ke hisaab se alag)" },
+          { step: 6, title: "EC Download/Collect", description: "Online EC turant milega ya office se 3-7 din mein" }
+        ],
+        officialWebsite: "https://igrsup.gov.in / https://bhoomi.karnataka.gov.in / State ke hisaab se alag",
+        officeName: "Sub-Registrar Office",
+        warnings: [
+          "EC mein 'NIL' aana chahiye - matlab koi encumbrance nahi hai",
+          "Agar EC mein koi transaction dikhti hai toh uski details verify karein",
+          "Property kharidne se pehle 13+ saal ka EC zaroor lein",
+          "Bank loan ke liye EC mandatory hai",
+          "EC har 6 mahine mein update hota hai - latest lein",
+          "Fake EC se bachein - sirf official portal se lein"
+        ]
+      },
+      {
+        id: "mutation",
+        title: "Property Mutation / Dakhil Kharij",
+        titleHi: "दाखिल खारिज / म्यूटेशन",
+        description: "Property apne naam karwana - revenue records mein naam change",
+        eligibility: [
+          "New property owner (buyer)",
+          "Legal heir (inheritance mein)",
+          "Gift deed holder",
+          "Court order se property mile ho"
+        ],
+        documents: [
+          "Registered Sale Deed ki copy",
+          "Seller aur Buyer ka Aadhaar Card",
+          "Previous owner ke naam ka Khatauni/Khasra",
+          "Property tax receipts",
+          "Death certificate (agar inheritance ho)",
+          "Legal heir certificate (agar applicable)",
+          "Succession certificate (court se - inheritance mein)",
+          "Passport size photos",
+          "Affidavit (notarized)"
+        ],
+        steps: [
+          { step: 1, title: "Tehsil/Circle Office Jaayein", description: "Apne area ke Tehsil ya Revenue office jaayein" },
+          { step: 2, title: "Application Form Bharein", description: "Mutation form bharein - online bhi available hai kai states mein" },
+          { step: 3, title: "Documents Submit Karein", description: "Saare documents ki attested copies submit karein" },
+          { step: 4, title: "Fee Payment", description: "Rs. 100-500 mutation fee pay karein" },
+          { step: 5, title: "Site Inspection", description: "Patwari ya Lekhpal site inspection karega" },
+          { step: 6, title: "Public Notice", description: "15-30 din ka public notice lagega - objection ke liye" },
+          { step: 7, title: "Hearing", description: "Tehsildar ya SDM ke saamne hearing hogi (agar objection ho)" },
+          { step: 8, title: "Mutation Order", description: "Approve hone par new Khatauni/7/12 extract milega" }
+        ],
+        officialWebsite: "https://upbhulekh.gov.in (UP) / https://bhulekh.mahabhumi.gov.in (MH) / State ke hisaab se",
+        officeName: "Tehsil Office / Circle Office / Revenue Office",
+        warnings: [
+          "Mutation ke bina property legally aapke naam nahi manegi",
+          "Property tax bhi new owner ke naam shift karna zaroori hai",
+          "Mutation mein 1-6 mahine lag sakte hain - patience rakhein",
+          "Patwari ko extra paisa dena illegal hai - receipt lein",
+          "Inheritance mein legal heir certificate zaroor banwayein",
+          "Multiple heirs mein sabki consent zaroori hai"
+        ]
+      },
+      {
+        id: "khata-transfer",
+        title: "Khata Transfer",
+        titleHi: "खाता ट्रांसफर",
+        description: "Municipal records mein property ownership change",
+        eligibility: [
+          "New property owner",
+          "Property situated in urban/municipal area",
+          "Registered sale deed holder"
+        ],
+        documents: [
+          "Registered Sale Deed copy",
+          "Previous Khata extract",
+          "Latest property tax receipt",
+          "Encumbrance Certificate",
+          "Buyer ka Aadhaar + PAN Card",
+          "Building plan approval (agar new construction ho)",
+          "Occupancy Certificate (agar applicable)",
+          "NOC from society/association"
+        ],
+        steps: [
+          { step: 1, title: "Municipal Office Jaayein", description: "Local Municipal Corporation/Nagar Palika office jaayein" },
+          { step: 2, title: "Form Bharein", description: "Khata transfer application form bharein" },
+          { step: 3, title: "Documents Attach Karein", description: "Required documents ki copies attach karein" },
+          { step: 4, title: "Fee Payment", description: "Transfer fee + pending tax (agar ho) pay karein" },
+          { step: 5, title: "Verification", description: "Municipal officer documents verify karega" },
+          { step: 6, title: "New Khata Issue", description: "15-30 din mein new Khata certificate milega" }
+        ],
+        officialWebsite: "State/City Municipal Corporation website",
+        officeName: "Municipal Corporation / Nagar Palika / Town Planning Office",
+        warnings: [
+          "Khata transfer ke bina property tax aapke naam nahi aayega",
+          "Bank loan mein Khata document zaroor mangta hai",
+          "Previous owner ke pending tax aap pay karna padega",
+          "A-Khata better hai B-Khata se - loan easily milta hai",
+          "Khata number property tax receipt par hota hai"
+        ]
+      },
+      {
+        id: "land-records",
+        title: "Land Records / Bhulekh",
+        titleHi: "भूमि रिकॉर्ड / भूलेख",
+        description: "Khasra, Khatauni, 7/12 extract online dekhein",
+        eligibility: [
+          "Koi bhi person land records dekh sakta hai",
+          "Property owner certified copy le sakta hai"
+        ],
+        documents: [
+          "Survey Number / Khasra Number (records dekhne ke liye)",
+          "Owner's Aadhaar (certified copy ke liye)",
+          "Application form (certified copy ke liye)"
+        ],
+        steps: [
+          { step: 1, title: "State Portal Jaayein", description: "Apne state ka Bhulekh portal kholen (UP-upbhulekh.gov.in, MH-bhulekh.mahabhumi.gov.in)" },
+          { step: 2, title: "District/Tehsil Select Karein", description: "Apna district, tehsil aur village select karein" },
+          { step: 3, title: "Search Option Chunein", description: "Khasra number, Khata number ya owner name se search karein" },
+          { step: 4, title: "Records Dekhein", description: "Land details, ownership, area sab dikhega" },
+          { step: 5, title: "Download/Print", description: "Online copy download karein ya Tehsil se certified copy lein" }
+        ],
+        officialWebsite: "https://upbhulekh.gov.in / https://bhulekh.mahabhumi.gov.in / https://bhoomi.karnataka.gov.in",
+        officeName: "Tehsil Office / Taluk Office",
+        warnings: [
+          "Online copy sirf reference ke liye hai - legal work mein certified copy chahiye",
+          "Certified copy Tehsil office se hi milegi",
+          "Land records mein naam hona ownership ka proof nahi hai - sale deed primary document hai",
+          "Records mismatch ho toh revenue office mein complaint karein",
+          "Free mein records dekh sakte ho - kisi ko paisa mat do"
         ]
       }
     ]
