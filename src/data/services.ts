@@ -436,6 +436,156 @@ export const services: Service[] = [
           "Card banwana bilkul FREE hai",
           "Rs. 5 lakh per family per year coverage hai"
         ]
+      },
+      {
+        id: "pm-awas-yojana",
+        title: "PM Awas Yojana (PMAY)",
+        titleHi: "पीएम आवास योजना",
+        description: "Gareeb parivaron ke liye pucca ghar",
+        eligibility: [
+          "EWS (Economically Weaker Section) - Annual income Rs. 3 lakh tak",
+          "LIG (Low Income Group) - Annual income Rs. 3-6 lakh",
+          "MIG-I - Annual income Rs. 6-12 lakh",
+          "MIG-II - Annual income Rs. 12-18 lakh",
+          "Applicant ya family member ke naam par India mein pucca ghar nahi hona chahiye",
+          "Married couples mein sirf ek application valid hai"
+        ],
+        documents: [
+          "Aadhaar Card (mandatory)",
+          "Income Certificate / Salary Slip",
+          "Bank Account Details",
+          "Land Documents (agar naya ghar banana hai)",
+          "Caste Certificate (SC/ST/OBC ke liye)",
+          "Photograph",
+          "Mobile Number"
+        ],
+        steps: [
+          { step: 1, title: "Official Portal Jaayein", description: "pmaymis.gov.in par jaayein (Urban) ya pmayg.nic.in (Rural/Gramin)" },
+          { step: 2, title: "Citizen Assessment Chunein", description: "Urban ke liye 'Citizen Assessment' par click karein" },
+          { step: 3, title: "Category Select Karein", description: "Slum Dweller / Beneficiary-led Construction / Affordable Housing chunein" },
+          { step: 4, title: "Aadhaar Verify Karein", description: "Aadhaar number daalein aur OTP se verify karein" },
+          { step: 5, title: "Form Bharein", description: "Personal, family, income, aur land details bharein" },
+          { step: 6, title: "Documents Upload Karein", description: "Required documents scan karke upload karein" },
+          { step: 7, title: "Submit Karein", description: "Form submit karein aur Application ID note karein" },
+          { step: 8, title: "Verification Hogi", description: "Local authority verify karegi, phir subsidy approve hogi" }
+        ],
+        officialWebsite: "https://pmaymis.gov.in",
+        officeName: "PMAY Urban/Gramin Portal / Municipal Office",
+        warnings: [
+          "Subsidy amount: EWS/LIG - Rs. 1.5-2.67 lakh, MIG - Rs. 2.35-2.67 lakh",
+          "Pehle se pucca ghar hai to eligible nahi",
+          "Application FREE hai - kisi ko fees mat dein",
+          "Verification mein 2-6 months lag sakte hain",
+          "Fake agents se bachein - sirf official portal use karein"
+        ]
+      },
+      {
+        id: "sukanya-samriddhi",
+        title: "Sukanya Samriddhi Yojana",
+        titleHi: "सुकन्या समृद्धि योजना",
+        description: "Beti ke bhavishya ke liye savings scheme",
+        eligibility: [
+          "Girl child 10 saal se kam umar ki",
+          "Per family maximum 2 accounts (2 betiyon ke liye)",
+          "Parents ya legal guardian apply kar sakte hain",
+          "Indian resident hona chahiye"
+        ],
+        documents: [
+          "Beti ka Birth Certificate",
+          "Parent/Guardian ka Aadhaar Card",
+          "Parent/Guardian ka Address Proof",
+          "Passport size photos (beti aur guardian ke)",
+          "Medical Certificate (twin/triplet case mein)"
+        ],
+        steps: [
+          { step: 1, title: "Bank/Post Office Jaayein", description: "Nearest SBI, PNB, Post Office ya authorized bank jaayein" },
+          { step: 2, title: "Form Lein", description: "Sukanya Samriddhi Account opening form maangein" },
+          { step: 3, title: "Form Bharein", description: "Beti aur guardian ki details bharein" },
+          { step: 4, title: "Documents Submit Karein", description: "Birth certificate aur ID proofs dein" },
+          { step: 5, title: "Initial Deposit Karein", description: "Minimum Rs. 250 se account khulega (Max Rs. 1.5 lakh per year)" },
+          { step: 6, title: "Passbook Lein", description: "Account passbook mil jayegi turant ya kuch din mein" }
+        ],
+        officialWebsite: "https://www.nsiindia.gov.in",
+        officeName: "Post Office / Authorized Banks",
+        warnings: [
+          "Interest rate: ~8% per annum (government decide karta hai quarterly)",
+          "Account 21 saal ya beti ki shaadi (18+ ke baad) tak chalta hai",
+          "Har saal minimum Rs. 250 deposit mandatory hai",
+          "50% withdrawal allowed at 18 years for education",
+          "Tax benefit Section 80C ke under milta hai",
+          "Account ek bank se doosre mein transfer ho sakta hai"
+        ]
+      },
+      {
+        id: "pm-ujjwala",
+        title: "PM Ujjwala Yojana",
+        titleHi: "पीएम उज्ज्वला योजना",
+        description: "Gareeb mahilaon ke liye free LPG connection",
+        eligibility: [
+          "BPL (Below Poverty Line) parivaar ki mahila",
+          "SECC-2011 database mein naam hona chahiye",
+          "18 saal se upar ki mahila",
+          "Ghar mein pehle se LPG connection nahi hona chahiye"
+        ],
+        documents: [
+          "Aadhaar Card (mahila ka)",
+          "BPL Ration Card / SECC list mein naam",
+          "Bank Account (mahila ke naam ka)",
+          "Passport size photo",
+          "Mobile Number"
+        ],
+        steps: [
+          { step: 1, title: "Eligibility Check Karein", description: "pmuy.gov.in par jaayein aur eligibility check karein" },
+          { step: 2, title: "Gas Distributor Jaayein", description: "Nearest HP, Indane, ya Bharat Gas distributor ke paas jaayein" },
+          { step: 3, title: "Form Bharein", description: "Ujjwala application form bharein" },
+          { step: 4, title: "Documents Dein", description: "Aadhaar, ration card, bank details dein" },
+          { step: 5, title: "Verification Hogi", description: "Distributor documents verify karega" },
+          { step: 6, title: "Connection Milega", description: "FREE connection milega, cylinder ke liye subsidy bank mein aayegi" }
+        ],
+        officialWebsite: "https://pmuy.gov.in",
+        officeName: "LPG Distributor / Oil Company",
+        warnings: [
+          "Connection bilkul FREE hai - kisi ko paisa mat dein",
+          "Stove bhi free milta hai scheme mein",
+          "Subsidy seedha bank account mein aati hai",
+          "Fake agents se savdhaan rahein"
+        ]
+      },
+      {
+        id: "pm-kaushal-vikas",
+        title: "PM Kaushal Vikas Yojana",
+        titleHi: "पीएम कौशल विकास योजना",
+        description: "Free skill training aur certificate",
+        eligibility: [
+          "Indian citizen",
+          "15-45 saal umar (course ke hisab se vary karta hai)",
+          "10th/12th pass (course ke hisab se)",
+          "Employed/Unemployed dono eligible"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Educational Certificates (10th/12th marksheet)",
+          "Bank Account Details",
+          "Passport size photo",
+          "Mobile Number"
+        ],
+        steps: [
+          { step: 1, title: "Skill India Portal Jaayein", description: "skillindia.gov.in par jaayein" },
+          { step: 2, title: "Register Karein", description: "Candidate ke taur par register karein" },
+          { step: 3, title: "Course Chunein", description: "IT, Healthcare, Retail, Beauty, Automotive jaise sectors mein course chunein" },
+          { step: 4, title: "Training Center Dhundhein", description: "Nearest certified training center select karein" },
+          { step: 5, title: "Enrollment Karein", description: "Center par jaayein aur admission lein" },
+          { step: 6, title: "Training Complete Karein", description: "2-6 months ki training attend karein" },
+          { step: 7, title: "Certificate Paayein", description: "Exam pass karne par government certified certificate milega" }
+        ],
+        officialWebsite: "https://www.skillindia.gov.in",
+        officeName: "Skill India / PMKVY Training Centers",
+        warnings: [
+          "Training bilkul FREE hai",
+          "Certificate nationally recognized hai",
+          "Placement assistance bhi milti hai",
+          "Sirf authorized training partners se training lein"
+        ]
       }
     ]
   },
