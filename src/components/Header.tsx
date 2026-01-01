@@ -1,5 +1,6 @@
-import { ArrowLeft, Share2 } from "lucide-react";
+import { ArrowLeft, Share2, Moon, Sun } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@/hooks/use-theme";
 
 interface HeaderProps {
   title?: string;
@@ -10,6 +11,7 @@ interface HeaderProps {
 
 export const Header = ({ title, showBack = false, showShare = false, onShare }: HeaderProps) => {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -55,14 +57,27 @@ export const Header = ({ title, showBack = false, showShare = false, onShare }: 
             </div>
           )}
         </div>
-        {showShare && (
+        <div className="flex items-center gap-2">
           <button 
-            onClick={handleShare}
+            onClick={toggleTheme}
             className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors touch-action-manipulation active:scale-95"
+            aria-label={theme === "light" ? "Dark mode on karein" : "Light mode on karein"}
           >
-            <Share2 className="w-5 h-5 text-primary-foreground" />
+            {theme === "light" ? (
+              <Moon className="w-5 h-5 text-primary-foreground" />
+            ) : (
+              <Sun className="w-5 h-5 text-primary-foreground" />
+            )}
           </button>
-        )}
+          {showShare && (
+            <button 
+              onClick={handleShare}
+              className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors touch-action-manipulation active:scale-95"
+            >
+              <Share2 className="w-5 h-5 text-primary-foreground" />
+            </button>
+          )}
+        </div>
       </div>
     </header>
   );
