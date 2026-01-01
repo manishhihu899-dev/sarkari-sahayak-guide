@@ -586,6 +586,159 @@ export const services: Service[] = [
           "Placement assistance bhi milti hai",
           "Sirf authorized training partners se training lein"
         ]
+      },
+      {
+        id: "atal-pension",
+        title: "Atal Pension Yojana (APY)",
+        titleHi: "अटल पेंशन योजना",
+        description: "Budhape mein guaranteed pension scheme",
+        eligibility: [
+          "18-40 saal umar ke Indian citizens",
+          "Bank/Post Office savings account hona chahiye",
+          "Aadhaar aur mobile number linked hona chahiye",
+          "Government employees eligible nahi hain",
+          "Income tax payers eligible nahi hain (2016 se)"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Bank Account Passbook",
+          "Mobile Number (bank se linked)",
+          "Nominee details (Aadhaar preferred)"
+        ],
+        steps: [
+          { step: 1, title: "Bank Branch Jaayein", description: "Apne savings account wali bank branch jaayein" },
+          { step: 2, title: "APY Form Maangein", description: "Atal Pension Yojana application form lein" },
+          { step: 3, title: "Pension Amount Chunein", description: "Rs. 1000, 2000, 3000, 4000 ya 5000 monthly pension chunein" },
+          { step: 4, title: "Form Bharein", description: "Personal details, nominee details bharein" },
+          { step: 5, title: "Auto-Debit Consent Dein", description: "Monthly contribution auto-debit ke liye consent form sign karein" },
+          { step: 6, title: "PRAN Receive Karein", description: "Permanent Retirement Account Number (PRAN) mil jayega" }
+        ],
+        officialWebsite: "https://www.npscra.nsdl.co.in/scheme-details.php",
+        officeName: "Bank Branch / Post Office",
+        warnings: [
+          "Monthly contribution Rs. 42 se Rs. 1,454 tak hota hai (age aur pension amount ke hisab se)",
+          "60 saal ki umar ke baad pension shuru hoti hai",
+          "Jaldi join karein = kam contribution dena padega",
+          "Government bhi 50% contribution deti hai (5 saal tak, kuch conditions par)",
+          "Beech mein band karne par penalty lagti hai"
+        ]
+      },
+      {
+        id: "jan-dhan",
+        title: "Jan Dhan Yojana",
+        titleHi: "जन धन योजना",
+        description: "Zero balance bank account with insurance",
+        eligibility: [
+          "Koi bhi Indian citizen",
+          "10 saal se upar ka baccha bhi eligible (guardian ke saath)",
+          "Valid ID proof chahiye",
+          "Pehle se bank account ho to bhi Jan Dhan mein convert ho sakta hai"
+        ],
+        documents: [
+          "Aadhaar Card (sabse easy - sirf ye bhi chalega)",
+          "Ya koi 2 documents: Voter ID, Driving License, NREGA Card, PAN",
+          "Passport size photo",
+          "Address proof (agar Aadhaar mein nahi hai)"
+        ],
+        steps: [
+          { step: 1, title: "Nearest Bank Jaayein", description: "Koi bhi nationalized bank - SBI, PNB, BOB, etc." },
+          { step: 2, title: "Jan Dhan Form Maangein", description: "PMJDY account opening form lein" },
+          { step: 3, title: "Form Bharein", description: "Simple details bharein - naam, address, nominee" },
+          { step: 4, title: "Documents Dein", description: "Aadhaar ya other ID proof ki copy dein" },
+          { step: 5, title: "Photo Dein", description: "Passport size photo chipkayein" },
+          { step: 6, title: "Account Khul Jayega", description: "Turant account number milega, RuPay card baad mein aayega" }
+        ],
+        officialWebsite: "https://pmjdy.gov.in",
+        officeName: "Any Nationalized Bank Branch",
+        warnings: [
+          "Zero balance account hai - minimum balance ki zaroorat nahi",
+          "FREE RuPay debit card milta hai",
+          "Rs. 2 lakh accident insurance FREE milta hai",
+          "Rs. 30,000 life insurance bhi milta hai (conditions apply)",
+          "Overdraft facility Rs. 10,000 tak mil sakti hai",
+          "Mobile banking bhi activate karwa sakte hain"
+        ]
+      },
+      {
+        id: "mudra-loan",
+        title: "PM Mudra Yojana",
+        titleHi: "पीएम मुद्रा योजना",
+        description: "Chhote business ke liye bina guarantee loan",
+        eligibility: [
+          "Koi bhi Indian citizen jo business karna chahta hai",
+          "Manufacturing, trading, service sector eligible",
+          "Existing small business owners bhi eligible",
+          "Non-corporate, non-farm small/micro enterprises"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "PAN Card (Rs. 2 lakh se upar loan ke liye)",
+          "Business plan / proposal",
+          "Address proof (business aur personal)",
+          "Identity proof",
+          "Passport size photos",
+          "Category certificate (SC/ST/OBC agar applicable)",
+          "Existing business ke liye: Registration, ITR, Bank statements"
+        ],
+        steps: [
+          { step: 1, title: "Loan Type Samjhein", description: "Shishu: Rs. 50,000 tak | Kishore: Rs. 50,000-5 lakh | Tarun: Rs. 5-10 lakh" },
+          { step: 2, title: "Bank/NBFC Jaayein", description: "SBI, PNB ya koi bhi Mudra partner bank/NBFC jaayein" },
+          { step: 3, title: "Application Form Bharein", description: "Mudra loan application form complete karein" },
+          { step: 4, title: "Business Plan Dein", description: "Kya business hai, kitna paisa chahiye, kaise use karenge - detail mein likhein" },
+          { step: 5, title: "Documents Submit Karein", description: "Saare required documents ki copies dein" },
+          { step: 6, title: "Interview/Verification", description: "Bank officer questions poochhega, site visit ho sakti hai" },
+          { step: 7, title: "Loan Sanction", description: "Approval ke baad loan amount account mein aayega" }
+        ],
+        officialWebsite: "https://www.mudra.org.in",
+        officeName: "Banks / NBFCs / MFIs",
+        warnings: [
+          "Collateral/Guarantee ki zaroorat NAHI hai",
+          "Interest rate bank ke hisab se vary karta hai (8-12% approx)",
+          "Shishu loan sabse easily milta hai",
+          "Business plan achha ho to approval chances badhte hain",
+          "Loan repay karna compulsory hai - ye grant nahi hai",
+          "Online bhi apply kar sakte hain udyamimitra.in par"
+        ]
+      },
+      {
+        id: "stand-up-india",
+        title: "Stand Up India",
+        titleHi: "स्टैंड अप इंडिया",
+        description: "SC/ST aur mahilaon ke liye business loan",
+        eligibility: [
+          "SC/ST category ke log",
+          "Ya koi bhi mahila entrepreneur",
+          "18 saal se upar",
+          "First-time entrepreneur ko preference",
+          "Manufacturing, service, trading sector eligible"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "PAN Card",
+          "Caste Certificate (SC/ST ke liye)",
+          "Business plan",
+          "Address proof",
+          "Educational certificates",
+          "Bank statements (existing business ke liye)"
+        ],
+        steps: [
+          { step: 1, title: "Portal Par Jaayein", description: "standupmitra.in par register karein" },
+          { step: 2, title: "Profile Banayein", description: "Personal aur business details bharein" },
+          { step: 3, title: "Loan Apply Karein", description: "Rs. 10 lakh se Rs. 1 crore tak loan ke liye apply karein" },
+          { step: 4, title: "Bank Select Karein", description: "Nearest bank branch select karein" },
+          { step: 5, title: "Documents Submit Karein", description: "Bank mein jaake documents verify karwayein" },
+          { step: 6, title: "Training (Optional)", description: "Entrepreneurship training bhi le sakte hain" },
+          { step: 7, title: "Loan Disbursement", description: "Approval ke baad amount credit hoga" }
+        ],
+        officialWebsite: "https://www.standupmitra.in",
+        officeName: "Scheduled Commercial Banks",
+        warnings: [
+          "Loan Rs. 10 lakh se Rs. 1 crore tak milta hai",
+          "51% ownership entrepreneur ki honi chahiye",
+          "Repayment period 7 saal tak",
+          "Moratorium period bhi milta hai",
+          "Margin money 15-25% khud lagana padta hai"
+        ]
       }
     ]
   },
