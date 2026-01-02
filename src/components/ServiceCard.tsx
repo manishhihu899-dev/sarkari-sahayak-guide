@@ -1,5 +1,6 @@
 import { LucideIcon } from "lucide-react";
 import { ChevronRight } from "lucide-react";
+import { useLanguage } from "@/hooks/use-language";
 
 interface ServiceCardProps {
   title: string;
@@ -18,6 +19,8 @@ export const ServiceCard = ({
   onClick,
   delay = 0 
 }: ServiceCardProps) => {
+  const { language } = useLanguage();
+  
   return (
     <button
       onClick={onClick}
@@ -29,7 +32,7 @@ export const ServiceCard = ({
       </div>
       <div className="flex-1 min-w-0">
         <h3 className="font-semibold text-foreground text-lg leading-tight">
-          {titleHi}
+          {language === "hi" ? titleHi : title}
         </h3>
         <p className="text-sm text-muted-foreground mt-0.5 truncate">
           {description}
