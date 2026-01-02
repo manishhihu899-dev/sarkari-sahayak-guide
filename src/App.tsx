@@ -11,7 +11,6 @@ import SubServicePage from "./pages/SubServicePage";
 import SearchPage from "./pages/SearchPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import HelpPage from "./pages/HelpPage";
-import InstallPage from "./pages/InstallPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,7 +30,6 @@ const App = () => (
               <Route path="/search" element={<SearchPage />} />
               <Route path="/categories" element={<CategoriesPage />} />
               <Route path="/help" element={<HelpPage />} />
-              <Route path="/install" element={<InstallPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
