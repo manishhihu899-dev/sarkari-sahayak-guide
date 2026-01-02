@@ -1,6 +1,7 @@
-import { ArrowLeft, Share2, Moon, Sun } from "lucide-react";
+import { ArrowLeft, Share2, Moon, Sun, Languages } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
+import { useLanguage } from "@/hooks/use-language";
 
 interface HeaderProps {
   title?: string;
@@ -12,13 +13,14 @@ interface HeaderProps {
 export const Header = ({ title, showBack = false, showShare = false, onShare }: HeaderProps) => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage, t } = useLanguage();
 
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
           title: title || "Sarkaari Sahayak",
-          text: "Ye dekho - sarkari kaam ka easy guide",
+          text: t("Ye dekho - sarkari kaam ka easy guide", "Check this - easy guide for government services"),
           url: window.location.href,
         });
       } catch (err) {
@@ -49,15 +51,24 @@ export const Header = ({ title, showBack = false, showShare = false, onShare }: 
           ) : (
             <div>
               <h1 className="text-xl font-bold text-primary-foreground">
-                सरकारी सहायक
+                {t("सरकारी सहायक", "Sarkaari Sahayak")}
               </h1>
               <p className="text-xs text-primary-foreground/80 mt-0.5">
-                Ek hi app mein sabhi sarkari kaam ka guide
+                {t("Ek hi app mein sabhi sarkari kaam ka guide", "All govt services guide in one app")}
               </p>
             </div>
           )}
         </div>
         <div className="flex items-center gap-2">
+          <button 
+            onClick={toggleLanguage}
+            className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors touch-action-manipulation active:scale-95"
+            aria-label={t("English mein dekhein", "हिंदी में देखें")}
+          >
+            <span className="text-xs font-bold text-primary-foreground">
+              {language === "hi" ? "EN" : "हि"}
+            </span>
+          </button>
           <button 
             onClick={toggleTheme}
             className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors touch-action-manipulation active:scale-95"

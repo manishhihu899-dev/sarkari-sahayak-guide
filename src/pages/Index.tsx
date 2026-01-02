@@ -6,10 +6,12 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { BottomNav } from "@/components/BottomNav";
 import { services, searchServices } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
+import { useLanguage } from "@/hooks/use-language";
 
 const Index = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useLanguage();
 
   const searchResults = searchQuery.length > 1 ? searchServices(searchQuery) : [];
 
@@ -22,7 +24,7 @@ const Index = () => {
         <SearchBar 
           value={searchQuery} 
           onChange={setSearchQuery}
-          placeholder="Search: Aadhaar, PAN, Passport..."
+          placeholder={t("Search: Aadhaar, PAN, Passport...", "Search: Aadhaar, PAN, Passport...")}
         />
 
         {/* Search Results */}
@@ -30,8 +32,8 @@ const Index = () => {
           <div className="space-y-3">
             <h2 className="text-sm font-medium text-muted-foreground px-1">
               {searchResults.length > 0 
-                ? `${searchResults.length} results found`
-                : "No results found"
+                ? t(`${searchResults.length} results mile`, `${searchResults.length} results found`)
+                : t("Kuch nahi mila", "No results found")
               }
             </h2>
             {searchResults.map((sub, index) => (
@@ -60,18 +62,20 @@ const Index = () => {
             {/* Hero Banner */}
             <div className="bg-gradient-accent rounded-2xl p-5 text-accent-foreground animate-scale-in">
               <h2 className="text-xl font-bold mb-2">
-                🇮🇳 Swagat hai!
+                {t("🇮🇳 Swagat hai!", "🇮🇳 Welcome!")}
               </h2>
               <p className="text-sm opacity-90 leading-relaxed">
-                Aadhaar, PAN, Passport, Bank - sabhi sarkari kaam ka step-by-step guide. 
-                Koi form nahi, koi fees nahi - sirf sahi jaankari.
+                {t(
+                  "Aadhaar, PAN, Passport, Bank - sabhi sarkari kaam ka step-by-step guide. Koi form nahi, koi fees nahi - sirf sahi jaankari.",
+                  "Aadhaar, PAN, Passport, Bank - step-by-step guide for all govt services. No forms, no fees - just the right information."
+                )}
               </p>
             </div>
 
             {/* Services Grid */}
             <div className="space-y-3">
               <h2 className="text-lg font-semibold text-foreground px-1">
-                Sabhi Services
+                {t("Sabhi Services", "All Services")}
               </h2>
               <div className="space-y-3">
                 {services.map((service, index) => (

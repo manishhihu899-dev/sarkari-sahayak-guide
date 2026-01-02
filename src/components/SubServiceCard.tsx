@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import { useLanguage } from "@/hooks/use-language";
 
 interface SubServiceCardProps {
   title: string;
@@ -15,6 +16,8 @@ export const SubServiceCard = ({
   onClick,
   delay = 0 
 }: SubServiceCardProps) => {
+  const { language } = useLanguage();
+  
   return (
     <button
       onClick={onClick}
@@ -24,7 +27,7 @@ export const SubServiceCard = ({
       <div className="w-2 h-12 rounded-full bg-accent shrink-0" />
       <div className="flex-1 min-w-0">
         <h3 className="font-semibold text-foreground text-base leading-tight">
-          {titleHi}
+          {language === "hi" ? titleHi : title}
         </h3>
         <p className="text-sm text-muted-foreground mt-0.5 line-clamp-2">
           {description}
