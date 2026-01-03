@@ -1,8 +1,7 @@
-import { ArrowLeft, Share2, Moon, Sun, Bookmark } from "lucide-react";
+import { ArrowLeft, Share2, Moon, Sun, Languages } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 import { useLanguage } from "@/hooks/use-language";
-import { useBookmarks } from "@/hooks/use-bookmarks";
 
 interface HeaderProps {
   title?: string;
@@ -15,7 +14,6 @@ export const Header = ({ title, showBack = false, showShare = false, onShare }: 
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
-  const { bookmarks } = useBookmarks();
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -62,18 +60,6 @@ export const Header = ({ title, showBack = false, showShare = false, onShare }: 
           )}
         </div>
         <div className="flex items-center gap-2">
-          <button 
-            onClick={() => navigate("/saved")}
-            className="relative w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors touch-action-manipulation active:scale-95"
-            aria-label={t("Saved services", "सेव की गई सेवाएं")}
-          >
-            <Bookmark className="w-5 h-5 text-primary-foreground" />
-            {bookmarks.length > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 text-[10px] font-bold bg-accent text-accent-foreground rounded-full flex items-center justify-center">
-                {bookmarks.length > 9 ? "9+" : bookmarks.length}
-              </span>
-            )}
-          </button>
           <button 
             onClick={toggleLanguage}
             className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors touch-action-manipulation active:scale-95"
