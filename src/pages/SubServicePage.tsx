@@ -17,14 +17,19 @@ import {
   Share2
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useBookmarks } from "@/hooks/use-bookmarks";
+import { useLanguage } from "@/hooks/use-language";
 
 const SubServicePage = () => {
   const { serviceId, subServiceId } = useParams();
   const { toast } = useToast();
+  const { isBookmarked, toggleBookmark } = useBookmarks();
+  const { t } = useLanguage();
   
   const subService = getSubServiceById(serviceId || "", subServiceId || "");
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  
+  const bookmarked = isBookmarked(serviceId || "", subServiceId || "");
 
   if (!subService) {
     return (
@@ -43,12 +48,19 @@ const SubServicePage = () => {
   };
 
   const handleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
+    const nowBookmarked = toggleBookmark(
+      serviceId || "",
+      subServiceId || "",
+      subService.title,
+      subService.titleHi
+    );
     toast({
-      title: isBookmarked ? "Bookmark removed" : "Bookmarked! ✓",
-      description: isBookmarked 
-        ? "Ye service bookmark se hata di gayi" 
-        : "Ye service aapke bookmarks mein save ho gayi",
+      title: nowBookmarked 
+        ? t("Bookmarked! ✓", "बुकमार्क हो गया! ✓") 
+        : t("Bookmark removed", "बुकमार्क हटा दिया"),
+      description: nowBookmarked 
+        ? t("This service is saved to your bookmarks", "यह सेवा आपके बुकमार्क में सेव हो गई")
+        : t("This service was removed from bookmarks", "यह सेवा बुकमार्क से हटा दी गई"),
     });
   };
 
@@ -176,12 +188,12 @@ const SubServicePage = () => {
         {/* Action Buttons */}
         <div className="flex gap-3">
           <Button 
-            variant="outline" 
+            variant={bookmarked ? "default" : "outline"} 
             className="flex-1"
             onClick={handleBookmark}
           >
-            <Bookmark className={`w-5 h-5 ${isBookmarked ? "fill-current" : ""}`} />
-            {isBookmarked ? "Saved" : "Save"}
+            <Bookmark className={`w-5 h-5 ${bookmarked ? "fill-current" : ""}`} />
+            {bookmarked ? t("Saved", "सेव है") : t("Save", "सेव करें")}
           </Button>
           <Button 
             variant="accent" 
