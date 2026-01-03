@@ -2060,6 +2060,356 @@ export const services: Service[] = [
         ]
       }
     ]
+  },
+  {
+    id: "certificates",
+    title: "Certificates",
+    titleHi: "प्रमाणपत्र",
+    description: "Birth, Death, Marriage, Income, Caste, Domicile certificates",
+    icon: FileText,
+    category: "certificates",
+    subServices: [
+      {
+        id: "birth-certificate",
+        title: "Birth Certificate",
+        titleHi: "जन्म प्रमाणपत्र",
+        description: "Bacche ka birth certificate kaise banwayein",
+        eligibility: [
+          "Parents of the child",
+          "Legal guardian",
+          "Adult individual for own birth certificate"
+        ],
+        documents: [
+          "Hospital discharge slip / Birth report",
+          "Parents ka Aadhaar Card",
+          "Parents ka Marriage Certificate",
+          "Address Proof (Ration Card, Electricity Bill)",
+          "Affidavit (agar late registration ho - 1 saal baad)"
+        ],
+        steps: [
+          { step: 1, title: "Hospital Se Form Lein", description: "Agar hospital mein delivery hui toh wahan se birth registration form lein" },
+          { step: 2, title: "Online Portal Jaayein", description: "State ke birth registration portal par jaayein (crsorgi.gov.in)" },
+          { step: 3, title: "Form Bharein", description: "Birth details - date, time, place, parents info bharein" },
+          { step: 4, title: "Documents Upload Karein", description: "Hospital slip aur parents ke documents upload karein" },
+          { step: 5, title: "Submit Karein", description: "21 din ke andar free registration hai, baad mein fee lagti hai" },
+          { step: 6, title: "Certificate Download", description: "Verification ke baad online download ya office se collect karein" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / Gram Panchayat / Registrar of Births & Deaths",
+        warnings: [
+          "21 din ke andar registration FREE hai",
+          "1 saal baad registration mein court affidavit chahiye",
+          "Birth certificate bahut important hai - school admission, passport sab mein lagta hai",
+          "Hospital birth report 21 din ke andar le lein"
+        ]
+      },
+      {
+        id: "death-certificate",
+        title: "Death Certificate",
+        titleHi: "मृत्यु प्रमाणपत्र",
+        description: "Kisi ki death ke baad death certificate kaise banwayein",
+        eligibility: [
+          "Family member of deceased",
+          "Legal heir",
+          "Hospital/Police (in certain cases)"
+        ],
+        documents: [
+          "Hospital death report / Doctor certificate",
+          "Deceased ka Aadhaar Card",
+          "Applicant ka Aadhaar Card",
+          "Proof of relationship (Ration card, etc.)",
+          "Police report (agar unnatural death ho)"
+        ],
+        steps: [
+          { step: 1, title: "Death Report Lein", description: "Hospital se death summary ya doctor se certificate lein" },
+          { step: 2, title: "Portal Par Jaayein", description: "crsorgi.gov.in par registration karein" },
+          { step: 3, title: "Form Bharein", description: "Deceased ki details, death ka reason, date, place bharein" },
+          { step: 4, title: "Documents Submit Karein", description: "Required documents upload ya office mein submit karein" },
+          { step: 5, title: "Verification", description: "Local authority verify karegi" },
+          { step: 6, title: "Certificate Collect", description: "7-15 din mein certificate mil jayega" }
+        ],
+        officialWebsite: "https://crsorgi.gov.in",
+        officeName: "Municipal Corporation / Gram Panchayat / Registrar of Births & Deaths",
+        warnings: [
+          "21 din ke andar registration zaroori hai",
+          "Death certificate bank accounts, property transfer ke liye mandatory hai",
+          "Unnatural death mein police report zaroori hai",
+          "Late registration mein penalty lagti hai"
+        ]
+      },
+      {
+        id: "marriage-certificate",
+        title: "Marriage Certificate",
+        titleHi: "विवाह प्रमाणपत्र",
+        description: "Shaadi ka official certificate kaise banwayein",
+        eligibility: [
+          "Legally married couples",
+          "Husband minimum 21 years, Wife minimum 18 years",
+          "Both should be mentally sound",
+          "Not already married to someone else"
+        ],
+        documents: [
+          "Both spouses ka Aadhaar Card",
+          "Age proof (Birth certificate / 10th marksheet)",
+          "Address proof dono ka",
+          "Passport size photos (joint + individual)",
+          "Marriage invitation card / Marriage photos",
+          "Affidavit of marriage (notarized)",
+          "2 witnesses ka Aadhaar + photos"
+        ],
+        steps: [
+          { step: 1, title: "Marriage Registrar Office Jaayein", description: "Sub-Registrar ya Marriage Registrar office jaayein" },
+          { step: 2, title: "Form Bharein", description: "Marriage registration form bharein - online bhi available" },
+          { step: 3, title: "Documents Submit Karein", description: "Saare documents ki copies submit karein" },
+          { step: 4, title: "Fee Pay Karein", description: "Rs. 100-500 registration fee pay karein" },
+          { step: 5, title: "Notice Period", description: "30 din ka public notice lagega (Hindu Marriage Act mein nahi)" },
+          { step: 6, title: "Personal Appearance", description: "Dono spouses + 2 witnesses ko office aana hoga" },
+          { step: 7, title: "Certificate Issue", description: "Same day ya 7 din mein certificate mil jayega" }
+        ],
+        officialWebsite: "https://igrsup.gov.in / State marriage registration portal",
+        officeName: "Sub-Registrar Office / Marriage Registrar Office",
+        warnings: [
+          "Hindu Marriage Act mein same-day registration possible hai",
+          "Special Marriage Act mein 30 din notice period hai",
+          "Marriage certificate passport, visa, joint accounts ke liye zaroori hai",
+          "Both spouses ka personal appearance mandatory hai"
+        ]
+      },
+      {
+        id: "income-certificate",
+        title: "Income Certificate",
+        titleHi: "आय प्रमाणपत्र",
+        description: "Govt schemes, scholarship, fee waiver ke liye income certificate",
+        eligibility: [
+          "Any Indian citizen",
+          "Students for scholarship",
+          "Families for government schemes"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Ration Card",
+          "Salary slip / Income proof",
+          "Self-declaration affidavit",
+          "Bank statement (optional)",
+          "Passport size photo"
+        ],
+        steps: [
+          { step: 1, title: "CSC/e-District Portal Jaayein", description: "State ke e-district portal ya Jan Seva Kendra jaayein" },
+          { step: 2, title: "Application Form Bharein", description: "Income certificate ke liye form bharein" },
+          { step: 3, title: "Income Details Dein", description: "Annual income sources ki details bharein" },
+          { step: 4, title: "Documents Attach Karein", description: "Required documents upload/attach karein" },
+          { step: 5, title: "Fee Payment", description: "Rs. 20-50 fee pay karein" },
+          { step: 6, title: "Verification", description: "Patwari/Tehsildar verification karega" },
+          { step: 7, title: "Certificate Download", description: "3-7 din mein online download kar sakte ho" }
+        ],
+        officialWebsite: "https://edistrict.up.gov.in / State e-District portal",
+        officeName: "Tehsil Office / e-District / Jan Seva Kendra",
+        warnings: [
+          "Income certificate usually 1 saal ke liye valid hota hai",
+          "Galat income declare karna punishable offense hai",
+          "Government jobs mein income certificate for reservation use hota hai",
+          "Self-employed ke liye CA certificate bhi chalega"
+        ]
+      },
+      {
+        id: "caste-certificate",
+        title: "Caste Certificate",
+        titleHi: "जाति प्रमाणपत्र",
+        description: "SC/ST/OBC caste certificate kaise banwayein",
+        eligibility: [
+          "Belongs to SC/ST/OBC category",
+          "Indian citizen",
+          "Resident of the state"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Father's caste certificate (agar available)",
+          "Ration Card",
+          "School leaving certificate mentioning caste",
+          "Self-declaration affidavit",
+          "Passport size photos"
+        ],
+        steps: [
+          { step: 1, title: "e-District Portal Jaayein", description: "State ke e-district portal ya CSC jaayein" },
+          { step: 2, title: "Form Bharein", description: "Caste certificate application form bharein" },
+          { step: 3, title: "Caste Details Dein", description: "Father's caste certificate number (agar ho) dein" },
+          { step: 4, title: "Documents Upload Karein", description: "Saare supporting documents attach karein" },
+          { step: 5, title: "Fee Pay Karein", description: "Rs. 20-50 fee pay karein" },
+          { step: 6, title: "Field Verification", description: "Patwari field verification karega" },
+          { step: 7, title: "Certificate Issue", description: "7-15 din mein certificate milega" }
+        ],
+        officialWebsite: "https://edistrict.up.gov.in / State e-District portal",
+        officeName: "Tehsil Office / SDM Office / e-District",
+        warnings: [
+          "Caste certificate reservation, scholarship ke liye zaroori hai",
+          "Fake caste certificate serious crime hai - jail ho sakti hai",
+          "Father ki lineage se caste determine hoti hai",
+          "State change hone par new state se fresh certificate lena padega"
+        ]
+      },
+      {
+        id: "domicile-certificate",
+        title: "Domicile Certificate",
+        titleHi: "मूल निवास प्रमाणपत्र",
+        description: "State mein permanent residence ka proof",
+        eligibility: [
+          "Resident of the state for minimum period (usually 3-15 years)",
+          "Born in the state",
+          "Government job holders posted in state"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Birth Certificate (agar state mein born)",
+          "10th/12th marksheet (school in same state)",
+          "Ration Card",
+          "Property documents / Rent agreement",
+          "Self-declaration affidavit",
+          "Passport size photos"
+        ],
+        steps: [
+          { step: 1, title: "e-District Portal Jaayein", description: "State ke e-district ya CSC center jaayein" },
+          { step: 2, title: "Application Form Bharein", description: "Domicile certificate form bharein" },
+          { step: 3, title: "Residence Details Dein", description: "Kitne saal se state mein reh rahe ho - details bharein" },
+          { step: 4, title: "Documents Attach Karein", description: "Residence proof documents upload karein" },
+          { step: 5, title: "Fee Pay Karein", description: "Rs. 20-50 fee pay karein" },
+          { step: 6, title: "Verification", description: "Local authority verification karegi" },
+          { step: 7, title: "Certificate Download", description: "7-15 din mein certificate milega" }
+        ],
+        officialWebsite: "https://edistrict.up.gov.in / State e-District portal",
+        officeName: "Tehsil Office / SDM Office / e-District",
+        warnings: [
+          "Domicile state quota admission ke liye zaroori hai",
+          "Government job mein state quota ke liye chahiye",
+          "Usually lifetime valid hota hai",
+          "State change karne par new domicile lena padta hai"
+        ]
+      }
+    ]
+  },
+  {
+    id: "help",
+    title: "Help & FAQs",
+    titleHi: "मदद और प्रश्न",
+    description: "Common questions, scam alerts, important helplines",
+    icon: HelpCircle,
+    category: "help",
+    subServices: [
+      {
+        id: "scam-alerts",
+        title: "Scam Alerts & Safety",
+        titleHi: "धोखाधड़ी से बचाव",
+        description: "Online scams aur fraud se kaise bachein",
+        eligibility: [
+          "Everyone should know this"
+        ],
+        documents: [],
+        steps: [
+          { step: 1, title: "OTP Kabhi Share Mat Karein", description: "Bank, Aadhaar, ya kisi bhi OTP ko phone par kisi ko mat batayein - koi bhi govt officer OTP nahi mangta" },
+          { step: 2, title: "Official Website Use Karein", description: "Sirf .gov.in websites use karein - fake websites se bachein" },
+          { step: 3, title: "Phone Par Personal Info Na Dein", description: "Aadhaar, PAN, bank details phone par kabhi na dein" },
+          { step: 4, title: "Free Money Scams", description: "Lottery, prize, ya free money ke messages fraud hain - ignore karein" },
+          { step: 5, title: "Link Click Mat Karein", description: "WhatsApp/SMS par aaye suspicious links click mat karein" },
+          { step: 6, title: "Verify Caller Identity", description: "Bank ya govt se call aaye toh khud official number par call karke verify karein" }
+        ],
+        officialWebsite: "https://cybercrime.gov.in",
+        officeName: "Cyber Crime Portal",
+        warnings: [
+          "Aadhaar OTP share karna = aapke naam par SIM/Bank account khul sakta hai",
+          "KYC update ke naam par fraud calls aate hain - bank khud kabhi nahi mangta",
+          "Screen sharing apps (AnyDesk, TeamViewer) download mat karein agar koi kahe",
+          "Cyber fraud ho jaye toh turant 1930 par call karein"
+        ]
+      },
+      {
+        id: "helplines",
+        title: "Important Helplines",
+        titleHi: "महत्वपूर्ण हेल्पलाइन नंबर",
+        description: "Emergency aur govt helpline numbers",
+        eligibility: [
+          "Everyone"
+        ],
+        documents: [],
+        steps: [
+          { step: 1, title: "Emergency - 112", description: "Police, Fire, Ambulance - All in one emergency number" },
+          { step: 2, title: "Women Helpline - 181", description: "Women safety aur domestic violence ke liye" },
+          { step: 3, title: "Cyber Crime - 1930", description: "Online fraud, scam, cyber crime report karne ke liye" },
+          { step: 4, title: "Child Helpline - 1098", description: "Children in distress ke liye 24x7 helpline" },
+          { step: 5, title: "Senior Citizen - 14567", description: "Elderly citizens ke liye help aur support" },
+          { step: 6, title: "Consumer Helpline - 1800-11-4000", description: "Consumer complaints aur grievances ke liye" },
+          { step: 7, title: "Railway Enquiry - 139", description: "Train timing, PNR status, complaints" },
+          { step: 8, title: "UIDAI Helpline - 1947", description: "Aadhaar related queries aur complaints" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Government of India",
+        warnings: [
+          "Ye sab helplines FREE hain - koi charge nahi lagta",
+          "Fake helpline numbers se bachein - Google par official number verify karein",
+          "Emergency mein 112 sabse pehle dial karein"
+        ]
+      },
+      {
+        id: "common-mistakes",
+        title: "Common Mistakes to Avoid",
+        titleHi: "आम गलतियाँ जिनसे बचें",
+        description: "Sarkari kaam mein log ye galtiyan karte hain",
+        eligibility: [
+          "Everyone applying for government services"
+        ],
+        documents: [],
+        steps: [
+          { step: 1, title: "Naam Spelling Match Karein", description: "Aadhaar, PAN, Bank, Passport - sab mein naam EXACTLY same hona chahiye" },
+          { step: 2, title: "Documents Ki Copy Rakhein", description: "Important documents ki xerox aur digital copy dono rakhein" },
+          { step: 3, title: "Deadline Yaad Rakhein", description: "ITR, renewal, registration - deadline miss mat karein" },
+          { step: 4, title: "Acknowledgment Lein", description: "Koi bhi form submit karein toh receipt/acknowledgment zaroor lein" },
+          { step: 5, title: "Agent Pe Depend Na Hon", description: "Khud online karein - agents zyada charge karte hain aur galti bhi karte hain" },
+          { step: 6, title: "Mobile Number Updated Rakhein", description: "Aadhaar, Bank, PAN mein mobile number updated rakhein - OTP aata hai" },
+          { step: 7, title: "Official Websites Use Karein", description: "Sirf .gov.in websites use karein - private websites avoid karein" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Government Services",
+        warnings: [
+          "Naam mismatch se bahut problems aati hain - pehle sab jagah correct karein",
+          "Original documents kisi ko mat dein - sirf xerox dein",
+          "Online portal par hi apply karein - agents ke paas mat jaayein"
+        ]
+      },
+      {
+        id: "document-checklist",
+        title: "Must-Have Documents",
+        titleHi: "ज़रूरी दस्तावेज़",
+        description: "Har Indian ke paas ye documents hone chahiye",
+        eligibility: [
+          "Every Indian citizen"
+        ],
+        documents: [
+          "Aadhaar Card - Identity + Address proof",
+          "PAN Card - Tax aur financial transactions ke liye",
+          "Voter ID - Voting + ID proof",
+          "Passport - International travel ke liye",
+          "Driving License - Driving + ID proof",
+          "Birth Certificate - Age proof",
+          "Bank Account - Financial transactions",
+          "Ration Card - Subsidized food + family proof"
+        ],
+        steps: [
+          { step: 1, title: "Aadhaar Card (Priority 1)", description: "Sabse pehle banwayein - almost har jagah lagta hai" },
+          { step: 2, title: "PAN Card (Priority 2)", description: "Bank account, income tax, 50000+ transactions ke liye" },
+          { step: 3, title: "Bank Account (Priority 3)", description: "Govt subsidies direct bank mein aati hain" },
+          { step: 4, title: "Voter ID (Priority 4)", description: "18 saal ke baad zaroor banwayein - voting + ID proof" },
+          { step: 5, title: "Birth Certificate (Priority 5)", description: "Agar nahi hai toh banwa lein - age proof ke liye best" },
+          { step: 6, title: "Passport (Need Based)", description: "International travel plan ho toh banwayein" },
+          { step: 7, title: "Driving License (Need Based)", description: "Vehicle chalane ke liye mandatory hai" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Various Government Offices",
+        warnings: [
+          "Saare documents mein naam, DOB, address SAME hona chahiye",
+          "Digital copies (DigiLocker) mein bhi rakhein",
+          "Laminate karke safe jagah rakhein",
+          "Khoye documents ki FIR zaroor file karein"
+        ]
+      }
+    ]
   }
 ];
 
