@@ -28,14 +28,8 @@ const ServicePage = () => {
         {/* Service Header */}
         <div className="bg-card rounded-2xl p-5 shadow-card animate-fade-up">
           <div className="flex items-center gap-4">
-            <div 
-              className="w-16 h-16 rounded-2xl flex items-center justify-center"
-              style={{ backgroundColor: `hsl(${service.themeColor} / 0.15)` }}
-            >
-              <Icon 
-                className="w-8 h-8" 
-                style={{ color: `hsl(${service.themeColor})` }}
-              />
+            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <Icon className="w-8 h-8 text-primary" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-foreground">

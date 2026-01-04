@@ -26,7 +26,6 @@ export interface Service {
   description: string;
   icon: LucideIcon;
   category: string;
-  themeColor: string; // HSL color for service theme
   subServices: SubService[];
 }
 
@@ -71,7 +70,6 @@ export const services: Service[] = [
     description: "Aadhaar card banwana, update karna, link karna",
     icon: Fingerprint,
     category: "aadhaar",
-    themeColor: "24 95% 50%", // UIDAI Orange
     subServices: [
       {
         id: "new-aadhaar",
@@ -165,7 +163,6 @@ export const services: Service[] = [
     description: "PAN card, ITR filing, TDS related services",
     icon: CreditCard,
     category: "pan",
-    themeColor: "210 80% 45%", // Income Tax Blue
     subServices: [
       {
         id: "new-pan",
@@ -235,7 +232,6 @@ export const services: Service[] = [
     description: "Bank account, KYC, loan related help",
     icon: Landmark,
     category: "bank",
-    themeColor: "217 70% 35%", // SBI Blue
     subServices: [
       {
         id: "open-account",
@@ -304,7 +300,6 @@ export const services: Service[] = [
     description: "Passport apply, renewal, visa process",
     icon: Plane,
     category: "passport",
-    themeColor: "0 70% 45%", // Passport Seva Red
     subServices: [
       {
         id: "new-passport",
@@ -376,7 +371,6 @@ export const services: Service[] = [
     description: "PM schemes, subsidies, scholarships",
     icon: Gift,
     category: "schemes",
-    themeColor: "142 60% 40%", // India.gov.in Green
     subServices: [
       {
         id: "pm-kisan",
@@ -755,7 +749,6 @@ export const services: Service[] = [
     description: "Password recovery, fraud protection",
     icon: Shield,
     category: "security",
-    themeColor: "262 60% 45%", // Cyber Security Purple
     subServices: [
       {
         id: "gmail-recovery",
@@ -818,7 +811,6 @@ export const services: Service[] = [
     description: "New SIM, port, lost SIM replacement",
     icon: Smartphone,
     category: "mobile",
-    themeColor: "200 80% 40%", // Telecom Blue
     subServices: [
       {
         id: "new-sim",
@@ -886,7 +878,6 @@ export const services: Service[] = [
     description: "Voter ID banwana, correction, transfer",
     icon: Vote,
     category: "voter",
-    themeColor: "340 75% 45%", // ECI Pink/Magenta
     subServices: [
       {
         id: "new-voter-id",
@@ -986,7 +977,6 @@ export const services: Service[] = [
     description: "DL apply, renewal, learner's license",
     icon: Car,
     category: "certificates",
-    themeColor: "35 85% 50%", // Parivahan Orange
     subServices: [
       {
         id: "learner-license",
@@ -1099,7 +1089,6 @@ export const services: Service[] = [
     description: "Ration card banwana, correction, member add",
     icon: UtensilsCrossed,
     category: "certificates",
-    themeColor: "120 50% 35%", // Food Dept Green
     subServices: [
       {
         id: "new-ration-card",
@@ -1230,7 +1219,6 @@ export const services: Service[] = [
     description: "Scholarship, caste certificate, income certificate help",
     icon: GraduationCap,
     category: "education",
-    themeColor: "220 70% 50%", // Education Blue
     subServices: [
       {
         id: "caste-certificate",
@@ -1446,7 +1434,6 @@ export const services: Service[] = [
     description: "Marriage registration aur certificate related services",
     icon: Heart,
     category: "certificates",
-    themeColor: "350 70% 50%", // Marriage Red/Pink
     subServices: [
       {
         id: "new-marriage-certificate",
@@ -1569,7 +1556,6 @@ export const services: Service[] = [
     description: "Birth registration aur certificate related services",
     icon: Baby,
     category: "certificates",
-    themeColor: "190 70% 45%", // CRS Blue
     subServices: [
       {
         id: "new-birth-certificate",
@@ -1724,7 +1710,6 @@ export const services: Service[] = [
     description: "Death registration aur certificate related services",
     icon: Skull,
     category: "certificates",
-    themeColor: "220 15% 40%", // Neutral Gray
     subServices: [
       {
         id: "new-death-certificate",
@@ -1881,7 +1866,6 @@ export const services: Service[] = [
     description: "Property transfer, mutation, encumbrance certificate",
     icon: Building2,
     category: "certificates",
-    themeColor: "28 70% 45%", // Land Revenue Brown
     subServices: [
       {
         id: "property-transfer",
@@ -2084,7 +2068,6 @@ export const services: Service[] = [
     description: "Birth, Death, Marriage, Income, Caste, Domicile certificates",
     icon: FileText,
     category: "certificates",
-    themeColor: "45 80% 45%", // DigiLocker Amber
     subServices: [
       {
         id: "birth-certificate",
@@ -2310,7 +2293,6 @@ export const services: Service[] = [
     description: "Common questions, scam alerts, important helplines",
     icon: HelpCircle,
     category: "help",
-    themeColor: "200 60% 45%", // Help Blue
     subServices: [
       {
         id: "scam-alerts",

@@ -85,7 +85,6 @@ const Index = () => {
                     titleHi={service.titleHi}
                     description={service.description}
                     icon={service.icon}
-                    themeColor={service.themeColor}
                     onClick={() => navigate(`/service/${service.id}`)}
                     delay={index * 50}
                   />
