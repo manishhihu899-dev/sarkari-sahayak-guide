@@ -22,7 +22,7 @@ const ServicePage = () => {
 
   return (
     <div className="min-h-screen bg-background pb-24">
-      <Header title={service.titleHi} showBack showShare />
+      <Header title={service.titleHi} showBack />
       
       <main className="px-4 py-6 space-y-6">
         {/* Service Header */}

@@ -14,7 +14,6 @@ import {
   Globe, 
   Building,
   Bookmark,
-  Share2
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useBookmarks } from "@/hooks/use-bookmarks";
@@ -64,18 +63,12 @@ const SubServicePage = () => {
     });
   };
 
-  const handleShare = () => {
-    toast({
-      title: "Link copied! ✓",
-      description: "Link clipboard mein copy ho gaya",
-    });
-  };
 
   const progress = Math.round((completedSteps.length / subService.steps.length) * 100);
 
   return (
     <div className="min-h-screen bg-background pb-32">
-      <Header title={subService.titleHi} showBack showShare onShare={handleShare} />
+      <Header title={subService.titleHi} showBack />
       
       <main className="px-4 py-6 space-y-6">
         {/* Title & Description */}
