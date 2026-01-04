@@ -1,4 +1,4 @@
-import { ArrowLeft, Share2, Moon, Sun, Bookmark } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Bookmark } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 import { useLanguage } from "@/hooks/use-language";
@@ -7,32 +7,13 @@ import { useBookmarks } from "@/hooks/use-bookmarks";
 interface HeaderProps {
   title?: string;
   showBack?: boolean;
-  showShare?: boolean;
-  onShare?: () => void;
 }
 
-export const Header = ({ title, showBack = false, showShare = false, onShare }: HeaderProps) => {
+export const Header = ({ title, showBack = false }: HeaderProps) => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
   const { bookmarks } = useBookmarks();
-
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: title || "Sarkaari Sahayak",
-          text: t("Ye dekho - sarkari kaam ka easy guide", "Check this - easy guide for government services"),
-          url: window.location.href,
-        });
-      } catch (err) {
-        console.log("Share cancelled");
-      }
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      onShare?.();
-    }
-  };
 
   return (
     <header className="sticky top-0 z-50 bg-gradient-hero px-4 py-4 shadow-elevated">
@@ -94,14 +75,6 @@ export const Header = ({ title, showBack = false, showShare = false, onShare }: 
               <Sun className="w-5 h-5 text-primary-foreground" />
             )}
           </button>
-          {showShare && (
-            <button 
-              onClick={handleShare}
-              className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors touch-action-manipulation active:scale-95"
-            >
-              <Share2 className="w-5 h-5 text-primary-foreground" />
-            </button>
-          )}
         </div>
       </div>
     </header>
