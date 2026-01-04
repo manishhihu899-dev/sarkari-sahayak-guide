@@ -21,19 +21,19 @@ export const SubServiceCard = ({
   return (
     <button
       onClick={onClick}
-      className="w-full bg-card rounded-lg p-4 shadow-card hover:shadow-elevated transition-all duration-300 flex items-center gap-3 text-left group animate-fade-up touch-action-manipulation active:scale-[0.98]"
+      className="w-full bg-card rounded-xl p-4 shadow-card border border-border/50 hover:shadow-elevated transition-all duration-300 flex items-center gap-4 text-left group animate-fade-up touch-action-manipulation active:scale-[0.98]"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="w-2 h-12 rounded-full bg-accent shrink-0" />
+      <div className="w-1.5 h-12 rounded-full bg-primary/60 shrink-0" />
       <div className="flex-1 min-w-0">
-        <h3 className="font-semibold text-foreground text-base leading-tight">
+        <h3 className="font-semibold text-foreground text-base leading-snug tracking-tight">
           {language === "hi" ? titleHi : title}
         </h3>
-        <p className="text-sm text-muted-foreground mt-0.5 line-clamp-2">
+        <p className="text-sm text-muted-foreground mt-1 line-clamp-2 font-medium">
           {description}
         </p>
       </div>
-      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
+      <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" strokeWidth={2} />
     </button>
   );
 };

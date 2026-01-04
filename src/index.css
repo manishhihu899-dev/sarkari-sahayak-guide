@@ -6,54 +6,55 @@
 
 @layer base {
   :root {
-    /* Indian Government Inspired Palette */
-    --background: 40 33% 97%;
-    --foreground: 220 25% 15%;
+    /* Ultra-Professional Government Trust Palette */
+    --background: 210 25% 97%;
+    --foreground: 215 25% 17%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 15%;
+    --card-foreground: 215 25% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 15%;
+    --popover-foreground: 215 25% 17%;
 
-    /* Deep Navy - Trust & Authority */
-    --primary: 220 65% 28%;
+    /* Deep Trust Blue - Authority & Reliability */
+    --primary: 215 70% 32%;
     --primary-foreground: 0 0% 100%;
 
-    /* Soft Blue Surface */
-    --secondary: 210 40% 94%;
-    --secondary-foreground: 220 65% 28%;
+    /* Light Blue Surface */
+    --secondary: 210 35% 96%;
+    --secondary-foreground: 215 70% 32%;
 
-    --muted: 40 20% 92%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 15% 50%;
 
-    /* Saffron Orange - Indian Identity */
-    --accent: 28 90% 52%;
+    /* Calm Accent Blue - Subtle Highlight */
+    --accent: 215 70% 45%;
     --accent-foreground: 0 0% 100%;
 
-    /* Success Green */
-    --success: 142 70% 40%;
+    /* Success Green - Calm */
+    --success: 158 55% 42%;
     --success-foreground: 0 0% 100%;
 
-    /* Warning Yellow */
-    --warning: 45 93% 50%;
-    --warning-foreground: 220 25% 15%;
+    /* Warning - Soft Amber */
+    --warning: 38 85% 55%;
+    --warning-foreground: 215 25% 17%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 88%;
-    --input: 220 20% 88%;
-    --ring: 28 90% 52%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 215 70% 45%;
 
-    --radius: 1rem;
+    --radius: 0.875rem;
 
-    /* Custom Properties */
-    --gradient-hero: linear-gradient(135deg, hsl(220 65% 28%) 0%, hsl(220 55% 38%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(28 90% 52%) 0%, hsl(28 85% 45%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(40 33% 98%) 100%);
-    --shadow-card: 0 4px 20px -4px hsl(220 25% 15% / 0.08);
-    --shadow-elevated: 0 8px 30px -8px hsl(220 25% 15% / 0.15);
+    /* Premium Custom Properties */
+    --gradient-hero: linear-gradient(160deg, hsl(215 70% 32%) 0%, hsl(215 60% 40%) 50%, hsl(210 55% 45%) 100%);
+    --gradient-accent: linear-gradient(160deg, hsl(215 70% 40%) 0%, hsl(215 65% 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 25% 98%) 100%);
+    --shadow-card: 0 2px 12px -2px hsl(215 30% 20% / 0.06), 0 1px 3px -1px hsl(215 30% 20% / 0.04);
+    --shadow-elevated: 0 8px 32px -8px hsl(215 30% 20% / 0.12), 0 4px 12px -4px hsl(215 30% 20% / 0.08);
+    --shadow-glow: 0 0 20px -5px hsl(215 70% 45% / 0.15);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -66,39 +67,45 @@
   }
 
   .dark {
-    --background: 220 25% 10%;
-    --foreground: 40 20% 95%;
+    --background: 215 30% 9%;
+    --foreground: 210 20% 95%;
 
-    --card: 220 25% 14%;
-    --card-foreground: 40 20% 95%;
+    --card: 215 28% 12%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 220 25% 14%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 215 28% 12%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 28 90% 52%;
+    --primary: 210 60% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 25% 18%;
-    --secondary-foreground: 40 20% 95%;
+    --secondary: 215 25% 16%;
+    --secondary-foreground: 210 20% 95%;
 
-    --muted: 220 25% 18%;
-    --muted-foreground: 220 15% 60%;
+    --muted: 215 25% 18%;
+    --muted-foreground: 210 15% 55%;
 
-    --accent: 28 90% 52%;
+    --accent: 210 60% 55%;
     --accent-foreground: 0 0% 100%;
 
-    --success: 142 70% 45%;
+    --success: 158 50% 45%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 45 93% 55%;
-    --warning-foreground: 220 25% 15%;
+    --warning: 38 80% 55%;
+    --warning-foreground: 215 25% 12%;
 
-    --destructive: 0 70% 50%;
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 25% 22%;
-    --input: 220 25% 22%;
-    --ring: 28 90% 52%;
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+    --ring: 210 60% 55%;
+
+    --gradient-hero: linear-gradient(160deg, hsl(215 30% 12%) 0%, hsl(215 35% 18%) 100%);
+    --gradient-accent: linear-gradient(160deg, hsl(210 55% 45%) 0%, hsl(210 50% 55%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(215 28% 12%) 0%, hsl(215 28% 10%) 100%);
+    --shadow-card: 0 2px 12px -2px hsl(215 50% 5% / 0.3);
+    --shadow-elevated: 0 8px 32px -8px hsl(215 50% 5% / 0.5);
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -119,6 +126,8 @@
   html {
     font-family: 'Noto Sans', system-ui, sans-serif;
     -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
@@ -136,11 +145,11 @@
   }
 }
 
-/* Custom Animations */
+/* Custom Animations - Refined & Subtle */
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -151,7 +160,7 @@
 @keyframes scale-in {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.97);
   }
   to {
     opacity: 1;
@@ -168,8 +177,17 @@
   }
 }
 
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
 .animate-fade-up {
-  animation: fade-up 0.4s ease-out forwards;
+  animation: fade-up 0.35s ease-out forwards;
 }
 
 .animate-scale-in {
@@ -178,6 +196,29 @@
 
 .animate-shimmer {
   animation: shimmer 2s infinite linear;
-  background: linear-gradient(90deg, transparent 0%, hsl(var(--accent) / 0.1) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, hsl(var(--accent) / 0.08) 50%, transparent 100%);
   background-size: 200% 100%;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.3);
 }
