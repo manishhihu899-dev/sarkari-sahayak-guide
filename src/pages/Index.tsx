@@ -61,15 +61,15 @@ const Index = () => {
         {searchQuery.length <= 1 && (
           <>
             {/* Premium Hero Banner */}
-            <div className="relative rounded-3xl overflow-hidden animate-scale-in">
+            <div className="relative rounded-3xl overflow-hidden opacity-0 animate-scale-up">
               {/* Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/70" />
               
               {/* Decorative Elements */}
               <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-white/5 blur-2xl" />
+                <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float" />
                 <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/20 blur-xl" />
-                <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10" />
+                <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10 animate-pulse-subtle" />
                 <div className="absolute left-1/3 top-4 w-3 h-3 rounded-full bg-white/30" />
                 <div className="absolute right-1/4 top-8 w-2 h-2 rounded-full bg-accent/50" />
               </div>
@@ -77,20 +77,20 @@ const Index = () => {
               {/* Content */}
               <div className="relative z-10 p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/20">
+                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/20 opacity-0 animate-scale-up" style={{ animationDelay: '150ms' }}>
                     <Shield className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '200ms' }}>
                       <Sparkles className="w-4 h-4 text-accent" />
                       <span className="text-xs font-semibold text-accent uppercase tracking-wider">
                         {t("Digital India", "Digital India")}
                       </span>
                     </div>
-                    <h2 className="text-2xl font-bold text-white mb-2 leading-tight">
+                    <h2 className="text-2xl font-bold text-white mb-2 leading-tight opacity-0 animate-fade-up" style={{ animationDelay: '250ms' }}>
                       {t("🇮🇳 Swagat hai!", "🇮🇳 Welcome!")}
                     </h2>
-                    <p className="text-sm text-white/85 leading-relaxed">
+                    <p className="text-sm text-white/85 leading-relaxed opacity-0 animate-fade-up" style={{ animationDelay: '300ms' }}>
                       {t(
                         "Aadhaar, PAN, Passport, Bank - sabhi sarkari kaam ka step-by-step guide. Koi form nahi, koi fees nahi.",
                         "Aadhaar, PAN, Passport, Bank - step-by-step guide for all govt services. No forms, no fees."
@@ -100,7 +100,7 @@ const Index = () => {
                 </div>
                 
                 {/* Stats Row */}
-                <div className="flex items-center gap-4 mt-5 pt-4 border-t border-white/10">
+                <div className="flex items-center gap-4 mt-5 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '400ms' }}>
                   <div className="flex-1 text-center">
                     <div className="text-xl font-bold text-white">15+</div>
                     <div className="text-2xs text-white/70 uppercase tracking-wide">{t("Services", "Services")}</div>
@@ -121,7 +121,7 @@ const Index = () => {
 
             {/* Services Grid */}
             <div className="space-y-4">
-              <div className="flex items-center justify-between px-1">
+              <div className="flex items-center justify-between px-1 opacity-0 animate-fade-up" style={{ animationDelay: '450ms' }}>
                 <h2 className="text-lg font-bold text-foreground">
                   {t("Sabhi Services", "All Services")}
                 </h2>
@@ -139,7 +139,7 @@ const Index = () => {
                     icon={service.icon}
                     themeColor={service.themeColor}
                     onClick={() => navigate(`/service/${service.id}`)}
-                    delay={index * 50}
+                    delay={500 + index * 60}
                   />
                 ))}
               </div>

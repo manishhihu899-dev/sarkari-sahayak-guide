@@ -26,7 +26,7 @@ export const ServiceCard = ({
   return (
     <button
       onClick={onClick}
-      className="w-full rounded-2xl p-4 shadow-card hover:shadow-elevated transition-all duration-300 flex items-center gap-4 text-left group animate-fade-up touch-action-manipulation active:scale-[0.98] relative overflow-hidden border border-border/50"
+      className="w-full rounded-2xl p-4 shadow-card hover:shadow-elevated transition-all duration-300 flex items-center gap-4 text-left group opacity-0 animate-fade-up touch-action-manipulation active:scale-[0.98] relative overflow-hidden border border-border/50"
       style={{ 
         animationDelay: `${delay}ms`,
         background: themeColor 
