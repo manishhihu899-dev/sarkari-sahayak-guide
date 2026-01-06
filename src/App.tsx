@@ -11,6 +11,7 @@ import ServicePage from "./pages/ServicePage";
 import SubServicePage from "./pages/SubServicePage";
 import SearchPage from "./pages/SearchPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import SchemesPage from "./pages/SchemesPage";
 import HelpPage from "./pages/HelpPage";
 import SavedPage from "./pages/SavedPage";
 import NotFound from "./pages/NotFound";
@@ -32,6 +33,7 @@ const App = () => (
                 <Route path="/service/:serviceId/:subServiceId" element={<SubServicePage />} />
                 <Route path="/search" element={<SearchPage />} />
                 <Route path="/categories" element={<CategoriesPage />} />
+                <Route path="/schemes" element={<SchemesPage />} />
                 <Route path="/saved" element={<SavedPage />} />
                 <Route path="/help" element={<HelpPage />} />
                 <Route path="*" element={<NotFound />} />
