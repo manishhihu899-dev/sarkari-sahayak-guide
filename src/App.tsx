@@ -12,6 +12,7 @@ import SubServicePage from "./pages/SubServicePage";
 import SearchPage from "./pages/SearchPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import SchemesPage from "./pages/SchemesPage";
+import EligibilityCheckerPage from "./pages/EligibilityCheckerPage";
 import HelpPage from "./pages/HelpPage";
 import SavedPage from "./pages/SavedPage";
 import NotFound from "./pages/NotFound";
@@ -34,6 +35,7 @@ const App = () => (
                 <Route path="/search" element={<SearchPage />} />
                 <Route path="/categories" element={<CategoriesPage />} />
                 <Route path="/schemes" element={<SchemesPage />} />
+                <Route path="/eligibility-checker" element={<EligibilityCheckerPage />} />
                 <Route path="/saved" element={<SavedPage />} />
                 <Route path="/help" element={<HelpPage />} />
                 <Route path="*" element={<NotFound />} />
