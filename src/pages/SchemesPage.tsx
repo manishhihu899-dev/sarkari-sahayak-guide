@@ -4,7 +4,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { useNavigate } from "react-router-dom";
 import { services } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
-import { Gift, Sparkles, ChevronRight } from "lucide-react";
+import { Gift, Sparkles, ChevronRight, ClipboardList } from "lucide-react";
 
 const SchemesPage = () => {
   const { t } = useLanguage();
@@ -63,27 +63,48 @@ const SchemesPage = () => {
       </div>
 
       <div className="p-4">
-        {/* Eligibility Checker CTA */}
-        <button
-          onClick={() => navigate("/eligibility-checker")}
-          className="w-full mb-4 p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center gap-4 text-left shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up"
-          style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
-        >
-          <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
-            <Sparkles className="w-6 h-6 text-white" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-white text-base">
-              {t("पात्रता जांचें", "Check Eligibility")}
-            </h3>
-            <p className="text-white/80 text-sm mt-0.5">
-              {t("जानें कौन सी योजना आपके लिए है", "Find which schemes are for you")}
-            </p>
-          </div>
-          <ChevronRight className="w-5 h-5 text-white shrink-0" />
-        </button>
+        {/* Quick Actions */}
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          {/* Eligibility Checker CTA */}
+          <button
+            onClick={() => navigate("/eligibility-checker")}
+            className="p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex flex-col items-center gap-2 text-center shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up"
+            style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
+          >
+            <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h3 className="font-bold text-white text-sm">
+                {t("पात्रता जांचें", "Check Eligibility")}
+              </h3>
+              <p className="text-white/80 text-xs mt-0.5">
+                {t("कौन सी योजना?", "Which scheme?")}
+              </p>
+            </div>
+          </button>
 
-        <h3 className="text-base font-semibold text-foreground mb-3 opacity-0 animate-fade-up" style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}>
+          {/* Application Tracker CTA */}
+          <button
+            onClick={() => navigate("/application-tracker")}
+            className="p-4 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex flex-col items-center gap-2 text-center shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up"
+            style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
+          >
+            <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+              <ClipboardList className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h3 className="font-bold text-white text-sm">
+                {t("आवेदन ट्रैक", "Track Applications")}
+              </h3>
+              <p className="text-white/80 text-xs mt-0.5">
+                {t("स्टेटस देखें", "Check status")}
+              </p>
+            </div>
+          </button>
+        </div>
+
+        <h3 className="text-base font-semibold text-foreground mb-3 opacity-0 animate-fade-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
           {t("सभी योजनाएं", "All Schemes")}
         </h3>
         <div className="space-y-3">
