@@ -3,11 +3,12 @@ import { BottomNav } from "@/components/BottomNav";
 import { useLanguage } from "@/hooks/use-language";
 import { useNavigate } from "react-router-dom";
 import { services } from "@/data/services";
-import { SchemeCard } from "@/components/SchemeCard";
+import { SubServiceCard } from "@/components/SubServiceCard";
 import govtEmblem from "@/assets/govt-emblem.png";
 import { 
   Gift, 
   Sparkles, 
+  ChevronRight, 
   ClipboardList,
   Wheat,
   Home,
@@ -15,29 +16,28 @@ import {
   PiggyBank,
   Landmark,
   Banknote,
+  Users,
   Baby,
   GraduationCap,
   Briefcase,
   Shield,
   Utensils,
-  IndianRupee,
-  TrendingUp,
   LucideIcon
 } from "lucide-react";
 
-// Map scheme IDs to their icons and benefits
-const schemeDataMap: Record<string, { icon: LucideIcon; benefit?: string; color?: string }> = {
-  "pm-kisan": { icon: Wheat, benefit: "₹6,000/year", color: "45 90% 45%" },
-  "pm-awas": { icon: Home, benefit: "₹1.2-2.5 Lakh", color: "25 85% 50%" },
-  "ayushman-bharat": { icon: Heart, benefit: "₹5 Lakh cover", color: "350 80% 50%" },
-  "sukanya-samriddhi": { icon: PiggyBank, benefit: "8.2% interest", color: "320 70% 50%" },
-  "atal-pension": { icon: Shield, benefit: "₹1-5K/month", color: "200 80% 45%" },
-  "jan-dhan": { icon: Landmark, benefit: "Zero balance", color: "220 75% 50%" },
-  "mudra-loan": { icon: Banknote, benefit: "Up to ₹10 Lakh", color: "160 70% 40%" },
-  "ujjwala": { icon: Utensils, benefit: "Free LPG", color: "15 85% 50%" },
-  "scholarship": { icon: GraduationCap, benefit: "Education aid", color: "270 70% 55%" },
-  "maternity-benefit": { icon: Baby, benefit: "₹5,000 aid", color: "340 75% 55%" },
-  "employment": { icon: Briefcase, benefit: "Job support", color: "180 60% 45%" },
+// Map scheme IDs to their icons
+const schemeIconMap: Record<string, LucideIcon> = {
+  "pm-kisan": Wheat,
+  "pm-awas": Home,
+  "ayushman-bharat": Heart,
+  "sukanya-samriddhi": PiggyBank,
+  "atal-pension": Shield,
+  "jan-dhan": Landmark,
+  "mudra-loan": Banknote,
+  "ujjwala": Utensils,
+  "scholarship": GraduationCap,
+  "maternity-benefit": Baby,
+  "employment": Briefcase,
 };
 
 const SchemesPage = () => {
@@ -48,136 +48,78 @@ const SchemesPage = () => {
   const allSchemes = services
     .filter(service => service.category === "schemes")
     .flatMap(service => 
-      service.subServices.map(sub => {
-        const schemeData = schemeDataMap[sub.id] || { icon: Gift };
-        return {
-          ...sub,
-          parentId: service.id,
-          themeColor: schemeData.color || service.themeColor,
-          icon: schemeData.icon,
-          benefit: schemeData.benefit
-        };
-      })
+      service.subServices.map(sub => ({
+        ...sub,
+        parentId: service.id,
+        themeColor: service.themeColor,
+        icon: schemeIconMap[sub.id] || Gift
+      }))
     );
 
   return (
     <div className="min-h-screen bg-background pb-24">
       <Header title={t("सरकारी योजनाएं", "Government Schemes")} showBack />
       
-      {/* Premium Hero Banner */}
-      <div className="relative overflow-hidden">
-        {/* Gradient Background */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(135deg, hsl(142 60% 35%) 0%, hsl(142 70% 25%) 50%, hsl(160 60% 20%) 100%)`
-          }}
-        />
-        
+      {/* Hero Banner */}
+      <div 
+        className="relative overflow-hidden py-8 px-4"
+        style={{
+          background: `linear-gradient(135deg, hsl(142 60% 40%) 0%, hsl(142 60% 30%) 100%)`
+        }}
+      >
         {/* Decorative patterns */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float" />
-          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/10 blur-xl" />
-          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/5 animate-pulse-subtle" />
-          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20" />
-          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30" />
-          {/* Diagonal lines pattern */}
-          <div 
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%)`,
-              backgroundSize: '20px 20px'
-            }}
-          />
+          <div className="absolute -right-12 -top-12 w-32 h-32 rounded-full bg-white/10 opacity-0 animate-scale-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }} />
+          <div className="absolute left-1/4 bottom-0 w-24 h-24 rounded-full bg-white/5 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }} />
+          <div className="absolute right-1/3 top-1/2 w-16 h-16 rounded-full bg-white/5 opacity-0 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }} />
         </div>
         
-        {/* Content */}
-        <div className="relative z-10 p-6 pt-8 pb-10">
-          <div className="flex items-start gap-4">
-            {/* Government Emblem */}
-            <div 
-              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0"
-              style={{ 
-                background: 'rgba(255,255,255,0.95)',
-                backdropFilter: 'blur(8px)',
-                animationDelay: '100ms',
-                animationFillMode: 'forwards'
-              }}
-            >
-              <img 
-                src={govtEmblem} 
-                alt="Government of India Emblem" 
-                className="w-12 h-12 object-contain"
-              />
-            </div>
-            
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                <Sparkles className="w-4 h-4 text-accent" />
-                <span className="text-xs font-semibold text-accent uppercase tracking-wider">
-                  {t("भारत सरकार", "Govt. of India")}
-                </span>
-              </div>
-              <h2 className="text-2xl font-bold text-white mb-1 leading-tight opacity-0 animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-                {t("सरकारी योजनाएं", "Government Schemes")}
-              </h2>
-              <p className="text-sm text-white/80 leading-relaxed opacity-0 animate-fade-up" style={{ animationDelay: '250ms', animationFillMode: 'forwards' }}>
-                {t(
-                  "आपके लिए सभी सरकारी लाभ एक जगह",
-                  "All government benefits at one place"
-                )}
-              </p>
-            </div>
+        <div className="relative z-10 flex items-center gap-4">
+          <div 
+            className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg opacity-0 animate-scale-up overflow-hidden"
+            style={{ 
+              background: 'rgba(255,255,255,0.95)',
+              backdropFilter: 'blur(8px)',
+              animationDelay: '0.1s',
+              animationFillMode: 'forwards'
+            }}
+          >
+            <img 
+              src={govtEmblem} 
+              alt="Government of India Emblem" 
+              className="w-12 h-12 object-contain opacity-0 animate-float"
+              style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
+            />
           </div>
-          
-          {/* Stats Row */}
-          <div className="flex items-center gap-4 mt-6 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '350ms', animationFillMode: 'forwards' }}>
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-white">{allSchemes.length}</div>
-              <div className="text-xs text-white/70 uppercase tracking-wide">{t("योजनाएं", "Schemes")}</div>
-            </div>
-            <div className="w-px h-8 bg-white/20" />
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1">
-                <IndianRupee className="w-4 h-4" />
-                <span>Lakhs</span>
-              </div>
-              <div className="text-xs text-white/70 uppercase tracking-wide">{t("लाभ", "Benefits")}</div>
-            </div>
-            <div className="w-px h-8 bg-white/20" />
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-white flex items-center justify-center gap-1">
-                <TrendingUp className="w-4 h-4 text-accent" />
-              </div>
-              <div className="text-xs text-white/70 uppercase tracking-wide">{t("आसान", "Easy")}</div>
-            </div>
+          <div>
+            <h2 className="text-xl font-bold text-white opacity-0 animate-fade-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+              {t("सभी सरकारी योजनाएं", "All Government Schemes")}
+            </h2>
+            <p className="text-white/80 text-sm mt-1 opacity-0 animate-fade-up" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+              {t(`${allSchemes.length} योजनाएं उपलब्ध`, `${allSchemes.length} schemes available`)}
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="p-4 space-y-4">
+      <div className="p-4">
         {/* Quick Actions */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 mb-4">
           {/* Eligibility Checker CTA */}
           <button
             onClick={() => navigate("/eligibility-checker")}
-            className="p-4 rounded-2xl flex flex-col items-center gap-2 text-center shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up relative overflow-hidden border border-purple-500/20"
-            style={{ 
-              background: 'linear-gradient(135deg, hsl(280 70% 50%) 0%, hsl(320 70% 50%) 100%)',
-              animationDelay: '100ms', 
-              animationFillMode: 'forwards' 
-            }}
+            className="p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex flex-col items-center gap-2 text-center shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up"
+            style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-            <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center relative z-10">
-              <Sparkles className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <div className="relative z-10">
+            <div>
               <h3 className="font-bold text-white text-sm">
                 {t("पात्रता जांचें", "Check Eligibility")}
               </h3>
               <p className="text-white/80 text-xs mt-0.5">
-                {t("कौन सी योजना सही है?", "Which scheme fits?")}
+                {t("कौन सी योजना?", "Which scheme?")}
               </p>
             </div>
           </button>
@@ -185,20 +127,15 @@ const SchemesPage = () => {
           {/* Application Tracker CTA */}
           <button
             onClick={() => navigate("/application-tracker")}
-            className="p-4 rounded-2xl flex flex-col items-center gap-2 text-center shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up relative overflow-hidden border border-blue-500/20"
-            style={{ 
-              background: 'linear-gradient(135deg, hsl(200 80% 50%) 0%, hsl(180 70% 45%) 100%)',
-              animationDelay: '150ms', 
-              animationFillMode: 'forwards' 
-            }}
+            className="p-4 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex flex-col items-center gap-2 text-center shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up"
+            style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-            <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center relative z-10">
-              <ClipboardList className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+              <ClipboardList className="w-5 h-5 text-white" />
             </div>
-            <div className="relative z-10">
+            <div>
               <h3 className="font-bold text-white text-sm">
-                {t("आवेदन ट्रैक करें", "Track Applications")}
+                {t("आवेदन ट्रैक", "Track Applications")}
               </h3>
               <p className="text-white/80 text-xs mt-0.5">
                 {t("स्टेटस देखें", "Check status")}
@@ -207,29 +144,20 @@ const SchemesPage = () => {
           </button>
         </div>
 
-        {/* Schemes List Header */}
-        <div className="flex items-center justify-between px-1 opacity-0 animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-          <h3 className="text-lg font-bold text-foreground">
-            {t("सभी योजनाएं", "All Schemes")}
-          </h3>
-          <span className="text-xs font-medium text-muted-foreground bg-muted px-2.5 py-1 rounded-full">
-            {allSchemes.length} {t("योजनाएं", "schemes")}
-          </span>
-        </div>
-
-        {/* Schemes Grid */}
+        <h3 className="text-base font-semibold text-foreground mb-3 opacity-0 animate-fade-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+          {t("सभी योजनाएं", "All Schemes")}
+        </h3>
         <div className="space-y-3">
           {allSchemes.map((scheme, index) => (
-            <SchemeCard
+            <SubServiceCard
               key={scheme.id}
               title={scheme.title}
               titleHi={scheme.titleHi}
               description={scheme.description}
               onClick={() => navigate(`/service/${scheme.parentId}/${scheme.id}`)}
-              delay={250 + index * 60}
+              delay={150 + index * 50}
               icon={scheme.icon}
               themeColor={scheme.themeColor}
-              benefit={scheme.benefit}
             />
           ))}
         </div>
