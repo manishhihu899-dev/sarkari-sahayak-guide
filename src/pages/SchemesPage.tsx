@@ -4,6 +4,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { useNavigate } from "react-router-dom";
 import { services } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
+import govtEmblem from "@/assets/govt-emblem.png";
 import { 
   Gift, 
   Sparkles, 
@@ -75,15 +76,20 @@ const SchemesPage = () => {
         
         <div className="relative z-10 flex items-center gap-4">
           <div 
-            className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg opacity-0 animate-scale-up"
+            className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg opacity-0 animate-scale-up overflow-hidden"
             style={{ 
-              background: 'rgba(255,255,255,0.2)',
+              background: 'rgba(255,255,255,0.95)',
               backdropFilter: 'blur(8px)',
               animationDelay: '0.1s',
               animationFillMode: 'forwards'
             }}
           >
-            <Gift className="w-8 h-8 text-white opacity-0 animate-float" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }} />
+            <img 
+              src={govtEmblem} 
+              alt="Government of India Emblem" 
+              className="w-12 h-12 object-contain opacity-0 animate-float"
+              style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
+            />
           </div>
           <div>
             <h2 className="text-xl font-bold text-white opacity-0 animate-fade-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
