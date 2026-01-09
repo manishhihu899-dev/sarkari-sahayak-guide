@@ -4,7 +4,40 @@ import { useLanguage } from "@/hooks/use-language";
 import { useNavigate } from "react-router-dom";
 import { services } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
-import { Gift, Sparkles, ChevronRight, ClipboardList } from "lucide-react";
+import { 
+  Gift, 
+  Sparkles, 
+  ChevronRight, 
+  ClipboardList,
+  Wheat,
+  Home,
+  Heart,
+  PiggyBank,
+  Landmark,
+  Banknote,
+  Users,
+  Baby,
+  GraduationCap,
+  Briefcase,
+  Shield,
+  Utensils,
+  LucideIcon
+} from "lucide-react";
+
+// Map scheme IDs to their icons
+const schemeIconMap: Record<string, LucideIcon> = {
+  "pm-kisan": Wheat,
+  "pm-awas": Home,
+  "ayushman-bharat": Heart,
+  "sukanya-samriddhi": PiggyBank,
+  "atal-pension": Shield,
+  "jan-dhan": Landmark,
+  "mudra-loan": Banknote,
+  "ujjwala": Utensils,
+  "scholarship": GraduationCap,
+  "maternity-benefit": Baby,
+  "employment": Briefcase,
+};
 
 const SchemesPage = () => {
   const { t } = useLanguage();
@@ -17,7 +50,8 @@ const SchemesPage = () => {
       service.subServices.map(sub => ({
         ...sub,
         parentId: service.id,
-        themeColor: service.themeColor
+        themeColor: service.themeColor,
+        icon: schemeIconMap[sub.id] || Gift
       }))
     );
 
@@ -116,6 +150,8 @@ const SchemesPage = () => {
               description={scheme.description}
               onClick={() => navigate(`/service/${scheme.parentId}/${scheme.id}`)}
               delay={150 + index * 50}
+              icon={scheme.icon}
+              themeColor={scheme.themeColor}
             />
           ))}
         </div>
