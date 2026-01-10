@@ -65,36 +65,32 @@ const Index = () => {
               {/* Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/70" />
               
-              {/* Animated Decorative Elements */}
+              {/* Decorative Elements */}
               <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float" />
-                <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/20 blur-xl animate-float particle-delay-2" />
+                <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/20 blur-xl" />
                 <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10 animate-pulse-subtle" />
-                <div className="absolute left-1/3 top-4 w-3 h-3 rounded-full bg-white/30 animate-bounce-subtle" />
-                <div className="absolute right-1/4 top-8 w-2 h-2 rounded-full bg-accent/50 animate-bounce-subtle particle-delay-1" />
-                {/* Animated gradient orb */}
-                <div className="absolute right-0 top-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/30 to-transparent blur-2xl animate-morph blob" />
-                {/* Shimmer line */}
-                <div className="absolute inset-0 effect-shine" />
+                <div className="absolute left-1/3 top-4 w-3 h-3 rounded-full bg-white/30" />
+                <div className="absolute right-1/4 top-8 w-2 h-2 rounded-full bg-accent/50" />
               </div>
               
               {/* Content */}
               <div className="relative z-10 p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/20 opacity-0 animate-scale-up effect-shine" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                    <Shield className="w-7 h-7 text-white icon-bounce" />
+                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/20 opacity-0 animate-scale-up" style={{ animationDelay: '150ms' }}>
+                    <Shield className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-                      <Sparkles className="w-4 h-4 text-accent animate-pulse-subtle" />
+                    <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '200ms' }}>
+                      <Sparkles className="w-4 h-4 text-accent" />
                       <span className="text-xs font-semibold text-accent uppercase tracking-wider">
                         {t("Digital India", "Digital India")}
                       </span>
                     </div>
-                    <h2 className="text-2xl font-bold text-white mb-2 leading-tight opacity-0 animate-fade-up" style={{ animationDelay: '250ms', animationFillMode: 'forwards' }}>
+                    <h2 className="text-2xl font-bold text-white mb-2 leading-tight opacity-0 animate-fade-up" style={{ animationDelay: '250ms' }}>
                       {t("🇮🇳 Swagat hai!", "🇮🇳 Welcome!")}
                     </h2>
-                    <p className="text-sm text-white/85 leading-relaxed opacity-0 animate-fade-up" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
+                    <p className="text-sm text-white/85 leading-relaxed opacity-0 animate-fade-up" style={{ animationDelay: '300ms' }}>
                       {t(
                         "Aadhaar, PAN, Passport, Bank - sabhi sarkari kaam ka step-by-step guide. Koi form nahi, koi fees nahi.",
                         "Aadhaar, PAN, Passport, Bank - step-by-step guide for all govt services. No forms, no fees."
@@ -104,19 +100,19 @@ const Index = () => {
                 </div>
                 
                 {/* Stats Row */}
-                <div className="flex items-center gap-4 mt-5 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
-                  <div className="flex-1 text-center group">
-                    <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform">15+</div>
+                <div className="flex items-center gap-4 mt-5 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '400ms' }}>
+                  <div className="flex-1 text-center">
+                    <div className="text-xl font-bold text-white">15+</div>
                     <div className="text-2xs text-white/70 uppercase tracking-wide">{t("Services", "Services")}</div>
                   </div>
                   <div className="w-px h-8 bg-white/20" />
-                  <div className="flex-1 text-center group">
-                    <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform">100+</div>
+                  <div className="flex-1 text-center">
+                    <div className="text-xl font-bold text-white">100+</div>
                     <div className="text-2xs text-white/70 uppercase tracking-wide">{t("Guides", "Guides")}</div>
                   </div>
                   <div className="w-px h-8 bg-white/20" />
-                  <div className="flex-1 text-center group">
-                    <div className="text-xl font-bold text-accent animate-pulse-subtle">FREE</div>
+                  <div className="flex-1 text-center">
+                    <div className="text-xl font-bold text-accent">FREE</div>
                     <div className="text-2xs text-white/70 uppercase tracking-wide">{t("Humesha", "Always")}</div>
                   </div>
                 </div>
