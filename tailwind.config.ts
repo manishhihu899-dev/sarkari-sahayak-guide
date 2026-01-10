@@ -117,48 +117,11 @@ export default {
         },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(-6px)" },
         },
         "pulse-subtle": {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.6" },
-        },
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        "glow": {
-          "0%, 100%": { boxShadow: "0 0 20px 0 rgba(255,149,0,0.3)" },
-          "50%": { boxShadow: "0 0 40px 10px rgba(255,149,0,0.5)" },
-        },
-        "gradient-shift": {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
-        },
-        "rotate-slow": {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
-        },
-        "bounce-subtle": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-4px)" },
-        },
-        "pulse-ring": {
-          "0%": { transform: "scale(0.8)", opacity: "1" },
-          "100%": { transform: "scale(2)", opacity: "0" },
-        },
-        "slide-shine": {
-          "0%": { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(100%)" },
-        },
-        "wave": {
-          "0%, 100%": { transform: "rotate(-3deg)" },
-          "50%": { transform: "rotate(3deg)" },
-        },
-        "morph": {
-          "0%, 100%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
-          "50%": { borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%" },
+          "50%": { opacity: "0.7" },
         },
       },
       animation: {
@@ -169,17 +132,8 @@ export default {
         "scale-up": "scale-up 0.4s ease-out forwards",
         "slide-up": "slide-up 0.6s ease-out forwards",
         "slide-in-right": "slide-in-right 0.5s ease-out forwards",
-        "float": "float 4s ease-in-out infinite",
-        "pulse-subtle": "pulse-subtle 3s ease-in-out infinite",
-        "shimmer": "shimmer 2.5s linear infinite",
-        "glow": "glow 2s ease-in-out infinite",
-        "gradient-shift": "gradient-shift 6s ease infinite",
-        "rotate-slow": "rotate-slow 20s linear infinite",
-        "bounce-subtle": "bounce-subtle 2s ease-in-out infinite",
-        "pulse-ring": "pulse-ring 1.5s ease-out infinite",
-        "slide-shine": "slide-shine 3s ease-in-out infinite",
-        "wave": "wave 2s ease-in-out infinite",
-        "morph": "morph 8s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite",
+        "pulse-subtle": "pulse-subtle 2s ease-in-out infinite",
       },
     },
   },
