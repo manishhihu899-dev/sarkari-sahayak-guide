@@ -80,13 +80,15 @@ const SchemesPage = () => {
           }}
         />
         
-        {/* Decorative patterns */}
+        {/* Animated Decorative patterns */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float" />
-          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/10 blur-xl" />
+          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/10 blur-xl animate-float particle-delay-2" />
           <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/5 animate-pulse-subtle" />
-          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20" />
-          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30" />
+          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20 animate-bounce-subtle" />
+          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30 animate-bounce-subtle particle-delay-1" />
+          {/* Animated gradient orb */}
+          <div className="absolute right-0 bottom-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/20 to-success/20 blur-2xl animate-morph blob" />
           {/* Diagonal lines pattern */}
           <div 
             className="absolute inset-0 opacity-[0.03]"
@@ -95,6 +97,8 @@ const SchemesPage = () => {
               backgroundSize: '20px 20px'
             }}
           />
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 effect-shine" />
         </div>
         
         {/* Content */}
@@ -102,7 +106,7 @@ const SchemesPage = () => {
           <div className="flex items-start gap-4">
             {/* Government Emblem */}
             <div 
-              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0"
+              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 effect-shine"
               style={{ 
                 background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(8px)',
@@ -119,7 +123,7 @@ const SchemesPage = () => {
             
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                <Sparkles className="w-4 h-4 text-accent" />
+                <Sparkles className="w-4 h-4 text-accent animate-pulse-subtle" />
                 <span className="text-xs font-semibold text-accent uppercase tracking-wider">
                   {t("भारत सरकार", "Govt. of India")}
                 </span>
@@ -138,22 +142,22 @@ const SchemesPage = () => {
           
           {/* Stats Row */}
           <div className="flex items-center gap-4 mt-6 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '350ms', animationFillMode: 'forwards' }}>
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-white">{allSchemes.length}</div>
+            <div className="flex-1 text-center group cursor-default">
+              <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform">{allSchemes.length}</div>
               <div className="text-xs text-white/70 uppercase tracking-wide">{t("योजनाएं", "Schemes")}</div>
             </div>
             <div className="w-px h-8 bg-white/20" />
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1">
-                <IndianRupee className="w-4 h-4" />
+            <div className="flex-1 text-center group cursor-default">
+              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1 group-hover:scale-110 transition-transform">
+                <IndianRupee className="w-4 h-4 animate-bounce-subtle" />
                 <span>Lakhs</span>
               </div>
               <div className="text-xs text-white/70 uppercase tracking-wide">{t("लाभ", "Benefits")}</div>
             </div>
             <div className="w-px h-8 bg-white/20" />
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-white flex items-center justify-center gap-1">
-                <TrendingUp className="w-4 h-4 text-accent" />
+            <div className="flex-1 text-center group cursor-default">
+              <div className="text-xl font-bold text-white flex items-center justify-center gap-1 group-hover:scale-110 transition-transform">
+                <TrendingUp className="w-4 h-4 text-accent animate-bounce-subtle" />
               </div>
               <div className="text-xs text-white/70 uppercase tracking-wide">{t("आसान", "Easy")}</div>
             </div>
