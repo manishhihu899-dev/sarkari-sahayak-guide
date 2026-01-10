@@ -745,6 +745,148 @@ export const services: Service[] = [
           "Moratorium period bhi milta hai",
           "Margin money 15-25% khud lagana padta hai"
         ]
+      },
+      {
+        id: "epf-services",
+        title: "EPF/PF Services",
+        titleHi: "ईपीएफ/पीएफ सेवाएं",
+        description: "Employee Provident Fund - withdrawal, transfer, claim",
+        eligibility: [
+          "Salaried employees jinka EPF account hai",
+          "20+ employees wali companies mein mandatory",
+          "Retired/resigned employees",
+          "UAN registered hona chahiye"
+        ],
+        documents: [
+          "UAN (Universal Account Number)",
+          "Aadhaar Card (UAN se linked)",
+          "PAN Card",
+          "Bank Account Details",
+          "Previous employer details (transfer ke liye)"
+        ],
+        steps: [
+          { step: 1, title: "EPFO Portal Jaayein", description: "unifiedportal-mem.epfindia.gov.in par jaayein" },
+          { step: 2, title: "UAN Se Login Karein", description: "UAN aur password se login karein" },
+          { step: 3, title: "Service Select Karein", description: "Claim, Transfer, ya Update service chunein" },
+          { step: 4, title: "Aadhaar OTP Verify Karein", description: "Aadhaar registered mobile par OTP aayega" },
+          { step: 5, title: "Bank Details Confirm Karein", description: "Withdrawal ke liye bank account verify karein" },
+          { step: 6, title: "Submit Karein", description: "Claim submit karein - 10-15 din mein process hoga" }
+        ],
+        officialWebsite: "https://www.epfindia.gov.in",
+        officeName: "EPFO / Employees' Provident Fund Organisation",
+        warnings: [
+          "UAN active aur Aadhaar linked hona compulsory hai",
+          "5 saal se pehle withdrawal par TDS lagta hai",
+          "Online claim sirf Aadhaar seeded accounts ke liye",
+          "Umang app se bhi services access kar sakte hain"
+        ]
+      },
+      {
+        id: "e-shram",
+        title: "E-Shram Card",
+        titleHi: "ई-श्रम कार्ड",
+        description: "Unorganized workers ke liye registration aur benefits",
+        eligibility: [
+          "16-59 saal ke unorganized sector workers",
+          "Construction workers, street vendors, domestic workers",
+          "Agricultural labourers, gig workers",
+          "EPFO/ESIC member nahi hone chahiye",
+          "Income tax payer nahi hona chahiye"
+        ],
+        documents: [
+          "Aadhaar Card (mandatory)",
+          "Mobile Number (Aadhaar se linked)",
+          "Bank Account Details",
+          "IFSC Code"
+        ],
+        steps: [
+          { step: 1, title: "eshram.gov.in Jaayein", description: "Official E-Shram portal kholein" },
+          { step: 2, title: "Self Registration Chunein", description: "Mobile number aur captcha daalein" },
+          { step: 3, title: "Aadhaar Verify Karein", description: "Aadhaar number daalein, OTP se verify karein" },
+          { step: 4, title: "Details Bharein", description: "Personal, address, occupation details bharein" },
+          { step: 5, title: "Bank Details Daalein", description: "Bank account aur IFSC code daalein" },
+          { step: 6, title: "Card Download Karein", description: "12-digit UAN milega, E-Shram card download karein" }
+        ],
+        officialWebsite: "https://eshram.gov.in",
+        officeName: "Ministry of Labour / E-Shram Portal",
+        warnings: [
+          "Registration bilkul FREE hai",
+          "Rs. 2 lakh accidental insurance coverage milti hai",
+          "Future government schemes ka benefit seedha milega",
+          "CSC center par bhi registration karwa sakte hain"
+        ]
+      },
+      {
+        id: "lpg-gas-subsidy",
+        title: "LPG Gas Subsidy",
+        titleHi: "एलपीजी गैस सब्सिडी",
+        description: "Gas cylinder par subsidy kaise lein",
+        eligibility: [
+          "LPG connection holder",
+          "Bank account Aadhaar se linked hona chahiye",
+          "Subsidy scheme mein enrolled hona chahiye",
+          "High income group give up kar sakta hai (PAHAL scheme)"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "LPG Consumer Number / ID",
+          "Bank Account (Aadhaar linked)",
+          "Mobile Number"
+        ],
+        steps: [
+          { step: 1, title: "Aadhaar Link Karein", description: "Bank account mein Aadhaar link hona chahiye" },
+          { step: 2, title: "LPG ID Link Karein", description: "Gas distributor ya mylpg.in par Aadhaar ko LPG ID se link karein" },
+          { step: 3, title: "PAHAL Mein Enroll Karein", description: "mylpg.in par PAHAL scheme check karein" },
+          { step: 4, title: "Cylinder Book Karein", description: "Market price par cylinder lein" },
+          { step: 5, title: "Subsidy Paayein", description: "Subsidy seedha bank account mein aa jayegi DBT se" }
+        ],
+        officialWebsite: "https://mylpg.in",
+        officeName: "Oil Marketing Companies / Gas Distributor",
+        warnings: [
+          "Subsidy amount government decide karta hai (vary karta hai)",
+          "Aadhaar-bank seeding mandatory hai subsidy ke liye",
+          "12 cylinders per year subsidized rate par milte hain",
+          "High income holders can 'Give It Up' campaign join karein"
+        ]
+      },
+      {
+        id: "income-tax-filing",
+        title: "Income Tax Filing (ITR)",
+        titleHi: "इनकम टैक्स फाइलिंग",
+        description: "ITR kaise file karein online",
+        eligibility: [
+          "Taxable income ho ya TDS kata ho",
+          "Salary/Business income wale",
+          "Capital gains, rental income wale",
+          "NRIs with Indian income",
+          "Voluntary filing bhi kar sakte hain"
+        ],
+        documents: [
+          "PAN Card",
+          "Aadhaar Card",
+          "Form 16 (salaried employees ke liye)",
+          "Bank Statements / Interest Certificates",
+          "Investment proofs (80C, 80D deductions ke liye)",
+          "Capital gains documents (agar applicable)"
+        ],
+        steps: [
+          { step: 1, title: "incometax.gov.in Jaayein", description: "Income Tax e-filing portal kholein" },
+          { step: 2, title: "Register/Login Karein", description: "PAN se register karein ya existing account se login" },
+          { step: 3, title: "ITR Form Select Karein", description: "ITR-1 (salaried), ITR-2, ITR-3, etc. apne case ke hisab se" },
+          { step: 4, title: "Income Details Bharein", description: "Salary, other income, deductions, TDS details daalein" },
+          { step: 5, title: "Verify Karein", description: "Pre-filled data check karein, corrections karein" },
+          { step: 6, title: "Tax Pay Karein", description: "Agar tax due hai to online pay karein" },
+          { step: 7, title: "E-Verify Karein", description: "Aadhaar OTP ya net banking se ITR verify karein" }
+        ],
+        officialWebsite: "https://www.incometax.gov.in",
+        officeName: "Income Tax Department",
+        warnings: [
+          "Due date usually 31st July hoti hai (extensions check karein)",
+          "Late filing par penalty lagti hai",
+          "ITR verify karna mandatory hai - 30 din mein karna hota hai",
+          "AIS (Annual Information Statement) zaroor check karein filing se pehle",
+          "Form 26AS mein TDS details verify karein"
+        ]
       }
     ]
   },
