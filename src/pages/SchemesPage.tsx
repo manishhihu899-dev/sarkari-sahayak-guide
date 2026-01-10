@@ -15,29 +15,35 @@ import {
   PiggyBank,
   Landmark,
   Banknote,
-  Baby,
   GraduationCap,
   Briefcase,
   Shield,
   Utensils,
   IndianRupee,
   TrendingUp,
+  Wallet,
+  HardHat,
+  Flame,
+  FileText,
   LucideIcon
 } from "lucide-react";
 
 // Map scheme IDs to their icons and benefits
 const schemeDataMap: Record<string, { icon: LucideIcon; benefit?: string; color?: string }> = {
   "pm-kisan": { icon: Wheat, benefit: "₹6,000/year", color: "45 90% 45%" },
-  "pm-awas": { icon: Home, benefit: "₹1.2-2.5 Lakh", color: "25 85% 50%" },
+  "pm-awas-yojana": { icon: Home, benefit: "₹1.2-2.5 Lakh", color: "25 85% 50%" },
   "ayushman-bharat": { icon: Heart, benefit: "₹5 Lakh cover", color: "350 80% 50%" },
   "sukanya-samriddhi": { icon: PiggyBank, benefit: "8.2% interest", color: "320 70% 50%" },
   "atal-pension": { icon: Shield, benefit: "₹1-5K/month", color: "200 80% 45%" },
   "jan-dhan": { icon: Landmark, benefit: "Zero balance", color: "220 75% 50%" },
   "mudra-loan": { icon: Banknote, benefit: "Up to ₹10 Lakh", color: "160 70% 40%" },
-  "ujjwala": { icon: Utensils, benefit: "Free LPG", color: "15 85% 50%" },
-  "scholarship": { icon: GraduationCap, benefit: "Education aid", color: "270 70% 55%" },
-  "maternity-benefit": { icon: Baby, benefit: "₹5,000 aid", color: "340 75% 55%" },
-  "employment": { icon: Briefcase, benefit: "Job support", color: "180 60% 45%" },
+  "pm-ujjwala": { icon: Utensils, benefit: "Free LPG", color: "15 85% 50%" },
+  "pm-kaushal-vikas": { icon: GraduationCap, benefit: "Free training", color: "270 70% 55%" },
+  "stand-up-india": { icon: Briefcase, benefit: "Up to ₹1 Cr", color: "180 60% 45%" },
+  "epf-services": { icon: Wallet, benefit: "Retirement fund", color: "210 75% 50%" },
+  "e-shram": { icon: HardHat, benefit: "₹2L insurance", color: "35 80% 50%" },
+  "lpg-gas-subsidy": { icon: Flame, benefit: "DBT subsidy", color: "10 85% 55%" },
+  "income-tax-filing": { icon: FileText, benefit: "Tax filing", color: "240 60% 50%" },
 };
 
 const SchemesPage = () => {
