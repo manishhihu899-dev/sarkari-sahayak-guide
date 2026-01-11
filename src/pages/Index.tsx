@@ -61,41 +61,37 @@ const Index = () => {
         {searchQuery.length <= 1 && (
           <>
             {/* Premium Hero Banner */}
-            <div className="relative rounded-3xl overflow-hidden opacity-0 animate-scale-up wave-border">
+            <div className="relative rounded-3xl overflow-hidden opacity-0 animate-scale-up">
               {/* Gradient Background with Animation */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/70 bg-animated-gradient" style={{ backgroundSize: '400% 400%' }} />
               
-              {/* Moving Dots Pattern */}
-              <div className="absolute inset-0 moving-dots opacity-30" />
-              
               {/* Animated Decorative Elements */}
               <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-white/10 blur-2xl continuous-float" />
-                <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/30 blur-xl continuous-float" style={{ animationDelay: '1s' }} />
-                <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/15 scale-pulse" />
-                <div className="absolute left-1/3 top-4 w-4 h-4 rounded-full bg-accent/60 bounce-continuous" />
-                <div className="absolute right-1/4 top-8 w-3 h-3 rounded-full bg-white/50 bounce-continuous" style={{ animationDelay: '0.5s' }} />
-                <div className="absolute left-8 top-12 w-2 h-2 rounded-full bg-accent/70 bounce-continuous" style={{ animationDelay: '1s' }} />
-                {/* Orbiting elements */}
-                <div className="absolute right-16 top-16 w-4 h-4 rounded-full bg-accent/50 orbit" />
-                <div className="absolute left-20 bottom-20 w-3 h-3 rounded-full bg-white/40 orbit" style={{ animationDelay: '5s' }} />
-                {/* Animated gradient orbs */}
-                <div className="absolute right-0 top-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/40 to-transparent blur-2xl blob scale-pulse" />
-                <div className="absolute left-0 bottom-0 w-32 h-32 rounded-full bg-gradient-to-tr from-white/20 to-transparent blur-xl blob" style={{ animationDelay: '2s' }} />
-                {/* Shimmer wave */}
-                <div className="absolute inset-0 shimmer-wave" />
+                <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float-slow" />
+                <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/20 blur-xl animate-float particle-delay-2" />
+                <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10 animate-pulse-glow" />
+                <div className="absolute left-1/3 top-4 w-3 h-3 rounded-full bg-white/30 animate-bounce-subtle" />
+                <div className="absolute right-1/4 top-8 w-2 h-2 rounded-full bg-accent/50 animate-sparkle" />
+                {/* Orbiting element */}
+                <div className="absolute right-16 top-16 w-4 h-4 rounded-full bg-accent/40 orbit" />
+                {/* Animated gradient orb */}
+                <div className="absolute right-0 top-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/30 to-transparent blur-2xl blob animate-breathing" />
+                {/* Shimmer line */}
+                <div className="absolute inset-0 effect-shine" />
+                {/* Ripple wave */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 ripple-wave opacity-30" />
               </div>
               
               {/* Content */}
               <div className="relative z-10 p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/20 opacity-0 animate-scale-up pulse-ring scale-pulse" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                    <Shield className="w-7 h-7 text-white neon-glow" />
+                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/20 opacity-0 animate-scale-up effect-shine breathing" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
+                    <Shield className="w-7 h-7 text-white float-icon" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-                      <Sparkles className="w-4 h-4 text-accent rotate-gentle neon-glow" />
-                      <span className="text-xs font-semibold text-accent uppercase tracking-wider color-cycle">
+                      <Sparkles className="w-4 h-4 text-accent animate-sparkle" />
+                      <span className="text-xs font-semibold text-accent uppercase tracking-wider glow-text">
                         {t("Digital India", "Digital India")}
                       </span>
                     </div>
@@ -113,18 +109,18 @@ const Index = () => {
                 
                 <div className="flex items-center gap-4 mt-5 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
                   <div className="flex-1 text-center group cursor-pointer">
-                    <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform scale-pulse">15+</div>
-                    <div className="text-2xs text-white/70 uppercase tracking-wide fade-pulse">{t("Services", "Services")}</div>
+                    <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform glow-text">15+</div>
+                    <div className="text-2xs text-white/70 uppercase tracking-wide">{t("Services", "Services")}</div>
                   </div>
-                  <div className="w-px h-8 bg-accent/50 fade-pulse" />
+                  <div className="w-px h-8 bg-white/20 animate-pulse-subtle" />
                   <div className="flex-1 text-center group cursor-pointer">
-                    <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform scale-pulse" style={{ animationDelay: '0.3s' }}>100+</div>
-                    <div className="text-2xs text-white/70 uppercase tracking-wide fade-pulse">{t("Guides", "Guides")}</div>
+                    <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform glow-text">100+</div>
+                    <div className="text-2xs text-white/70 uppercase tracking-wide">{t("Guides", "Guides")}</div>
                   </div>
-                  <div className="w-px h-8 bg-accent/50 fade-pulse" />
+                  <div className="w-px h-8 bg-white/20 animate-pulse-subtle" />
                   <div className="flex-1 text-center group cursor-pointer">
-                    <div className="text-xl font-bold text-accent neon-glow scale-pulse" style={{ animationDelay: '0.6s' }}>FREE</div>
-                    <div className="text-2xs text-white/70 uppercase tracking-wide fade-pulse">{t("Humesha", "Always")}</div>
+                    <div className="text-xl font-bold text-accent animate-glow">FREE</div>
+                    <div className="text-2xs text-white/70 uppercase tracking-wide">{t("Humesha", "Always")}</div>
                   </div>
                 </div>
               </div>

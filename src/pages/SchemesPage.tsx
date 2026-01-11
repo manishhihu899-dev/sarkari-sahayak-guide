@@ -71,7 +71,7 @@ const SchemesPage = () => {
       <Header title={t("सरकारी योजनाएं", "Government Schemes")} showBack />
       
       {/* Premium Hero Banner */}
-      <div className="relative overflow-hidden wave-border">
+      <div className="relative overflow-hidden">
         {/* Gradient Background with Animation */}
         <div 
           className="absolute inset-0 bg-animated-gradient"
@@ -81,31 +81,36 @@ const SchemesPage = () => {
           }}
         />
         
-        {/* Moving Dots Pattern */}
-        <div className="absolute inset-0 moving-dots opacity-20" />
-        
         {/* Animated Decorative patterns */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/10 blur-2xl continuous-float" />
-          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/20 blur-xl continuous-float" style={{ animationDelay: '1s' }} />
-          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10 scale-pulse" />
-          <div className="absolute left-1/3 top-6 w-4 h-4 rounded-full bg-accent/60 bounce-continuous" />
-          <div className="absolute right-1/4 top-10 w-3 h-3 rounded-full bg-white/50 bounce-continuous" style={{ animationDelay: '0.5s' }} />
-          {/* Orbiting elements */}
-          <div className="absolute right-20 top-20 w-4 h-4 rounded-full bg-accent/60 orbit" />
-          <div className="absolute left-16 bottom-16 w-3 h-3 rounded-full bg-white/50 orbit" style={{ animationDelay: '5s' }} />
-          {/* Animated gradient orbs */}
-          <div className="absolute right-0 bottom-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/30 to-success/30 blur-2xl blob scale-pulse" />
-          <div className="absolute left-0 top-0 w-32 h-32 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-xl blob" style={{ animationDelay: '2s' }} />
-          {/* Shimmer wave */}
-          <div className="absolute inset-0 shimmer-wave" />
+          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float-slow" />
+          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/10 blur-xl animate-float particle-delay-2" />
+          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/5 animate-pulse-glow" />
+          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20 animate-sparkle" />
+          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30 animate-sparkle particle-delay-1" />
+          {/* Orbiting element */}
+          <div className="absolute right-20 top-20 w-3 h-3 rounded-full bg-accent/50 orbit" />
+          {/* Animated gradient orb */}
+          <div className="absolute right-0 bottom-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/20 to-success/20 blur-2xl blob animate-breathing" />
+          {/* Diagonal lines pattern with animation */}
+          <div 
+            className="absolute inset-0 opacity-[0.03] sliding-pattern"
+            style={{
+              backgroundImage: `repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%)`,
+              backgroundSize: '20px 20px'
+            }}
+          />
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 effect-shine" />
+          {/* Ripple wave */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 ripple-wave opacity-20" />
         </div>
         
         <div className="relative z-10 p-6 pt-8 pb-10">
           <div className="flex items-start gap-4">
             {/* Government Emblem */}
             <div 
-              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 pulse-ring scale-pulse"
+              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 effect-shine breathing gradient-border"
               style={{ 
                 background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(8px)',
@@ -122,8 +127,8 @@ const SchemesPage = () => {
             
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                <Sparkles className="w-4 h-4 text-accent rotate-gentle neon-glow" />
-                <span className="text-xs font-semibold text-accent uppercase tracking-wider color-cycle">
+                <Sparkles className="w-4 h-4 text-accent animate-sparkle" />
+                <span className="text-xs font-semibold text-accent uppercase tracking-wider glow-text">
                   {t("भारत सरकार", "Govt. of India")}
                 </span>
               </div>
@@ -142,23 +147,23 @@ const SchemesPage = () => {
           {/* Stats Row */}
           <div className="flex items-center gap-4 mt-6 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '350ms', animationFillMode: 'forwards' }}>
             <div className="flex-1 text-center group cursor-pointer">
-              <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform scale-pulse">{allSchemes.length}</div>
-              <div className="text-xs text-white/70 uppercase tracking-wide fade-pulse">{t("योजनाएं", "Schemes")}</div>
+              <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform glow-text">{allSchemes.length}</div>
+              <div className="text-xs text-white/70 uppercase tracking-wide">{t("योजनाएं", "Schemes")}</div>
             </div>
-            <div className="w-px h-8 bg-accent/50 fade-pulse" />
+            <div className="w-px h-8 bg-white/20 animate-pulse-subtle" />
             <div className="flex-1 text-center group cursor-pointer">
-              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1 group-hover:scale-110 transition-transform neon-glow scale-pulse" style={{ animationDelay: '0.3s' }}>
-                <IndianRupee className="w-4 h-4 bounce-continuous" />
+              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1 group-hover:scale-110 transition-transform animate-glow">
+                <IndianRupee className="w-4 h-4 float-icon" />
                 <span>Lakhs</span>
               </div>
-              <div className="text-xs text-white/70 uppercase tracking-wide fade-pulse">{t("लाभ", "Benefits")}</div>
+              <div className="text-xs text-white/70 uppercase tracking-wide">{t("लाभ", "Benefits")}</div>
             </div>
-            <div className="w-px h-8 bg-accent/50 fade-pulse" />
+            <div className="w-px h-8 bg-white/20 animate-pulse-subtle" />
             <div className="flex-1 text-center group cursor-pointer">
               <div className="text-xl font-bold text-white flex items-center justify-center gap-1 group-hover:scale-110 transition-transform">
-                <TrendingUp className="w-4 h-4 text-accent bounce-continuous neon-glow" />
+                <TrendingUp className="w-4 h-4 text-accent float-icon" />
               </div>
-              <div className="text-xs text-white/70 uppercase tracking-wide fade-pulse">{t("आसान", "Easy")}</div>
+              <div className="text-xs text-white/70 uppercase tracking-wide">{t("आसान", "Easy")}</div>
             </div>
           </div>
         </div>
