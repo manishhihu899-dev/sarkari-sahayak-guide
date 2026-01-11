@@ -14,7 +14,7 @@ const CategoriesPage = () => {
       <Header title={t("सभी श्रेणियां", "All Categories")} showBack />
       
       {/* Premium Hero Banner */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden wave-border">
         {/* Gradient Background with Animation */}
         <div 
           className="absolute inset-0 bg-animated-gradient"
@@ -24,34 +24,31 @@ const CategoriesPage = () => {
           }}
         />
         
+        {/* Moving Dots Pattern */}
+        <div className="absolute inset-0 moving-dots opacity-20" />
+        
         {/* Animated Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float-slow" />
-          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/10 blur-xl animate-float particle-delay-2" />
-          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/5 animate-pulse-glow" />
-          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20 animate-sparkle" />
-          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30 animate-sparkle particle-delay-1" />
-          {/* Orbiting element */}
-          <div className="absolute left-16 top-12 w-3 h-3 rounded-full bg-white/40 orbit" />
-          {/* Animated gradient orb */}
-          <div className="absolute right-4 top-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 blur-2xl blob animate-breathing" />
-          {/* Diagonal pattern with animation */}
-          <div 
-            className="absolute inset-0 opacity-[0.03] sliding-pattern"
-            style={{
-              backgroundImage: `repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%)`,
-              backgroundSize: '20px 20px'
-            }}
-          />
-          {/* Shimmer effect */}
-          <div className="absolute inset-0 effect-shine" />
+          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/10 blur-2xl continuous-float" />
+          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/20 blur-xl continuous-float" style={{ animationDelay: '1s' }} />
+          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10 scale-pulse" />
+          <div className="absolute left-1/3 top-6 w-4 h-4 rounded-full bg-accent/60 bounce-continuous" />
+          <div className="absolute right-1/4 top-10 w-3 h-3 rounded-full bg-white/50 bounce-continuous" style={{ animationDelay: '0.5s' }} />
+          {/* Orbiting elements */}
+          <div className="absolute left-16 top-12 w-4 h-4 rounded-full bg-accent/50 orbit" />
+          <div className="absolute right-20 bottom-16 w-3 h-3 rounded-full bg-white/40 orbit" style={{ animationDelay: '5s' }} />
+          {/* Animated gradient orbs */}
+          <div className="absolute right-4 top-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-accent/30 to-primary/30 blur-2xl blob scale-pulse" />
+          <div className="absolute left-0 bottom-0 w-28 h-28 rounded-full bg-gradient-to-tr from-white/20 to-transparent blur-xl blob" style={{ animationDelay: '2s' }} />
+          {/* Shimmer wave */}
+          <div className="absolute inset-0 shimmer-wave" />
         </div>
         
         <div className="relative z-10 p-6 py-8">
           <div className="flex items-center gap-4">
             {/* Animated Icon */}
             <div 
-              className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 effect-shine breathing gradient-border"
+              className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 pulse-ring scale-pulse"
               style={{ 
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
                 backdropFilter: 'blur(8px)',
@@ -59,13 +56,13 @@ const CategoriesPage = () => {
                 animationFillMode: 'forwards'
               }}
             >
-              <Grid3X3 className="w-7 h-7 text-white float-icon" />
+              <Grid3X3 className="w-7 h-7 text-white neon-glow" />
             </div>
             
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1 opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                <Sparkles className="w-4 h-4 text-accent animate-sparkle" />
-                <span className="text-xs font-semibold text-accent uppercase tracking-wider glow-text">
+                <Sparkles className="w-4 h-4 text-accent rotate-gentle neon-glow" />
+                <span className="text-xs font-semibold text-accent uppercase tracking-wider color-cycle">
                   {t("सभी सेवाएं", "All Services")}
                 </span>
               </div>
