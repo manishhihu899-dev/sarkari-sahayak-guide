@@ -72,26 +72,29 @@ const SchemesPage = () => {
       
       {/* Premium Hero Banner */}
       <div className="relative overflow-hidden">
-        {/* Gradient Background */}
+        {/* Gradient Background with Animation */}
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 bg-animated-gradient"
           style={{
-            background: `linear-gradient(135deg, hsl(142 60% 35%) 0%, hsl(142 70% 25%) 50%, hsl(160 60% 20%) 100%)`
+            background: `linear-gradient(135deg, hsl(142 60% 35%) 0%, hsl(142 70% 25%) 50%, hsl(160 60% 20%) 100%)`,
+            backgroundSize: '400% 400%'
           }}
         />
         
         {/* Animated Decorative patterns */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float" />
+          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float-slow" />
           <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/10 blur-xl animate-float particle-delay-2" />
-          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/5 animate-pulse-subtle" />
-          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20 animate-bounce-subtle" />
-          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30 animate-bounce-subtle particle-delay-1" />
+          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/5 animate-pulse-glow" />
+          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20 animate-sparkle" />
+          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30 animate-sparkle particle-delay-1" />
+          {/* Orbiting element */}
+          <div className="absolute right-20 top-20 w-3 h-3 rounded-full bg-accent/50 orbit" />
           {/* Animated gradient orb */}
-          <div className="absolute right-0 bottom-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/20 to-success/20 blur-2xl animate-morph blob" />
-          {/* Diagonal lines pattern */}
+          <div className="absolute right-0 bottom-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/20 to-success/20 blur-2xl blob animate-breathing" />
+          {/* Diagonal lines pattern with animation */}
           <div 
-            className="absolute inset-0 opacity-[0.03]"
+            className="absolute inset-0 opacity-[0.03] sliding-pattern"
             style={{
               backgroundImage: `repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%)`,
               backgroundSize: '20px 20px'
@@ -99,14 +102,15 @@ const SchemesPage = () => {
           />
           {/* Shimmer effect */}
           <div className="absolute inset-0 effect-shine" />
+          {/* Ripple wave */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 ripple-wave opacity-20" />
         </div>
         
-        {/* Content */}
         <div className="relative z-10 p-6 pt-8 pb-10">
           <div className="flex items-start gap-4">
             {/* Government Emblem */}
             <div 
-              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 effect-shine"
+              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 effect-shine breathing gradient-border"
               style={{ 
                 background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(8px)',
@@ -123,8 +127,8 @@ const SchemesPage = () => {
             
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                <Sparkles className="w-4 h-4 text-accent animate-pulse-subtle" />
-                <span className="text-xs font-semibold text-accent uppercase tracking-wider">
+                <Sparkles className="w-4 h-4 text-accent animate-sparkle" />
+                <span className="text-xs font-semibold text-accent uppercase tracking-wider glow-text">
                   {t("भारत सरकार", "Govt. of India")}
                 </span>
               </div>
@@ -142,22 +146,22 @@ const SchemesPage = () => {
           
           {/* Stats Row */}
           <div className="flex items-center gap-4 mt-6 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '350ms', animationFillMode: 'forwards' }}>
-            <div className="flex-1 text-center group cursor-default">
-              <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform">{allSchemes.length}</div>
+            <div className="flex-1 text-center group cursor-pointer">
+              <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform glow-text">{allSchemes.length}</div>
               <div className="text-xs text-white/70 uppercase tracking-wide">{t("योजनाएं", "Schemes")}</div>
             </div>
-            <div className="w-px h-8 bg-white/20" />
-            <div className="flex-1 text-center group cursor-default">
-              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1 group-hover:scale-110 transition-transform">
-                <IndianRupee className="w-4 h-4 animate-bounce-subtle" />
+            <div className="w-px h-8 bg-white/20 animate-pulse-subtle" />
+            <div className="flex-1 text-center group cursor-pointer">
+              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1 group-hover:scale-110 transition-transform animate-glow">
+                <IndianRupee className="w-4 h-4 float-icon" />
                 <span>Lakhs</span>
               </div>
               <div className="text-xs text-white/70 uppercase tracking-wide">{t("लाभ", "Benefits")}</div>
             </div>
-            <div className="w-px h-8 bg-white/20" />
-            <div className="flex-1 text-center group cursor-default">
+            <div className="w-px h-8 bg-white/20 animate-pulse-subtle" />
+            <div className="flex-1 text-center group cursor-pointer">
               <div className="text-xl font-bold text-white flex items-center justify-center gap-1 group-hover:scale-110 transition-transform">
-                <TrendingUp className="w-4 h-4 text-accent animate-bounce-subtle" />
+                <TrendingUp className="w-4 h-4 text-accent float-icon" />
               </div>
               <div className="text-xs text-white/70 uppercase tracking-wide">{t("आसान", "Easy")}</div>
             </div>

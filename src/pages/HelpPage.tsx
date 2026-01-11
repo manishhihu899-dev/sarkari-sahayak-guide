@@ -128,23 +128,28 @@ const HelpPage = () => {
       
       {/* Premium Hero Banner */}
       <div className="relative overflow-hidden">
-        {/* Gradient Background */}
+        {/* Gradient Background with Animation */}
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 bg-animated-gradient"
           style={{
-            background: `linear-gradient(135deg, hsl(262 60% 40%) 0%, hsl(280 65% 35%) 50%, hsl(300 50% 30%) 100%)`
+            background: `linear-gradient(135deg, hsl(262 60% 40%) 0%, hsl(280 65% 35%) 50%, hsl(300 50% 30%) 100%)`,
+            backgroundSize: '400% 400%'
           }}
         />
         
         {/* Animated Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float" />
+          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/5 blur-2xl animate-float-slow" />
           <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/10 blur-xl animate-float particle-delay-2" />
-          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/5 animate-pulse-subtle" />
-          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20 animate-bounce-subtle" />
-          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30 animate-bounce-subtle particle-delay-1" />
+          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/5 animate-pulse-glow" />
+          <div className="absolute left-1/3 top-6 w-3 h-3 rounded-full bg-white/20 animate-sparkle" />
+          <div className="absolute right-1/4 top-10 w-2 h-2 rounded-full bg-accent/30 animate-sparkle particle-delay-1" />
+          {/* Orbiting element */}
+          <div className="absolute right-20 top-16 w-3 h-3 rounded-full bg-white/40 orbit" />
           {/* Animated gradient orb */}
-          <div className="absolute right-4 top-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 blur-2xl animate-morph blob" />
+          <div className="absolute right-4 top-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 blur-2xl blob animate-breathing" />
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 effect-shine" />
         </div>
         
         {/* Content */}
