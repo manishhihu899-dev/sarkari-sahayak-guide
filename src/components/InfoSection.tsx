@@ -4,7 +4,7 @@ interface InfoSectionProps {
   icon: LucideIcon;
   title: string;
   items: string[];
-  variant?: "default" | "warning" | "success" | "error";
+  variant?: "default" | "warning" | "success";
   delay?: number;
 }
 
@@ -33,12 +33,6 @@ export const InfoSection = ({
       iconBg: "bg-success/20",
       iconColor: "text-success",
       bullet: "bg-success"
-    },
-    error: {
-      bg: "bg-destructive/10",
-      iconBg: "bg-destructive/20",
-      iconColor: "text-destructive",
-      bullet: "bg-destructive"
     }
   };
 
