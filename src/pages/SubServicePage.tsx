@@ -14,6 +14,9 @@ import {
   Globe, 
   Building,
   Bookmark,
+  XCircle,
+  HelpCircle,
+  Info,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useBookmarks } from "@/hooks/use-bookmarks";
@@ -29,6 +32,9 @@ const SubServicePage = () => {
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   
   const bookmarked = isBookmarked(serviceId || "", subServiceId || "");
+  
+  // Check if this is a scheme page - hide process/steps for schemes
+  const isScheme = serviceId === "schemes";
 
   if (!subService) {
     return (
@@ -63,7 +69,6 @@ const SubServicePage = () => {
     });
   };
 
-
   const progress = Math.round((completedSteps.length / subService.steps.length) * 100);
 
   return (
@@ -84,22 +89,24 @@ const SubServicePage = () => {
         {/* Disclaimer */}
         <DisclaimerBanner />
 
-        {/* Progress Bar */}
-        <div className="bg-card rounded-xl p-4 shadow-card animate-fade-up" style={{ animationDelay: "50ms" }}>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-foreground">Progress</span>
-            <span className="text-sm font-bold text-accent">{progress}%</span>
+        {/* Progress Bar - Hide for schemes */}
+        {!isScheme && (
+          <div className="bg-card rounded-xl p-4 shadow-card animate-fade-up" style={{ animationDelay: "50ms" }}>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-foreground">Progress</span>
+              <span className="text-sm font-bold text-accent">{progress}%</span>
+            </div>
+            <div className="h-2 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-accent rounded-full transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              {completedSteps.length} / {subService.steps.length} steps done - Tap step to mark complete
+            </p>
           </div>
-          <div className="h-2 bg-muted rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-gradient-accent rounded-full transition-all duration-500"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">
-            {completedSteps.length} / {subService.steps.length} steps done - Tap step to mark complete
-          </p>
-        </div>
+        )}
 
         {/* Eligibility (if exists) */}
         {subService.eligibility && subService.eligibility.length > 0 && (
@@ -120,23 +127,25 @@ const SubServicePage = () => {
           delay={150}
         />
 
-        {/* Steps */}
-        <div className="space-y-1">
-          <h2 className="text-lg font-semibold text-foreground mb-4 animate-fade-up" style={{ animationDelay: "200ms" }}>
-            Step-by-Step Process
-          </h2>
-          {subService.steps.map((step, index) => (
-            <StepCard
-              key={step.step}
-              step={step.step}
-              title={step.title}
-              description={step.description}
-              isCompleted={completedSteps.includes(step.step)}
-              onToggle={() => toggleStep(step.step)}
-              delay={250 + index * 50}
-            />
-          ))}
-        </div>
+        {/* Steps - Hide for schemes */}
+        {!isScheme && (
+          <div className="space-y-1">
+            <h2 className="text-lg font-semibold text-foreground mb-4 animate-fade-up" style={{ animationDelay: "200ms" }}>
+              Step-by-Step Process
+            </h2>
+            {subService.steps.map((step, index) => (
+              <StepCard
+                key={step.step}
+                step={step.step}
+                title={step.title}
+                description={step.description}
+                isCompleted={completedSteps.includes(step.step)}
+                onToggle={() => toggleStep(step.step)}
+                delay={250 + index * 50}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Official Links */}
         <div className="bg-card rounded-xl p-4 shadow-card space-y-3 animate-fade-up" style={{ animationDelay: "400ms" }}>
@@ -178,6 +187,58 @@ const SubServicePage = () => {
           delay={450}
         />
 
+        {/* Common Mistakes Section */}
+        {subService.commonMistakes && subService.commonMistakes.length > 0 && (
+          <InfoSection
+            icon={XCircle}
+            title="❌ Galtiyan jo nahi karni"
+            items={subService.commonMistakes}
+            variant="error"
+            delay={500}
+          />
+        )}
+
+        {/* Problem Reasons Section */}
+        {subService.problemReasons && subService.problemReasons.length > 0 && (
+          <InfoSection
+            icon={HelpCircle}
+            title="⚠️ Exact problem ka reason"
+            items={subService.problemReasons}
+            delay={550}
+          />
+        )}
+
+        {/* Official Links */}
+        <div className="bg-card rounded-xl p-4 shadow-card space-y-3 animate-fade-up" style={{ animationDelay: "600ms" }}>
+          <h3 className="font-semibold text-foreground flex items-center gap-2">
+            <Building className="w-5 h-5 text-primary" />
+            Official Information
+          </h3>
+          <div className="space-y-2 text-sm">
+            <div className="flex items-start gap-2">
+              <Globe className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+              <div>
+                <span className="text-muted-foreground">Website: </span>
+                <a 
+                  href={subService.officialWebsite} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-2"
+                >
+                  {subService.officialWebsite.replace("https://", "")}
+                </a>
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <Building className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+              <div>
+                <span className="text-muted-foreground">Office: </span>
+                <span className="text-foreground">{subService.officeName}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Action Buttons */}
         <div className="flex gap-3">
           <Button 
@@ -196,6 +257,19 @@ const SubServicePage = () => {
             <Globe className="w-5 h-5" />
             Official Site
           </Button>
+        </div>
+
+        {/* Disclaimer Note */}
+        <div className="bg-muted/50 rounded-xl p-4 border border-border/50 animate-fade-up" style={{ animationDelay: "700ms" }}>
+          <div className="flex items-start gap-3">
+            <Info className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              {t(
+                "हम सिर्फ सरकारी स्रोतों से गाइडेंस देते हैं। हम कोई फीस नहीं लेते।",
+                "We only provide guidance using official government sources. We do not charge any fees."
+              )}
+            </p>
+          </div>
         </div>
       </main>
 

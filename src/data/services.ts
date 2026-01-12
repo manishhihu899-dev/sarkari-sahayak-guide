@@ -41,6 +41,8 @@ export interface SubService {
   officialWebsite: string;
   officeName: string;
   warnings: string[];
+  commonMistakes?: string[];
+  problemReasons?: string[];
 }
 
 export interface Step {
@@ -102,6 +104,17 @@ export const services: Service[] = [
           "Aadhaar enrollment bilkul FREE hai - kisi ko paisa mat dein",
           "EID slip zaroor lein, isse Aadhaar status check kar sakte hain",
           "Kabhi bhi Aadhaar OTP kisi ko share mat karein"
+        ],
+        commonMistakes: [
+          "Agent ko paisa dena - enrollment free hai",
+          "EID slip nahi lena ya kho dena",
+          "Original documents nahi le jaana",
+          "Galat mobile number dena"
+        ],
+        problemReasons: [
+          "Aadhaar reject - photo blur hai ya biometric match nahi hua",
+          "Delay - center par rush ya technical issue",
+          "Status nahi dikh raha - 48 ghante baad check karein"
         ]
       },
       {
@@ -128,6 +141,16 @@ export const services: Service[] = [
           "Biometric update sirf Aadhaar Center par hota hai, online nahi",
           "Mobile number update bhi center par hi hota hai",
           "Update ke baad 90 din wait karein"
+        ],
+        commonMistakes: [
+          "Wrong document upload karna",
+          "Photo quality kharab hona",
+          "URN number save nahi karna"
+        ],
+        problemReasons: [
+          "Update reject - document mismatch ya low quality image",
+          "Status pending - verification mein time lagta hai",
+          "OTP nahi aaya - registered mobile check karein"
         ]
       },
       {
@@ -154,6 +177,16 @@ export const services: Service[] = [
           "PAN-Aadhaar link compulsory hai, warna PAN inactive ho jayega",
           "Har linking ke liye Aadhaar registered mobile number chahiye",
           "Bank linking ke liye bank jaana pad sakta hai agar online fail ho"
+        ],
+        commonMistakes: [
+          "Mobile number mismatch - Aadhaar aur bank mein alag mobile",
+          "Name spelling different in Aadhaar and PAN",
+          "OTP expire hone dena"
+        ],
+        problemReasons: [
+          "Linking fail - naam mismatch hai dono documents mein",
+          "OTP nahi aa raha - Aadhaar registered mobile check karein",
+          "Already linked error - duplicate linking attempt"
         ]
       }
     ]
@@ -197,6 +230,17 @@ export const services: Service[] = [
           "Ek insaan ko sirf EK PAN allowed hai - duplicate PAN penalty attract karta hai",
           "PAN application ke 15-20 din mein aa jata hai",
           "Kabhi bhi agent ko documents mat dein, khud apply karein"
+        ],
+        commonMistakes: [
+          "Duplicate PAN apply karna - heavy penalty lagti hai",
+          "Aadhaar se naam match nahi karna",
+          "Wrong category choose karna (Individual/Company)",
+          "Photo blurry upload karna"
+        ],
+        problemReasons: [
+          "Application reject - naam ya DOB mismatch",
+          "Delay - verification pending ya documents unclear",
+          "Wrong PAN aaya - application mein typo tha"
         ]
       },
       {
@@ -224,6 +268,16 @@ export const services: Service[] = [
           "Minor correction 15-20 din mein ho jata hai",
           "Major changes mein thoda time lag sakta hai",
           "Old PAN card return karna padega new card aane par"
+        ],
+        commonMistakes: [
+          "Supporting document nahi dena",
+          "Multiple corrections ek saath nahi karna",
+          "Wrong fees pay karna"
+        ],
+        problemReasons: [
+          "Correction reject - document proof insufficient",
+          "Card nahi mila - address wrong ya courier issue",
+          "Old data still showing - system update mein delay"
         ]
       }
     ]
@@ -267,6 +321,17 @@ export const services: Service[] = [
           "Jan Dhan accounts mein zero balance allowed hai",
           "Minimum balance maintain na karne par penalty lagti hai regular accounts mein",
           "ATM PIN kabhi share mat karein"
+        ],
+        commonMistakes: [
+          "Minimum balance maintain nahi karna",
+          "ATM PIN share karna ya likhna",
+          "Account dormant hone dena (2 saal no transaction)",
+          "KYC update nahi karna"
+        ],
+        problemReasons: [
+          "Account freeze - KYC incomplete ya expired",
+          "Transaction fail - insufficient balance ya limit exceed",
+          "Debit card nahi mila - address wrong hai"
         ]
       },
       {
@@ -338,6 +403,17 @@ export const services: Service[] = [
           "Tatkal mein bhi 1-3 hafte lag sakte hain",
           "Police verification mein issues hone par delay hota hai",
           "Original documents PSK le jaana mandatory hai"
+        ],
+        commonMistakes: [
+          "Wrong appointment slot book karna",
+          "Original documents bhoolna",
+          "Photo specifications follow nahi karna",
+          "Annexures nahi le jaana"
+        ],
+        problemReasons: [
+          "Application reject - document mismatch ya police verification fail",
+          "Delay - address verification pending",
+          "Passport hold - court case ya other legal issue"
         ]
       },
       {
@@ -410,6 +486,17 @@ export const services: Service[] = [
           "Rs. 2,000 har 4 mahine aata hai (3 installments)",
           "Aadhaar-bank linking mandatory hai",
           "Galat details dene par recovery hoti hai"
+        ],
+        commonMistakes: [
+          "Galat land records dena",
+          "Aadhaar-bank mein naam match nahi",
+          "Double registration attempt",
+          "Income tax file karna (ineligible ho jaoge)"
+        ],
+        problemReasons: [
+          "Payment nahi aaya - Aadhaar seeding incomplete",
+          "Application reject - land records verify nahi hue",
+          "Status pending - state approval awaited"
         ]
       },
       {
@@ -441,6 +528,17 @@ export const services: Service[] = [
           "Sirf empanelled hospitals mein valid hai",
           "Card banwana bilkul FREE hai",
           "Rs. 5 lakh per family per year coverage hai"
+        ],
+        commonMistakes: [
+          "Non-empanelled hospital mein jaana",
+          "Card expire hone dena",
+          "Fake agent ko fees dena",
+          "Family members ka naam add nahi karna"
+        ],
+        problemReasons: [
+          "Claim reject - treatment not covered under scheme",
+          "Card nahi ban raha - SECC list mein naam nahi",
+          "Hospital deny kar raha - hospital empanelled nahi hai"
         ]
       },
       {
