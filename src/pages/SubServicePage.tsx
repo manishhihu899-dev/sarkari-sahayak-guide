@@ -208,36 +208,35 @@ const SubServicePage = () => {
           />
         )}
 
-        {/* Official Links */}
-        <div className="bg-card rounded-xl p-4 shadow-card space-y-3 animate-fade-up" style={{ animationDelay: "600ms" }}>
-          <h3 className="font-semibold text-foreground flex items-center gap-2">
-            <Building className="w-5 h-5 text-primary" />
-            Official Information
-          </h3>
-          <div className="space-y-2 text-sm">
-            <div className="flex items-start gap-2">
-              <Globe className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
-              <div>
-                <span className="text-muted-foreground">Website: </span>
-                <a 
-                  href={subService.officialWebsite} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-2"
-                >
-                  {subService.officialWebsite.replace("https://", "")}
-                </a>
-              </div>
-            </div>
-            <div className="flex items-start gap-2">
-              <Building className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
-              <div>
-                <span className="text-muted-foreground">Office: </span>
-                <span className="text-foreground">{subService.officeName}</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Warnings */}
+        <InfoSection
+          icon={AlertTriangle}
+          title="⚠️ Dhyan Rakhein"
+          items={subService.warnings}
+          variant="warning"
+          delay={450}
+        />
+
+        {/* Common Mistakes Section */}
+        {subService.commonMistakes && subService.commonMistakes.length > 0 && (
+          <InfoSection
+            icon={XCircle}
+            title="❌ Galtiyan jo nahi karni"
+            items={subService.commonMistakes}
+            variant="error"
+            delay={500}
+          />
+        )}
+
+        {/* Problem Reasons Section */}
+        {subService.problemReasons && subService.problemReasons.length > 0 && (
+          <InfoSection
+            icon={HelpCircle}
+            title="⚠️ Exact problem ka reason"
+            items={subService.problemReasons}
+            delay={550}
+          />
+        )}
 
         {/* Action Buttons */}
         <div className="flex gap-3">
