@@ -43,6 +43,17 @@
   <meta name="twitter:title" content="सरकारी सहायक - Government Services Guide | Aadhaar, PAN, Passport Help">
   <meta property="og:description" content="Free step-by-step guide for Indian government services. Learn how to apply for Aadhaar, PAN Card, Passport, Voter ID, Bank KYC and government schemes in Hindi.">
   <meta name="twitter:description" content="Free step-by-step guide for Indian government services. Learn how to apply for Aadhaar, PAN Card, Passport, Voter ID, Bank KYC and government schemes in Hindi.">
+
+  <!-- Prevent theme reset on refresh: apply saved theme before React mounts -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        if (t === 'light') document.documentElement.classList.remove('dark');
+      } catch (e) {}
+    })();
+  </script>
 </head>
   <body>
     <div id="root"></div>
