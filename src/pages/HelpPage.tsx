@@ -162,10 +162,8 @@ const HelpPage = () => {
           <div className="flex items-start gap-4">
             {/* App Logo */}
             <div 
-              className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border-2 border-white/30 shrink-0"
+              className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 opacity-0 animate-scale-up overflow-hidden"
               style={{ 
-                background: 'rgba(255,255,255,0.95)',
-                backdropFilter: 'blur(8px)',
                 animationDelay: '100ms',
                 animationFillMode: 'forwards'
               }}
@@ -173,7 +171,7 @@ const HelpPage = () => {
               <img 
                 src={appLogo} 
                 alt="Sarkari Sahayak Logo" 
-                className="w-16 h-16 object-contain"
+                className="w-20 h-20 object-contain drop-shadow-lg"
               />
             </div>
             
