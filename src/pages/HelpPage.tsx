@@ -10,11 +10,11 @@ import {
   AlertTriangle,
   Sparkles,
   Heart,
-  MessageCircle,
   BookOpen,
   CheckCircle2,
   ExternalLink
 } from "lucide-react";
+import appLogo from "@/assets/app-logo.png";
 
 const helplines = [
   {
@@ -160,17 +160,21 @@ const HelpPage = () => {
         {/* Content */}
         <div className="relative z-10 p-6 pt-8 pb-10">
           <div className="flex items-start gap-4">
-            {/* Animated Icon */}
+            {/* App Logo */}
             <div 
-              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 pulse-ring scale-pulse"
+              className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border-2 border-white/30 shrink-0"
               style={{ 
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(8px)',
                 animationDelay: '100ms',
                 animationFillMode: 'forwards'
               }}
             >
-              <MessageCircle className="w-8 h-8 text-white neon-glow" />
+              <img 
+                src={appLogo} 
+                alt="Sarkari Sahayak Logo" 
+                className="w-16 h-16 object-contain"
+              />
             </div>
             
             <div className="flex-1">

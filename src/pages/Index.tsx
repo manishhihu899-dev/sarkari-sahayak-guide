@@ -7,7 +7,8 @@ import { BottomNav } from "@/components/BottomNav";
 import { services, searchServices } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { useLanguage } from "@/hooks/use-language";
-import { Shield, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import appLogo from "@/assets/app-logo.png";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -89,8 +90,16 @@ const Index = () => {
               {/* Content */}
               <div className="relative z-10 p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/20 opacity-0 animate-scale-up pulse-ring scale-pulse" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                    <Shield className="w-7 h-7 text-white neon-glow" />
+                  {/* App Logo */}
+                  <div 
+                    className="w-20 h-20 rounded-2xl bg-white/95 backdrop-blur-sm flex items-center justify-center shrink-0 border-2 border-white/30 opacity-0 animate-scale-up shadow-xl"
+                    style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}
+                  >
+                    <img 
+                      src={appLogo} 
+                      alt="Sarkari Sahayak Logo" 
+                      className="w-16 h-16 object-contain"
+                    />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>

@@ -4,8 +4,8 @@ import { useLanguage } from "@/hooks/use-language";
 import { useNavigate } from "react-router-dom";
 import { services } from "@/data/services";
 import { SchemeCard } from "@/components/SchemeCard";
-import govtEmblem from "@/assets/govt-emblem.png";
-import { 
+import appLogo from "@/assets/app-logo.png";
+import {
   Gift, 
   Sparkles, 
   ClipboardList,
@@ -103,9 +103,9 @@ const SchemesPage = () => {
         
         <div className="relative z-10 p-6 pt-8 pb-10">
           <div className="flex items-start gap-4">
-            {/* Government Emblem */}
+            {/* App Logo */}
             <div 
-              className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border border-white/20 shrink-0 pulse-ring scale-pulse"
+              className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl opacity-0 animate-scale-up overflow-hidden border-2 border-white/30 shrink-0"
               style={{ 
                 background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(8px)',
@@ -114,9 +114,9 @@ const SchemesPage = () => {
               }}
             >
               <img 
-                src={govtEmblem} 
-                alt="Government of India Emblem" 
-                className="w-12 h-12 object-contain"
+                src={appLogo} 
+                alt="Sarkari Sahayak Logo" 
+                className="w-16 h-16 object-contain"
               />
             </div>
             
