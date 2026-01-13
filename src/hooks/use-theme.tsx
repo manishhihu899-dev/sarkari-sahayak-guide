@@ -10,10 +10,12 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  // Theme is now "locked" to the last saved value to prevent it changing on refresh/restart.
   const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem("theme") as Theme;
-    if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const saved = localStorage.getItem("theme") as Theme | null;
+    if (saved === "light" || saved === "dark") return saved;
+    // If nothing is saved, default to light (no system-based switching).
+    return "light";
   });
 
   useEffect(() => {
@@ -26,8 +28,9 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Theme locked: keep function for compatibility but do not allow changes.
   const toggleTheme = () => {
-    setTheme(prev => prev === "light" ? "dark" : "light");
+    setTheme((prev) => prev);
   };
 
   return (
