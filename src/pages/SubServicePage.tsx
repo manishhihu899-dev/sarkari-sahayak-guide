@@ -6,7 +6,7 @@ import { InfoSection } from "@/components/InfoSection";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { BottomNav } from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
-import { getSubServiceById, getServiceById } from "@/data/services";
+import { getSubServiceById } from "@/data/services";
 import { 
   FileText, 
   CheckCircle, 
@@ -17,7 +17,6 @@ import {
   XCircle,
   HelpCircle,
   Info,
-  Sparkles,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useBookmarks } from "@/hooks/use-bookmarks";
@@ -30,16 +29,12 @@ const SubServicePage = () => {
   const { t } = useLanguage();
   
   const subService = getSubServiceById(serviceId || "", subServiceId || "");
-  const parentService = getServiceById(serviceId || "");
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   
   const bookmarked = isBookmarked(serviceId || "", subServiceId || "");
   
   // Check if this is a scheme page - hide process/steps for schemes
   const isScheme = serviceId === "schemes";
-  
-  // Get theme color from parent service
-  const themeColor = parentService?.themeColor || "220 65% 28%";
 
   if (!subService) {
     return (
@@ -80,48 +75,16 @@ const SubServicePage = () => {
     <div className="min-h-screen bg-background pb-32">
       <Header title={subService.titleHi} showBack />
       
-      {/* Premium Animated Theme Banner */}
-      <div className="relative overflow-hidden wave-border">
-        {/* Gradient Background with Animation */}
-        <div 
-          className="absolute inset-0 bg-animated-gradient"
-          style={{
-            background: `linear-gradient(135deg, hsl(${themeColor}) 0%, hsl(${themeColor} / 0.8) 50%, hsl(${themeColor} / 0.6) 100%)`,
-            backgroundSize: '400% 400%'
-          }}
-        />
-        
-        {/* Moving Dots Pattern */}
-        <div className="absolute inset-0 moving-dots opacity-20" />
-        
-        {/* Animated Decorative patterns */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/10 blur-2xl continuous-float" />
-          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-white/15 blur-xl continuous-float" style={{ animationDelay: '1s' }} />
-          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10 scale-pulse" />
-          <div className="absolute left-1/3 top-6 w-4 h-4 rounded-full bg-white/40 bounce-continuous" />
-          <div className="absolute right-1/4 top-10 w-3 h-3 rounded-full bg-white/50 bounce-continuous" style={{ animationDelay: '0.5s' }} />
-          {/* Shimmer wave */}
-          <div className="absolute inset-0 shimmer-wave" />
-        </div>
-        
-        <div className="relative z-10 p-6 pt-6 pb-8">
-          <div className="flex items-center gap-2 mb-3 opacity-0 animate-fade-up" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-            <Sparkles className="w-4 h-4 text-white/90 rotate-gentle neon-glow" />
-            <span className="text-xs font-semibold text-white/90 uppercase tracking-wider">
-              Sarkari Sahayak
-            </span>
-          </div>
-          <h1 className="text-2xl font-bold text-white mb-2 leading-tight opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
+      <main className="px-4 py-6 space-y-6">
+        {/* Title & Description */}
+        <div className="animate-fade-up">
+          <h1 className="text-2xl font-bold text-foreground mb-2">
             {subService.titleHi}
           </h1>
-          <p className="text-sm text-white/80 leading-relaxed opacity-0 animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+          <p className="text-muted-foreground leading-relaxed">
             {subService.description}
           </p>
         </div>
-      </div>
-      
-      <main className="px-4 py-6 space-y-6">
 
         {/* Disclaimer */}
         <DisclaimerBanner />
