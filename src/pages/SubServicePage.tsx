@@ -126,6 +126,24 @@ const SubServicePage = () => {
         {/* Disclaimer */}
         <DisclaimerBanner />
 
+        {/* Progress Bar - Hide for schemes */}
+        {!isScheme && (
+          <div className="bg-card rounded-xl p-4 shadow-card animate-fade-up" style={{ animationDelay: "50ms" }}>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-foreground">Progress</span>
+              <span className="text-sm font-bold text-accent">{progress}%</span>
+            </div>
+            <div className="h-2 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-accent rounded-full transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              {completedSteps.length} / {subService.steps.length} steps done - Tap step to mark complete
+            </p>
+          </div>
+        )}
 
         {/* Eligibility (if exists) */}
         {subService.eligibility && subService.eligibility.length > 0 && (
