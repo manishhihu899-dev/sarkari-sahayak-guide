@@ -208,36 +208,6 @@ const SubServicePage = () => {
           />
         )}
 
-        {/* Warnings */}
-        <InfoSection
-          icon={AlertTriangle}
-          title="⚠️ Dhyan Rakhein"
-          items={subService.warnings}
-          variant="warning"
-          delay={450}
-        />
-
-        {/* Common Mistakes Section */}
-        {subService.commonMistakes && subService.commonMistakes.length > 0 && (
-          <InfoSection
-            icon={XCircle}
-            title="❌ Galtiyan jo nahi karni"
-            items={subService.commonMistakes}
-            variant="error"
-            delay={500}
-          />
-        )}
-
-        {/* Problem Reasons Section */}
-        {subService.problemReasons && subService.problemReasons.length > 0 && (
-          <InfoSection
-            icon={HelpCircle}
-            title="⚠️ Exact problem ka reason"
-            items={subService.problemReasons}
-            delay={550}
-          />
-        )}
-
         {/* Action Buttons */}
         <div className="flex gap-3">
           <Button 

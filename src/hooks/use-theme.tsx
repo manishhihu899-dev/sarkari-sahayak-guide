@@ -28,9 +28,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // Theme locked: keep function for compatibility but do not allow changes.
   const toggleTheme = () => {
-    setTheme((prev) => prev);
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
