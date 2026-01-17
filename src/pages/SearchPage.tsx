@@ -8,12 +8,16 @@ import { services, categories, searchServices } from "@/data/services";
 import { Search, Filter, X } from "lucide-react";
 
 const popularSearches = [
-  "Aadhaar update",
-  "PAN card",
-  "Passport apply",
-  "Bank KYC",
-  "PM Kisan",
-  "SIM port"
+  "Aadhaar",
+  "PAN",
+  "Passport",
+  "Bank",
+  "SIM",
+  "Scholarship",
+  "10th 12th Scholarship",
+  "Student",
+  "Form fill",
+  "Voter ID"
 ];
 
 const commonDocuments = [
