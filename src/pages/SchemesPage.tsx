@@ -105,7 +105,7 @@ const SchemesPage = () => {
           <div className="flex items-start gap-4">
             {/* App Logo */}
             <div 
-              className="w-24 h-24 rounded-2xl flex items-center justify-center shrink-0 opacity-0 animate-scale-up overflow-hidden bg-white/95 shadow-lg backdrop-blur-sm p-1.5"
+              className="w-24 h-24 rounded-2xl flex items-center justify-center shrink-0 opacity-0 animate-scale-up overflow-hidden"
               style={{ 
                 animationDelay: '100ms',
                 animationFillMode: 'forwards'
@@ -114,7 +114,7 @@ const SchemesPage = () => {
               <img 
                 src={appLogo} 
                 alt="Sarkari Sahayak Logo" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain drop-shadow-lg"
               />
             </div>
             
