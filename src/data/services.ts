@@ -1557,7 +1557,7 @@ export const services: Service[] = [
         id: "scholarship-application",
         title: "Scholarship Applications",
         titleHi: "छात्रवृत्ति आवेदन",
-        description: "NSP aur state scholarship kaise apply karein",
+        description: "NSP aur state scholarship kaise apply karein - student scholarship form fill process",
         eligibility: [
           "Students studying in recognized institutions",
           "SC/ST/OBC/Minority/EWS category students",
@@ -1593,6 +1593,225 @@ export const services: Service[] = [
           "Fake documents se permanent ban ho sakta hai",
           "Institute verification zaruri hai - college/school se confirm karein",
           "State wise additional scholarships bhi check karein"
+        ]
+      },
+      {
+        id: "10th-scholarship",
+        title: "10th Class Scholarship",
+        titleHi: "10वीं कक्षा छात्रवृत्ति",
+        description: "Class 10 students ke liye Pre-Matric scholarship form fill kaise karein",
+        eligibility: [
+          "Class 9 ya 10 mein padh rahe students",
+          "SC/ST/OBC/Minority category ke students",
+          "Parents ki annual income Rs. 2.5 lakh se kam",
+          "Regular mode mein padhai honi chahiye"
+        ],
+        documents: [
+          "Aadhaar Card (student ka)",
+          "Caste/Community Certificate",
+          "Income Certificate (Rs. 2.5 lakh se kam)",
+          "Previous class marksheet (Class 9 result)",
+          "Admission slip ya Fee receipt",
+          "Bank Passbook (student ke naam)",
+          "Passport size photo",
+          "School Bonafide Certificate"
+        ],
+        steps: [
+          { step: 1, title: "NSP Portal Jaayein", description: "scholarships.gov.in par jaayein" },
+          { step: 2, title: "New Registration Karein", description: "Student Registration par click karein, mobile aur email daalein" },
+          { step: 3, title: "Pre-Matric Scholarship Chunein", description: "Category: SC/ST/OBC/Minority Pre-Matric Scholarship select karein" },
+          { step: 4, title: "Academic Details Bharein", description: "School name, class 10, roll number, previous marks bharein" },
+          { step: 5, title: "Documents Upload Karein", description: "Aadhaar, caste certificate, income proof, marksheet upload karein" },
+          { step: 6, title: "Bank Details Add Karein", description: "Student ke naam ka bank account details daalein" },
+          { step: 7, title: "Form Submit Karein", description: "Review karke final submit karein" },
+          { step: 8, title: "School Verification", description: "School verify karega - principal se confirm karein" }
+        ],
+        officialWebsite: "https://scholarships.gov.in",
+        officeName: "National Scholarship Portal (NSP)",
+        warnings: [
+          "Pre-Matric scholarship Class 1-10 ke liye hoti hai",
+          "Form July-October mein open hota hai - deadline miss mat karein",
+          "Bank account student ke naam par HONA chahiye",
+          "Income certificate recent hona chahiye (same year)",
+          "School verification zaroori hai - without it reject ho jayega"
+        ],
+        commonMistakes: [
+          "Parents ke bank account mein apply karna - sirf student ka account chalega",
+          "Old income certificate dena - fresh banwayein",
+          "School verification ke liye remind na karna",
+          "Wrong category select karna (SC/ST/OBC/Minority)"
+        ],
+        problemReasons: [
+          "Scholarship reject - income limit exceed ya wrong category",
+          "Verification pending - school ne verify nahi kiya",
+          "Bank account issue - IFSC ya account number galat"
+        ]
+      },
+      {
+        id: "12th-scholarship",
+        title: "12th Class Scholarship",
+        titleHi: "12वीं कक्षा छात्रवृत्ति",
+        description: "Class 12 students ke liye Post-Matric scholarship form fill kaise karein",
+        eligibility: [
+          "Class 11 ya 12 mein padh rahe students",
+          "SC/ST/OBC/Minority/EWS category ke students",
+          "Parents ki annual income Rs. 2.5 lakh se kam (varies by category)",
+          "Regular mode mein padhai honi chahiye",
+          "10th pass hona chahiye"
+        ],
+        documents: [
+          "Aadhaar Card (student ka)",
+          "Caste/Community/EWS Certificate",
+          "Income Certificate",
+          "10th Marksheet",
+          "11th Marksheet (agar 12th mein hai)",
+          "Admission slip ya Fee receipt",
+          "Bank Passbook (student ke naam)",
+          "Passport size photo",
+          "School/College Bonafide Certificate"
+        ],
+        steps: [
+          { step: 1, title: "NSP Portal Jaayein", description: "scholarships.gov.in par jaayein aur login karein" },
+          { step: 2, title: "New Registration Karein", description: "Agar pehle se hai toh login, nahi toh new registration" },
+          { step: 3, title: "Post-Matric Scholarship Chunein", description: "Category wise Post-Matric Scholarship select karein" },
+          { step: 4, title: "Academic Details Bharein", description: "School/College name, class 11/12, 10th marks bharein" },
+          { step: 5, title: "Documents Upload Karein", description: "Sabhi documents scan karke upload karein" },
+          { step: 6, title: "Bank Details Verify Karein", description: "Aadhaar linked bank account chahiye" },
+          { step: 7, title: "Form Submit Karein", description: "Review karke final submit karein" },
+          { step: 8, title: "Institute Verification", description: "School/College verify karega application" }
+        ],
+        officialWebsite: "https://scholarships.gov.in",
+        officeName: "National Scholarship Portal (NSP)",
+        warnings: [
+          "Post-Matric scholarship Class 11 onwards ke liye hoti hai",
+          "Har saal fresh application deni hoti hai",
+          "Aadhaar seeding bank account mein honi chahiye",
+          "Institute verification ke bina scholarship nahi aayegi",
+          "Deadline usually October-November mein hoti hai"
+        ],
+        commonMistakes: [
+          "Aadhaar bank se link nahi hona",
+          "Previous year application ka renewal nahi karna",
+          "Wrong course ya institution select karna",
+          "Institute verification ke liye follow-up na karna"
+        ],
+        problemReasons: [
+          "Payment fail - Aadhaar not linked to bank",
+          "Application reject - income limit exceed",
+          "Pending status - institute verification incomplete"
+        ]
+      },
+      {
+        id: "merit-scholarship",
+        title: "Merit Based Scholarship",
+        titleHi: "मेरिट छात्रवृत्ति",
+        description: "Acche marks pe milne wali government scholarship - student form fill guide",
+        eligibility: [
+          "Previous exam mein 80% ya usse zyada marks",
+          "Government ya government-aided school ke students",
+          "Regular attendance (75%+)",
+          "No income restriction for pure merit scholarships"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Previous class marksheet with 80%+ marks",
+          "Bonafide Certificate",
+          "Bank Account (student ke naam)",
+          "Passport size photo",
+          "Character Certificate"
+        ],
+        steps: [
+          { step: 1, title: "State Scholarship Portal Check Karein", description: "Apne state ka merit scholarship portal dhundhein" },
+          { step: 2, title: "Eligibility Confirm Karein", description: "Minimum marks requirement check karein (usually 80%+)" },
+          { step: 3, title: "Online Registration", description: "Portal par student registration karein" },
+          { step: 4, title: "Marks Details Bharein", description: "Previous exam marks, subjects, percentage bharein" },
+          { step: 5, title: "Documents Upload", description: "Marksheet aur other documents upload karein" },
+          { step: 6, title: "Submit Application", description: "Form submit karke acknowledgment lein" },
+          { step: 7, title: "Merit List Wait Karein", description: "Merit list publish hone ka wait karein" }
+        ],
+        officialWebsite: "https://scholarships.gov.in",
+        officeName: "State Education Department",
+        warnings: [
+          "Merit scholarship mein competition high hota hai",
+          "Marks proof authentic hona chahiye",
+          "State wise different merit scholarships hain",
+          "NTSE, KVPY jaise exams bhi consider karein"
+        ]
+      },
+      {
+        id: "minority-scholarship",
+        title: "Minority Scholarship",
+        titleHi: "अल्पसंख्यक छात्रवृत्ति",
+        description: "Muslim, Christian, Sikh, Buddhist, Jain, Parsi community students ke liye scholarship form fill",
+        eligibility: [
+          "Minority community se belong karna chahiye",
+          "Muslims, Christians, Sikhs, Buddhists, Jains, Parsis",
+          "Parents ki annual income Rs. 2 lakh se kam",
+          "50% marks previous exam mein"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Minority Community Certificate ya Self-Declaration",
+          "Income Certificate (Rs. 2 lakh se kam)",
+          "Previous marksheet",
+          "Admission proof",
+          "Bank Account (student ke naam)",
+          "Passport size photo"
+        ],
+        steps: [
+          { step: 1, title: "NSP Portal Jaayein", description: "scholarships.gov.in par jaayein" },
+          { step: 2, title: "Minority Scholarship Search Karein", description: "Pre-Matric/Post-Matric Scholarship for Minorities select karein" },
+          { step: 3, title: "Registration Karein", description: "Student registration complete karein" },
+          { step: 4, title: "Community Details Bharein", description: "Minority community select karein - Muslim/Christian/Sikh/Buddhist/Jain/Parsi" },
+          { step: 5, title: "Documents Upload", description: "Community proof, income certificate upload karein" },
+          { step: 6, title: "Institute Verification", description: "School/College verify karega" },
+          { step: 7, title: "Scholarship Credit", description: "Approval ke baad bank mein paisa aayega" }
+        ],
+        officialWebsite: "https://scholarships.gov.in",
+        officeName: "Ministry of Minority Affairs",
+        warnings: [
+          "Self-declaration bhi valid hai minority proof ke liye",
+          "Income limit strictly followed hota hai",
+          "Deadline miss karne par application reject",
+          "Pre-Matric aur Post-Matric dono available"
+        ]
+      },
+      {
+        id: "girl-scholarship",
+        title: "Girl Student Scholarship",
+        titleHi: "लड़कियों के लिए छात्रवृत्ति",
+        description: "Ladkiyon ke liye special government scholarships - form fill guide",
+        eligibility: [
+          "Girl students studying in recognized institutions",
+          "Class 1 to Post-Graduation tak available",
+          "Different schemes ke liye different criteria",
+          "Some schemes only for single girl child"
+        ],
+        documents: [
+          "Aadhaar Card",
+          "Previous marksheet",
+          "Admission proof / Bonafide",
+          "Bank Account (student ke naam)",
+          "Caste Certificate (agar applicable)",
+          "Income Certificate",
+          "Passport size photo"
+        ],
+        steps: [
+          { step: 1, title: "Available Schemes Check Karein", description: "CBSE Scholarship, Pragati, Udaan, Beti Bachao Beti Padhao dekhen" },
+          { step: 2, title: "Eligibility Match Karein", description: "Apni category ke hisaab se scheme choose karein" },
+          { step: 3, title: "Respective Portal Par Jaayein", description: "NSP, AICTE, State portal jo applicable ho" },
+          { step: 4, title: "Registration Karein", description: "Girl student ke naam se registration" },
+          { step: 5, title: "Form Bharein", description: "Personal, academic, bank details bharein" },
+          { step: 6, title: "Documents Upload", description: "Required documents upload karein" },
+          { step: 7, title: "Verification Process", description: "Institute aur state verification hogi" }
+        ],
+        officialWebsite: "https://scholarships.gov.in",
+        officeName: "Various - MHRD/AICTE/State",
+        warnings: [
+          "Pragati Scholarship AICTE dwara technical courses ke liye",
+          "CBSE single girl child scholarship bhi available",
+          "State wise additional girl scholarships check karein",
+          "Higher education ke liye Indira Gandhi Scholarship"
         ]
       },
       {
@@ -2681,17 +2900,22 @@ export const getSubServiceById = (serviceId: string, subServiceId: string): SubS
 };
 
 export const searchServices = (query: string): SubService[] => {
-  const lowerQuery = query.toLowerCase();
+  const lowerQuery = query.toLowerCase().trim();
+  const queryWords = lowerQuery.split(/\s+/).filter(w => w.length > 0);
   const results: SubService[] = [];
   
   services.forEach(service => {
     service.subServices.forEach(sub => {
-      if (
+      // Check if any query word matches
+      const searchText = `${sub.title} ${sub.titleHi} ${sub.description} ${service.title} ${service.titleHi}`.toLowerCase();
+      
+      const matches = queryWords.some(word => searchText.includes(word)) ||
         sub.title.toLowerCase().includes(lowerQuery) ||
         sub.titleHi.includes(query) ||
         sub.description.toLowerCase().includes(lowerQuery) ||
-        service.title.toLowerCase().includes(lowerQuery)
-      ) {
+        service.title.toLowerCase().includes(lowerQuery);
+      
+      if (matches) {
         results.push(sub);
       }
     });
