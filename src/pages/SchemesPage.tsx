@@ -4,7 +4,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { useNavigate } from "react-router-dom";
 import { services } from "@/data/services";
 import { SchemeCard } from "@/components/SchemeCard";
-import appLogo from "@/assets/app-logo.png";
+import appLogo from "@/assets/new-app-logo.png";
 import {
   Gift, 
   Sparkles, 
@@ -105,17 +105,25 @@ const SchemesPage = () => {
           <div className="flex items-start gap-4">
             {/* App Logo */}
             <div 
-              className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 opacity-0 animate-scale-up overflow-hidden"
+              className="w-24 h-24 rounded-3xl flex items-center justify-center shrink-0 opacity-0 animate-scale-up overflow-hidden relative group"
               style={{ 
                 animationDelay: '100ms',
                 animationFillMode: 'forwards'
               }}
             >
+              {/* Glow effect behind logo */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/40 via-white/20 to-success/40 rounded-3xl blur-lg scale-pulse opacity-60" />
+              <div className="absolute inset-0 bg-white/10 rounded-3xl" />
               <img 
                 src={appLogo} 
                 alt="Sarkari Sahayak Logo" 
-                className="w-20 h-20 object-contain drop-shadow-lg"
+                className="w-24 h-24 object-contain drop-shadow-2xl relative z-10 group-hover:scale-105 transition-transform duration-500 continuous-float"
+                style={{ filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.3))' }}
               />
+              {/* Sparkle effects */}
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full bounce-continuous opacity-80" style={{ animationDelay: '0s' }} />
+              <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-white rounded-full bounce-continuous opacity-70" style={{ animationDelay: '0.5s' }} />
+              <div className="absolute top-1/2 -right-2 w-2 h-2 bg-accent/80 rounded-full scale-pulse opacity-60" />
             </div>
             
             <div className="flex-1">
