@@ -46,6 +46,10 @@ export default defineConfig(({ mode }) => ({
         ],
       },
       workbox: {
+        // Ensure users get the latest UI (avoid stale cached builds)
+        clientsClaim: true,
+        skipWaiting: true,
+        cleanupOutdatedCaches: true,
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff,woff2}"],
         runtimeCaching: [
           {
