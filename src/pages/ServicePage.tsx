@@ -4,17 +4,19 @@ import { SubServiceCard } from "@/components/SubServiceCard";
 import { BottomNav } from "@/components/BottomNav";
 import { getServiceById } from "@/data/services";
 import { Sparkles } from "lucide-react";
+import { useLanguage } from "@/hooks/use-language";
 
 const ServicePage = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   
   const service = getServiceById(serviceId || "");
 
   if (!service) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <p className="text-muted-foreground">Service not found</p>
+        <p className="text-muted-foreground">{t("Service nahi mila", "Service not found")}</p>
       </div>
     );
   }
@@ -23,7 +25,7 @@ const ServicePage = () => {
 
   return (
     <div className="min-h-screen bg-background pb-24">
-      <Header title={service.titleHi} showBack />
+      <Header title={t(service.titleHi, service.title)} showBack />
       
       {/* Premium Animated Theme Banner */}
       <div className="relative overflow-hidden wave-border">
@@ -96,10 +98,10 @@ const ServicePage = () => {
         <div className="space-y-3">
           <div className="flex items-center justify-between px-1 opacity-0 animate-fade-up" style={{ animationDelay: '400ms' }}>
             <h2 className="text-base font-bold text-foreground">
-              Kya karna hai? Chunein:
+              {t("Kya karna hai? Chunein:", "What do you want to do? Choose:")}
             </h2>
             <span className="text-xs font-medium text-muted-foreground bg-muted px-2.5 py-1 rounded-full">
-              {service.subServices.length} options
+              {service.subServices.length} {t("options", "options")}
             </span>
           </div>
           {service.subServices.map((sub, index) => (
