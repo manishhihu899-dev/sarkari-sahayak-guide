@@ -5,6 +5,10 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Simple in-memory cache for faster responses
+const scriptCache = new Map<string, { script: string; timestamp: number }>();
+const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -12,6 +16,19 @@ serve(async (req) => {
 
   try {
     const { steps, title } = await req.json();
+    
+    // Create cache key
+    const cacheKey = `${title}_${JSON.stringify(steps.map((s: { step: number }) => s.step))}`;
+    
+    // Check cache first
+    const cached = scriptCache.get(cacheKey);
+    if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+      console.log("Returning cached script for:", title);
+      return new Response(JSON.stringify({ script: cached.script, cached: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
@@ -23,23 +40,25 @@ serve(async (req) => {
       `Step ${step.step}: ${step.title} - ${step.description}`
     ).join("\n");
 
-    const prompt = `You are a helpful assistant speaking in simple Hindi/Hinglish. Create a friendly, easy-to-understand audio script for this government service process.
+    const prompt = `You are a helpful, friendly guide speaking in simple Hindi/Hinglish. Create a SHORT, conversational audio script for this government service process. The script will be read aloud to help villagers and first-time users.
 
 Title: ${title}
 
 Steps:
 ${stepsText}
 
-Instructions:
-1. Speak in simple Hindi/Hinglish that a village person can understand
-2. Use "aap", "aapko" to address the user
-3. Explain each step clearly with practical tips
-4. Add encouraging words like "bahut aasan hai", "tension mat lo"
-5. Keep sentences short and simple
-6. Add helpful tips where needed
-7. End with a reassuring message
+CRITICAL RULES:
+1. Keep it under 200 words - be concise!
+2. Use SIMPLE Hindi/Hinglish that a village person can understand
+3. Address user as "aap", "aapko"  
+4. Start with a warm greeting like "Namaskar! Aaj hum seekhenge..."
+5. Explain each step clearly but briefly
+6. Add encouraging words like "bahut aasaan hai", "tension mat lo", "bas itna hi karna hai"
+7. End with "Bas ho gaya! Dekha kitna simple tha?"
+8. NO complex words, NO English jargon
+9. Make it sound like a friend explaining, not a formal guide
 
-Generate a conversational script (not more than 400 words) that reads like a friend explaining the process.`;
+Generate the conversational script directly (no formatting, no asterisks, no bullet points - just spoken words):`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -48,10 +67,11 @@ Generate a conversational script (not more than 400 words) that reads like a fri
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-3-flash-preview",
+        model: "google/gemini-2.5-flash-lite",
         messages: [
           { role: "user", content: prompt }
         ],
+        max_tokens: 500,
       }),
     });
 
@@ -79,7 +99,18 @@ Generate a conversational script (not more than 400 words) that reads like a fri
     const data = await response.json();
     const script = data.choices?.[0]?.message?.content || "";
 
-    return new Response(JSON.stringify({ script }), {
+    // Clean the script - remove any markdown formatting
+    const cleanScript = script
+      .replace(/\*\*/g, '')
+      .replace(/\*/g, '')
+      .replace(/#{1,6}\s/g, '')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+
+    // Cache the result
+    scriptCache.set(cacheKey, { script: cleanScript, timestamp: Date.now() });
+
+    return new Response(JSON.stringify({ script: cleanScript }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {

@@ -22,6 +22,10 @@ import {
   VolumeX,
   Loader2,
   Headphones,
+  RefreshCw,
+  Pause,
+  Play,
+  ExternalLink,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useBookmarks } from "@/hooks/use-bookmarks";
@@ -33,7 +37,16 @@ const SubServicePage = () => {
   const { toast } = useToast();
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { t, language } = useLanguage();
-  const { isLoading: isSpeechLoading, isSpeaking, generateAndSpeak, stopSpeaking } = useSpeakProcess();
+  const { 
+    isLoading: isSpeechLoading, 
+    isSpeaking, 
+    isPaused,
+    generateAndSpeak, 
+    stopSpeaking,
+    retrySpeaking,
+    togglePause,
+    hasCache
+  } = useSpeakProcess();
   
   const subService = getSubServiceById(serviceId || "", subServiceId || "");
   const parentService = getServiceById(serviceId || "");
@@ -180,57 +193,104 @@ const SubServicePage = () => {
               </h2>
               
               {/* Listen to Process Button */}
-              <Button
-                variant={isSpeaking ? "destructive" : "outline"}
-                size="sm"
-                onClick={() => {
-                  if (isSpeaking) {
-                    stopSpeaking();
-                  } else {
-                    generateAndSpeak(subService.steps, language === "hi" ? subService.titleHi : subService.title);
-                    toast({
-                      title: t("🎧 Process sunein", "🎧 Listen to Process"),
-                      description: t(
-                        "Thoda wait karein, process tayyar ho raha hai...",
-                        "Please wait, preparing audio..."
-                      ),
-                    });
-                  }
-                }}
-                disabled={isSpeechLoading}
-                className="flex items-center gap-2"
-              >
-                {isSpeechLoading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span className="hidden sm:inline">{t("Loading...", "Loading...")}</span>
-                  </>
-                ) : isSpeaking ? (
-                  <>
-                    <VolumeX className="w-4 h-4" />
-                    <span className="hidden sm:inline">{t("रोकें", "Stop")}</span>
-                  </>
-                ) : (
-                  <>
-                    <Headphones className="w-4 h-4" />
-                    <span className="hidden sm:inline">{t("सुनें", "Listen")}</span>
-                  </>
+              <div className="flex items-center gap-2">
+                {/* Retry Button - Show after first listen */}
+                {!isSpeaking && !isSpeechLoading && hasCache(subService.steps, language === "hi" ? subService.titleHi : subService.title) && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={retrySpeaking}
+                    className="flex items-center gap-1"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    <span className="hidden sm:inline">{t("फिर से", "Retry")}</span>
+                  </Button>
                 )}
-              </Button>
+                
+                <Button
+                  variant={isSpeaking ? "destructive" : "default"}
+                  size="sm"
+                  onClick={() => {
+                    if (isSpeaking) {
+                      stopSpeaking();
+                    } else {
+                      generateAndSpeak(subService.steps, language === "hi" ? subService.titleHi : subService.title);
+                      toast({
+                        title: t("🎧 Process sunein", "🎧 Listen to Process"),
+                        description: hasCache(subService.steps, language === "hi" ? subService.titleHi : subService.title)
+                          ? t("Turant shuru ho raha hai!", "Starting immediately!")
+                          : t("2-3 seconds wait karein...", "Wait 2-3 seconds..."),
+                      });
+                    }
+                  }}
+                  disabled={isSpeechLoading}
+                  className="flex items-center gap-2"
+                >
+                  {isSpeechLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span className="hidden sm:inline">{t("Loading...", "Loading...")}</span>
+                    </>
+                  ) : isSpeaking ? (
+                    <>
+                      <VolumeX className="w-4 h-4" />
+                      <span className="hidden sm:inline">{t("रोकें", "Stop")}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Headphones className="w-4 h-4" />
+                      <span className="hidden sm:inline">{t("🎧 सुनें", "🎧 Listen")}</span>
+                    </>
+                  )}
+                </Button>
+              </div>
             </div>
             
-            {/* Speaking indicator */}
+            {/* Speaking indicator with controls */}
             {isSpeaking && (
-              <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 mb-4 flex items-center gap-3 animate-fade-up">
-                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                  <Volume2 className="w-5 h-5 text-accent animate-pulse" />
+              <div className="bg-gradient-to-r from-accent/10 to-success/10 border border-accent/20 rounded-xl p-4 mb-4 animate-fade-up">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center scale-pulse">
+                    <Volume2 className="w-6 h-6 text-accent" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-foreground">
+                      {isPaused 
+                        ? t("⏸️ Voice paused hai", "⏸️ Voice is paused")
+                        : t("🔊 Process sun rahe hain...", "🔊 Listening to process...")
+                      }
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {t("App background mein bhi chalta rahega!", "Works in background too!")}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {/* Pause/Resume Button */}
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={togglePause}
+                      className="w-10 h-10 rounded-full"
+                    >
+                      {isPaused ? (
+                        <Play className="w-5 h-5" />
+                      ) : (
+                        <Pause className="w-5 h-5" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-foreground">
-                    {t("🔊 Process sun rahe hain...", "🔊 Listening to process...")}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {t("Dhyan se sunein, bahut aasan hai!", "Listen carefully, it's very easy!")}
+                
+                {/* Website tip */}
+                <div className="mt-3 pt-3 border-t border-accent/20">
+                  <p className="text-xs text-muted-foreground flex items-start gap-2">
+                    <ExternalLink className="w-4 h-4 shrink-0 mt-0.5 text-primary" />
+                    <span>
+                      {t(
+                        "💡 Tip: Neeche 'Official Site' button dabayein - voice sunte-sunte website par kaam karein!",
+                        "💡 Tip: Click 'Official Site' below - work on website while listening!"
+                      )}
+                    </span>
                   </p>
                 </div>
               </div>
