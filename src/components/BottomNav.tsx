@@ -1,16 +1,18 @@
 import { Home, Search, Gift, Grid3X3, HelpCircle } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useLanguage } from "@/hooks/use-language";
 
 export const BottomNav = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   
   const navItems = [
-    { icon: Home, label: "Home", path: "/" },
-    { icon: Search, label: "Search", path: "/search" },
-    { icon: Gift, label: "Schemes", path: "/schemes" },
-    { icon: Grid3X3, label: "Categories", path: "/categories" },
-    { icon: HelpCircle, label: "Help", path: "/help" },
+    { icon: Home, label: t("Home", "Home"), path: "/" },
+    { icon: Search, label: t("Search", "Search"), path: "/search" },
+    { icon: Gift, label: t("Yojana", "Schemes"), path: "/schemes" },
+    { icon: Grid3X3, label: t("Categories", "Categories"), path: "/categories" },
+    { icon: HelpCircle, label: t("Help", "Help"), path: "/help" },
   ];
 
   return (

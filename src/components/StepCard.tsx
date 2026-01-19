@@ -1,4 +1,5 @@
 import { Check, Lightbulb, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/hooks/use-language";
 
 interface StepCardProps {
   step: number;
@@ -19,6 +20,7 @@ export const StepCard = ({
   delay = 0,
   totalSteps = 5
 }: StepCardProps) => {
+  const { t } = useLanguage();
   const isLastStep = step === totalSteps;
   
   return (
@@ -58,11 +60,11 @@ export const StepCard = ({
               ? "bg-success/10 text-success" 
               : "bg-accent/10 text-accent"
           }`}>
-            Step {step} of {totalSteps}
+            {t(`Step ${step} / ${totalSteps}`, `Step ${step} of ${totalSteps}`)}
           </span>
           {isCompleted && (
             <span className="text-xs text-success flex items-center gap-1">
-              <Check className="w-3 h-3" /> Done!
+              <Check className="w-3 h-3" /> {t("हो गया!", "Done!")}
             </span>
           )}
         </div>
@@ -85,7 +87,7 @@ export const StepCard = ({
           <div className="mt-3 pt-3 border-t border-border/50">
             <div className="flex items-start gap-2 text-xs text-muted-foreground">
               <Lightbulb className="w-4 h-4 text-warning shrink-0 mt-0.5" />
-              <span>Tap the number to mark as done ✓</span>
+              <span>{t("Number par tap karke done mark karein ✓", "Tap the number to mark as done ✓")}</span>
             </div>
           </div>
         )}

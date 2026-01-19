@@ -32,7 +32,7 @@ const SubServicePage = () => {
   const { serviceId, subServiceId } = useParams();
   const { toast } = useToast();
   const { isBookmarked, toggleBookmark } = useBookmarks();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { isLoading: isSpeechLoading, isSpeaking, generateAndSpeak, stopSpeaking } = useSpeakProcess();
   
   const subService = getSubServiceById(serviceId || "", subServiceId || "");
@@ -84,7 +84,7 @@ const SubServicePage = () => {
 
   return (
     <div className="min-h-screen bg-background pb-32">
-      <Header title={subService.titleHi} showBack />
+      <Header title={t(subService.titleHi, subService.title)} showBack />
       
       {/* Premium Animated Theme Banner */}
       <div className="relative overflow-hidden wave-border">
@@ -170,13 +170,13 @@ const SubServicePage = () => {
           delay={150}
         />
 
-        {/* Steps - Hide for schemes */}
-        {!isScheme && (
+        {/* Steps - Hide for schemes (but keep voice option for schemes) */}
+        {!isScheme ? (
           <div className="space-y-1">
             {/* Header with Listen Button */}
             <div className="flex items-center justify-between mb-4 animate-fade-up" style={{ animationDelay: "200ms" }}>
               <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                📋 Step-by-Step Process
+                {t("📋 Step-by-Step Process", "📋 Step-by-Step Process")}
               </h2>
               
               {/* Listen to Process Button */}
@@ -187,10 +187,13 @@ const SubServicePage = () => {
                   if (isSpeaking) {
                     stopSpeaking();
                   } else {
-                    generateAndSpeak(subService.steps, subService.titleHi);
+                    generateAndSpeak(subService.steps, language === "hi" ? subService.titleHi : subService.title);
                     toast({
                       title: t("🎧 Process sunein", "🎧 Listen to Process"),
-                      description: t("Thoda wait karein, process tayyar ho raha hai...", "Please wait, preparing audio..."),
+                      description: t(
+                        "Thoda wait karein, process tayyar ho raha hai...",
+                        "Please wait, preparing audio..."
+                      ),
                     });
                   }
                 }}
@@ -245,6 +248,74 @@ const SubServicePage = () => {
                 totalSteps={subService.steps.length}
               />
             ))}
+          </div>
+        ) : (
+          <div className="bg-card rounded-xl p-4 shadow-card animate-fade-up" style={{ animationDelay: "200ms" }}>
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <h2 className="text-base font-semibold text-foreground">
+                  {t("🎧 Yojana ka process sunein", "🎧 Listen to scheme process")}
+                </h2>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {t(
+                    "Ye sirf guidance ke liye hai, form official website ya office par hi bharein.",
+                    "Ye sirf guidance ke liye hai, form official website ya office par hi bharein."
+                  )}
+                </p>
+              </div>
+              <Button
+                variant={isSpeaking ? "destructive" : "outline"}
+                size="sm"
+                onClick={() => {
+                  if (isSpeaking) {
+                    stopSpeaking();
+                  } else {
+                    generateAndSpeak(subService.steps, language === "hi" ? subService.titleHi : subService.title);
+                    toast({
+                      title: t("🎧 Process sunein", "🎧 Listen to Process"),
+                      description: t(
+                        "Thoda wait karein, process tayyar ho raha hai...",
+                        "Please wait, preparing audio..."
+                      ),
+                    });
+                  }
+                }}
+                disabled={isSpeechLoading}
+                className="flex items-center gap-2"
+              >
+                {isSpeechLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span className="hidden sm:inline">{t("Loading...", "Loading...")}</span>
+                  </>
+                ) : isSpeaking ? (
+                  <>
+                    <VolumeX className="w-4 h-4" />
+                    <span className="hidden sm:inline">{t("रोकें", "Stop")}</span>
+                  </>
+                ) : (
+                  <>
+                    <Headphones className="w-4 h-4" />
+                    <span className="hidden sm:inline">{t("सुनें", "Listen")}</span>
+                  </>
+                )}
+              </Button>
+            </div>
+            {isSpeaking && (
+              <div className="mt-3 bg-accent/10 border border-accent/20 rounded-xl p-3 flex items-center gap-3 animate-fade-up">
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                  <Volume2 className="w-5 h-5 text-accent animate-pulse" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-foreground">
+                    {t("🔊 Process sun rahe hain...", "🔊 Listening to process...")}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("Dhyan se sunein, bahut aasan hai!", "Listen carefully, it's very easy!")}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         )}
 

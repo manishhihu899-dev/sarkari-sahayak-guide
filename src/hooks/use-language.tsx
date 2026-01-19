@@ -18,6 +18,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     localStorage.setItem("language", language);
+    // Keep document language in sync (useful for accessibility/SEO)
+    document.documentElement.lang = language === "hi" ? "hi" : "en";
   }, [language]);
 
   const toggleLanguage = () => {
