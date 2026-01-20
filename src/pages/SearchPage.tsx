@@ -5,8 +5,9 @@ import { SearchBar } from "@/components/SearchBar";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { BottomNav } from "@/components/BottomNav";
 import { services, categories, searchServices } from "@/data/services";
-import { Search, Filter, X, Sparkles, TrendingUp, Zap, Star } from "lucide-react";
+import { Search, Filter, X, Sparkles, TrendingUp, Zap, Star, Shield, Lock, CheckCircle2, BadgeCheck, Fingerprint } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
+import govtEmblem from "@/assets/govt-emblem.png";
 
 const popularSearches = [
   "Aadhaar",
@@ -120,20 +121,64 @@ const SearchPage = () => {
       <Header title={t("खोजें", "Search")} showBack />
       
       <main className="px-4 py-6 space-y-4">
-        {/* Premium Search Header */}
+        {/* Ultra Premium Search Header with Government Trust */}
         <div className="relative rounded-2xl overflow-hidden mb-4 opacity-0 animate-scale-up" style={{ animationFillMode: 'forwards' }}>
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/85 to-accent/60 bg-animated-gradient" style={{ backgroundSize: '400% 400%' }} />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/60 bg-animated-gradient" style={{ backgroundSize: '400% 400%' }} />
+          
+          {/* Hexagon Pattern */}
+          <div className="absolute inset-0 hexagon-pattern opacity-50" />
+          
+          {/* Digital Rain Effect */}
+          <div className="absolute inset-0 digital-rain" />
+          
+          {/* Spotlight Effect */}
+          <div className="absolute inset-0 spotlight" />
           
           {/* Decorative Elements */}
           <div className="absolute inset-0 overflow-hidden">
+            {/* Ashoka Chakra Watermark */}
+            <div className="absolute -right-12 -bottom-12 w-48 h-48 opacity-[0.06]">
+              <svg viewBox="0 0 100 100" className="w-full h-full ashoka-chakra">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="2"/>
+                <circle cx="50" cy="50" r="35" fill="none" stroke="white" strokeWidth="1"/>
+                <circle cx="50" cy="50" r="8" fill="white"/>
+                {[...Array(24)].map((_, i) => (
+                  <line key={i} x1="50" y1="15" x2="50" y2="42" stroke="white" strokeWidth="2" transform={`rotate(${i * 15} 50 50)`}/>
+                ))}
+              </svg>
+            </div>
+            
             <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 blur-2xl continuous-float" />
             <div className="absolute -left-4 -bottom-4 w-24 h-24 rounded-full bg-accent/30 blur-xl continuous-float" style={{ animationDelay: '1s' }} />
             <div className="absolute right-4 bottom-4 w-16 h-16 rounded-full bg-white/10 scale-pulse" />
+            
+            {/* Floating Icons */}
+            <div className="absolute right-6 top-6 opacity-20">
+              <Fingerprint className="w-8 h-8 text-white float-govt-icon" />
+            </div>
+            <div className="absolute left-8 bottom-8 opacity-15">
+              <Shield className="w-6 h-6 text-accent float-govt-icon" style={{ animationDelay: '2s' }} />
+            </div>
+            
             <div className="absolute inset-0 shimmer-wave" />
           </div>
           
+          {/* Tricolor Ribbon at Top */}
+          <div className="absolute top-0 left-0 right-0 h-1 tricolor-wave" />
+          
           <div className="relative z-10 p-5">
+            {/* Security Badge */}
+            <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-2 py-1 rounded-full secure-badge">
+                <Lock className="w-3 h-3 text-success" />
+                <span className="text-[9px] font-bold text-white uppercase tracking-wide">
+                  {t("Secure Search", "Secure Search")}
+                </span>
+                <CheckCircle2 className="w-3 h-3 text-success verified-tick" />
+              </div>
+            </div>
+            
             <div className="flex items-center gap-2 mb-3">
               <Search className="w-5 h-5 text-white/90 neon-glow" />
               <h2 className="text-lg font-bold text-white">
@@ -146,11 +191,30 @@ const SearchPage = () => {
                 "Type what you need - Aadhaar, PAN, Passport"
               )}
             </p>
+            
+            {/* Trust Badges Row */}
+            <div className="flex items-center gap-3 mt-4 pt-3 border-t border-white/15">
+              <div className="flex items-center gap-1.5">
+                <img src={govtEmblem} alt="" className="w-4 h-4 object-contain opacity-60" />
+                <span className="text-[10px] text-white/70">{t("Verified Data", "Verified Data")}</span>
+              </div>
+              <div className="w-px h-4 bg-white/20" />
+              <div className="flex items-center gap-1">
+                <BadgeCheck className="w-3.5 h-3.5 text-success" />
+                <span className="text-[10px] text-white/70">{t("Official Info", "Official Info")}</span>
+              </div>
+              <div className="w-px h-4 bg-white/20" />
+              <div className="flex items-center gap-1">
+                <Zap className="w-3.5 h-3.5 text-accent" />
+                <span className="text-[10px] text-white/70">{t("Fast Results", "Fast Results")}</span>
+              </div>
+            </div>
           </div>
         </div>
 
+        {/* Enhanced Search Bar */}
         <div className="flex gap-2">
-          <div className="flex-1">
+          <div className="flex-1 search-focus-glow rounded-xl transition-shadow">
             <SearchBar 
               value={searchQuery} 
               onChange={setSearchQuery}
@@ -159,7 +223,7 @@ const SearchPage = () => {
           </div>
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`flex items-center justify-center w-12 h-12 rounded-xl transition-all touch-action-manipulation ${
+            className={`flex items-center justify-center w-12 h-12 rounded-xl transition-all touch-action-manipulation card-3d ${
               showFilters || hasActiveFilters
                 ? "bg-primary text-primary-foreground shadow-elevated"
                 : "bg-card text-foreground shadow-card hover:bg-secondary"
@@ -167,7 +231,7 @@ const SearchPage = () => {
           >
             <Filter className="w-5 h-5" />
             {activeFiltersCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs rounded-full flex items-center justify-center font-bold">
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs rounded-full flex items-center justify-center font-bold secure-badge">
                 {activeFiltersCount}
               </span>
             )}
@@ -197,11 +261,11 @@ const SearchPage = () => {
             <div className="space-y-2">
               <h4 className="text-sm font-medium text-muted-foreground">{t("Category", "Category")}</h4>
               <div className="flex flex-wrap gap-2">
-                {categories.slice(0, -1).map((cat) => (
+                {categories.slice(0, -1).map((cat, index) => (
                   <button
                     key={cat.id}
                     onClick={() => toggleCategory(cat.id)}
-                    className={`px-3 py-1.5 rounded-full text-sm transition-all touch-action-manipulation ${
+                    className={`px-3 py-1.5 rounded-full text-sm transition-all touch-action-manipulation animate-bounce-in stagger-${index + 1} ${
                       selectedCategories.includes(cat.id)
                         ? "bg-primary text-primary-foreground shadow-md"
                         : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -217,11 +281,11 @@ const SearchPage = () => {
             <div className="space-y-2">
               <h4 className="text-sm font-medium text-muted-foreground">{t("Document Type", "Document Type")}</h4>
               <div className="flex flex-wrap gap-2">
-                {commonDocuments.map((doc) => (
+                {commonDocuments.map((doc, index) => (
                   <button
                     key={doc.id}
                     onClick={() => toggleDocument(doc.id)}
-                    className={`px-3 py-1.5 rounded-full text-sm transition-all touch-action-manipulation ${
+                    className={`px-3 py-1.5 rounded-full text-sm transition-all touch-action-manipulation animate-bounce-in stagger-${index + 1} ${
                       selectedDocuments.includes(doc.id)
                         ? "bg-accent text-accent-foreground shadow-md"
                         : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -244,7 +308,7 @@ const SearchPage = () => {
                 <button
                   key={catId}
                   onClick={() => toggleCategory(catId)}
-                  className="flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                  className="flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium card-3d"
                 >
                   {cat.nameHi}
                   <X className="w-3 h-3" />
@@ -257,7 +321,7 @@ const SearchPage = () => {
                 <button
                   key={docId}
                   onClick={() => toggleDocument(docId)}
-                  className="flex items-center gap-1 px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"
+                  className="flex items-center gap-1 px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium card-3d"
                 >
                   {doc.label}
                   <X className="w-3 h-3" />
@@ -286,21 +350,22 @@ const SearchPage = () => {
             ))}
           </div>
         ) : searchQuery.length <= 1 ? (
-          /* Popular Searches */
+          /* Popular Searches with Enhanced Design */
           <div className="space-y-5">
             {/* Popular Searches Section */}
             <div className="space-y-3">
-              <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-accent" />
+              <h2 className="text-base font-semibold text-foreground flex items-center gap-2 opacity-0 animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+                <TrendingUp className="w-5 h-5 text-accent scale-pulse" />
                 {t("Popular Searches", "Popular Searches")}
+                <span className="text-xs font-normal text-muted-foreground ml-1">🔥</span>
               </h2>
               <div className="flex flex-wrap gap-2">
                 {popularSearches.map((term, index) => (
                   <button
                     key={term}
                     onClick={() => setSearchQuery(term)}
-                    className="px-4 py-2.5 bg-card rounded-full text-sm font-medium text-foreground shadow-card hover:bg-secondary hover:shadow-elevated transition-all touch-action-manipulation flex items-center gap-2 opacity-0 animate-fade-up"
-                    style={{ animationDelay: `${100 + index * 50}ms`, animationFillMode: 'forwards' }}
+                    className="px-4 py-2.5 bg-card rounded-full text-sm font-medium text-foreground shadow-card hover:shadow-elevated transition-all touch-action-manipulation flex items-center gap-2 animate-bounce-in card-3d"
+                    style={{ animationDelay: `${150 + index * 60}ms`, animationFillMode: 'forwards' }}
                   >
                     <Zap className="w-3 h-3 text-accent" />
                     {term}
@@ -309,32 +374,50 @@ const SearchPage = () => {
               </div>
             </div>
 
-            {/* Quick Tips Section */}
-            <div className="bg-gradient-to-br from-accent/5 to-primary/5 rounded-2xl p-4 border border-accent/10 opacity-0 animate-fade-up" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
-              <div className="flex items-center gap-2 mb-3">
-                <Star className="w-5 h-5 text-accent" />
-                <h3 className="font-semibold text-foreground">{t("Quick Tips", "Quick Tips")}</h3>
+            {/* Quick Tips Section with Enhanced Design */}
+            <div className="relative bg-gradient-to-br from-accent/5 via-primary/5 to-success/5 rounded-2xl p-4 border border-accent/15 overflow-hidden opacity-0 animate-fade-up" style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}>
+              {/* Decorative Elements */}
+              <div className="absolute -right-4 -top-4 w-24 h-24 rounded-full bg-accent/10 blur-2xl" />
+              <div className="absolute -left-4 -bottom-4 w-20 h-20 rounded-full bg-primary/10 blur-xl" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-accent to-accent/70 rounded-lg flex items-center justify-center shadow-md">
+                    <Star className="w-4 h-4 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-foreground">{t("Quick Tips", "Quick Tips")}</h3>
+                </div>
+                <ul className="space-y-2.5 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-3 opacity-0 animate-fade-up" style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}>
+                    <div className="w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                      <Sparkles className="w-3 h-3 text-primary" />
+                    </div>
+                    {t("Hindi ya English mein type karein", "Type in Hindi or English")}
+                  </li>
+                  <li className="flex items-start gap-3 opacity-0 animate-fade-up" style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}>
+                    <div className="w-5 h-5 bg-accent/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                      <Zap className="w-3 h-3 text-accent" />
+                    </div>
+                    {t("Short words use karein - 'PAN' ya 'Aadhaar'", "Use short words - 'PAN' or 'Aadhaar'")}
+                  </li>
+                  <li className="flex items-start gap-3 opacity-0 animate-fade-up" style={{ animationDelay: '1000ms', animationFillMode: 'forwards' }}>
+                    <div className="w-5 h-5 bg-success/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                      <Filter className="w-3 h-3 text-success" />
+                    </div>
+                    {t("Filters se aur better results milenge", "Use filters for better results")}
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  {t("Hindi ya English mein type karein", "Type in Hindi or English")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  {t("Short words use karein - 'PAN' ya 'Aadhaar'", "Use short words - 'PAN' or 'Aadhaar'")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  {t("Filters se aur better results milenge", "Use filters for better results")}
-                </li>
-              </ul>
             </div>
 
-            {/* Search Icon */}
-            <div className="flex flex-col items-center justify-center gap-3 py-8 opacity-0 animate-fade-up" style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}>
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                <Search className="w-10 h-10 text-primary/40" />
+            {/* Search Icon with Enhanced Animation */}
+            <div className="flex flex-col items-center justify-center gap-3 py-8 opacity-0 animate-fade-up" style={{ animationDelay: '1100ms', animationFillMode: 'forwards' }}>
+              <div className="relative">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/15 via-accent/10 to-success/10 flex items-center justify-center breathing">
+                  <Search className="w-10 h-10 text-primary/50" />
+                </div>
+                {/* Orbiting dot */}
+                <div className="absolute w-3 h-3 rounded-full bg-accent/60 orbit" style={{ top: '50%', left: '50%', marginTop: '-6px', marginLeft: '-6px' }} />
               </div>
               <p className="text-center text-muted-foreground text-sm">
                 {t("Type karo aur instantly results dekho", "Type and see instant results")}

@@ -10,6 +10,20 @@ interface Step {
 // Cache for generated scripts to avoid re-fetching
 const scriptCache = new Map<string, string>();
 
+// Pre-loaded voices for instant playback
+let cachedVoices: SpeechSynthesisVoice[] = [];
+let hindiVoice: SpeechSynthesisVoice | null = null;
+
+// Eagerly load voices on module init
+if (typeof window !== 'undefined' && window.speechSynthesis) {
+  const loadVoicesEagerly = () => {
+    cachedVoices = window.speechSynthesis.getVoices();
+    hindiVoice = cachedVoices.find(v => v.lang.includes('hi') || v.lang.includes('Hindi')) || null;
+  };
+  loadVoicesEagerly();
+  window.speechSynthesis.onvoiceschanged = loadVoicesEagerly;
+}
+
 export const useSpeakProcess = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -24,7 +38,7 @@ export const useSpeakProcess = () => {
     return `${title}_${steps.map(s => s.step).join('_')}`;
   };
 
-  // Start speaking with the given script
+  // Start speaking with the given script - optimized for instant start
   const speakScript = useCallback((scriptText: string) => {
     // Cancel any ongoing speech
     window.speechSynthesis.cancel();
@@ -32,14 +46,17 @@ export const useSpeakProcess = () => {
     const utterance = new SpeechSynthesisUtterance(scriptText);
     speechRef.current = utterance;
 
-    // Try to find a Hindi voice, fallback to default
-    const voices = window.speechSynthesis.getVoices();
-    const hindiVoice = voices.find(v => v.lang.includes('hi') || v.lang.includes('Hindi'));
+    // Use pre-loaded Hindi voice for instant start
     if (hindiVoice) {
       utterance.voice = hindiVoice;
+    } else {
+      // Fallback: try to find voice now
+      const voices = window.speechSynthesis.getVoices();
+      const voice = voices.find(v => v.lang.includes('hi') || v.lang.includes('Hindi'));
+      if (voice) utterance.voice = voice;
     }
 
-    utterance.rate = 0.9; // Slightly slower for clarity
+    utterance.rate = 0.95; // Slightly faster for better flow
     utterance.pitch = 1;
     utterance.volume = 1;
 
