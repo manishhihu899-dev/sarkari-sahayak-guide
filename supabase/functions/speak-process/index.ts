@@ -5,7 +5,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Simple in-memory cache for faster responses
+// Optimized in-memory cache for faster responses
 const scriptCache = new Map<string, { script: string; timestamp: number }>();
 const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 
@@ -20,10 +20,10 @@ serve(async (req) => {
     // Create cache key
     const cacheKey = `${title}_${JSON.stringify(steps.map((s: { step: number }) => s.step))}`;
     
-    // Check cache first
+    // Check cache first - instant response if cached
     const cached = scriptCache.get(cacheKey);
     if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-      console.log("Returning cached script for:", title);
+      console.log("Cache hit for:", title);
       return new Response(JSON.stringify({ script: cached.script, cached: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -35,30 +35,26 @@ serve(async (req) => {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
 
-    // Create a friendly, easy-to-understand explanation of the process
+    // Create a concise process summary for faster generation
     const stepsText = steps.map((step: { step: number; title: string; description: string }) => 
-      `Step ${step.step}: ${step.title} - ${step.description}`
+      `${step.step}. ${step.title}: ${step.description.slice(0, 80)}`
     ).join("\n");
 
-    const prompt = `You are a helpful, friendly guide speaking in simple Hindi/Hinglish. Create a SHORT, conversational audio script for this government service process. The script will be read aloud to help villagers and first-time users.
-
-Title: ${title}
+    // Optimized shorter prompt for faster AI response (target: under 2 seconds)
+    const prompt = `Simple Hindi/Hinglish audio guide for: "${title}"
 
 Steps:
 ${stepsText}
 
-CRITICAL RULES:
-1. Keep it under 200 words - be concise!
-2. Use SIMPLE Hindi/Hinglish that a village person can understand
-3. Address user as "aap", "aapko"  
-4. Start with a warm greeting like "Namaskar! Aaj hum seekhenge..."
-5. Explain each step clearly but briefly
-6. Add encouraging words like "bahut aasaan hai", "tension mat lo", "bas itna hi karna hai"
-7. End with "Bas ho gaya! Dekha kitna simple tha?"
-8. NO complex words, NO English jargon
-9. Make it sound like a friend explaining, not a formal guide
+RULES:
+- MAX 120 words - be VERY concise!
+- Simple Hindi/Hinglish for village users
+- Start: "Namaskar! ${title} kaise karein..."
+- End: "Bas itna hi! Simple hai na?"
+- Use: "aap", "bahut aasaan", "tension mat lo"
+- NO English jargon, NO markdown, NO asterisks
 
-Generate the conversational script directly (no formatting, no asterisks, no bullet points - just spoken words):`;
+Script:`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -71,7 +67,8 @@ Generate the conversational script directly (no formatting, no asterisks, no bul
         messages: [
           { role: "user", content: prompt }
         ],
-        max_tokens: 500,
+        max_tokens: 300, // Reduced for faster response
+        temperature: 0.7, // Slightly lower for faster, more consistent output
       }),
     });
 
@@ -105,6 +102,8 @@ Generate the conversational script directly (no formatting, no asterisks, no bul
       .replace(/\*/g, '')
       .replace(/#{1,6}\s/g, '')
       .replace(/\n{3,}/g, '\n\n')
+      .replace(/```[\s\S]*?```/g, '')
+      .replace(/`/g, '')
       .trim();
 
     // Cache the result
