@@ -70,42 +70,42 @@ const SchemesPage = () => {
     <div className="min-h-screen bg-background pb-24">
       <Header title={t("सरकारी योजनाएं", "Government Schemes")} showBack />
       
-      {/* Premium Animated Hero Banner */}
-      <div className="relative overflow-hidden">
-        {/* Multi-color Gradient Background for Schemes */}
+      {/* Premium Hero Banner */}
+      <div className="relative overflow-hidden wave-border">
+        {/* Gradient Background with Animation */}
         <div 
-          className="absolute inset-0 animate-gradient-shift"
+          className="absolute inset-0 bg-animated-gradient"
           style={{
-            background: `linear-gradient(135deg, hsl(142 65% 30%) 0%, hsl(160 60% 25%) 25%, hsl(180 55% 28%) 50%, hsl(200 60% 30%) 75%, hsl(142 65% 30%) 100%)`,
-            backgroundSize: '300% 300%'
+            background: `linear-gradient(135deg, hsl(142 60% 35%) 0%, hsl(142 70% 25%) 50%, hsl(160 60% 20%) 100%)`,
+            backgroundSize: '400% 400%'
           }}
         />
         
-        {/* Subtle Dot Pattern */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '20px 20px'
-          }} />
-        </div>
+        {/* Moving Dots Pattern */}
+        <div className="absolute inset-0 moving-dots opacity-20" />
         
-        {/* Floating Blobs */}
+        {/* Animated Decorative patterns */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/10 blur-3xl animate-float-slow" />
-          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/20 blur-2xl animate-float-slow" style={{ animationDelay: '2s' }} />
-          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10 animate-pulse-soft" />
-          {/* Shimmer effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent animate-shimmer" />
+          <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/10 blur-2xl continuous-float" />
+          <div className="absolute -left-8 -bottom-8 w-36 h-36 rounded-full bg-accent/20 blur-xl continuous-float" style={{ animationDelay: '1s' }} />
+          <div className="absolute right-8 bottom-4 w-20 h-20 rounded-full bg-white/10 scale-pulse" />
+          <div className="absolute left-1/3 top-6 w-4 h-4 rounded-full bg-accent/60 bounce-continuous" />
+          <div className="absolute right-1/4 top-10 w-3 h-3 rounded-full bg-white/50 bounce-continuous" style={{ animationDelay: '0.5s' }} />
+          {/* Orbiting elements */}
+          <div className="absolute right-20 top-20 w-4 h-4 rounded-full bg-accent/60 orbit" />
+          <div className="absolute left-16 bottom-16 w-3 h-3 rounded-full bg-white/50 orbit" style={{ animationDelay: '5s' }} />
+          {/* Animated gradient orbs */}
+          <div className="absolute right-0 bottom-0 w-40 h-40 rounded-full bg-gradient-to-br from-accent/30 to-success/30 blur-2xl blob scale-pulse" />
+          <div className="absolute left-0 top-0 w-32 h-32 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-xl blob" style={{ animationDelay: '2s' }} />
+          {/* Shimmer wave */}
+          <div className="absolute inset-0 shimmer-wave" />
         </div>
-        
-        {/* Tricolor Top Border */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-orange-500 via-white to-green-600" />
         
         <div className="relative z-10 p-6 pt-8 pb-10">
           <div className="flex items-start gap-4">
-            {/* App Logo with glow */}
+            {/* App Logo */}
             <div 
-              className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 overflow-hidden bg-white/10 backdrop-blur-sm opacity-0 animate-scale-in"
+              className="w-24 h-24 rounded-2xl flex items-center justify-center shrink-0 opacity-0 animate-scale-up overflow-hidden"
               style={{ 
                 animationDelay: '100ms',
                 animationFillMode: 'forwards'
@@ -119,16 +119,16 @@ const SchemesPage = () => {
             </div>
             
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-                <Sparkles className="w-4 h-4 text-accent animate-pulse-soft" />
-                <span className="text-xs font-semibold text-accent uppercase tracking-wider">
+              <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
+                <Sparkles className="w-4 h-4 text-accent rotate-gentle neon-glow" />
+                <span className="text-xs font-semibold text-accent uppercase tracking-wider color-cycle">
                   {t("भारत सरकार", "Govt. of India")}
                 </span>
               </div>
-              <h2 className="text-2xl font-bold text-white mb-1 leading-tight opacity-0 animate-fade-in" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
+              <h2 className="text-2xl font-bold text-white mb-1 leading-tight opacity-0 animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
                 {t("सरकारी योजनाएं", "Government Schemes")}
               </h2>
-              <p className="text-sm text-white/85 leading-relaxed opacity-0 animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
+              <p className="text-sm text-white/80 leading-relaxed opacity-0 animate-fade-up" style={{ animationDelay: '250ms', animationFillMode: 'forwards' }}>
                 {t(
                   "आपके लिए सभी सरकारी लाभ एक जगह",
                   "All government benefits at one place"
@@ -138,25 +138,25 @@ const SchemesPage = () => {
           </div>
           
           {/* Stats Row */}
-          <div className="flex items-center gap-4 mt-6 pt-4 border-t border-white/15 opacity-0 animate-fade-in" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-white">{allSchemes.length}</div>
-              <div className="text-xs text-white/70 uppercase tracking-wide">{t("योजनाएं", "Schemes")}</div>
+          <div className="flex items-center gap-4 mt-6 pt-4 border-t border-white/10 opacity-0 animate-slide-up" style={{ animationDelay: '350ms', animationFillMode: 'forwards' }}>
+            <div className="flex-1 text-center group cursor-pointer">
+              <div className="text-xl font-bold text-white group-hover:scale-110 transition-transform scale-pulse">{allSchemes.length}</div>
+              <div className="text-xs text-white/70 uppercase tracking-wide fade-pulse">{t("योजनाएं", "Schemes")}</div>
             </div>
-            <div className="w-px h-8 bg-white/25" />
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1">
-                <IndianRupee className="w-4 h-4" />
+            <div className="w-px h-8 bg-accent/50 fade-pulse" />
+            <div className="flex-1 text-center group cursor-pointer">
+              <div className="text-xl font-bold text-accent flex items-center justify-center gap-1 group-hover:scale-110 transition-transform neon-glow scale-pulse" style={{ animationDelay: '0.3s' }}>
+                <IndianRupee className="w-4 h-4 bounce-continuous" />
                 <span>Lakhs</span>
               </div>
-              <div className="text-xs text-white/70 uppercase tracking-wide">{t("लाभ", "Benefits")}</div>
+              <div className="text-xs text-white/70 uppercase tracking-wide fade-pulse">{t("लाभ", "Benefits")}</div>
             </div>
-            <div className="w-px h-8 bg-white/25" />
-            <div className="flex-1 text-center">
-              <div className="text-xl font-bold text-white flex items-center justify-center gap-1">
-                <TrendingUp className="w-4 h-4 text-green-400" />
+            <div className="w-px h-8 bg-accent/50 fade-pulse" />
+            <div className="flex-1 text-center group cursor-pointer">
+              <div className="text-xl font-bold text-white flex items-center justify-center gap-1 group-hover:scale-110 transition-transform">
+                <TrendingUp className="w-4 h-4 text-accent bounce-continuous neon-glow" />
               </div>
-              <div className="text-xs text-white/70 uppercase tracking-wide">{t("आसान", "Easy")}</div>
+              <div className="text-xs text-white/70 uppercase tracking-wide fade-pulse">{t("आसान", "Easy")}</div>
             </div>
           </div>
         </div>
