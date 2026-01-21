@@ -5,9 +5,8 @@ import { SearchBar } from "@/components/SearchBar";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { BottomNav } from "@/components/BottomNav";
 import { services, categories, searchServices } from "@/data/services";
-import { Search, Filter, X, Sparkles, TrendingUp, Zap, Star, Shield, Lock, CheckCircle2, BadgeCheck, Fingerprint } from "lucide-react";
+import { Search, Filter, X, Sparkles, TrendingUp, Zap, Star, Shield } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
-import govtEmblem from "@/assets/govt-emblem.png";
 
 const popularSearches = [
   "Aadhaar",
@@ -121,66 +120,36 @@ const SearchPage = () => {
       <Header title={t("खोजें", "Search")} showBack />
       
       <main className="px-4 py-6 space-y-4">
-        {/* Ultra Premium Search Header with Government Trust */}
-        <div className="relative rounded-2xl overflow-hidden mb-4 opacity-0 animate-scale-up" style={{ animationFillMode: 'forwards' }}>
-          {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/60 bg-animated-gradient" style={{ backgroundSize: '400% 400%' }} />
+        {/* Clean Professional Search Header */}
+        <div className="relative rounded-2xl overflow-hidden mb-4 opacity-0 animate-fade-in" style={{ animationFillMode: 'forwards' }}>
+          {/* Simple Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/85" />
           
-          {/* Hexagon Pattern */}
-          <div className="absolute inset-0 hexagon-pattern opacity-50" />
-          
-          {/* Digital Rain Effect */}
-          <div className="absolute inset-0 digital-rain" />
-          
-          {/* Spotlight Effect */}
-          <div className="absolute inset-0 spotlight" />
-          
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            {/* Ashoka Chakra Watermark */}
-            <div className="absolute -right-12 -bottom-12 w-48 h-48 opacity-[0.06]">
-              <svg viewBox="0 0 100 100" className="w-full h-full ashoka-chakra">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="2"/>
-                <circle cx="50" cy="50" r="35" fill="none" stroke="white" strokeWidth="1"/>
-                <circle cx="50" cy="50" r="8" fill="white"/>
-                {[...Array(24)].map((_, i) => (
-                  <line key={i} x1="50" y1="15" x2="50" y2="42" stroke="white" strokeWidth="2" transform={`rotate(${i * 15} 50 50)`}/>
-                ))}
-              </svg>
-            </div>
-            
-            <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 blur-2xl continuous-float" />
-            <div className="absolute -left-4 -bottom-4 w-24 h-24 rounded-full bg-accent/30 blur-xl continuous-float" style={{ animationDelay: '1s' }} />
-            <div className="absolute right-4 bottom-4 w-16 h-16 rounded-full bg-white/10 scale-pulse" />
-            
-            {/* Floating Icons */}
-            <div className="absolute right-6 top-6 opacity-20">
-              <Fingerprint className="w-8 h-8 text-white float-govt-icon" />
-            </div>
-            <div className="absolute left-8 bottom-8 opacity-15">
-              <Shield className="w-6 h-6 text-accent float-govt-icon" style={{ animationDelay: '2s' }} />
-            </div>
-            
-            <div className="absolute inset-0 shimmer-wave" />
+          {/* Subtle Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+              backgroundSize: '24px 24px'
+            }} />
           </div>
           
-          {/* Tricolor Ribbon at Top */}
-          <div className="absolute top-0 left-0 right-0 h-1 tricolor-wave" />
+          {/* Subtle Decorative Blob */}
+          <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
           
-          <div className="relative z-10 p-5">
-            {/* Security Badge */}
-            <div className="flex items-center gap-2 mb-3">
-              <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-2 py-1 rounded-full secure-badge">
-                <Lock className="w-3 h-3 text-success" />
-                <span className="text-[9px] font-bold text-white uppercase tracking-wide">
-                  {t("Secure Search", "Secure Search")}
-                </span>
-                <CheckCircle2 className="w-3 h-3 text-success verified-tick" />
-              </div>
+          {/* Tricolor Top Border */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-white to-green-600" />
+          
+          <div className="relative z-10 p-4">
+            {/* Trust Badge */}
+            <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-2 py-1 rounded-full w-fit mb-3">
+              <Shield className="w-3 h-3 text-green-400" />
+              <span className="text-[10px] font-medium text-white">
+                {t("Secure Search", "Secure Search")}
+              </span>
             </div>
             
-            <div className="flex items-center gap-2 mb-3">
-              <Search className="w-5 h-5 text-white/90 neon-glow" />
+            <div className="flex items-center gap-2 mb-2">
+              <Search className="w-5 h-5 text-white/90" />
               <h2 className="text-lg font-bold text-white">
                 {t("🔍 Dhundhein Kuch Bhi", "🔍 Search Anything")}
               </h2>
@@ -191,24 +160,6 @@ const SearchPage = () => {
                 "Type what you need - Aadhaar, PAN, Passport"
               )}
             </p>
-            
-            {/* Trust Badges Row */}
-            <div className="flex items-center gap-3 mt-4 pt-3 border-t border-white/15">
-              <div className="flex items-center gap-1.5">
-                <img src={govtEmblem} alt="" className="w-4 h-4 object-contain opacity-60" />
-                <span className="text-[10px] text-white/70">{t("Verified Data", "Verified Data")}</span>
-              </div>
-              <div className="w-px h-4 bg-white/20" />
-              <div className="flex items-center gap-1">
-                <BadgeCheck className="w-3.5 h-3.5 text-success" />
-                <span className="text-[10px] text-white/70">{t("Official Info", "Official Info")}</span>
-              </div>
-              <div className="w-px h-4 bg-white/20" />
-              <div className="flex items-center gap-1">
-                <Zap className="w-3.5 h-3.5 text-accent" />
-                <span className="text-[10px] text-white/70">{t("Fast Results", "Fast Results")}</span>
-              </div>
-            </div>
           </div>
         </div>
 
