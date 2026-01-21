@@ -120,41 +120,45 @@ const SearchPage = () => {
       <Header title={t("खोजें", "Search")} showBack />
       
       <main className="px-4 py-6 space-y-4">
-        {/* Clean Professional Search Header */}
-        <div className="relative rounded-2xl overflow-hidden mb-4 opacity-0 animate-fade-in" style={{ animationFillMode: 'forwards' }}>
-          {/* Simple Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/85" />
+        {/* Professional Animated Search Header */}
+        <div className="relative rounded-2xl overflow-hidden mb-4 opacity-0 animate-scale-in" style={{ animationFillMode: 'forwards' }}>
+          {/* Animated Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/60 animate-gradient-shift" />
           
-          {/* Subtle Pattern */}
-          <div className="absolute inset-0 opacity-10">
+          {/* Subtle Dot Pattern */}
+          <div className="absolute inset-0 opacity-15">
             <div className="absolute inset-0" style={{
               backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-              backgroundSize: '24px 24px'
+              backgroundSize: '20px 20px'
             }} />
           </div>
           
-          {/* Subtle Decorative Blob */}
-          <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
+          {/* Floating Decorative Blobs */}
+          <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/15 blur-2xl animate-float-slow" />
+          <div className="absolute -left-6 -bottom-6 w-24 h-24 rounded-full bg-accent/20 blur-xl animate-float-slow" style={{ animationDelay: '1.5s' }} />
+          
+          {/* Shimmer Effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
           
           {/* Tricolor Top Border */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-white to-green-600" />
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-orange-500 via-white to-green-600" />
           
           <div className="relative z-10 p-4">
-            {/* Trust Badge */}
-            <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-2 py-1 rounded-full w-fit mb-3">
-              <Shield className="w-3 h-3 text-green-400" />
-              <span className="text-[10px] font-medium text-white">
+            {/* Trust Badge with Pulse */}
+            <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-2.5 py-1 rounded-full w-fit mb-3 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+              <Shield className="w-3 h-3 text-green-400 animate-pulse-soft" />
+              <span className="text-[10px] font-semibold text-white tracking-wide">
                 {t("Secure Search", "Secure Search")}
               </span>
             </div>
             
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-2 animate-fade-in" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
               <Search className="w-5 h-5 text-white/90" />
               <h2 className="text-lg font-bold text-white">
                 {t("🔍 Dhundhein Kuch Bhi", "🔍 Search Anything")}
               </h2>
             </div>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/85 animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
               {t(
                 "Aadhaar, PAN, Passport - jo chahiye type karein",
                 "Type what you need - Aadhaar, PAN, Passport"
