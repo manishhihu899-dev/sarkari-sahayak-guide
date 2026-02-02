@@ -1,12 +1,14 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { BottomNav } from "@/components/BottomNav";
+import { WebSearchResults } from "@/components/WebSearchResults";
 import { services, categories, searchServices } from "@/data/services";
 import { Search, Filter, X, Sparkles, TrendingUp, Zap, Star, Shield, Globe, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
+import { searchWeb, WebSearchResult } from "@/lib/api/web-search";
 
 const popularSearches = [
   "Aadhaar",
@@ -15,10 +17,10 @@ const popularSearches = [
   "Bank",
   "SIM",
   "Scholarship",
-  "10th 12th Scholarship",
-  "Student",
-  "Form fill",
-  "Voter ID"
+  "PM Awas Yojana",
+  "Ayushman Bharat",
+  "Voter ID",
+  "Ration Card"
 ];
 
 const commonDocuments = [
@@ -38,6 +40,57 @@ const SearchPage = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedDocuments, setSelectedDocuments] = useState<string[]>([]);
+  
+  // Web search state
+  const [webResults, setWebResults] = useState<WebSearchResult[]>([]);
+  const [isWebSearching, setIsWebSearching] = useState(false);
+  const [webSearchError, setWebSearchError] = useState<string | undefined>();
+  const [lastWebQuery, setLastWebQuery] = useState("");
+
+  // Debounced web search
+  const performWebSearch = useCallback(async (query: string) => {
+    if (query.length < 3) {
+      setWebResults([]);
+      setWebSearchError(undefined);
+      return;
+    }
+
+    // Don't search if same query
+    if (query === lastWebQuery) return;
+
+    setIsWebSearching(true);
+    setWebSearchError(undefined);
+    setLastWebQuery(query);
+
+    try {
+      const response = await searchWeb(query, 6);
+      if (response.success && response.results) {
+        setWebResults(response.results);
+      } else {
+        setWebSearchError(response.error || 'Search failed');
+        setWebResults([]);
+      }
+    } catch (error) {
+      setWebSearchError('Network error');
+      setWebResults([]);
+    } finally {
+      setIsWebSearching(false);
+    }
+  }, [lastWebQuery]);
+
+  // Debounce web search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchQuery.length >= 3) {
+        performWebSearch(searchQuery);
+      } else {
+        setWebResults([]);
+        setWebSearchError(undefined);
+      }
+    }, 800); // Wait 800ms after typing stops
+
+    return () => clearTimeout(timer);
+  }, [searchQuery, performWebSearch]);
 
   const toggleCategory = (categoryId: string) => {
     setSelectedCategories(prev => 
@@ -381,69 +434,53 @@ const SearchPage = () => {
           </div>
         ) : (
           /* Search Results */
-          <div className="space-y-3">
-            <h2 className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-              {filteredResults.length > 0 ? (
-                <>
+          <div className="space-y-4">
+            {/* App Results Section */}
+            {filteredResults.length > 0 && (
+              <div className="space-y-3">
+                <h2 className="text-sm font-medium text-muted-foreground flex items-center gap-2">
                   <TrendingUp className="w-4 h-4 text-success" />
-                  {filteredResults.length} {t("results for", "results for")} "{searchQuery}"
-                </>
-              ) : (
-                <>
-                  <Search className="w-4 h-4" />
-                  {t("Kuch nahi mila - Google par search karein", "No results found - Try searching on Google")}
-                </>
-              )}
-            </h2>
-            {filteredResults.map((sub, index) => {
-              const parentService = services.find(s => 
-                s.subServices.some(ss => ss.id === sub.id)
-              );
-              return (
-                <SubServiceCard
-                  key={sub.id}
-                  title={sub.title}
-                  titleHi={sub.titleHi}
-                  description={sub.description}
-                  onClick={() => {
-                    if (parentService) {
-                      navigate(`/service/${parentService.id}/${sub.id}`);
-                    }
-                  }}
-                  delay={index * 50}
-                />
-              );
-            })}
+                  {filteredResults.length} {t("app mein mile", "found in app")}
+                </h2>
+                {filteredResults.map((sub, index) => {
+                  const parentService = services.find(s => 
+                    s.subServices.some(ss => ss.id === sub.id)
+                  );
+                  return (
+                    <SubServiceCard
+                      key={sub.id}
+                      title={sub.title}
+                      titleHi={sub.titleHi}
+                      description={sub.description}
+                      onClick={() => {
+                        if (parentService) {
+                          navigate(`/service/${parentService.id}/${sub.id}`);
+                        }
+                      }}
+                      delay={index * 50}
+                    />
+                  );
+                })}
+              </div>
+            )}
             
-            {/* Web Search Prompt when no results or few results */}
-            {(filteredResults.length === 0 || filteredResults.length < 3) && (
-              <div className="mt-4 p-4 bg-gradient-to-br from-primary/10 via-accent/5 to-success/10 rounded-2xl border border-primary/20 animate-fade-up">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Globe className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">
-                      {t("Aur dhundhna hai?", "Want more results?")}
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      {t("Google par sab sarkari schemes milenge", "Find all government schemes on Google")}
-                    </p>
-                  </div>
+            {/* Web Search Results - Always show when searching */}
+            <WebSearchResults 
+              results={webResults}
+              isLoading={isWebSearching}
+              error={webSearchError}
+              query={searchQuery}
+            />
+
+            {/* No results message */}
+            {filteredResults.length === 0 && webResults.length === 0 && !isWebSearching && (
+              <div className="py-8 text-center animate-fade-in">
+                <div className="w-16 h-16 rounded-full bg-muted/50 mx-auto mb-4 flex items-center justify-center">
+                  <Search className="w-8 h-8 text-muted-foreground/50" />
                 </div>
-                <button
-                  onClick={() => {
-                    const query = encodeURIComponent(`${searchQuery} India government official scheme service eligibility apply`);
-                    window.open(`https://www.google.com/search?q=${query}`, '_blank');
-                  }}
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-primary to-accent text-white rounded-xl shadow-elevated hover:scale-[1.02] transition-all touch-action-manipulation"
-                >
-                  <Globe className="w-5 h-5" />
-                  <span className="font-medium">
-                    {t(`"${searchQuery}" Google par dhundhein`, `Search "${searchQuery}" on Google`)}
-                  </span>
-                  <ExternalLink className="w-4 h-4 opacity-70" />
-                </button>
+                <p className="text-muted-foreground">
+                  {t("Kuch aur type karein jaise 'PM Awas' ya 'Scholarship'", "Try something else like 'PM Awas' or 'Scholarship'")}
+                </p>
               </div>
             )}
           </div>
