@@ -5,7 +5,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { BottomNav } from "@/components/BottomNav";
 import { services, categories, searchServices } from "@/data/services";
-import { Search, Filter, X, Sparkles, TrendingUp, Zap, Star, Shield } from "lucide-react";
+import { Search, Filter, X, Sparkles, TrendingUp, Zap, Star, Shield, Globe, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
 
 const popularSearches = [
@@ -390,41 +390,62 @@ const SearchPage = () => {
                 </>
               ) : (
                 <>
-                  <X className="w-4 h-4 text-destructive" />
-                  {t("No results for", "No results for")} "{searchQuery}"
+                  <Search className="w-4 h-4" />
+                  {t("Kuch nahi mila - Google par search karein", "No results found - Try searching on Google")}
                 </>
               )}
             </h2>
-            {filteredResults.length === 0 && (
-              <div className="py-12 text-center">
-                <div className="w-16 h-16 rounded-full bg-muted/50 mx-auto mb-4 flex items-center justify-center">
-                  <Search className="w-8 h-8 text-muted-foreground/50" />
+            {filteredResults.map((sub, index) => {
+              const parentService = services.find(s => 
+                s.subServices.some(ss => ss.id === sub.id)
+              );
+              return (
+                <SubServiceCard
+                  key={sub.id}
+                  title={sub.title}
+                  titleHi={sub.titleHi}
+                  description={sub.description}
+                  onClick={() => {
+                    if (parentService) {
+                      navigate(`/service/${parentService.id}/${sub.id}`);
+                    }
+                  }}
+                  delay={index * 50}
+                />
+              );
+            })}
+            
+            {/* Web Search Prompt when no results or few results */}
+            {(filteredResults.length === 0 || filteredResults.length < 3) && (
+              <div className="mt-4 p-4 bg-gradient-to-br from-primary/10 via-accent/5 to-success/10 rounded-2xl border border-primary/20 animate-fade-up">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                    <Globe className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">
+                      {t("Aur dhundhna hai?", "Want more results?")}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {t("Google par sab sarkari schemes milenge", "Find all government schemes on Google")}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-muted-foreground">
-                  {hasActiveFilters 
-                    ? t("Filters change karke try karein", "Try changing filters")
-                    : t("Kuch aur try karein jaise 'Aadhaar' ya 'Passport'", "Try something else like 'Aadhaar' or 'Passport'")
-                  }
-                </p>
+                <button
+                  onClick={() => {
+                    const query = encodeURIComponent(`${searchQuery} India government official scheme service eligibility apply`);
+                    window.open(`https://www.google.com/search?q=${query}`, '_blank');
+                  }}
+                  className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-primary to-accent text-white rounded-xl shadow-elevated hover:scale-[1.02] transition-all touch-action-manipulation"
+                >
+                  <Globe className="w-5 h-5" />
+                  <span className="font-medium">
+                    {t(`"${searchQuery}" Google par dhundhein`, `Search "${searchQuery}" on Google`)}
+                  </span>
+                  <ExternalLink className="w-4 h-4 opacity-70" />
+                </button>
               </div>
             )}
-            {filteredResults.map((sub, index) => (
-              <SubServiceCard
-                key={sub.id}
-                title={sub.title}
-                titleHi={sub.titleHi}
-                description={sub.description}
-                onClick={() => {
-                  const parentService = services.find(s => 
-                    s.subServices.some(ss => ss.id === sub.id)
-                  );
-                  if (parentService) {
-                    navigate(`/service/${parentService.id}/${sub.id}`);
-                  }
-                }}
-                delay={index * 50}
-              />
-            ))}
           </div>
         )}
       </main>
