@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Search, X, Loader2, TrendingUp, Globe, ExternalLink, FileText } from "lucide-react";
+import { Search, X, Loader2, TrendingUp, Globe, ExternalLink, FileText, Mic, MicOff } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLanguage } from "@/hooks/use-language";
@@ -8,6 +8,36 @@ import { searchWeb, WebSearchResult } from "@/lib/api/web-search";
 interface SearchModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+}
+
+// Extend Window interface for Speech Recognition
+interface SpeechRecognitionEvent extends Event {
+  results: SpeechRecognitionResultList;
+  resultIndex: number;
+}
+
+interface SpeechRecognitionErrorEvent extends Event {
+  error: string;
+}
+
+interface SpeechRecognition extends EventTarget {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  start: () => void;
+  stop: () => void;
+  abort: () => void;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+  onend: (() => void) | null;
+  onstart: (() => void) | null;
+}
+
+declare global {
+  interface Window {
+    SpeechRecognition: new () => SpeechRecognition;
+    webkitSpeechRecognition: new () => SpeechRecognition;
+  }
 }
 
 const popularSearches = [
@@ -28,21 +58,68 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
+
+  // Check for speech recognition support
+  useEffect(() => {
+    const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+    setSpeechSupported(!!SpeechRecognitionAPI);
+    
+    if (SpeechRecognitionAPI) {
+      recognitionRef.current = new SpeechRecognitionAPI();
+      recognitionRef.current.continuous = false;
+      recognitionRef.current.interimResults = false;
+      recognitionRef.current.lang = language === "hi" ? "hi-IN" : "en-IN";
+      
+      recognitionRef.current.onresult = (event: SpeechRecognitionEvent) => {
+        const transcript = event.results[0][0].transcript;
+        setQuery(transcript);
+        performSearch(transcript);
+      };
+      
+      recognitionRef.current.onerror = () => {
+        setIsListening(false);
+      };
+      
+      recognitionRef.current.onend = () => {
+        setIsListening(false);
+      };
+    }
+  }, [language]);
 
   // Auto-focus input when modal opens
   useEffect(() => {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 100);
     } else {
-      // Reset state when closed
       setQuery("");
       setWebResults([]);
       setError(null);
       setHasSearched(false);
+      setIsListening(false);
+      if (recognitionRef.current) {
+        recognitionRef.current.abort();
+      }
     }
   }, [open]);
+
+  // Toggle voice recognition
+  const toggleVoiceSearch = () => {
+    if (!recognitionRef.current) return;
+    
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      recognitionRef.current.lang = language === "hi" ? "hi-IN" : "en-IN";
+      recognitionRef.current.start();
+      setIsListening(true);
+    }
+  };
 
   // Debounced web search
   const performSearch = useCallback(async (searchQuery: string) => {
@@ -105,29 +182,27 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent 
         side="bottom" 
-        className="h-[100dvh] p-0 border-0 rounded-t-3xl overflow-hidden"
+        className="h-[100dvh] p-0 border-0 rounded-t-2xl overflow-hidden bg-background"
       >
-        {/* Decorative Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background pointer-events-none" />
-        <div className="absolute top-20 -left-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-float-slow pointer-events-none" />
-        <div className="absolute top-40 -right-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl animate-float-slow pointer-events-none" style={{ animationDelay: '1s' }} />
-
-        {/* Header with Tricolor */}
-        <div className="relative">
-          <div className="h-1 flex">
+        {/* Header */}
+        <div className="relative border-b border-border bg-card">
+          {/* Tricolor stripe */}
+          <div className="h-0.5 flex">
             <div className="flex-1 bg-[#FF9933]" />
             <div className="flex-1 bg-white" />
             <div className="flex-1 bg-[#138808]" />
           </div>
           
-          <div className="flex items-center justify-between px-4 py-3 bg-card/80 backdrop-blur-sm border-b border-border/50">
-            <SheetTitle className="text-lg font-bold text-foreground flex items-center gap-2">
-              <Search className="w-5 h-5 text-primary" />
+          <div className="flex items-center justify-between px-4 py-3">
+            <SheetTitle className="text-base font-semibold text-foreground flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Search className="w-4 h-4 text-primary" />
+              </div>
               {t("सर्च करें", "Search")}
             </SheetTitle>
             <button 
               onClick={() => onOpenChange(false)}
-              className="p-2 hover:bg-muted rounded-full transition-colors"
+              className="w-8 h-8 flex items-center justify-center hover:bg-muted rounded-lg transition-colors"
             >
               <X className="w-5 h-5 text-muted-foreground" />
             </button>
@@ -135,13 +210,13 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
         </div>
 
         {/* Search Input */}
-        <div className="px-4 py-4 relative z-10">
-          <div className="relative group">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2">
+        <div className="px-4 py-4 bg-card/50">
+          <div className="relative">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2">
               {isLoading ? (
-                <Loader2 className="w-6 h-6 text-primary animate-spin" />
+                <Loader2 className="w-5 h-5 text-primary animate-spin" />
               ) : (
-                <Search className="w-6 h-6 text-primary transition-colors" />
+                <Search className="w-5 h-5 text-muted-foreground" />
               )}
             </div>
             <input
@@ -149,29 +224,58 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
               type="text"
               value={query}
               onChange={(e) => handleInputChange(e.target.value)}
-              placeholder={t("कुछ भी सर्च करें... आधार, पैन, पासपोर्ट", "Search anything... Aadhaar, PAN, Passport")}
-              className="w-full h-14 pl-14 pr-14 bg-card rounded-2xl shadow-lg text-foreground placeholder:text-muted-foreground text-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all border border-border/50"
+              placeholder={t("कुछ भी सर्च करें...", "Search anything...")}
+              className="w-full h-12 pl-11 pr-24 bg-background rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all border border-border"
             />
-            {query && (
-              <button 
-                onClick={handleClear}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 hover:bg-muted rounded-full transition-colors"
-              >
-                <X className="w-5 h-5 text-muted-foreground" />
-              </button>
-            )}
+            <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+              {query && (
+                <button 
+                  onClick={handleClear}
+                  className="w-8 h-8 flex items-center justify-center hover:bg-muted rounded-lg transition-colors"
+                >
+                  <X className="w-4 h-4 text-muted-foreground" />
+                </button>
+              )}
+              {speechSupported && (
+                <button 
+                  onClick={toggleVoiceSearch}
+                  className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all ${
+                    isListening 
+                      ? "bg-destructive text-destructive-foreground animate-pulse" 
+                      : "hover:bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {isListening ? (
+                    <MicOff className="w-4 h-4" />
+                  ) : (
+                    <Mic className="w-4 h-4" />
+                  )}
+                </button>
+              )}
+            </div>
           </div>
+          
+          {/* Listening indicator */}
+          {isListening && (
+            <div className="mt-2 flex items-center justify-center gap-2 text-sm text-primary">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              {t("सुन रहे हैं...", "Listening...")}
+            </div>
+          )}
         </div>
 
         {/* Content Area */}
-        <ScrollArea className="h-[calc(100dvh-180px)] px-4">
-          {/* Popular Searches - Show when no query */}
+        <ScrollArea className="h-[calc(100dvh-160px)] px-4">
+          {/* Popular Searches */}
           {!query && !hasSearched && (
-            <div className="animate-fade-in">
+            <div className="py-4 animate-fade-in">
               <div className="flex items-center gap-2 mb-3">
-                <TrendingUp className="w-4 h-4 text-accent" />
-                <span className="text-sm font-semibold text-foreground">
-                  {t("लोकप्रिय सर्च", "Popular Searches")}
+                <TrendingUp className="w-4 h-4 text-muted-foreground" />
+                <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                  {t("लोकप्रिय", "Popular")}
                 </span>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -179,8 +283,7 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
                   <button
                     key={index}
                     onClick={() => handleTagClick(tag)}
-                    className="px-4 py-2 bg-card rounded-full border border-border/50 text-sm font-medium text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all shadow-sm"
-                    style={{ animationDelay: `${index * 50}ms` }}
+                    className="px-3 py-1.5 bg-muted rounded-full text-xs font-medium text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                   >
                     {language === "hi" ? tag.hi : tag.en}
                   </button>
@@ -188,14 +291,16 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
               </div>
 
               {/* Tips */}
-              <div className="mt-8 p-4 bg-accent/10 rounded-xl border border-accent/20">
-                <h4 className="font-semibold text-foreground mb-2">
-                  {t("💡 टिप्स", "💡 Tips")}
+              <div className="mt-6 p-4 bg-muted/50 rounded-xl">
+                <h4 className="text-sm font-medium text-foreground mb-2">
+                  {t("💡 सर्च टिप्स", "💡 Search Tips")}
                 </h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• {t("कोई भी सरकारी योजना खोजें", "Search any government scheme")}</li>
-                  <li>• {t("सरकारी वेबसाइट से सीधे रिजल्ट", "Results directly from govt websites")}</li>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li>• {t("सरकारी योजनाएं खोजें", "Search government schemes")}</li>
                   <li>• {t("हिंदी या English में टाइप करें", "Type in Hindi or English")}</li>
+                  {speechSupported && (
+                    <li>• {t("माइक बटन से बोलकर सर्च करें", "Use mic button for voice search")}</li>
+                  )}
                 </ul>
               </div>
             </div>
@@ -204,14 +309,11 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
           {/* Loading State */}
           {isLoading && (
             <div className="flex flex-col items-center justify-center py-12 animate-fade-in">
-              <div className="relative">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <Loader2 className="w-8 h-8 text-primary animate-spin" />
-                </div>
-                <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Loader2 className="w-6 h-6 text-primary animate-spin" />
               </div>
-              <p className="mt-4 text-muted-foreground text-sm">
-                {t("सरकारी वेबसाइट से खोज रहे हैं...", "Searching government websites...")}
+              <p className="mt-3 text-sm text-muted-foreground">
+                {t("खोज रहे हैं...", "Searching...")}
               </p>
             </div>
           )}
@@ -219,60 +321,60 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
           {/* Error State */}
           {error && !isLoading && (
             <div className="flex flex-col items-center justify-center py-8 animate-fade-in">
-              <div className="w-14 h-14 rounded-full bg-destructive/10 flex items-center justify-center mb-3">
-                <X className="w-7 h-7 text-destructive" />
+              <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center mb-3">
+                <X className="w-6 h-6 text-destructive" />
               </div>
-              <p className="text-destructive font-medium">{t("खोज में त्रुटि", "Search error")}</p>
-              <p className="text-sm text-muted-foreground mt-1">{error}</p>
+              <p className="text-sm font-medium text-destructive">{t("त्रुटि", "Error")}</p>
+              <p className="text-xs text-muted-foreground mt-1">{error}</p>
             </div>
           )}
 
           {/* Results */}
           {!isLoading && !error && webResults.length > 0 && (
-            <div className="space-y-3 animate-fade-in pb-8">
-              <div className="flex items-center gap-2 px-1">
-                <Globe className="w-4 h-4 text-primary" />
-                <h3 className="text-sm font-semibold text-foreground">
-                  {t("सरकारी वेबसाइट से", "From Government Websites")}
-                </h3>
-                <span className="text-xs text-muted-foreground bg-primary/10 px-2 py-0.5 rounded-full">
-                  {webResults.length} {t("परिणाम", "results")}
+            <div className="py-4 space-y-3 animate-fade-in">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                    {t("परिणाम", "Results")}
+                  </span>
+                </div>
+                <span className="text-xs text-muted-foreground">
+                  {webResults.length} {t("मिले", "found")}
                 </span>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 pb-8">
                 {webResults.map((result, index) => (
                   <a
                     key={index}
                     href={result.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-4 bg-card rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.01] group animate-fade-up"
-                    style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
+                    className="block p-3 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-sm transition-all group"
                   >
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center shrink-0">
-                        <FileText className="w-5 h-5 text-primary" />
+                      <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                        <FileText className="w-4 h-4 text-primary" />
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xs text-success font-medium bg-success/10 px-2 py-0.5 rounded-full flex items-center gap-1">
-                            <Globe className="w-3 h-3" />
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className="text-[10px] font-medium text-success bg-success/10 px-1.5 py-0.5 rounded">
                             {result.source}
                           </span>
                         </div>
                         
-                        <h4 className="font-semibold text-foreground text-sm leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                        <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-snug">
                           {result.title}
                         </h4>
                         
-                        <p className="text-xs text-muted-foreground mt-1.5 line-clamp-2">
+                        <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
                           {result.description || result.content}
                         </p>
                       </div>
                       
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0 mt-1" />
+                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0 mt-0.5" />
                     </div>
                   </a>
                 ))}
@@ -283,14 +385,14 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
           {/* No Results */}
           {!isLoading && !error && hasSearched && query && webResults.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 animate-fade-in">
-              <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
-                <Search className="w-8 h-8 text-muted-foreground" />
+              <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-3">
+                <Search className="w-6 h-6 text-muted-foreground" />
               </div>
-              <p className="font-medium text-foreground">
-                {t("कोई परिणाम नहीं मिला", "No results found")}
+              <p className="text-sm font-medium text-foreground">
+                {t("कोई परिणाम नहीं", "No results")}
               </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                {t("अलग शब्द से खोजें", "Try different keywords")}
+              <p className="text-xs text-muted-foreground mt-1">
+                {t("अलग शब्द आज़माएं", "Try different keywords")}
               </p>
             </div>
           )}
