@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/hooks/use-theme";
 import { LanguageProvider } from "@/hooks/use-language";
 import { BookmarkProvider } from "@/hooks/use-bookmarks";
 import { ApplicationsProvider } from "@/hooks/use-applications";
+import { OfflineIndicator } from "@/components/OfflineIndicator";
 import Index from "./pages/Index";
 import ServicePage from "./pages/ServicePage";
 import SubServicePage from "./pages/SubServicePage";
@@ -19,7 +20,20 @@ import HelpPage from "./pages/HelpPage";
 import SavedPage from "./pages/SavedPage";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // Keep data in cache for 5 minutes
+      staleTime: 1000 * 60 * 5,
+      // Cache data for 30 minutes even when stale
+      gcTime: 1000 * 60 * 30,
+      // Retry failed requests 2 times
+      retry: 2,
+      // Don't refetch on window focus in offline-first mode
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -28,6 +42,7 @@ const App = () => (
         <BookmarkProvider>
           <ApplicationsProvider>
             <TooltipProvider>
+              <OfflineIndicator />
               <Toaster />
               <Sonner />
               <BrowserRouter>
