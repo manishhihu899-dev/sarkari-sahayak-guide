@@ -1,43 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Search, X, Loader2, TrendingUp, Globe, ExternalLink, FileText, Mic, MicOff } from "lucide-react";
+import { Search, X, Loader2, TrendingUp, Globe, ExternalLink, FileText, Mic, MicOff, Clock, Trash2 } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLanguage } from "@/hooks/use-language";
+import { useVoiceSearch } from "@/hooks/use-voice-search";
+import { useRecentSearches } from "@/hooks/use-recent-searches";
 import { searchWeb, WebSearchResult } from "@/lib/api/web-search";
+import { toast } from "@/hooks/use-toast";
 
 interface SearchModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-}
-
-// Extend Window interface for Speech Recognition
-interface SpeechRecognitionEvent extends Event {
-  results: SpeechRecognitionResultList;
-  resultIndex: number;
-}
-
-interface SpeechRecognitionErrorEvent extends Event {
-  error: string;
-}
-
-interface SpeechRecognition extends EventTarget {
-  continuous: boolean;
-  interimResults: boolean;
-  lang: string;
-  start: () => void;
-  stop: () => void;
-  abort: () => void;
-  onresult: ((event: SpeechRecognitionEvent) => void) | null;
-  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
-  onend: (() => void) | null;
-  onstart: (() => void) | null;
-}
-
-declare global {
-  interface Window {
-    SpeechRecognition: new () => SpeechRecognition;
-    webkitSpeechRecognition: new () => SpeechRecognition;
-  }
 }
 
 const popularSearches = [
@@ -58,38 +31,36 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
-  const [isListening, setIsListening] = useState(false);
-  const [speechSupported, setSpeechSupported] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
 
-  // Check for speech recognition support
-  useEffect(() => {
-    const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
-    setSpeechSupported(!!SpeechRecognitionAPI);
-    
-    if (SpeechRecognitionAPI) {
-      recognitionRef.current = new SpeechRecognitionAPI();
-      recognitionRef.current.continuous = false;
-      recognitionRef.current.interimResults = false;
-      recognitionRef.current.lang = language === "hi" ? "hi-IN" : "en-IN";
-      
-      recognitionRef.current.onresult = (event: SpeechRecognitionEvent) => {
-        const transcript = event.results[0][0].transcript;
-        setQuery(transcript);
-        performSearch(transcript);
-      };
-      
-      recognitionRef.current.onerror = () => {
-        setIsListening(false);
-      };
-      
-      recognitionRef.current.onend = () => {
-        setIsListening(false);
-      };
-    }
-  }, [language]);
+  const { recentSearches, addSearch, removeSearch, clearHistory, hasHistory } = useRecentSearches();
+
+  // Voice search callback
+  const handleVoiceResult = useCallback((transcript: string) => {
+    setQuery(transcript);
+    performSearch(transcript);
+    addSearch(transcript);
+  }, []);
+
+  const handleVoiceError = useCallback((errorMsg: string) => {
+    toast({
+      title: t("त्रुटि", "Error"),
+      description: errorMsg,
+      variant: "destructive",
+    });
+  }, [t]);
+
+  const { 
+    isListening, 
+    isSupported: speechSupported, 
+    permissionState,
+    toggleListening 
+  } = useVoiceSearch({
+    language,
+    onResult: handleVoiceResult,
+    onError: handleVoiceError,
+  });
 
   // Auto-focus input when modal opens
   useEffect(() => {
@@ -100,26 +71,8 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
       setWebResults([]);
       setError(null);
       setHasSearched(false);
-      setIsListening(false);
-      if (recognitionRef.current) {
-        recognitionRef.current.abort();
-      }
     }
   }, [open]);
-
-  // Toggle voice recognition
-  const toggleVoiceSearch = () => {
-    if (!recognitionRef.current) return;
-    
-    if (isListening) {
-      recognitionRef.current.stop();
-      setIsListening(false);
-    } else {
-      recognitionRef.current.lang = language === "hi" ? "hi-IN" : "en-IN";
-      recognitionRef.current.start();
-      setIsListening(true);
-    }
-  };
 
   // Debounced web search
   const performSearch = useCallback(async (searchQuery: string) => {
@@ -137,6 +90,8 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
       const response = await searchWeb(searchQuery, 8);
       if (response.success && response.results) {
         setWebResults(response.results);
+        // Add to recent searches only on successful search
+        addSearch(searchQuery);
       } else {
         setError(response.error || "Search failed");
         setWebResults([]);
@@ -147,7 +102,7 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [addSearch]);
 
   // Handle input change with debounce
   const handleInputChange = (value: string) => {
@@ -165,6 +120,12 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
   // Handle popular tag click
   const handleTagClick = (tag: { hi: string; en: string }) => {
     const searchTerm = language === "hi" ? tag.hi : tag.en;
+    setQuery(searchTerm);
+    performSearch(searchTerm);
+  };
+
+  // Handle recent search click
+  const handleRecentClick = (searchTerm: string) => {
     setQuery(searchTerm);
     performSearch(searchTerm);
   };
@@ -238,12 +199,18 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
               )}
               {speechSupported && (
                 <button 
-                  onClick={toggleVoiceSearch}
+                  onClick={toggleListening}
                   className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all ${
                     isListening 
                       ? "bg-destructive text-destructive-foreground animate-pulse" 
-                      : "hover:bg-muted text-muted-foreground hover:text-foreground"
+                      : permissionState === "denied"
+                        ? "bg-muted text-muted-foreground cursor-not-allowed"
+                        : "hover:bg-muted text-muted-foreground hover:text-foreground"
                   }`}
+                  title={permissionState === "denied" 
+                    ? t("माइक्रोफोन एक्सेस अस्वीकृत", "Microphone access denied") 
+                    : t("आवाज़ से खोजें", "Voice search")
+                  }
                 >
                   {isListening ? (
                     <MicOff className="w-4 h-4" />
@@ -269,6 +236,48 @@ export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
 
         {/* Content Area */}
         <ScrollArea className="h-[calc(100dvh-160px)] px-4">
+          {/* Recent Searches */}
+          {!query && !hasSearched && hasHistory && (
+            <div className="py-4 animate-fade-in">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                    {t("हाल की खोज", "Recent Searches")}
+                  </span>
+                </div>
+                <button 
+                  onClick={clearHistory}
+                  className="text-xs text-muted-foreground hover:text-destructive transition-colors flex items-center gap-1"
+                >
+                  <Trash2 className="w-3 h-3" />
+                  {t("साफ़ करें", "Clear")}
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {recentSearches.map((search, index) => (
+                  <div key={index} className="group relative">
+                    <button
+                      onClick={() => handleRecentClick(search)}
+                      className="px-3 py-1.5 bg-muted rounded-full text-xs font-medium text-foreground hover:bg-primary hover:text-primary-foreground transition-colors pr-7"
+                    >
+                      {search}
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeSearch(search);
+                      }}
+                      className="absolute right-1 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 hover:bg-destructive/20 transition-all"
+                    >
+                      <X className="w-3 h-3 text-muted-foreground" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Popular Searches */}
           {!query && !hasSearched && (
             <div className="py-4 animate-fade-in">
