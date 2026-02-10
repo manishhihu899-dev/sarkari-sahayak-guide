@@ -15,13 +15,9 @@ export const SearchBar = ({
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <div 
-      className={`relative transition-all duration-200 ${
-        isFocused ? "scale-[1.02]" : ""
-      }`}
-    >
-      <div className="absolute left-4 top-1/2 -translate-y-1/2">
-        <Search className={`w-5 h-5 transition-colors ${isFocused ? "text-primary" : "text-muted-foreground"}`} />
+    <div className="relative">
+      <div className="absolute left-3.5 top-1/2 -translate-y-1/2">
+        <Search className={`w-4 h-4 transition-colors ${isFocused ? "text-primary" : "text-muted-foreground"}`} />
       </div>
       <input
         type="text"
@@ -30,14 +26,14 @@ export const SearchBar = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         placeholder={placeholder}
-        className="w-full h-14 pl-12 pr-12 bg-card rounded-xl shadow-card text-foreground placeholder:text-muted-foreground text-base focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
+        className="w-full h-11 pl-10 pr-10 bg-secondary rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-card border border-transparent focus:border-primary/30 transition-all"
       />
       {value && (
         <button 
           onClick={() => onChange("")}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-muted rounded-full transition-colors"
+          className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 hover:bg-muted rounded transition-colors"
         >
-          <X className="w-5 h-5 text-muted-foreground" />
+          <X className="w-4 h-4 text-muted-foreground" />
         </button>
       )}
     </div>

@@ -26,57 +26,33 @@ export const ServiceCard = ({
   return (
     <button
       onClick={onClick}
-      className="w-full rounded-2xl p-4 shadow-card hover:shadow-elevated transition-all duration-300 flex items-center gap-4 text-left group opacity-0 animate-fade-up touch-action-manipulation active:scale-[0.98] relative overflow-hidden border border-border/50"
-      style={{ 
-        animationDelay: `${delay}ms`,
-        background: themeColor 
-          ? `linear-gradient(135deg, hsl(${themeColor} / 0.08) 0%, hsl(${themeColor} / 0.02) 100%)`
-          : undefined
-      }}
+      className="w-full rounded-xl p-3.5 bg-card border border-border/60 hover:border-border hover:shadow-elevated transition-all duration-200 flex items-center gap-3.5 text-left group opacity-0 animate-fade-up touch-action-manipulation active:scale-[0.99]"
+      style={{ animationDelay: `${delay}ms` }}
     >
-      {/* Decorative accent line */}
       <div 
-        className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
-        style={{ backgroundColor: themeColor ? `hsl(${themeColor})` : undefined }}
-      />
-      
-      {/* Icon Container with gradient */}
-      <div 
-        className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-105 relative overflow-hidden"
+        className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105"
         style={{ 
           background: themeColor 
-            ? `linear-gradient(135deg, hsl(${themeColor}) 0%, hsl(${themeColor} / 0.8) 100%)`
-            : undefined,
-          boxShadow: themeColor 
-            ? `0 4px 14px -4px hsl(${themeColor} / 0.4)`
-            : undefined
+            ? `hsl(${themeColor} / 0.12)`
+            : 'hsl(var(--secondary))',
         }}
       >
-        {/* Subtle shine effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/25 to-transparent" />
-        <Icon className="w-7 h-7 text-white relative z-10" />
+        <Icon 
+          className="w-5 h-5" 
+          style={{ color: themeColor ? `hsl(${themeColor})` : 'hsl(var(--primary))' }}
+        />
       </div>
       
-      <div className="flex-1 min-w-0 pl-2">
-        <h3 className="font-bold text-foreground text-lg leading-tight tracking-tight">
+      <div className="flex-1 min-w-0">
+        <h3 className="font-semibold text-foreground text-[15px] leading-tight">
           {language === "hi" ? titleHi : title}
         </h3>
-        <p className="text-sm text-muted-foreground mt-1 line-clamp-1">
+        <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">
           {description}
         </p>
       </div>
       
-      <div 
-        className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 group-hover:translate-x-1"
-        style={{ 
-          backgroundColor: themeColor ? `hsl(${themeColor} / 0.1)` : undefined 
-        }}
-      >
-        <ChevronRight 
-          className="w-5 h-5 transition-colors"
-          style={{ color: themeColor ? `hsl(${themeColor})` : undefined }}
-        />
-      </div>
+      <ChevronRight className="w-4 h-4 text-muted-foreground/50 shrink-0 group-hover:text-muted-foreground group-hover:translate-x-0.5 transition-all" />
     </button>
   );
 };

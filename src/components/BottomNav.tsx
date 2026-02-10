@@ -28,22 +28,22 @@ export const BottomNav = () => {
 
   return (
     <>
-      <nav className="fixed bottom-0 left-0 right-0 bg-card border-t border-border px-2 pb-safe z-50">
-        <div className="flex items-center justify-around py-2">
+      <nav className="fixed bottom-0 left-0 right-0 bg-card/90 backdrop-blur-xl border-t border-border px-2 pb-safe z-50">
+        <div className="flex items-center justify-around py-1.5">
           {navItems.map(({ icon: Icon, label, path, action }) => {
             const isActive = action === "navigate" ? location.pathname === path : false;
             return (
               <button
                 key={path}
                 onClick={() => handleNavClick({ icon: Icon, label, path, action })}
-                className={`flex flex-col items-center gap-1 py-2 px-4 rounded-xl transition-all touch-action-manipulation ${
+                className={`flex flex-col items-center gap-0.5 py-1.5 px-3 rounded-lg transition-colors touch-action-manipulation ${
                   isActive 
-                    ? "text-accent bg-accent/10" 
+                    ? "text-primary" 
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <Icon className={`w-6 h-6 ${isActive ? "scale-110" : ""} transition-transform`} />
-                <span className="text-xs font-medium">{label}</span>
+                <Icon className={`w-5 h-5 ${isActive ? "stroke-[2.5px]" : ""} transition-all`} />
+                <span className={`text-[10px] ${isActive ? "font-semibold" : "font-medium"}`}>{label}</span>
               </button>
             );
           })}
