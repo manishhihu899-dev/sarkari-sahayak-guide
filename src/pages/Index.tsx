@@ -9,7 +9,7 @@ import { SubServiceCard } from "@/components/SubServiceCard";
 import { useLanguage } from "@/hooks/use-language";
 import { Shield, Users, FileCheck, Landmark, Award } from "lucide-react";
 
-const AnimatedCounter = ({ target, delay = 0, suffix = "" }: { target: number; delay?: number; suffix?: string }) => {
+const AnimatedCounter = ({ target, delay = 0, suffix = "" }: {target: number;delay?: number;suffix?: string;}) => {
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
 
@@ -37,11 +37,11 @@ const AnimatedCounter = ({ target, delay = 0, suffix = "" }: { target: number; d
   return (
     <span className={`tabular-nums ${started ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
       {count}{suffix}
-    </span>
-  );
+    </span>);
+
 };
 
-const TypingText = ({ texts, className = "" }: { texts: string[]; className?: string }) => {
+const TypingText = ({ texts, className = "" }: {texts: string[];className?: string;}) => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -72,8 +72,8 @@ const TypingText = ({ texts, className = "" }: { texts: string[]; className?: st
     <span className={className}>
       {texts[textIndex].substring(0, charIndex)}
       <span className="typing-cursor" />
-    </span>
-  );
+    </span>);
+
 };
 
 const Index = () => {
@@ -83,12 +83,12 @@ const Index = () => {
   const searchResults = searchQuery.length > 1 ? searchServices(searchQuery) : [];
 
   const typingTexts = ["Aadhaar Card", "PAN Card", "Passport", "Voter ID", "Bank KYC", "Driving License"];
-  
+
   const stats = [
-    { icon: FileCheck, value: 15, suffix: "+", label: t("सेवाएं", "Services"), delay: 200 },
-    { icon: Users, value: 100, suffix: "+", label: t("गाइड्स", "Guides"), delay: 400 },
-    { icon: Award, value: 10, suffix: "+", label: t("योजनाएं", "Schemes"), delay: 600 },
-  ];
+  { icon: FileCheck, value: 15, suffix: "+", label: t("सेवाएं", "Services"), delay: 200 },
+  { icon: Users, value: 100, suffix: "+", label: t("गाइड्स", "Guides"), delay: 400 },
+  { icon: Award, value: 10, suffix: "+", label: t("योजनाएं", "Schemes"), delay: 600 }];
+
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -96,41 +96,41 @@ const Index = () => {
       
       <main className="px-4 py-5 space-y-6 max-w-lg mx-auto">
         {/* Search */}
-        <SearchBar 
-          value={searchQuery} 
-          onChange={setSearchQuery} 
-          placeholder={t("Search: Aadhaar, PAN, Passport...", "Search: Aadhaar, PAN, Passport...")} 
-        />
+        <SearchBar
+          value={searchQuery}
+          onChange={setSearchQuery}
+          placeholder={t("Search: Aadhaar, PAN, Passport...", "Search: Aadhaar, PAN, Passport...")} />
+
 
         {/* Search Results */}
-        {searchQuery.length > 1 && (
-          <div className="space-y-2">
+        {searchQuery.length > 1 &&
+        <div className="space-y-2">
             <p className="text-xs font-medium text-muted-foreground px-1">
-              {searchResults.length > 0 
-                ? t(`${searchResults.length} results mile`, `${searchResults.length} results found`) 
-                : t("Kuch nahi mila", "No results found")}
+              {searchResults.length > 0 ?
+            t(`${searchResults.length} results mile`, `${searchResults.length} results found`) :
+            t("Kuch nahi mila", "No results found")}
             </p>
-            {searchResults.map((sub, index) => (
-              <SubServiceCard 
-                key={sub.id} 
-                title={sub.title} 
-                titleHi={sub.titleHi} 
-                description={sub.description} 
-                onClick={() => {
-                  const parentService = services.find(s => s.subServices.some(ss => ss.id === sub.id));
-                  if (parentService) {
-                    navigate(`/service/${parentService.id}/${sub.id}`);
-                  }
-                }} 
-                delay={index * 50} 
-              />
-            ))}
+            {searchResults.map((sub, index) =>
+          <SubServiceCard
+            key={sub.id}
+            title={sub.title}
+            titleHi={sub.titleHi}
+            description={sub.description}
+            onClick={() => {
+              const parentService = services.find((s) => s.subServices.some((ss) => ss.id === sub.id));
+              if (parentService) {
+                navigate(`/service/${parentService.id}/${sub.id}`);
+              }
+            }}
+            delay={index * 50} />
+
+          )}
           </div>
-        )}
+        }
 
         {/* Main Content */}
-        {searchQuery.length <= 1 && (
-          <>
+        {searchQuery.length <= 1 &&
+        <>
             {/* Welcome Banner */}
             <div className="opacity-0 animate-fade-in-blur" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
               <div className="text-center space-y-2 py-3">
@@ -149,32 +149,32 @@ const Index = () => {
 
                 <p className="text-sm text-muted-foreground font-medium max-w-[280px] mx-auto opacity-0 animate-fade-in-blur" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
                   {t(
-                    "Sabhi sarkari services ka step-by-step guide — bilkul free!",
-                    "Step-by-step guide for all government services — completely free!"
-                  )}
+                  "Sabhi sarkari services ka step-by-step guide — bilkul free!",
+                  "Step-by-step guide for all government services — completely free!"
+                )}
                 </p>
               </div>
             </div>
 
             {/* Stats Row */}
             <div className="grid grid-cols-3 gap-3">
-              {stats.map((stat, index) => (
-                <div 
-                  key={stat.label}
-                  className="bg-card border border-border/50 rounded-2xl p-3 text-center opacity-0 animate-counter-up"
-                  style={{ animationDelay: `${stat.delay}ms`, animationFillMode: 'forwards' }}
-                >
-                  <div className="w-9 h-9 rounded-xl bg-primary/8 flex items-center justify-center mx-auto mb-2">
-                    <stat.icon className="w-4 h-4 text-primary" strokeWidth={2} />
-                  </div>
-                  <div className="text-xl font-extrabold text-foreground">
-                    <AnimatedCounter target={stat.value} delay={stat.delay} suffix={stat.suffix} />
-                  </div>
-                  <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mt-0.5">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+              {stats.map((stat, index) => {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            )}
             </div>
 
             {/* Govt Notice Bar */}
@@ -182,9 +182,9 @@ const Index = () => {
               <Landmark className="w-4 h-4 text-primary shrink-0" />
               <p className="text-xs font-medium text-foreground/80">
                 {t(
-                  "Yeh ek unofficial guide app hai — sabhi links official govt websites ke hain.",
-                  "This is an unofficial guide — all links direct to official govt websites."
-                )}
+                "Yeh ek unofficial guide app hai — sabhi links official govt websites ke hain.",
+                "This is an unofficial guide — all links direct to official govt websites."
+              )}
               </p>
             </div>
 
@@ -199,18 +199,18 @@ const Index = () => {
                 </span>
               </div>
               <div className="grid gap-2.5">
-                {services.map((service, index) => (
-                  <ServiceCard 
-                    key={service.id} 
-                    title={service.title} 
-                    titleHi={service.titleHi} 
-                    description={service.description} 
-                    icon={service.icon} 
-                    themeColor={service.themeColor} 
-                    onClick={() => navigate(`/service/${service.id}`)} 
-                    delay={850 + index * 60} 
-                  />
-                ))}
+                {services.map((service, index) =>
+              <ServiceCard
+                key={service.id}
+                title={service.title}
+                titleHi={service.titleHi}
+                description={service.description}
+                icon={service.icon}
+                themeColor={service.themeColor}
+                onClick={() => navigate(`/service/${service.id}`)}
+                delay={850 + index * 60} />
+
+              )}
               </div>
             </div>
 
@@ -222,12 +222,12 @@ const Index = () => {
               <div className="tricolor-stripe mt-3 rounded-full max-w-[60px] mx-auto" />
             </div>
           </>
-        )}
+        }
       </main>
 
       <BottomNav />
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;
