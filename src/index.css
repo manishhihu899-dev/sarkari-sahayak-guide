@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,44 +6,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 224 20% 14%;
+    --background: 210 20% 98%;
+    --foreground: 220 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 224 20% 14%;
+    --card-foreground: 220 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 224 20% 14%;
+    --popover-foreground: 220 25% 10%;
 
-    --primary: 224 55% 48%;
+    --primary: 250 75% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 96%;
-    --secondary-foreground: 224 20% 30%;
+    --secondary: 220 25% 95%;
+    --secondary-foreground: 220 20% 30%;
 
-    --muted: 220 14% 95%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 220 18% 94%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 24 80% 55%;
+    --accent: 160 60% 45%;
     --accent-foreground: 0 0% 100%;
 
     --success: 152 55% 42%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 40 90% 52%;
-    --warning-foreground: 224 20% 14%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 25% 10%;
 
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 55% 48%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 250 75% 58%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    --shadow-card: 0 1px 3px 0 hsl(224 20% 14% / 0.06), 0 1px 2px -1px hsl(224 20% 14% / 0.06);
-    --shadow-elevated: 0 10px 25px -5px hsl(224 20% 14% / 0.08), 0 8px 10px -6px hsl(224 20% 14% / 0.04);
+    --shadow-card: 0 1px 3px 0 hsl(220 25% 10% / 0.04), 0 1px 2px -1px hsl(220 25% 10% / 0.03);
+    --shadow-elevated: 0 12px 32px -8px hsl(250 75% 58% / 0.12), 0 4px 12px -4px hsl(220 25% 10% / 0.06);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -56,39 +56,39 @@
   }
 
   .dark {
-    --background: 224 20% 8%;
-    --foreground: 220 15% 90%;
+    --background: 228 20% 7%;
+    --foreground: 220 20% 92%;
 
-    --card: 224 20% 11%;
-    --card-foreground: 220 15% 90%;
+    --card: 228 20% 10%;
+    --card-foreground: 220 20% 92%;
 
-    --popover: 224 20% 11%;
-    --popover-foreground: 220 15% 90%;
+    --popover: 228 20% 10%;
+    --popover-foreground: 220 20% 92%;
 
-    --primary: 224 55% 55%;
+    --primary: 250 75% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 224 15% 16%;
-    --secondary-foreground: 220 15% 85%;
+    --secondary: 228 18% 15%;
+    --secondary-foreground: 220 15% 80%;
 
-    --muted: 224 15% 16%;
+    --muted: 228 15% 15%;
     --muted-foreground: 220 10% 55%;
 
-    --accent: 24 80% 55%;
+    --accent: 160 55% 48%;
     --accent-foreground: 0 0% 100%;
 
     --success: 152 55% 45%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 40 90% 55%;
-    --warning-foreground: 224 20% 14%;
+    --warning: 38 90% 55%;
+    --warning-foreground: 220 25% 10%;
 
     --destructive: 0 60% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 224 15% 20%;
-    --input: 224 15% 20%;
-    --ring: 224 55% 55%;
+    --border: 228 15% 18%;
+    --input: 228 15% 18%;
+    --ring: 250 75% 65%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -107,7 +107,7 @@
   }
 
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -127,47 +127,47 @@
 
 /* Animations */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scale-in {
-  from { opacity: 0; transform: scale(0.96); }
+  from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
 
 .animate-fade-up {
-  animation: fade-up 0.4s ease-out forwards;
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .animate-scale-in {
-  animation: scale-in 0.3s ease-out forwards;
+  animation: scale-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Subtle float */
+/* Float */
 .animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
+  animation: float-slow 8s ease-in-out infinite;
 }
 
 @keyframes float-slow {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  50% { transform: translateY(-8px); }
 }
 
 /* Pulse soft */
 .animate-pulse-soft {
-  animation: pulse-soft 2.5s ease-in-out infinite;
+  animation: pulse-soft 3s ease-in-out infinite;
 }
 
 @keyframes pulse-soft {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  50% { opacity: 0.5; }
 }
 
 /* Gradient shift */
 .animate-gradient-shift {
   background-size: 200% 200%;
-  animation: gradient-shift 6s ease infinite;
+  animation: gradient-shift 8s ease infinite;
 }
 
 @keyframes gradient-shift {
@@ -175,36 +175,35 @@
   50% { background-position: 100% 50%; }
 }
 
-/* Shimmer */
-.animate-shimmer {
-  animation: shimmer 3s infinite linear;
-  background: linear-gradient(90deg, transparent 0%, hsl(var(--primary) / 0.06) 50%, transparent 100%);
-  background-size: 200% 100%;
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
 /* Card hover */
 .card-hover-effect {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-hover-effect:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-elevated);
 }
 
-/* Icon bounce */
-.icon-bounce {
-  animation: bounce-subtle 2.5s ease-in-out infinite;
+/* Search focus */
+.search-focus-glow:focus-within {
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.12);
 }
 
-@keyframes bounce-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+/* Floating particles */
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  50% { transform: translateY(-25px) translateX(10px); opacity: 0.5; }
+}
+
+/* Blob morph */
+.blob {
+  animation: morph 15s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 40% 60% 30% 70% / 40% 50% 60% 50%; }
 }
 
 /* Shimmer wave */
@@ -220,8 +219,8 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
-  animation: shimmer-wave 4s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  animation: shimmer-wave 5s ease-in-out infinite;
 }
 
 @keyframes shimmer-wave {
@@ -229,43 +228,10 @@
   100% { left: 100%; }
 }
 
-/* Neon glow - subtle */
-.neon-glow {
-  filter: drop-shadow(0 0 3px currentColor);
-}
-
 /* Staggered entrance */
 .stagger-1 { animation-delay: 0ms; }
-.stagger-2 { animation-delay: 80ms; }
-.stagger-3 { animation-delay: 160ms; }
-.stagger-4 { animation-delay: 240ms; }
-.stagger-5 { animation-delay: 320ms; }
-.stagger-6 { animation-delay: 400ms; }
-
-/* Search focus */
-.search-focus-glow:focus-within {
-  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
-}
-
-/* Floating particles */
-.particle {
-  animation: float-particle 5s ease-in-out infinite;
-}
-.particle-delay-1 { animation-delay: 0.8s; }
-.particle-delay-2 { animation-delay: 1.5s; }
-.particle-delay-3 { animation-delay: 2.2s; }
-
-@keyframes float-particle {
-  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
-  50% { transform: translateY(-20px) translateX(8px); opacity: 0.6; }
-}
-
-/* Blob morph */
-.blob {
-  animation: morph 12s ease-in-out infinite;
-}
-
-@keyframes morph {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50% { border-radius: 40% 60% 30% 70% / 40% 50% 60% 50%; }
-}
+.stagger-2 { animation-delay: 60ms; }
+.stagger-3 { animation-delay: 120ms; }
+.stagger-4 { animation-delay: 180ms; }
+.stagger-5 { animation-delay: 240ms; }
+.stagger-6 { animation-delay: 300ms; }
