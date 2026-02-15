@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { BottomNav } from "@/components/BottomNav";
 import { services } from "@/data/services";
 import { useLanguage } from "@/hooks/use-language";
-import { Sparkles } from "lucide-react";
+
 import appLogo from "@/assets/app-logo.png";
 
 const CategoriesPage = () => {
@@ -17,13 +17,13 @@ const CategoriesPage = () => {
       {/* Premium Hero Banner */}
       <div className="relative overflow-hidden wave-border">
         {/* Gradient Background with Animation */}
-        <div 
+        <div
           className="absolute inset-0 bg-animated-gradient"
           style={{
             background: `linear-gradient(135deg, hsl(220 65% 28%) 0%, hsl(200 70% 35%) 50%, hsl(180 60% 30%) 100%)`,
             backgroundSize: '400% 400%'
-          }}
-        />
+          }} />
+
         
         {/* Moving Dots Pattern */}
         <div className="absolute inset-0 moving-dots opacity-20" />
@@ -48,23 +48,23 @@ const CategoriesPage = () => {
         <div className="relative z-10 p-6 py-8">
           <div className="flex items-center gap-4">
             {/* App Logo */}
-            <div 
+            <div
               className="w-24 h-24 rounded-2xl flex items-center justify-center shrink-0 opacity-0 animate-scale-up overflow-hidden"
-              style={{ 
+              style={{
                 animationDelay: '100ms',
                 animationFillMode: 'forwards'
-              }}
-            >
-              <img 
-                src={appLogo} 
-                alt="Sarkari Sahayak Logo" 
-                className="w-full h-full object-contain drop-shadow-lg"
-              />
+              }}>
+
+              <img
+                src={appLogo}
+                alt="Sarkari Sahayak Logo"
+                className="w-full h-full object-contain drop-shadow-lg" />
+
             </div>
             
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1 opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                <Sparkles className="w-4 h-4 text-accent rotate-gentle neon-glow" />
+                
                 <span className="text-xs font-semibold text-accent uppercase tracking-wider color-cycle">
                   {t("सभी सेवाएं", "All Services")}
                 </span>
@@ -89,36 +89,36 @@ const CategoriesPage = () => {
                 key={service.id}
                 onClick={() => navigate(`/service/${service.id}`)}
                 className="bg-card rounded-2xl p-5 shadow-card transition-all flex flex-col items-center gap-3 text-center opacity-0 animate-scale-up touch-action-manipulation active:scale-[0.98] relative overflow-hidden border border-border/50 group card-hover-effect"
-                style={{ 
+                style={{
                   animationDelay: `${100 + index * 60}ms`,
                   animationFillMode: 'forwards'
-                }}
-              >
+                }}>
+
                 {/* Accent line with glow */}
-                <div 
+                <div
                   className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
-                  style={{ backgroundColor: `hsl(${service.themeColor})` }}
-                />
+                  style={{ backgroundColor: `hsl(${service.themeColor})` }} />
+
                 
                 {/* Subtle background gradient */}
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
                     background: `linear-gradient(145deg, hsl(${service.themeColor} / 0.08) 0%, transparent 100%)`
-                  }}
-                />
+                  }} />
+
                 
                 {/* Floating particles on hover */}
                 <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-accent/20 opacity-0 group-hover:opacity-100 animate-float particle-delay-1" />
                 <div className="absolute bottom-4 left-4 w-1.5 h-1.5 rounded-full bg-primary/20 opacity-0 group-hover:opacity-100 animate-float particle-delay-2" />
                 
-                <div 
+                <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg relative overflow-hidden"
-                  style={{ 
+                  style={{
                     background: `linear-gradient(135deg, hsl(${service.themeColor}) 0%, hsl(${service.themeColor} / 0.8) 100%)`,
                     boxShadow: `0 4px 14px -4px hsl(${service.themeColor} / 0.4)`
-                  }}
-                >
+                  }}>
+
                   <div className="absolute inset-0 bg-gradient-to-br from-white/25 to-transparent" />
                   {/* Shine effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 effect-shine" />
@@ -132,15 +132,15 @@ const CategoriesPage = () => {
                     {service.title}
                   </p>
                 </div>
-              </button>
-            );
+              </button>);
+
           })}
         </div>
       </main>
 
       <BottomNav />
-    </div>
-  );
+    </div>);
+
 };
 
 export default CategoriesPage;
