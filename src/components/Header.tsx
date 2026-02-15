@@ -1,4 +1,4 @@
-import { ArrowLeft, Moon, Sun, Bookmark, Shield, Landmark } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Bookmark, Landmark } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 import { useLanguage } from "@/hooks/use-language";
@@ -42,21 +42,21 @@ export const Header = ({ title, showBack = false }: HeaderProps) => {
 
         <div className="px-4 py-3.5">
           <div className="flex items-center gap-3 relative z-10">
-            {showBack && (
-              <button 
-                onClick={() => navigate(-1)}
-                className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 touch-action-manipulation active:scale-95 border border-white/10"
-              >
+            {showBack &&
+            <button
+              onClick={() => navigate(-1)}
+              className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 touch-action-manipulation active:scale-95 border border-white/10">
+
                 <ArrowLeft className="w-5 h-5 text-primary-foreground" />
               </button>
-            )}
+            }
             <div className="flex-1">
-              {title ? (
-                <h1 className="text-lg font-bold text-primary-foreground line-clamp-1 tracking-tight">
+              {title ?
+              <h1 className="text-lg font-bold text-primary-foreground line-clamp-1 tracking-tight">
                   {title}
-                </h1>
-              ) : (
-                <div className="flex items-center gap-2.5">
+                </h1> :
+
+              <div className="flex items-center gap-2.5">
                   {/* Government Emblem */}
                   <div className="w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10 shrink-0">
                     <img src={govtEmblem} alt="Emblem" className="w-6 h-6 object-contain opacity-90 drop-shadow-sm" />
@@ -66,7 +66,7 @@ export const Header = ({ title, showBack = false }: HeaderProps) => {
                       <h1 className="text-lg font-bold text-primary-foreground tracking-tight leading-tight">
                         {t("सरकारी सहायक", "Sarkaari Sahayak")}
                       </h1>
-                      <Shield className="w-3.5 h-3.5 text-[hsl(142_70%_55%)] shrink-0" />
+                      
                     </div>
                     <p className="text-[10px] text-primary-foreground/70 mt-0 font-medium flex items-center gap-1">
                       <Landmark className="w-2.5 h-2.5" />
@@ -74,45 +74,45 @@ export const Header = ({ title, showBack = false }: HeaderProps) => {
                     </p>
                   </div>
                 </div>
-              )}
+              }
             </div>
             <div className="flex items-center gap-1.5">
-              <button 
+              <button
                 onClick={() => navigate("/saved")}
                 className="relative w-9 h-9 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 touch-action-manipulation active:scale-95 border border-white/10"
-                aria-label={t("Saved services", "सेव की गई सेवाएं")}
-              >
+                aria-label={t("Saved services", "सेव की गई सेवाएं")}>
+
                 <Bookmark className="w-4 h-4 text-primary-foreground" />
-                {bookmarks.length > 0 && (
-                  <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-0.5 text-[9px] font-bold bg-accent text-accent-foreground rounded-full flex items-center justify-center shadow-lg border-2 border-primary">
+                {bookmarks.length > 0 &&
+                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-0.5 text-[9px] font-bold bg-accent text-accent-foreground rounded-full flex items-center justify-center shadow-lg border-2 border-primary">
                     {bookmarks.length > 9 ? "9+" : bookmarks.length}
                   </span>
-                )}
+                }
               </button>
-              <button 
+              <button
                 onClick={toggleLanguage}
                 className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 touch-action-manipulation active:scale-95 border border-white/10"
-                aria-label={t("English mein dekhein", "हिंदी में देखें")}
-              >
+                aria-label={t("English mein dekhein", "हिंदी में देखें")}>
+
                 <span className="text-[10px] font-bold text-primary-foreground">
                   {language === "hi" ? "EN" : "हि"}
                 </span>
               </button>
-              <button 
+              <button
                 onClick={toggleTheme}
                 className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 touch-action-manipulation active:scale-95 border border-white/10"
-                aria-label={theme === "light" ? "Dark mode on karein" : "Light mode on karein"}
-              >
-                {theme === "light" ? (
-                  <Moon className="w-4 h-4 text-primary-foreground" />
-                ) : (
-                  <Sun className="w-4 h-4 text-primary-foreground" />
-                )}
+                aria-label={theme === "light" ? "Dark mode on karein" : "Light mode on karein"}>
+
+                {theme === "light" ?
+                <Moon className="w-4 h-4 text-primary-foreground" /> :
+
+                <Sun className="w-4 h-4 text-primary-foreground" />
+                }
               </button>
             </div>
           </div>
         </div>
       </div>
-    </header>
-  );
+    </header>);
+
 };
