@@ -73,12 +73,12 @@ const Index = () => {
                   </div>
                   <div className="flex-1">
                     {/* Trust Badge with Pulse */}
-                    <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-2.5 py-1 rounded-full w-fit mb-2 animate-fade-in" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
-                      <Shield className="w-3 h-3 text-green-400 animate-pulse-soft" />
-                      <span className="text-[10px] font-semibold text-white tracking-wide">
-                        {t("100% Free & Secure", "100% Free & Secure")}
-                      </span>
-                    </div>
+                    
+
+
+
+
+
                     <h2 className="text-xl font-bold text-white mb-1.5 animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
                       {t("🇮🇳 Swagat hai!", "🇮🇳 Welcome!")}
                     </h2>
