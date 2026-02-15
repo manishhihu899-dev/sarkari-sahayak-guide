@@ -8,7 +8,7 @@ import { QuickActions } from "@/components/QuickActions";
 import { services, searchServices } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { useLanguage } from "@/hooks/use-language";
-import { Sparkles, Zap, Shield, Users, CheckCircle2 } from "lucide-react";
+import { Zap, Shield, Users, CheckCircle2 } from "lucide-react";
 import appLogo from "@/assets/app-logo.png";
 import govtEmblem from "@/assets/govt-emblem.png";
 const Index = () => {
@@ -31,7 +31,7 @@ const Index = () => {
               {searchResults.length > 0 ? t(`${searchResults.length} results mile`, `${searchResults.length} results found`) : t("Kuch nahi mila", "No results found")}
             </h2>
             {searchResults.map((sub, index) => <SubServiceCard key={sub.id} title={sub.title} titleHi={sub.titleHi} description={sub.description} onClick={() => {
-          const parentService = services.find(s => s.subServices.some(ss => ss.id === sub.id));
+          const parentService = services.find((s) => s.subServices.some((ss) => ss.id === sub.id));
           if (parentService) {
             navigate(`/service/${parentService.id}/${sub.id}`);
           }
@@ -48,9 +48,9 @@ const Index = () => {
               {/* Subtle Dot Pattern */}
               <div className="absolute inset-0 opacity-15">
                 <div className="absolute inset-0" style={{
-                  backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-                  backgroundSize: '20px 20px'
-                }} />
+              backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+              backgroundSize: '20px 20px'
+            }} />
               </div>
               
               {/* Floating Decorative Blobs */}
@@ -141,7 +141,7 @@ const Index = () => {
             animationFillMode: 'forwards'
           }}>
                 <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-accent" />
+                  
                   {t("Sabhi Services", "All Services")}
                 </h2>
                 <span className="text-xs font-medium text-muted-foreground bg-accent/10 text-accent px-3 py-1.5 rounded-full">
