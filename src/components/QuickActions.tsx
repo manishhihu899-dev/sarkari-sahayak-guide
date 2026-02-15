@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/use-language";
-import { useSoundEffects } from "@/hooks/use-sound-effects";
 import {
   Tooltip,
   TooltipContent,
@@ -66,17 +65,8 @@ export const QuickActions = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { t } = useLanguage();
-  const { playSound, vibrate } = useSoundEffects();
-
-  const handleToggle = () => {
-    playSound(isOpen ? "swoosh" : "pop");
-    vibrate(15);
-    setIsOpen(!isOpen);
-  };
 
   const handleAction = (path: string) => {
-    playSound("success");
-    vibrate([10, 50, 10]);
     setIsOpen(false);
     navigate(path);
   };
@@ -121,7 +111,7 @@ export const QuickActions = () => {
 
         {/* Main FAB Button */}
         <button
-          onClick={handleToggle}
+          onClick={() => setIsOpen(!isOpen)}
           className={`w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 active:scale-95 ${
             isOpen 
               ? "bg-muted text-foreground rotate-180" 
