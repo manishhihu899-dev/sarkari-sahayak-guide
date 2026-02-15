@@ -6,8 +6,8 @@ import { services } from "@/data/services";
 import { SchemeCard } from "@/components/SchemeCard";
 import appLogo from "@/assets/app-logo.png";
 import {
-  Gift, 
-  Sparkles, 
+  Gift,
+  Sparkles,
   ClipboardList,
   Wheat,
   Home,
@@ -25,11 +25,11 @@ import {
   HardHat,
   Flame,
   FileText,
-  LucideIcon
-} from "lucide-react";
+  LucideIcon } from
+"lucide-react";
 
 // Map scheme IDs to their icons and benefits
-const schemeDataMap: Record<string, { icon: LucideIcon; benefit?: string; color?: string }> = {
+const schemeDataMap: Record<string, {icon: LucideIcon;benefit?: string;color?: string;}> = {
   "pm-kisan": { icon: Wheat, benefit: "₹6,000/year", color: "45 90% 45%" },
   "pm-awas-yojana": { icon: Home, benefit: "₹1.2-2.5 Lakh", color: "25 85% 50%" },
   "ayushman-bharat": { icon: Heart, benefit: "₹5 Lakh cover", color: "350 80% 50%" },
@@ -43,7 +43,7 @@ const schemeDataMap: Record<string, { icon: LucideIcon; benefit?: string; color?
   "epf-services": { icon: Wallet, benefit: "Retirement fund", color: "210 75% 50%" },
   "e-shram": { icon: HardHat, benefit: "₹2L insurance", color: "35 80% 50%" },
   "lpg-gas-subsidy": { icon: Flame, benefit: "DBT subsidy", color: "10 85% 55%" },
-  "income-tax-filing": { icon: FileText, benefit: "Tax filing", color: "240 60% 50%" },
+  "income-tax-filing": { icon: FileText, benefit: "Tax filing", color: "240 60% 50%" }
 };
 
 const SchemesPage = () => {
@@ -51,20 +51,20 @@ const SchemesPage = () => {
   const navigate = useNavigate();
 
   // Collect all government schemes from services
-  const allSchemes = services
-    .filter(service => service.category === "schemes")
-    .flatMap(service => 
-      service.subServices.map(sub => {
-        const schemeData = schemeDataMap[sub.id] || { icon: Gift };
-        return {
-          ...sub,
-          parentId: service.id,
-          themeColor: schemeData.color || service.themeColor,
-          icon: schemeData.icon,
-          benefit: schemeData.benefit
-        };
-      })
-    );
+  const allSchemes = services.
+  filter((service) => service.category === "schemes").
+  flatMap((service) =>
+  service.subServices.map((sub) => {
+    const schemeData = schemeDataMap[sub.id] || { icon: Gift };
+    return {
+      ...sub,
+      parentId: service.id,
+      themeColor: schemeData.color || service.themeColor,
+      icon: schemeData.icon,
+      benefit: schemeData.benefit
+    };
+  })
+  );
 
   return (
     <div className="min-h-screen bg-background pb-24">
@@ -73,13 +73,13 @@ const SchemesPage = () => {
       {/* Premium Hero Banner */}
       <div className="relative overflow-hidden wave-border">
         {/* Gradient Background with Animation */}
-        <div 
+        <div
           className="absolute inset-0 bg-animated-gradient"
           style={{
             background: `linear-gradient(135deg, hsl(142 60% 35%) 0%, hsl(142 70% 25%) 50%, hsl(160 60% 20%) 100%)`,
             backgroundSize: '400% 400%'
-          }}
-        />
+          }} />
+
         
         {/* Moving Dots Pattern */}
         <div className="absolute inset-0 moving-dots opacity-20" />
@@ -104,23 +104,23 @@ const SchemesPage = () => {
         <div className="relative z-10 p-6 pt-8 pb-10">
           <div className="flex items-start gap-4">
             {/* App Logo */}
-            <div 
+            <div
               className="w-24 h-24 rounded-2xl flex items-center justify-center shrink-0 opacity-0 animate-scale-up overflow-hidden"
-              style={{ 
+              style={{
                 animationDelay: '100ms',
                 animationFillMode: 'forwards'
-              }}
-            >
-              <img 
-                src={appLogo} 
-                alt="Sarkari Sahayak Logo" 
-                className="w-full h-full object-contain drop-shadow-lg"
-              />
+              }}>
+
+              <img
+                src={appLogo}
+                alt="Sarkari Sahayak Logo"
+                className="w-full h-full object-contain drop-shadow-lg" />
+
             </div>
             
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 opacity-0 animate-fade-up" style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}>
-                <Sparkles className="w-4 h-4 text-accent rotate-gentle neon-glow" />
+                
                 <span className="text-xs font-semibold text-accent uppercase tracking-wider color-cycle">
                   {t("भारत सरकार", "Govt. of India")}
                 </span>
@@ -169,12 +169,12 @@ const SchemesPage = () => {
           <button
             onClick={() => navigate("/eligibility-checker")}
             className="p-4 rounded-2xl flex flex-col items-center gap-2 text-center shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up relative overflow-hidden border border-purple-500/20"
-            style={{ 
+            style={{
               background: 'linear-gradient(135deg, hsl(280 70% 50%) 0%, hsl(320 70% 50%) 100%)',
-              animationDelay: '100ms', 
-              animationFillMode: 'forwards' 
-            }}
-          >
+              animationDelay: '100ms',
+              animationFillMode: 'forwards'
+            }}>
+
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
             <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center relative z-10">
               <Sparkles className="w-6 h-6 text-white" />
@@ -193,12 +193,12 @@ const SchemesPage = () => {
           <button
             onClick={() => navigate("/application-tracker")}
             className="p-4 rounded-2xl flex flex-col items-center gap-2 text-center shadow-lg hover:shadow-xl transition-all active:scale-[0.98] opacity-0 animate-fade-up relative overflow-hidden border border-blue-500/20"
-            style={{ 
+            style={{
               background: 'linear-gradient(135deg, hsl(200 80% 50%) 0%, hsl(180 70% 45%) 100%)',
-              animationDelay: '150ms', 
-              animationFillMode: 'forwards' 
-            }}
-          >
+              animationDelay: '150ms',
+              animationFillMode: 'forwards'
+            }}>
+
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
             <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center relative z-10">
               <ClipboardList className="w-6 h-6 text-white" />
@@ -226,25 +226,25 @@ const SchemesPage = () => {
 
         {/* Schemes Grid */}
         <div className="space-y-3">
-          {allSchemes.map((scheme, index) => (
-            <SchemeCard
-              key={scheme.id}
-              title={scheme.title}
-              titleHi={scheme.titleHi}
-              description={scheme.description}
-              onClick={() => navigate(`/service/${scheme.parentId}/${scheme.id}`)}
-              delay={250 + index * 60}
-              icon={scheme.icon}
-              themeColor={scheme.themeColor}
-              benefit={scheme.benefit}
-            />
-          ))}
+          {allSchemes.map((scheme, index) =>
+          <SchemeCard
+            key={scheme.id}
+            title={scheme.title}
+            titleHi={scheme.titleHi}
+            description={scheme.description}
+            onClick={() => navigate(`/service/${scheme.parentId}/${scheme.id}`)}
+            delay={250 + index * 60}
+            icon={scheme.icon}
+            themeColor={scheme.themeColor}
+            benefit={scheme.benefit} />
+
+          )}
         </div>
       </div>
 
       <BottomNav />
-    </div>
-  );
+    </div>);
+
 };
 
 export default SchemesPage;
