@@ -157,6 +157,7 @@ const Index = () => {
       </main>
 
       <QuickActions />
+      <AIChatbot />
       <BottomNav />
     </div>;
 };
