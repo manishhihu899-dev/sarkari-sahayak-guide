@@ -5,6 +5,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { ServiceCard } from "@/components/ServiceCard";
 import { BottomNav } from "@/components/BottomNav";
 import { QuickActions } from "@/components/QuickActions";
+import { AIChatbot } from "@/components/AIChatbot";
 import { services, searchServices } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { useLanguage } from "@/hooks/use-language";
