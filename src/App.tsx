@@ -17,6 +17,7 @@ import EligibilityCheckerPage from "./pages/EligibilityCheckerPage";
 import ApplicationTrackerPage from "./pages/ApplicationTrackerPage";
 import HelpPage from "./pages/HelpPage";
 import SavedPage from "./pages/SavedPage";
+import GovtDirectoryPage from "./pages/GovtDirectoryPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
                   <Route path="/eligibility-checker" element={<EligibilityCheckerPage />} />
                   <Route path="/application-tracker" element={<ApplicationTrackerPage />} />
                   <Route path="/saved" element={<SavedPage />} />
+                  <Route path="/govt-directory" element={<GovtDirectoryPage />} />
                   <Route path="/help" element={<HelpPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
