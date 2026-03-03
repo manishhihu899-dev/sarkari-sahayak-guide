@@ -1,8 +1,9 @@
-import { ArrowLeft, Moon, Sun, Bookmark, Landmark } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Bookmark, Landmark, Download } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 import { useLanguage } from "@/hooks/use-language";
 import { useBookmarks } from "@/hooks/use-bookmarks";
+import { usePwaInstall } from "@/hooks/use-pwa-install";
 import govtEmblem from "@/assets/govt-emblem.png";
 
 interface HeaderProps {
@@ -15,6 +16,7 @@ export const Header = ({ title, showBack = false }: HeaderProps) => {
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
   const { bookmarks } = useBookmarks();
+  const { canInstall, installApp } = usePwaInstall();
 
   return (
     <header className="sticky top-0 z-50 relative overflow-hidden shadow-elevated">
@@ -77,6 +79,16 @@ export const Header = ({ title, showBack = false }: HeaderProps) => {
               }
             </div>
             <div className="flex items-center gap-1.5">
+              {canInstall && (
+                <button
+                  onClick={installApp}
+                  className="h-9 px-2.5 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center gap-1 hover:bg-white/20 transition-all duration-200 touch-action-manipulation active:scale-95 border border-white/10"
+                  aria-label={t("App install karein", "Install app")}
+                >
+                  <Download className="w-3.5 h-3.5 text-primary-foreground" />
+                  <span className="text-[11px] font-semibold text-primary-foreground">{t("Install", "Install")}</span>
+                </button>
+              )}
               <button
                 onClick={() => navigate("/saved")}
                 className="relative w-9 h-9 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 touch-action-manipulation active:scale-95 border border-white/10"
@@ -92,8 +104,8 @@ export const Header = ({ title, showBack = false }: HeaderProps) => {
               <button
                 onClick={toggleLanguage}
                 className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 touch-action-manipulation active:scale-95 border border-white/10"
-                aria-label={t("English mein dekhein", "हिंदी में देखें")}>
-
+                aria-label={t("English mein dekhein", "हिंदी में देखें")}
+              >
                 <span className="text-[10px] font-bold text-primary-foreground">
                   {language === "hi" ? "EN" : "हि"}
                 </span>

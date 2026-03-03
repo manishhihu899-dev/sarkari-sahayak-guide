@@ -9,23 +9,29 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const getInitialTheme = (): Theme => {
+  const savedTheme = localStorage.getItem("theme") as Theme | null;
+  const legacyTheme = localStorage.getItem("app-theme") as Theme | null;
+  const resolvedTheme = savedTheme ?? legacyTheme;
+
+  if (resolvedTheme === "light" || resolvedTheme === "dark") {
+    return resolvedTheme;
+  }
+
+  return "light";
+};
+
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  // Theme is now "locked" to the last saved value to prevent it changing on refresh/restart.
-  const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem("theme") as Theme | null;
-    if (saved === "light" || saved === "dark") return saved;
-    // If nothing is saved, default to light (no system-based switching).
-    return "light";
-  });
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
+
+    root.classList.toggle("dark", theme === "dark");
+    root.setAttribute("data-theme", theme);
+
     localStorage.setItem("theme", theme);
+    localStorage.setItem("app-theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
