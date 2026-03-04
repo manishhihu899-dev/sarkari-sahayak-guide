@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -16,22 +16,29 @@ interface AdBannerProps {
 export const AdBanner = ({ slot, format = "auto", className = "", responsive = true }: AdBannerProps) => {
   const adRef = useRef<HTMLDivElement>(null);
   const pushed = useRef(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    if (pushed.current) return;
+    if (pushed.current || hasError) return;
     try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      pushed.current = true;
+      if (typeof window !== "undefined" && window.adsbygoogle) {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        pushed.current = true;
+      }
     } catch (e) {
-      console.error("AdSense error:", e);
+      console.warn("AdSense not available:", e);
+      setHasError(true);
     }
-  }, []);
+  }, [hasError]);
+
+  // Don't render anything if AdSense isn't available
+  if (hasError) return null;
 
   return (
     <div className={`ad-container overflow-hidden ${className}`} ref={adRef}>
       <ins
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: "block", minHeight: "50px" }}
         data-ad-client="ca-pub-4559437819704446"
         data-ad-slot={slot}
         data-ad-format={format}
