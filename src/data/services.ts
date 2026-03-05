@@ -985,6 +985,1149 @@ export const services: Service[] = [
           "AIS (Annual Information Statement) zaroor check karein filing se pehle",
           "Form 26AS mein TDS details verify karein"
         ]
+      },
+      {
+        id: "pm-jeevan-jyoti-bima",
+        title: "PM Jeevan Jyoti Bima Yojana",
+        titleHi: "पीएम जीवन ज्योति बीमा योजना",
+        description: "Rs. 2 lakh life insurance sirf Rs. 436/year mein",
+        eligibility: [
+          "18-55 saal umar ke Indian citizens",
+          "Bank savings account hona chahiye",
+          "Aadhaar bank se linked hona chahiye"
+        ],
+        documents: ["Aadhaar Card", "Bank Account Passbook", "Nominee details", "Mobile Number"],
+        steps: [
+          { step: 1, title: "Bank Branch Jaayein", description: "Apne savings account wali bank branch jaayein" },
+          { step: 2, title: "PMJJBY Form Bharein", description: "Pradhan Mantri Jeevan Jyoti Bima Yojana form lein aur bharein" },
+          { step: 3, title: "Auto-Debit Consent", description: "Rs. 436 yearly auto-debit ke liye consent dein" },
+          { step: 4, title: "Nominee Details Dein", description: "Nominee ka naam aur relation bharein" },
+          { step: 5, title: "Confirmation Lein", description: "Enrollment confirmation aur policy details lein" }
+        ],
+        officialWebsite: "https://www.jansuraksha.gov.in",
+        officeName: "Bank Branch / Jan Suraksha Portal",
+        warnings: [
+          "Premium sirf Rs. 436/year hai - har saal auto-debit hota hai",
+          "Rs. 2 lakh death benefit nominee ko milta hai",
+          "55 saal ke baad policy renew nahi hoti",
+          "Har saal 1st June ko auto-renew hota hai"
+        ]
+      },
+      {
+        id: "pm-suraksha-bima",
+        title: "PM Suraksha Bima Yojana",
+        titleHi: "पीएम सुरक्षा बीमा योजना",
+        description: "Rs. 2 lakh accident insurance sirf Rs. 20/year",
+        eligibility: [
+          "18-70 saal umar ke Indian citizens",
+          "Bank savings account hona chahiye",
+          "Aadhaar bank se linked hona chahiye"
+        ],
+        documents: ["Aadhaar Card", "Bank Account Passbook", "Nominee details", "Mobile Number"],
+        steps: [
+          { step: 1, title: "Bank Branch Jaayein", description: "Apne savings account wali bank branch jaayein" },
+          { step: 2, title: "PMSBY Form Bharein", description: "Suraksha Bima form lein aur bharein" },
+          { step: 3, title: "Auto-Debit Consent", description: "Rs. 20 yearly auto-debit ke liye consent dein" },
+          { step: 4, title: "Nominee Details", description: "Nominee ka naam aur relation bharein" },
+          { step: 5, title: "Enrollment Done", description: "Confirmation lein - coverage shuru" }
+        ],
+        officialWebsite: "https://www.jansuraksha.gov.in",
+        officeName: "Bank Branch / Jan Suraksha Portal",
+        warnings: [
+          "Sirf Rs. 20/year premium - sabse sasta insurance",
+          "Accidental death: Rs. 2 lakh | Partial disability: Rs. 1 lakh",
+          "Har saal 1st June ko renew hota hai",
+          "Natural death cover nahi hai - sirf accident"
+        ]
+      },
+      {
+        id: "sovereign-gold-bond",
+        title: "Sovereign Gold Bond Scheme",
+        titleHi: "सॉवरेन गोल्ड बॉन्ड योजना",
+        description: "Sarkari guarantee ke saath gold mein investment",
+        eligibility: [
+          "Indian resident individuals, HUFs, Trusts, Universities",
+          "Minimum 1 gram gold se investment",
+          "Maximum 4 kg per individual per year"
+        ],
+        documents: ["PAN Card (mandatory)", "Aadhaar Card", "Bank Account", "Passport size photo"],
+        steps: [
+          { step: 1, title: "Issue Period Check Karein", description: "RBI website par SGB issue dates check karein" },
+          { step: 2, title: "Bank/Post Office Jaayein", description: "Authorized bank, post office ya stock exchange par apply karein" },
+          { step: 3, title: "Application Form Bharein", description: "SGB application form mein investment amount bharein" },
+          { step: 4, title: "Payment Karein", description: "Online payment par Rs. 50/gram discount milta hai" },
+          { step: 5, title: "Bond Certificate Paayein", description: "Demat ya physical certificate milega" }
+        ],
+        officialWebsite: "https://www.rbi.org.in",
+        officeName: "RBI / Authorized Banks / Post Office",
+        warnings: [
+          "2.5% yearly interest milta hai gold price ke upar",
+          "8 saal ki maturity par tax-free capital gains",
+          "Physical gold rakhne ki zaroorat nahi",
+          "5 saal baad premature exit allowed hai"
+        ]
+      },
+      {
+        id: "gold-monetization",
+        title: "Gold Monetization Scheme",
+        titleHi: "गोल्ड मोनेटाइजेशन स्कीम",
+        description: "Ghar ka sona bank mein rakhein aur interest kamayein",
+        eligibility: [
+          "Koi bhi Indian resident",
+          "Minimum 30 gram raw gold (jewellery/coins)",
+          "Trusts, HUFs bhi eligible"
+        ],
+        documents: ["Aadhaar Card", "PAN Card", "Bank Account", "KYC documents"],
+        steps: [
+          { step: 1, title: "Authorized Bank Jaayein", description: "SBI, PNB ya authorized bank branch jaayein" },
+          { step: 2, title: "Gold Jama Karein", description: "Minimum 30 gram gold deposit karein" },
+          { step: 3, title: "Purity Test Hoga", description: "BIS certified hallmarking center par gold test hoga" },
+          { step: 4, title: "Certificate Paayein", description: "Gold quantity aur purity certificate milega" },
+          { step: 5, title: "Interest Kamayein", description: "Gold deposit par interest earned hoga" }
+        ],
+        officialWebsite: "https://www.rbi.org.in",
+        officeName: "Authorized Bank Branches",
+        warnings: [
+          "Interest rate 2.25-2.50% per annum hai",
+          "Short-term: 1-3 years, Medium: 5-7 years, Long: 12-15 years",
+          "Maturity par gold ya equivalent rupees milenge",
+          "Tax benefit available hai"
+        ]
+      },
+      {
+        id: "pm-fasal-bima",
+        title: "PM Fasal Bima Yojana",
+        titleHi: "पीएम फसल बीमा योजना",
+        description: "Fasal ka insurance - natural disaster se protection",
+        eligibility: [
+          "Sabhi kisaan jo notified crops ugate hain",
+          "Loanee farmers ke liye mandatory tha (ab voluntary)",
+          "Non-loanee farmers bhi eligible",
+          "Share-croppers aur tenant farmers bhi eligible"
+        ],
+        documents: ["Aadhaar Card", "Land Records / Khatauni", "Bank Account", "Sowing Certificate", "Previous season crop details"],
+        steps: [
+          { step: 1, title: "pmfby.gov.in Jaayein", description: "Official PM Fasal Bima portal kholein" },
+          { step: 2, title: "Farmer Registration", description: "Mobile number se register karein" },
+          { step: 3, title: "Crop Details Bharein", description: "Fasal ka naam, area, season select karein" },
+          { step: 4, title: "Premium Pay Karein", description: "Kharif: 2%, Rabi: 1.5%, Commercial: 5% premium" },
+          { step: 5, title: "Policy Lein", description: "Insurance policy certificate download karein" },
+          { step: 6, title: "Claim Karein (zaroort padne par)", description: "Crop loss hone par 72 ghante mein report karein" }
+        ],
+        officialWebsite: "https://pmfby.gov.in",
+        officeName: "Agriculture Department / Insurance Company",
+        warnings: [
+          "Premium bahut kam hai - govt baaki pay karti hai",
+          "Claim ke liye 72 ghante mein report karna zaroori",
+          "CSC center par bhi enrollment ho sakta hai",
+          "Technology based crop assessment hota hai"
+        ]
+      },
+      {
+        id: "pm-krishi-sinchai",
+        title: "PM Krishi Sinchai Yojana",
+        titleHi: "पीएम कृषि सिंचाई योजना",
+        description: "Har khet ko paani - irrigation scheme",
+        eligibility: [
+          "Sabhi farmer categories eligible",
+          "Individual farmers aur farmer groups",
+          "Water User Associations",
+          "State ke irrigation plan mein included areas"
+        ],
+        documents: ["Aadhaar Card", "Land Records", "Bank Account", "Farm area details"],
+        steps: [
+          { step: 1, title: "Agriculture Office Jaayein", description: "District Agriculture Officer se milein" },
+          { step: 2, title: "Application Form Bharein", description: "PMKSY subsidy ke liye form bharein" },
+          { step: 3, title: "Land Details Submit", description: "Land records aur irrigation plan submit karein" },
+          { step: 4, title: "Approval Wait", description: "Department approval aur site inspection" },
+          { step: 5, title: "Equipment Install", description: "Drip/sprinkler irrigation par subsidy milegi" }
+        ],
+        officialWebsite: "https://pmksy.gov.in",
+        officeName: "Agriculture Department / Water Resources",
+        warnings: [
+          "Micro irrigation (drip/sprinkler) par 55-75% subsidy",
+          "Per Drop More Crop component popular hai",
+          "State agriculture department se apply karein",
+          "Community projects ko priority milti hai"
+        ]
+      },
+      {
+        id: "soil-health-card",
+        title: "Soil Health Card Scheme",
+        titleHi: "मृदा स्वास्थ्य कार्ड योजना",
+        description: "Mitti ki jaanch aur fertilizer recommendation",
+        eligibility: ["Sabhi kisaan eligible hain", "Agricultural land owner ya tenant farmer"],
+        documents: ["Aadhaar Card", "Land Records", "Mobile Number"],
+        steps: [
+          { step: 1, title: "soilhealth.dac.gov.in Jaayein", description: "Official Soil Health portal kholein" },
+          { step: 2, title: "Register Karein", description: "Farmer registration karein" },
+          { step: 3, title: "Sample Collection", description: "Agriculture department soil sample lega" },
+          { step: 4, title: "Lab Testing", description: "Soil lab mein 12 parameters test honge" },
+          { step: 5, title: "Card Download", description: "Soil Health Card download karein with recommendations" }
+        ],
+        officialWebsite: "https://soilhealth.dac.gov.in",
+        officeName: "Agriculture Department / Krishi Vigyan Kendra",
+        warnings: ["Bilkul FREE service hai", "Har 3 saal mein naya card milta hai", "Fertilizer recommendation follow karein - fasal badhegi", "Nearest KVK se bhi karwa sakte hain"]
+      },
+      {
+        id: "paramparagat-krishi",
+        title: "Paramparagat Krishi Vikas Yojana",
+        titleHi: "परम्परागत कृषि विकास योजना",
+        description: "Organic farming ke liye sarkari madad",
+        eligibility: ["Koi bhi kisaan jo organic farming karna chahta hai", "Cluster based approach - group mein 50+ farmers", "20 hectare minimum cluster size"],
+        documents: ["Aadhaar Card", "Land Records", "Bank Account", "Group formation documents"],
+        steps: [
+          { step: 1, title: "Agriculture Office Jaayein", description: "District Agriculture Officer se organic farming ke baare mein poochhein" },
+          { step: 2, title: "Farmer Group Banayein", description: "50 farmers ka group banayein 20 hectare area mein" },
+          { step: 3, title: "Application Submit", description: "Group application state agriculture dept ko dein" },
+          { step: 4, title: "Training Lein", description: "Organic farming techniques ki training milegi" },
+          { step: 5, title: "Certification", description: "PGS organic certification milega" }
+        ],
+        officialWebsite: "https://pgsindia-ncof.gov.in",
+        officeName: "Agriculture Department / NCOF",
+        warnings: ["Rs. 50,000/hectare 3 saal mein milta hai", "Organic certification se premium price milta hai", "Cluster approach mandatory hai", "Chemical free farming karna padega"]
+      },
+      {
+        id: "e-nam",
+        title: "National Agriculture Market (e-NAM)",
+        titleHi: "राष्ट्रीय कृषि बाजार (e-NAM)",
+        description: "Online mandi - fasal online bechein best price mein",
+        eligibility: ["Sabhi kisaan", "Traders aur commission agents", "FPOs (Farmer Producer Organizations)"],
+        documents: ["Aadhaar Card", "Bank Account", "Land Records", "Mobile Number"],
+        steps: [
+          { step: 1, title: "enam.gov.in Jaayein", description: "e-NAM portal par register karein" },
+          { step: 2, title: "Farmer Registration", description: "State, district, mandi select karke register karein" },
+          { step: 3, title: "Produce List Karein", description: "Apni fasal ki details aur quantity daalein" },
+          { step: 4, title: "Quality Testing", description: "Mandi par quality assaying hogi" },
+          { step: 5, title: "Online Bidding", description: "Traders online bid karenge - best price milega" },
+          { step: 6, title: "Payment", description: "Seedha bank account mein payment aayega" }
+        ],
+        officialWebsite: "https://enam.gov.in",
+        officeName: "e-NAM Portal / APMC Mandi",
+        warnings: ["1000+ mandis connected hain", "Better price discovery hoti hai", "Payment seedha bank mein aata hai", "Mobile app bhi available hai"]
+      },
+      {
+        id: "rashtriya-krishi-vikas",
+        title: "Rashtriya Krishi Vikas Yojana",
+        titleHi: "राष्ट्रीय कृषि विकास योजना",
+        description: "Agriculture sector ke overall development ke liye scheme",
+        eligibility: ["State governments through agriculture department", "Individual farmers via state schemes", "Agri-entrepreneurs"],
+        documents: ["Aadhaar Card", "Land Records", "Bank Account", "Project proposal"],
+        steps: [
+          { step: 1, title: "Agriculture Dept Jaayein", description: "District agriculture office se information lein" },
+          { step: 2, title: "Scheme Identify Karein", description: "RKVY ke under available sub-schemes check karein" },
+          { step: 3, title: "Application Submit", description: "Required form bharke submit karein" },
+          { step: 4, title: "Approval Process", description: "State level approval hoga" },
+          { step: 5, title: "Benefit Paayein", description: "Equipment, training ya subsidy milegi" }
+        ],
+        officialWebsite: "https://rkvy.nic.in",
+        officeName: "State Agriculture Department",
+        warnings: ["State ke through implement hota hai", "Agri-startup component bhi hai", "Innovation projects ko funding milti hai", "Agriculture infrastructure development"]
+      },
+      {
+        id: "food-security-mission",
+        title: "National Food Security Mission",
+        titleHi: "राष्ट्रीय खाद्य सुरक्षा मिशन",
+        description: "Rice, wheat, pulses ki productivity badhane ki scheme",
+        eligibility: ["Farmers growing rice, wheat, pulses, coarse cereals", "Selected districts mein", "Small aur marginal farmers ko priority"],
+        documents: ["Aadhaar Card", "Land Records", "Bank Account"],
+        steps: [
+          { step: 1, title: "Agriculture Office Jaayein", description: "Block Agriculture Officer se milein" },
+          { step: 2, title: "Eligible Crop Check", description: "Apne district mein konsi crop covered hai check karein" },
+          { step: 3, title: "Registration", description: "Farmer registration karein" },
+          { step: 4, title: "Inputs Paayein", description: "Seeds, fertilizers, equipment subsidized milenge" },
+          { step: 5, title: "Training", description: "Improved farming techniques ki training" }
+        ],
+        officialWebsite: "https://nfsm.gov.in",
+        officeName: "Agriculture Department",
+        warnings: ["Subsidized seeds aur bio-fertilizers milte hain", "Demonstrations aur training free hai", "Cluster based approach", "Productivity improvement focus"]
+      },
+      {
+        id: "sustainable-agriculture",
+        title: "National Mission on Sustainable Agriculture",
+        titleHi: "राष्ट्रीय सतत कृषि मिशन",
+        description: "Climate change se agriculture ki suraksha",
+        eligibility: ["Sabhi kisaan", "Rainfed area farmers ko priority", "Drought/flood prone areas"],
+        documents: ["Aadhaar Card", "Land Records", "Bank Account"],
+        steps: [
+          { step: 1, title: "Agriculture Office Jaayein", description: "District agriculture office se jaankari lein" },
+          { step: 2, title: "Program Select Karein", description: "Rainfed Area Development, Soil Health Management etc." },
+          { step: 3, title: "Application", description: "Form bharke apply karein" },
+          { step: 4, title: "Training", description: "Climate resilient farming techniques seekhein" },
+          { step: 5, title: "Support Paayein", description: "Seeds, equipment, water harvesting support" }
+        ],
+        officialWebsite: "https://nmsa.dac.gov.in",
+        officeName: "Agriculture Department / KVK",
+        warnings: ["Water harvesting structures par subsidy", "Climate resilient crops ki seeds milti hain", "Soil health management included", "Organic farming promote hoti hai"]
+      },
+      {
+        id: "blue-revolution",
+        title: "Blue Revolution Scheme",
+        titleHi: "नीली क्रांति योजना",
+        description: "Matsya palan (fisheries) ke liye sarkari scheme",
+        eligibility: ["Fish farmers aur aquaculture practitioners", "Fisherman cooperatives", "Entrepreneurs in fisheries sector", "SC/ST/Women ko extra subsidy"],
+        documents: ["Aadhaar Card", "Land/Water body documents", "Bank Account", "Project report"],
+        steps: [
+          { step: 1, title: "Fisheries Dept Jaayein", description: "District Fisheries Officer se milein" },
+          { step: 2, title: "Scheme Select", description: "Pond construction, cage culture, etc. chunein" },
+          { step: 3, title: "Application Submit", description: "Project proposal ke saath apply karein" },
+          { step: 4, title: "Approval", description: "Department site inspection aur approval" },
+          { step: 5, title: "Subsidy", description: "40-60% subsidy milegi (SC/ST/Women ko extra)" }
+        ],
+        officialWebsite: "https://pmmsy.dof.gov.in",
+        officeName: "Department of Fisheries",
+        warnings: ["PM Matsya Sampada Yojana ke saath merged", "40-60% subsidy milti hai", "Fish farming, processing, marketing sab covered", "Training bhi milti hai"]
+      },
+      {
+        id: "national-health-mission",
+        title: "National Health Mission",
+        titleHi: "राष्ट्रीय स्वास्थ्य मिशन",
+        description: "Free healthcare services rural aur urban areas mein",
+        eligibility: ["Sabhi Indian citizens", "Rural aur urban poor ko priority", "Pregnant women aur bacche"],
+        documents: ["Aadhaar Card", "Any government ID"],
+        steps: [
+          { step: 1, title: "Nearest PHC/CHC Jaayein", description: "Primary Health Centre ya Community Health Centre jaayein" },
+          { step: 2, title: "Free Treatment Lein", description: "Basic healthcare services free milti hain" },
+          { step: 3, title: "Medicines Paayein", description: "Essential medicines free milti hain" },
+          { step: 4, title: "Referral", description: "Zaroorat padne par district hospital referral milta hai" }
+        ],
+        officialWebsite: "https://nhm.gov.in",
+        officeName: "PHC / CHC / District Hospital",
+        warnings: ["Free medicines aur diagnostics milte hain", "ASHA workers ghar par visit karti hain", "Ambulance service 108/102 available", "Maternal aur child health priority hai"]
+      },
+      {
+        id: "janaushadhi",
+        title: "PM Bharatiya Janaushadhi Pariyojana",
+        titleHi: "पीएम भारतीय जनऔषधि परियोजना",
+        description: "Sasti generic medicines sarkari stores se",
+        eligibility: ["Koi bhi - sabke liye available hai", "No prescription needed for OTC medicines"],
+        documents: ["Doctor's prescription (prescription medicines ke liye)"],
+        steps: [
+          { step: 1, title: "Janaushadhi Store Dhundhein", description: "janaushadhi.gov.in par nearest store dhundhein" },
+          { step: 2, title: "Store Jaayein", description: "Janaushadhi Kendra par jaayein" },
+          { step: 3, title: "Prescription Dikhayein", description: "Doctor ka prescription dikhayein" },
+          { step: 4, title: "Sasti Medicine Lein", description: "50-90% tak sasti medicines milti hain" }
+        ],
+        officialWebsite: "https://janaushadhi.gov.in",
+        officeName: "Janaushadhi Kendra",
+        warnings: ["Medicines 50-90% sasti milti hain", "Quality same hai - WHO GMP certified", "9000+ stores across India", "Generic medicines same formula hain branded se"]
+      },
+      {
+        id: "poshan-abhiyaan",
+        title: "POSHAN Abhiyaan",
+        titleHi: "पोषण अभियान",
+        description: "Kuposhan se mukt Bharat - nutrition mission",
+        eligibility: ["Pregnant women", "Lactating mothers", "Children 0-6 years", "Adolescent girls"],
+        documents: ["Aadhaar Card", "MCH Card", "Anganwadi registration"],
+        steps: [
+          { step: 1, title: "Anganwadi Jaayein", description: "Nearest Anganwadi centre jaayein" },
+          { step: 2, title: "Registration", description: "Pregnant women/children ka registration karein" },
+          { step: 3, title: "Nutrition Support", description: "Supplementary nutrition milega" },
+          { step: 4, title: "Health Checkup", description: "Regular health checkups honge" },
+          { step: 5, title: "Growth Monitoring", description: "Bacchon ki growth monitor hogi" }
+        ],
+        officialWebsite: "https://poshanabhiyaan.gov.in",
+        officeName: "Anganwadi Centre / ICDS",
+        warnings: ["Anganwadi se free nutrition milta hai", "Monthly health checkup hota hai", "Growth monitoring regular hona chahiye", "Malnourishment ka early detection important"]
+      },
+      {
+        id: "mission-indradhanush",
+        title: "Mission Indradhanush",
+        titleHi: "मिशन इंद्रधनुष",
+        description: "Bacchon aur pregnant women ka free vaccination",
+        eligibility: ["All children under 2 years", "Pregnant women", "Focus on unvaccinated/partially vaccinated"],
+        documents: ["MCH Card (Mother & Child Health Card)", "Aadhaar Card (optional)"],
+        steps: [
+          { step: 1, title: "Nearest Health Center Jaayein", description: "PHC/CHC/Anganwadi jaayein" },
+          { step: 2, title: "Vaccination Schedule Check", description: "Age ke hisab se vaccine schedule dekhein" },
+          { step: 3, title: "Free Vaccination Lein", description: "All vaccines free mein milte hain" },
+          { step: 4, title: "MCH Card Update", description: "Vaccination record MCH card mein update karwayein" }
+        ],
+        officialWebsite: "https://nhm.gov.in",
+        officeName: "PHC / CHC / Anganwadi Centre",
+        warnings: ["Sabhi vaccines bilkul FREE hain", "BCG, OPV, Hepatitis B, DPT, Measles etc. covered", "Schedule follow karna zaroori hai", "ASHA worker ghar par bhi aa sakti hai"]
+      },
+      {
+        id: "tb-free-india",
+        title: "TB Free India Campaign",
+        titleHi: "टीबी मुक्त भारत अभियान",
+        description: "TB ka free treatment aur Nikshay Poshan Yojana",
+        eligibility: ["All TB patients", "Free treatment for everyone", "Nutritional support for TB patients"],
+        documents: ["Aadhaar Card", "Bank Account (nutrition support ke liye)", "Hospital/Doctor referral"],
+        steps: [
+          { step: 1, title: "Hospital Jaayein", description: "Government hospital ya DOTS center jaayein" },
+          { step: 2, title: "TB Test Karwayein", description: "Free TB testing available hai" },
+          { step: 3, title: "Treatment Shuru", description: "6-9 months ka free treatment milega" },
+          { step: 4, title: "Nikshay Registration", description: "nikshay.in par patient registration hoga" },
+          { step: 5, title: "Nutrition Support", description: "Rs. 500/month DBT milta hai (Nikshay Poshan)" }
+        ],
+        officialWebsite: "https://nikshay.in",
+        officeName: "DOTS Centre / Government Hospital",
+        warnings: ["TB treatment bilkul FREE hai", "Rs. 500/month nutrition support milta hai", "Treatment beech mein mat chhodein - drug resistant TB ho sakti hai", "Family members ki bhi screening zaroori"]
+      },
+      {
+        id: "digital-health-mission",
+        title: "National Digital Health Mission",
+        titleHi: "राष्ट्रीय डिजिटल स्वास्थ्य मिशन",
+        description: "ABHA Card - Ek digital health ID",
+        eligibility: ["Sabhi Indian citizens", "Aadhaar ya mobile number se ban sakta hai"],
+        documents: ["Aadhaar Card ya Mobile Number"],
+        steps: [
+          { step: 1, title: "abha.abdm.gov.in Jaayein", description: "ABHA portal ya app download karein" },
+          { step: 2, title: "ABHA Number Create", description: "Aadhaar ya mobile se ABHA number banayein" },
+          { step: 3, title: "ABHA Address Choose", description: "username@abdm format mein address chunein" },
+          { step: 4, title: "Health Records Link", description: "Hospital visits ki records digitally link karein" },
+          { step: 5, title: "Card Download", description: "ABHA Health Card download karein" }
+        ],
+        officialWebsite: "https://abha.abdm.gov.in",
+        officeName: "ABDM / National Health Authority",
+        warnings: ["ABHA card bilkul FREE hai", "Digital health records ek jagah milenge", "Hospital mein dikhayein - paperless treatment", "Privacy protected hai - aapki consent se hi share hoga"]
+      },
+      {
+        id: "smart-cities",
+        title: "Smart Cities Mission",
+        titleHi: "स्मार्ट सिटीज़ मिशन",
+        description: "100 cities ka smart development",
+        eligibility: ["100 selected cities ke residents", "Urban infrastructure improvement"],
+        documents: [],
+        steps: [
+          { step: 1, title: "Check Karein", description: "smartcities.gov.in par apna city check karein" },
+          { step: 2, title: "Projects Dekhein", description: "Apne city mein chal rahe projects dekhein" },
+          { step: 3, title: "Citizen Engagement", description: "Smart city portal par feedback aur suggestions dein" },
+          { step: 4, title: "Services Use Karein", description: "Smart parking, WiFi, surveillance jaise services use karein" }
+        ],
+        officialWebsite: "https://smartcities.gov.in",
+        officeName: "Smart City SPV / Municipal Corporation",
+        warnings: ["100 cities selected hain", "Infrastructure, technology, sustainability focus", "Citizen participation important hai", "Mobile apps available hain city services ke liye"]
+      },
+      {
+        id: "amrut-scheme",
+        title: "AMRUT Scheme",
+        titleHi: "अमृत योजना",
+        description: "Urban water supply aur sewerage infrastructure",
+        eligibility: ["500+ cities/towns covered", "All urban residents benefit"],
+        documents: [],
+        steps: [
+          { step: 1, title: "amrut.gov.in Jaayein", description: "AMRUT portal par city projects check karein" },
+          { step: 2, title: "Services Check", description: "Water supply aur sewerage improvements dekhein" },
+          { step: 3, title: "Grievance File", description: "Water/sewerage issues report karein" }
+        ],
+        officialWebsite: "https://amrut.gov.in",
+        officeName: "Municipal Corporation / Urban Local Body",
+        warnings: ["Water supply improvement focus hai", "Sewerage infrastructure banegi", "Green spaces aur parks bhi included", "AMRUT 2.0 mein sab households ko water connection goal hai"]
+      },
+      {
+        id: "pm-svanidhi",
+        title: "PM SVANidhi",
+        titleHi: "पीएम स्वनिधि",
+        description: "Street vendors ke liye Rs. 10,000-50,000 loan",
+        eligibility: ["Street vendors jo 24 March 2020 se pehle se vending kar rahe hain", "Certificate of Vending ya Letter of Recommendation chahiye", "Urban areas ke vendors"],
+        documents: ["Aadhaar Card", "Vending Certificate/Letter of Recommendation", "Bank Account", "Photo", "Mobile Number"],
+        steps: [
+          { step: 1, title: "pmsvanidhi.mohua.gov.in Jaayein", description: "Official SVANidhi portal kholein" },
+          { step: 2, title: "Apply Online/Offline", description: "Online ya bank branch mein apply karein" },
+          { step: 3, title: "Document Submit", description: "Vending certificate aur ID proof dein" },
+          { step: 4, title: "Loan Milega", description: "1st loan: Rs. 10,000 | 2nd: Rs. 20,000 | 3rd: Rs. 50,000" },
+          { step: 5, title: "Digital Payment", description: "Digital transactions karne par cashback milta hai" }
+        ],
+        officialWebsite: "https://pmsvanidhi.mohua.gov.in",
+        officeName: "Banks / Municipal Corporation",
+        warnings: ["Working capital loan hai - 1 saal mein repay", "Time se repay karein - next level loan milega", "7% interest subsidy milti hai", "Digital payment par cashback bhi milta hai"]
+      },
+      {
+        id: "day-nulm",
+        title: "DAY-NULM",
+        titleHi: "दीनदयाल अंत्योदय योजना - शहरी",
+        description: "Urban poor ke liye skill training aur self-employment",
+        eligibility: ["Urban homeless aur poor", "Street vendors", "Self-help groups", "Urban poor women"],
+        documents: ["Aadhaar Card", "Address Proof", "Income Certificate", "Bank Account"],
+        steps: [
+          { step: 1, title: "ULB/Municipal Office Jaayein", description: "Urban Local Body office jaayein" },
+          { step: 2, title: "Registration", description: "Beneficiary registration karein" },
+          { step: 3, title: "Skill Training", description: "Free skill training programs mein enroll karein" },
+          { step: 4, title: "SHG Formation", description: "Self Help Group banayein (women ke liye)" },
+          { step: 5, title: "Loan/Support", description: "SHG bank linkage aur micro-enterprise support" }
+        ],
+        officialWebsite: "https://nulm.gov.in",
+        officeName: "Municipal Corporation / SULM",
+        warnings: ["Free skill training milti hai", "Shelters for urban homeless", "SHG ko Rs. 10 lakh tak loan", "Placement assistance bhi milti hai"]
+      },
+      {
+        id: "jal-jeevan-mission",
+        title: "Jal Jeevan Mission",
+        titleHi: "जल जीवन मिशन",
+        description: "Har ghar nal se jal - piped water connection",
+        eligibility: ["Rural households jo bina tap water ke hain", "Priority: SC/ST villages, water quality affected areas"],
+        documents: ["Aadhaar Card", "Address Proof"],
+        steps: [
+          { step: 1, title: "Gram Panchayat Jaayein", description: "Apni gram panchayat mein apply karein" },
+          { step: 2, title: "Application Dein", description: "Water connection ke liye form bharein" },
+          { step: 3, title: "Survey", description: "Department survey karega" },
+          { step: 4, title: "Pipeline Work", description: "Pipeline aur tank construction hoga" },
+          { step: 5, title: "Connection", description: "Ghar mein nal connection milega" }
+        ],
+        officialWebsite: "https://jaljeevanmission.gov.in",
+        officeName: "Gram Panchayat / PHE Department",
+        warnings: ["Free ya nominal charge mein connection", "55 lpcd (litres per capita daily) supply goal", "Water quality testing hoti hai", "Gram Panchayat level par implementation"]
+      },
+      {
+        id: "swachh-bharat-urban",
+        title: "Swachh Bharat Mission (Urban)",
+        titleHi: "स्वच्छ भारत मिशन (शहरी)",
+        description: "Urban sanitation aur cleanliness mission",
+        eligibility: ["Urban households without toilet", "Municipal areas"],
+        documents: ["Aadhaar Card", "Address Proof", "BPL Card (for subsidy)"],
+        steps: [
+          { step: 1, title: "Municipal Office Jaayein", description: "Nagar Palika ya Nagar Nigam jaayein" },
+          { step: 2, title: "Application Dein", description: "Toilet construction subsidy ke liye apply karein" },
+          { step: 3, title: "Subsidy", description: "Rs. 12,000-15,000 toilet construction subsidy" },
+          { step: 4, title: "Construction", description: "Toilet banwayein" },
+          { step: 5, title: "Verification", description: "Municipal officer verify karega" }
+        ],
+        officialWebsite: "https://swachhbharatmission.gov.in",
+        officeName: "Municipal Corporation / Nagar Palika",
+        warnings: ["Individual toilet construction subsidy available", "ODF (Open Defecation Free) goal", "Waste management bhi covered", "Swachh Survekshan ranking hota hai"]
+      },
+      {
+        id: "swachh-bharat-gramin",
+        title: "Swachh Bharat Mission (Gramin)",
+        titleHi: "स्वच्छ भारत मिशन (ग्रामीण)",
+        description: "Rural sanitation - ghar mein toilet banwayein",
+        eligibility: ["Rural households without toilet", "BPL/APL families", "SC/ST households ko priority"],
+        documents: ["Aadhaar Card", "BPL Card/Ration Card", "Bank Account", "Photo"],
+        steps: [
+          { step: 1, title: "Gram Panchayat Jaayein", description: "Sarpanch ya Gram Rozgar Sahayak se milein" },
+          { step: 2, title: "Application Dein", description: "IHHL (Individual Household Latrine) ke liye apply karein" },
+          { step: 3, title: "Approval", description: "Block office se approval milega" },
+          { step: 4, title: "Rs. 12,000 Subsidy", description: "Construction ke liye incentive milega" },
+          { step: 5, title: "Toilet Banwayein", description: "Twin-pit ya septic tank toilet banwayein" },
+          { step: 6, title: "Photo Upload", description: "Geo-tagged photo upload hogi verification ke liye" }
+        ],
+        officialWebsite: "https://swachhbharatmission.gov.in/sbmcms/index.htm",
+        officeName: "Gram Panchayat / Block Office",
+        warnings: ["Rs. 12,000 incentive per household", "MGNREGA se extra labour cost mil sakti hai", "Twin-pit model recommended hai", "ODF Plus phase mein solid/liquid waste management bhi"]
+      },
+      {
+        id: "namami-gange",
+        title: "Namami Gange Programme",
+        titleHi: "नमामि गंगे कार्यक्रम",
+        description: "Ganga river cleaning aur conservation mission",
+        eligibility: ["Ganga basin ke 5 states (Uttarakhand, UP, Bihar, Jharkhand, WB)", "Industrial units near Ganga", "Communities along riverbank"],
+        documents: [],
+        steps: [
+          { step: 1, title: "nmcg.nic.in Jaayein", description: "Namami Gange portal par jaankari lein" },
+          { step: 2, title: "Volunteer Karein", description: "Ganga Vichar Manch ya Ganga Prahari mein join karein" },
+          { step: 3, title: "Pollution Report", description: "Industrial pollution report karein portal par" },
+          { step: 4, title: "Community Participation", description: "Ghat cleaning drives mein participate karein" }
+        ],
+        officialWebsite: "https://nmcg.nic.in",
+        officeName: "National Mission for Clean Ganga",
+        warnings: ["Rs. 20,000 crore+ budget allocated", "Sewage treatment plants ban rahe hain", "Industrial pollution monitoring", "Biodiversity conservation bhi included"]
+      },
+      {
+        id: "rural-drinking-water",
+        title: "National Rural Drinking Water Programme",
+        titleHi: "राष्ट्रीय ग्रामीण पेयजल कार्यक्रम",
+        description: "Rural areas mein safe drinking water",
+        eligibility: ["Rural habitations", "Water quality affected areas", "Water scarcity areas"],
+        documents: ["Community level - no individual documents needed"],
+        steps: [
+          { step: 1, title: "Gram Panchayat Jaayein", description: "Water supply issue report karein" },
+          { step: 2, title: "Demand Register", description: "Panchayat mein demand register karein" },
+          { step: 3, title: "Survey", description: "PHE department survey karega" },
+          { step: 4, title: "Scheme Implementation", description: "Handpump, bore well ya piped supply scheme aayegi" }
+        ],
+        officialWebsite: "https://jalshakti-ddws.gov.in",
+        officeName: "PHE Department / Gram Panchayat",
+        warnings: ["Jal Jeevan Mission mein merged ho raha hai", "Water quality testing free hai", "Fluoride/Arsenic affected areas ko priority", "Community participation zaroori hai"]
+      },
+      {
+        id: "mgnrega",
+        title: "MGNREGA",
+        titleHi: "मनरेगा",
+        description: "100 din ka guaranteed rojgar - rural employment",
+        eligibility: [
+          "Rural area ke adult members jo manual labour kar sakte hain",
+          "Job card holder hona chahiye",
+          "Per household minimum 100 din guaranteed"
+        ],
+        documents: ["Aadhaar Card", "Job Card (ya naya banwayein)", "Bank Account", "Passport size photo"],
+        steps: [
+          { step: 1, title: "Gram Panchayat Jaayein", description: "Job Card ke liye Gram Panchayat mein apply karein" },
+          { step: 2, title: "Job Card Banwayein", description: "15 din mein Job Card milna chahiye" },
+          { step: 3, title: "Kaam Maangein", description: "Written ya oral application dein kaam ke liye" },
+          { step: 4, title: "15 Din Mein Kaam Milega", description: "Application ke 15 din mein kaam milna chahiye" },
+          { step: 5, title: "Wages", description: "State wise wages - Rs. 200-350/day bank mein aayegi" }
+        ],
+        officialWebsite: "https://nrega.nic.in",
+        officeName: "Gram Panchayat / Block Office",
+        warnings: ["100 din nahi mile toh unemployment allowance milna chahiye", "Wages 15 din mein milni chahiye", "Women ko 1/3 priority", "nrega.nic.in par payment status check karein"]
+      },
+      {
+        id: "skill-india-mission",
+        title: "Skill India Mission",
+        titleHi: "स्किल इंडिया मिशन",
+        description: "Yuvaon ke liye free skill development training",
+        eligibility: ["Indian youth 15-45 years", "School dropouts bhi eligible", "Unemployed aur underemployed"],
+        documents: ["Aadhaar Card", "Educational certificates", "Bank Account", "Photo"],
+        steps: [
+          { step: 1, title: "skillindia.gov.in Jaayein", description: "Skill India portal par register karein" },
+          { step: 2, title: "Sector Chunein", description: "IT, Healthcare, Automotive, Beauty etc. chunein" },
+          { step: 3, title: "Training Center Dhundhein", description: "Nearest PMKVY training center find karein" },
+          { step: 4, title: "Enrollment", description: "Center par jaake admission lein" },
+          { step: 5, title: "Training Complete", description: "2-6 months training attend karein" },
+          { step: 6, title: "Certification", description: "NSDC certified certificate milega" },
+          { step: 7, title: "Placement", description: "Placement assistance milegi" }
+        ],
+        officialWebsite: "https://www.skillindia.gov.in",
+        officeName: "NSDC / Skill India",
+        warnings: ["Training bilkul FREE hai", "Certificate nationally/internationally recognized", "300+ job roles available", "Placement support milta hai"]
+      },
+      {
+        id: "ddu-gky",
+        title: "DDU-GKY",
+        titleHi: "दीनदयाल उपाध्याय ग्रामीण कौशल्य योजना",
+        description: "Rural youth ke liye skill training aur placement",
+        eligibility: ["15-35 years rural youth", "BPL families", "SC/ST/Women/PwD/Minorities ko priority", "MGNREGA card holders"],
+        documents: ["Aadhaar Card", "BPL/Ration Card", "Educational certificates", "Bank Account", "Caste Certificate (if applicable)"],
+        steps: [
+          { step: 1, title: "ddugky.gov.in Jaayein", description: "DDU-GKY portal par register karein" },
+          { step: 2, title: "PIA Center Dhundhein", description: "Project Implementing Agency center find karein" },
+          { step: 3, title: "Enrollment", description: "Free training ke liye enroll karein" },
+          { step: 4, title: "Training", description: "3-12 months residential training" },
+          { step: 5, title: "Placement", description: "Minimum Rs. 6,000/month job placement guarantee" }
+        ],
+        officialWebsite: "https://ddugky.gov.in",
+        officeName: "DDU-GKY / Rural Development",
+        warnings: ["Training, food, accommodation sab FREE", "Minimum 70% placement mandatory hai PIA ke liye", "Post-placement tracking hota hai", "Migration support bhi milta hai"]
+      },
+      {
+        id: "national-career-service",
+        title: "National Career Service",
+        titleHi: "राष्ट्रीय करियर सेवा",
+        description: "Free job portal - sarkari aur private jobs",
+        eligibility: ["Sabhi job seekers", "Students", "Employers bhi register kar sakte hain"],
+        documents: ["Aadhaar Card (optional)", "Educational certificates", "Resume"],
+        steps: [
+          { step: 1, title: "ncs.gov.in Jaayein", description: "National Career Service portal kholein" },
+          { step: 2, title: "Register Karein", description: "Job seeker ke roop mein register karein" },
+          { step: 3, title: "Profile Banayein", description: "Education, skills, experience bharein" },
+          { step: 4, title: "Jobs Search", description: "Apne skills ke hisaab se jobs search karein" },
+          { step: 5, title: "Apply Karein", description: "Directly portal se apply karein" }
+        ],
+        officialWebsite: "https://www.ncs.gov.in",
+        officeName: "Ministry of Labour / NCS",
+        warnings: ["Bilkul FREE portal hai", "Government aur private dono jobs", "Career counselling bhi available", "Model Career Centre visit karein for guidance"]
+      },
+      {
+        id: "beti-bachao",
+        title: "Beti Bachao Beti Padhao",
+        titleHi: "बेटी बचाओ बेटी पढ़ाओ",
+        description: "Beti ki suraksha aur shiksha ke liye abhiyaan",
+        eligibility: ["Girl children", "Families with daughters", "All districts covered"],
+        documents: ["Birth Certificate", "Aadhaar Card", "School admission proof"],
+        steps: [
+          { step: 1, title: "Awareness", description: "BBBP campaign ke baare mein jaanein" },
+          { step: 2, title: "Sukanya Samriddhi", description: "Beti ke naam Sukanya Samriddhi account kholein" },
+          { step: 3, title: "School Admission", description: "Beti ko school mein admit karwayein" },
+          { step: 4, title: "District Office", description: "BBBP district coordinator se milein for additional schemes" }
+        ],
+        officialWebsite: "https://wcd.nic.in/bbbp-schemes",
+        officeName: "WCD Ministry / District Administration",
+        warnings: ["Sex determination test illegal hai", "Girl child education mandatory hai", "Sukanya Samriddhi best savings option hai", "Multiple state-level schemes bhi hain"]
+      },
+      {
+        id: "pm-matru-vandana",
+        title: "PM Matru Vandana Yojana",
+        titleHi: "पीएम मातृ वंदना योजना",
+        description: "Pregnant women ko Rs. 5,000-11,000 cash benefit",
+        eligibility: ["Pregnant women aur lactating mothers", "First living child ke liye Rs. 5,000", "Second child girl ho toh Rs. 6,000 extra", "19 years+ age"],
+        documents: ["Aadhaar Card", "Bank Account (Aadhaar linked)", "MCH Card", "Last Menstrual Period (LMP) date"],
+        steps: [
+          { step: 1, title: "Anganwadi Jaayein", description: "Nearest Anganwadi centre par registration karein" },
+          { step: 2, title: "Form Bharein", description: "PMMVY form bharein Anganwadi worker ki help se" },
+          { step: 3, title: "Documents Submit", description: "Aadhaar, bank details, MCH card dein" },
+          { step: 4, title: "Installments", description: "3 installments mein Rs. 5,000 bank mein aayenge" },
+          { step: 5, title: "Hospital Delivery", description: "Hospital mein delivery karwayein - Rs. 6,000 extra Janani Suraksha Yojana se" }
+        ],
+        officialWebsite: "https://pmmvy.wcd.gov.in",
+        officeName: "Anganwadi Centre / Health Centre",
+        warnings: ["First child: Rs. 5,000 | Second girl child: Rs. 6,000", "Institutional delivery par extra benefit", "Registration jaldi karwayein - pregnancy ke 150 din ke andar", "DBT se bank mein aata hai"]
+      },
+      {
+        id: "one-stop-centre",
+        title: "One Stop Centre Scheme",
+        titleHi: "वन स्टॉप सेंटर योजना",
+        description: "Violence affected women ke liye ek jagah sab help",
+        eligibility: ["Women affected by violence", "Any age, caste, religion", "Including girls below 18 years"],
+        documents: ["Any ID proof (optional - help bina documents ke bhi milti hai)"],
+        steps: [
+          { step: 1, title: "181 Helpline Call Karein", description: "Women Helpline 181 par call karein" },
+          { step: 2, title: "OSC Jaayein", description: "Nearest One Stop Centre par jaayein" },
+          { step: 3, title: "Counselling", description: "Professional counselling milegi" },
+          { step: 4, title: "Legal Aid", description: "Free legal help milegi" },
+          { step: 5, title: "Shelter", description: "Temporary shelter bhi available hai" },
+          { step: 6, title: "Medical Help", description: "Medical examination aur treatment" }
+        ],
+        officialWebsite: "https://wcd.nic.in",
+        officeName: "One Stop Centre / Women Helpline 181",
+        warnings: ["24x7 service hai", "Bilkul FREE hai", "Police, legal, medical sab ek jagah", "Confidentiality maintain hoti hai"]
+      },
+      {
+        id: "working-women-hostel",
+        title: "Working Women Hostel Scheme",
+        titleHi: "कामकाजी महिला छात्रावास योजना",
+        description: "Working women ke liye safe aur affordable hostel",
+        eligibility: ["Working women income Rs. 50,000/month tak", "Women in training", "Single, widowed, divorced women", "Children up to 18 years allowed"],
+        documents: ["Aadhaar Card", "Employment proof", "Income Certificate", "Photo"],
+        steps: [
+          { step: 1, title: "Hostel Dhundhein", description: "Nearest Working Women Hostel find karein" },
+          { step: 2, title: "Application", description: "Hostel management se form lein" },
+          { step: 3, title: "Documents Submit", description: "Employment aur income proof dein" },
+          { step: 4, title: "Allotment", description: "Vacancy ke hisaab se room allot hoga" }
+        ],
+        officialWebsite: "https://wcd.nic.in",
+        officeName: "WCD Ministry / District Office",
+        warnings: ["Subsidized rent hota hai", "Safe aur secure environment", "Day care facility bhi available kuch mein", "State wise application process alag"]
+      },
+      {
+        id: "mission-shakti",
+        title: "Mission Shakti",
+        titleHi: "मिशन शक्ति",
+        description: "Women safety, empowerment aur protection mission",
+        eligibility: ["All women and girls", "Two sub-schemes: Sambal (safety) & Samarthya (empowerment)"],
+        documents: ["Aadhaar Card", "Any ID proof"],
+        steps: [
+          { step: 1, title: "District Office Jaayein", description: "WCD district office se jaankari lein" },
+          { step: 2, title: "Scheme Identify", description: "Safety ya empowerment - konsi scheme chahiye" },
+          { step: 3, title: "Registration", description: "Beneficiary registration karein" },
+          { step: 4, title: "Benefits", description: "Training, support, shelter jaise benefits paayein" }
+        ],
+        officialWebsite: "https://wcd.nic.in",
+        officeName: "WCD Ministry / District Administration",
+        warnings: ["One Stop Centre, Women Helpline sab isme covered", "Beti Bachao Beti Padhao bhi iska part", "Skill development for women", "Legal awareness programs"]
+      },
+      {
+        id: "pm-garib-kalyan-anna",
+        title: "PM Garib Kalyan Anna Yojana",
+        titleHi: "पीएम गरीब कल्याण अन्न योजना",
+        description: "Gareeb parivaron ko free ration (wheat/rice)",
+        eligibility: ["National Food Security Act beneficiaries", "Antyodaya Anna Yojana (AAY) card holders", "Priority Household (PHH) card holders"],
+        documents: ["Ration Card", "Aadhaar Card"],
+        steps: [
+          { step: 1, title: "Ration Card Check Karein", description: "Apna ration card type check karein (AAY/PHH)" },
+          { step: 2, title: "Fair Price Shop Jaayein", description: "Apni designated ration dukaan par jaayein" },
+          { step: 3, title: "Aadhaar Verify", description: "Biometric ya Aadhaar OTP se verify karein" },
+          { step: 4, title: "Ration Lein", description: "5 kg/person/month free ration lein" }
+        ],
+        officialWebsite: "https://nfsa.gov.in",
+        officeName: "Fair Price Shop / Food Department",
+        warnings: ["5 kg/person/month free milta hai", "January 2024 se 5 saal ke liye extend hua", "One Nation One Ration Card se kahi bhi le sakte", "Biometric verification mandatory hai"]
+      },
+      {
+        id: "antyodaya-anna",
+        title: "Antyodaya Anna Yojana",
+        titleHi: "अंत्योदय अन्न योजना",
+        description: "Sabse gareeb parivaron ke liye subsidized ration",
+        eligibility: ["Sabse gareeb BPL families", "Widow headed households", "Disabled persons", "60+ age single persons", "Primitive tribal groups"],
+        documents: ["AAY Ration Card", "Aadhaar Card"],
+        steps: [
+          { step: 1, title: "BDO/Tehsil Office Jaayein", description: "AAY card ke liye apply karein agar nahi hai" },
+          { step: 2, title: "Fair Price Shop Jaayein", description: "Monthly ration collect karein" },
+          { step: 3, title: "35 Kg Ration", description: "35 kg ration per family per month" }
+        ],
+        officialWebsite: "https://nfsa.gov.in",
+        officeName: "Food & Civil Supplies Department",
+        warnings: ["35 kg/family/month fixed hai", "Wheat Rs. 2/kg, Rice Rs. 3/kg", "Sabse gareeb families ke liye reserved", "PDS reforms se delivery better hui hai"]
+      },
+      {
+        id: "pds-system",
+        title: "Public Distribution System",
+        titleHi: "सार्वजनिक वितरण प्रणाली",
+        description: "Ration card se subsidized food grains",
+        eligibility: ["All ration card holders", "APL, BPL, AAY categories"],
+        documents: ["Ration Card", "Aadhaar Card"],
+        steps: [
+          { step: 1, title: "Ration Card Banwayein", description: "Agar nahi hai toh state portal se apply karein" },
+          { step: 2, title: "Fair Price Shop Dhundhein", description: "Designated FPS find karein" },
+          { step: 3, title: "Monthly Collection", description: "Har mahine designated dates par jaayein" },
+          { step: 4, title: "ePoS Verification", description: "Biometric/Aadhaar se verify karein" },
+          { step: 5, title: "Ration Collect", description: "Entitled quantity collect karein" }
+        ],
+        officialWebsite: "https://nfsa.gov.in",
+        officeName: "Food & Civil Supplies / Fair Price Shop",
+        warnings: ["One Nation One Ration Card (ONORC) se portability hai", "ePoS machine se transparency", "Shikayat ke liye helpline available", "Ration dealer zyada nahi le sakta"]
+      },
+      {
+        id: "mid-day-meal",
+        title: "Mid-Day Meal Scheme (PM POSHAN)",
+        titleHi: "मिड-डे मील योजना (पीएम पोषण)",
+        description: "School mein free hot cooked meal for students",
+        eligibility: ["Class 1-8 ke students", "Government aur government-aided schools", "EGS aur AIE centres"],
+        documents: ["School admission proof"],
+        steps: [
+          { step: 1, title: "School Mein Admission", description: "Government school mein admission lein" },
+          { step: 2, title: "Automatic Enrollment", description: "MDM automatic milta hai - alag se apply nahi karna" },
+          { step: 3, title: "Daily Meal", description: "School mein hot cooked meal milega" }
+        ],
+        officialWebsite: "https://pmposhan.education.gov.in",
+        officeName: "School / Education Department",
+        warnings: ["Free hot cooked meal milta hai", "450-700 calories per meal", "12-20 gm protein per meal", "School attendance improve hota hai"]
+      },
+      {
+        id: "nsap",
+        title: "National Social Assistance Programme",
+        titleHi: "राष्ट्रीय सामाजिक सहायता कार्यक्रम",
+        description: "Old age pension, widow pension, disability pension",
+        eligibility: ["Old Age (60+): BPL families", "Widow: BPL widow women 40+", "Disability: 80%+ disability, BPL"],
+        documents: ["Aadhaar Card", "Age proof", "BPL Card/Certificate", "Death Certificate of husband (widow pension)", "Disability Certificate (disability pension)", "Bank Account"],
+        steps: [
+          { step: 1, title: "Gram Panchayat/ULB Jaayein", description: "Application form lein aur bharein" },
+          { step: 2, title: "Documents Submit", description: "Required proofs attach karein" },
+          { step: 3, title: "Verification", description: "Block/District level verification" },
+          { step: 4, title: "Pension Start", description: "Approval ke baad monthly pension bank mein" }
+        ],
+        officialWebsite: "https://nsap.nic.in",
+        officeName: "District Social Welfare Office",
+        warnings: [
+          "Indira Gandhi National Old Age Pension: Rs. 200-500/month (central) + state share",
+          "Indira Gandhi National Widow Pension: Rs. 300/month",
+          "Indira Gandhi National Disability Pension: Rs. 300/month",
+          "State governments extra amount add karti hain"
+        ]
+      },
+      {
+        id: "samagra-shiksha",
+        title: "Samagra Shiksha Abhiyan",
+        titleHi: "समग्र शिक्षा अभियान",
+        description: "School education quality improvement - Pre-school to Class 12",
+        eligibility: ["All government school students", "Pre-school to Class 12", "Teachers aur schools bhi benefit karte hain"],
+        documents: ["School admission - no separate application needed"],
+        steps: [
+          { step: 1, title: "Government School Join", description: "Government/aided school mein admission lein" },
+          { step: 2, title: "Benefits Automatically", description: "Free textbooks, uniforms, transport milta hai" },
+          { step: 3, title: "Special Training", description: "Out-of-school children ke liye special training" }
+        ],
+        officialWebsite: "https://samagra.education.gov.in",
+        officeName: "School Education Department",
+        warnings: ["Free textbooks milte hain", "Free uniforms milti hain", "Transport allowance remote areas mein", "Digital education push ho raha hai"]
+      },
+      {
+        id: "pm-shri-schools",
+        title: "PM SHRI Schools",
+        titleHi: "पीएम श्री स्कूल",
+        description: "14,500 upgraded model schools across India",
+        eligibility: ["Students in PM SHRI designated schools", "Schools selected for upgrade"],
+        documents: ["School admission proof"],
+        steps: [
+          { step: 1, title: "PM SHRI School Check", description: "Check karein kya aapke area mein PM SHRI school hai" },
+          { step: 2, title: "Admission Lein", description: "PM SHRI school mein admission lein" },
+          { step: 3, title: "Modern Education", description: "NEP 2020 based modern education milegi" }
+        ],
+        officialWebsite: "https://pmshrischools.education.gov.in",
+        officeName: "School Education Department",
+        warnings: ["NEP 2020 ke hisab se education", "Smart classrooms honge", "Labs aur library upgrade hogi", "Sports infrastructure improve hoga"]
+      },
+      {
+        id: "nmcm-scholarship",
+        title: "National Means Cum Merit Scholarship",
+        titleHi: "राष्ट्रीय आय सह मेरिट छात्रवृत्ति",
+        description: "Class 9-12 ke meritorious students ke liye scholarship",
+        eligibility: ["Class 8 pass students", "Parents income Rs. 3.5 lakh/year se kam", "55%+ marks in Class 7", "Government school students"],
+        documents: ["Aadhaar Card", "Class 7/8 marksheet", "Income Certificate", "Caste Certificate (if applicable)", "Bank Account"],
+        steps: [
+          { step: 1, title: "NMMS Exam", description: "State level NMMS exam dein (Class 8 mein)" },
+          { step: 2, title: "Qualify Karein", description: "MAT aur SAT dono mein qualify karein" },
+          { step: 3, title: "NSP Registration", description: "scholarships.gov.in par register karein" },
+          { step: 4, title: "Application Submit", description: "Exam result ke baad scholarship form bharein" },
+          { step: 5, title: "Rs. 12,000/year", description: "Class 9-12 tak Rs. 12,000/year milega" }
+        ],
+        officialWebsite: "https://scholarships.gov.in",
+        officeName: "State Education Department / NSP",
+        warnings: ["Rs. 12,000/year (Rs. 1,000/month)", "Class 9 se 12 tak milta hai", "Har saal renewal karna padta hai", "55%+ marks maintain karna zaroori"]
+      },
+      {
+        id: "nsp-schemes",
+        title: "National Scholarship Portal Schemes",
+        titleHi: "राष्ट्रीय छात्रवृत्ति पोर्टल योजनाएं",
+        description: "Ek portal par sabhi central government scholarships",
+        eligibility: ["Students of all levels", "Various categories - SC/ST/OBC/Minority/EWS", "Different income criteria per scheme"],
+        documents: ["Aadhaar Card", "Marksheets", "Income Certificate", "Caste/Community Certificate", "Bank Account", "Admission proof"],
+        steps: [
+          { step: 1, title: "scholarships.gov.in Jaayein", description: "NSP portal kholein" },
+          { step: 2, title: "Schemes Browse Karein", description: "Available scholarships dekhein" },
+          { step: 3, title: "Eligibility Check", description: "Apni eligibility match karein" },
+          { step: 4, title: "Register & Apply", description: "One-time registration karke apply karein" },
+          { step: 5, title: "Institute Verification", description: "School/College verify karega" },
+          { step: 6, title: "Scholarship Credit", description: "Bank mein directly credit hoga" }
+        ],
+        officialWebsite: "https://scholarships.gov.in",
+        officeName: "National Scholarship Portal",
+        warnings: ["100+ scholarships ek portal par", "July-November application period usually", "Institute verification mandatory", "Fresh aur renewal dono available"]
+      },
+      {
+        id: "vidya-lakshmi",
+        title: "Vidya Lakshmi Education Loan",
+        titleHi: "विद्या लक्ष्मी एजुकेशन लोन",
+        description: "Education loan ke liye ek common portal",
+        eligibility: ["Indian students", "Admission in recognized institution", "Domestic aur abroad courses"],
+        documents: ["Aadhaar Card", "PAN Card", "Admission letter", "Fee structure", "Marksheets", "Co-applicant income proof"],
+        steps: [
+          { step: 1, title: "vidyalakshmi.co.in Jaayein", description: "Vidya Lakshmi portal par register karein" },
+          { step: 2, title: "CELAF Bharein", description: "Common Education Loan Application Form bharein" },
+          { step: 3, title: "Banks Select", description: "Max 3 banks choose karein" },
+          { step: 4, title: "Application Submit", description: "Online submit karein" },
+          { step: 5, title: "Bank Processing", description: "Bank contact karegi processing ke liye" }
+        ],
+        officialWebsite: "https://www.vidyalakshmi.co.in",
+        officeName: "Vidya Lakshmi Portal / Banks",
+        warnings: ["Ek form se multiple banks mein apply", "Rs. 7.5 lakh tak collateral free", "Interest subsidy available for EWS", "Education loan pe tax benefit 80E"]
+      },
+      {
+        id: "ujala-led",
+        title: "UJALA LED Scheme",
+        titleHi: "उजाला एलईडी योजना",
+        description: "Sasti LED bulbs aur energy efficient appliances",
+        eligibility: ["All Indian households", "Domestic electricity consumers"],
+        documents: ["Electricity bill", "ID proof"],
+        steps: [
+          { step: 1, title: "Distribution Center Jaayein", description: "EESL distribution center ya designated outlets jaayein" },
+          { step: 2, title: "Electricity Bill Dikhayein", description: "Latest electricity bill dikhayein" },
+          { step: 3, title: "LED Bulbs Kharidein", description: "Subsidized rate par LED bulbs lein" },
+          { step: 4, title: "Old Bulb Exchange", description: "Old CFL/incandescent bulbs exchange kar sakte hain" }
+        ],
+        officialWebsite: "https://www.eeslindia.org",
+        officeName: "EESL / Distribution Centers",
+        warnings: ["LED bulbs bahut saste milte hain (Rs. 70-80)", "Electricity bill 50% tak kam hota hai", "3 saal warranty milti hai", "Energy efficient fans bhi available"]
+      },
+      {
+        id: "national-solar-mission",
+        title: "National Solar Mission",
+        titleHi: "राष्ट्रीय सौर मिशन",
+        description: "Rooftop solar panel par subsidy",
+        eligibility: ["Residential households", "Housing societies", "Rooftop suitable for solar panels"],
+        documents: ["Aadhaar Card", "Electricity bill", "Property ownership proof", "Bank Account", "Roof photo"],
+        steps: [
+          { step: 1, title: "solarrooftop.gov.in Jaayein", description: "PM Surya Ghar portal par register karein" },
+          { step: 2, title: "Apply Online", description: "Rooftop solar ke liye apply karein" },
+          { step: 3, title: "DISCOM Approval", description: "Electricity company feasibility check karegi" },
+          { step: 4, title: "Vendor Select", description: "Empanelled vendor se solar panel lagwayein" },
+          { step: 5, title: "Installation", description: "Solar panel installation hoga" },
+          { step: 6, title: "Net Metering", description: "Extra electricity grid ko bech sakte hain" },
+          { step: 7, title: "Subsidy Credit", description: "Subsidy bank account mein aayegi" }
+        ],
+        officialWebsite: "https://solarrooftop.gov.in",
+        officeName: "MNRE / DISCOM",
+        warnings: ["1-3 kW: Rs. 30,000-78,000 subsidy", "Electricity bill almost zero ho sakta hai", "25 saal tak chalte hain panels", "Extra power bechne se income bhi"]
+      },
+      {
+        id: "pm-kusum",
+        title: "PM KUSUM Scheme",
+        titleHi: "पीएम कुसुम योजना",
+        description: "Kisano ke liye solar pump aur solar power plant",
+        eligibility: ["Farmers", "Farmer groups", "Panchayats", "Water user associations"],
+        documents: ["Aadhaar Card", "Land Records", "Bank Account", "Existing pump details"],
+        steps: [
+          { step: 1, title: "State Nodal Agency Jaayein", description: "Apne state ki renewable energy agency se contact karein" },
+          { step: 2, title: "Component Choose", description: "Solar pump ya solar power plant option chunein" },
+          { step: 3, title: "Application Submit", description: "Online ya offline apply karein" },
+          { step: 4, title: "Subsidy Approval", description: "60% subsidy (30% central + 30% state)" },
+          { step: 5, title: "Installation", description: "Solar pump/plant install hoga" }
+        ],
+        officialWebsite: "https://mnre.gov.in/solar/schemes",
+        officeName: "State Renewable Energy Agency / MNRE",
+        warnings: ["60% subsidy milti hai solar pumps par", "Diesel pump replace karne ka option", "Extra electricity grid ko bech sakte", "Irrigation cost bahut kam ho jata hai"]
+      },
+      {
+        id: "green-india-mission",
+        title: "Green India Mission",
+        titleHi: "हरित भारत मिशन",
+        description: "Van (forest) area badhane ka national mission",
+        eligibility: ["Forest communities", "Gram Sabhas", "Joint Forest Management Committees", "NGOs working in forestry"],
+        documents: ["Community/Organization registration", "Project proposal"],
+        steps: [
+          { step: 1, title: "Forest Department", description: "State Forest Department se contact karein" },
+          { step: 2, title: "JFMC Join", description: "Joint Forest Management Committee mein join karein" },
+          { step: 3, title: "Plantation Drive", description: "Tree plantation activities mein participate karein" },
+          { step: 4, title: "Livelihood", description: "Forest-based livelihood programs mein enroll karein" }
+        ],
+        officialWebsite: "https://moef.gov.in",
+        officeName: "Forest Department / MoEFCC",
+        warnings: ["10 million hectares green cover goal", "Livelihood generation bhi hota hai", "Biodiversity conservation", "Carbon sink increase"]
+      },
+      {
+        id: "digital-india",
+        title: "Digital India",
+        titleHi: "डिजिटल इंडिया",
+        description: "India ko digitally empowered society banana",
+        eligibility: ["Sabhi Indian citizens", "Government departments", "Entrepreneurs"],
+        documents: [],
+        steps: [
+          { step: 1, title: "Digital Services Use Karein", description: "DigiLocker, UMANG, e-Sign jaise services use karein" },
+          { step: 2, title: "Digital Literacy", description: "PMGDISHA se digital skills seekhein" },
+          { step: 3, title: "Digital Payment", description: "UPI, BHIM se cashless transactions" },
+          { step: 4, title: "e-Governance", description: "Government services online access karein" }
+        ],
+        officialWebsite: "https://digitalindia.gov.in",
+        officeName: "MeitY / Digital India",
+        warnings: ["DigiLocker mein documents store karein", "UMANG app se 1000+ services access", "Digital payment sabse safe hai", "Free WiFi hotspots available hain"]
+      },
+      {
+        id: "bharatnet",
+        title: "BharatNet",
+        titleHi: "भारतनेट",
+        description: "Village level internet connectivity - broadband to every panchayat",
+        eligibility: ["Gram Panchayats", "Rural areas", "CSC operators"],
+        documents: [],
+        steps: [
+          { step: 1, title: "Check Connectivity", description: "bharatnet.gov.in par apni panchayat check karein" },
+          { step: 2, title: "CSC Center", description: "Common Service Centre par broadband access karein" },
+          { step: 3, title: "WiFi Hotspot", description: "BharatNet WiFi hotspot use karein" }
+        ],
+        officialWebsite: "https://bbnl.nic.in",
+        officeName: "BBNL / BSNL / CSC",
+        warnings: ["2.5 lakh+ Gram Panchayats connected", "Affordable broadband available", "CSCs internet services provide karte hain", "Optical fiber network hai"]
+      },
+      {
+        id: "digilocker-service",
+        title: "DigiLocker",
+        titleHi: "डिजिलॉकर",
+        description: "Digital documents storage - Aadhaar, PAN, Marksheets sab ek jagah",
+        eligibility: ["Sabhi Indian citizens with Aadhaar", "Free service hai"],
+        documents: ["Aadhaar Card", "Mobile Number"],
+        steps: [
+          { step: 1, title: "digilocker.gov.in Jaayein", description: "Ya DigiLocker app download karein" },
+          { step: 2, title: "Sign Up", description: "Aadhaar aur mobile number se register karein" },
+          { step: 3, title: "Documents Fetch", description: "Aadhaar, PAN, Driving License auto-fetch karein" },
+          { step: 4, title: "Upload Documents", description: "Other documents bhi upload kar sakte hain" },
+          { step: 5, title: "Share Documents", description: "Digitally signed documents share karein" }
+        ],
+        officialWebsite: "https://digilocker.gov.in",
+        officeName: "DigiLocker / MeitY",
+        warnings: ["Legally valid hai - original ke barabar", "Free 1 GB storage", "150+ organizations ke documents available", "Mobile app bhi available hai"]
+      },
+      {
+        id: "umang-app",
+        title: "UMANG App",
+        titleHi: "उमंग ऐप",
+        description: "1200+ government services ek app mein",
+        eligibility: ["Sabhi Indian citizens", "Android aur iOS dono par available"],
+        documents: ["Mobile Number", "Aadhaar (optional)"],
+        steps: [
+          { step: 1, title: "UMANG App Download", description: "Play Store/App Store se UMANG download karein" },
+          { step: 2, title: "Register", description: "Mobile number se register karein" },
+          { step: 3, title: "Services Browse", description: "EPF, Passport, Scholarship jaise services access karein" },
+          { step: 4, title: "Use Services", description: "PF balance check, Aadhaar update, tax filing sab ek jagah" }
+        ],
+        officialWebsite: "https://web.umang.gov.in",
+        officeName: "MeitY / NeGD",
+        warnings: ["1200+ services available", "Multiple languages mein available", "Aadhaar, PAN, Passport sab accessible", "Bill payments bhi kar sakte hain"]
+      },
+      {
+        id: "csc-centres",
+        title: "Common Service Centres",
+        titleHi: "जन सेवा केंद्र (CSC)",
+        description: "Village level digital service delivery - sab government kaam ek jagah",
+        eligibility: ["Sabhi nagarik", "Entrepreneurs jo CSC kholna chahein"],
+        documents: ["Aadhaar Card", "Service specific documents"],
+        steps: [
+          { step: 1, title: "Nearest CSC Dhundhein", description: "locator.csccloud.in par nearest CSC find karein" },
+          { step: 2, title: "CSC Jaayein", description: "Jan Seva Kendra par jaayein" },
+          { step: 3, title: "Service Select", description: "Aadhaar, PAN, Banking, Insurance - jo chahiye" },
+          { step: 4, title: "Nominal Fee", description: "Bahut kam fees mein kaam ho jayega" }
+        ],
+        officialWebsite: "https://csc.gov.in",
+        officeName: "CSC Academy / CSC SPV",
+        warnings: ["4 lakh+ CSCs across India", "300+ services available", "Digital literacy training bhi milti hai", "Banking correspondent services bhi", "Agar CSC kholna chahein toh csc.gov.in par apply karein"]
+      },
+      {
+        id: "aadhaar-services",
+        title: "Aadhaar Services",
+        titleHi: "आधार सेवाएं",
+        description: "Aadhaar enrollment, update, download - complete guide",
+        eligibility: ["Sabhi Indian residents", "NRIs with 182+ days stay"],
+        documents: ["Identity Proof", "Address Proof", "Date of Birth Proof"],
+        steps: [
+          { step: 1, title: "myaadhaar.uidai.gov.in Jaayein", description: "Official Aadhaar portal kholein" },
+          { step: 2, title: "Service Chunein", description: "New enrollment, update, download, verify - jo chahiye" },
+          { step: 3, title: "OTP Verify", description: "Registered mobile par OTP aayega" },
+          { step: 4, title: "Service Complete", description: "Selected service complete karein" }
+        ],
+        officialWebsite: "https://uidai.gov.in",
+        officeName: "UIDAI / Aadhaar Centres",
+        warnings: ["Aadhaar enrollment FREE hai", "Update Rs. 50 lagta hai", "OTP kabhi kisi ko share mat karein", "Aadhaar number confidential rakhein"]
+      },
+      {
+        id: "pan-card-services",
+        title: "PAN Card Services",
+        titleHi: "पैन कार्ड सेवाएं",
+        description: "PAN card apply, correction, download - complete guide",
+        eligibility: ["Sabhi Indian citizens", "Companies, firms, trusts"],
+        documents: ["Aadhaar Card", "Address Proof", "Photo", "Signature"],
+        steps: [
+          { step: 1, title: "onlineservices.nsdl.com Jaayein", description: "NSDL PAN portal kholein" },
+          { step: 2, title: "Service Chunein", description: "New PAN, correction, reprint option chunein" },
+          { step: 3, title: "Form Bharein", description: "Form 49A bharein" },
+          { step: 4, title: "Payment", description: "Rs. 107 fees pay karein" },
+          { step: 5, title: "E-PAN Download", description: "Email par e-PAN aayega" }
+        ],
+        officialWebsite: "https://www.onlineservices.nsdl.com",
+        officeName: "NSDL / UTIITSL",
+        warnings: ["Ek person ko sirf EK PAN allowed", "PAN-Aadhaar link mandatory hai", "e-PAN legal valid hai", "Duplicate PAN par penalty lagti hai"]
+      },
+      {
+        id: "passport-seva",
+        title: "Passport Seva",
+        titleHi: "पासपोर्ट सेवा",
+        description: "Passport apply, renewal, tatkal - complete guide",
+        eligibility: ["Indian citizens", "Valid address proof mandatory"],
+        documents: ["Aadhaar Card", "Birth proof", "Address Proof", "Old Passport (renewal)"],
+        steps: [
+          { step: 1, title: "passportindia.gov.in Jaayein", description: "Passport Seva portal kholein" },
+          { step: 2, title: "Register/Login", description: "Account banayein ya login karein" },
+          { step: 3, title: "Form Bharein", description: "Online form bharein" },
+          { step: 4, title: "Fee Pay Karein", description: "Normal: Rs. 1,500 | Tatkal: Rs. 3,500" },
+          { step: 5, title: "Appointment Book", description: "PSK appointment book karein" },
+          { step: 6, title: "PSK Visit", description: "Documents le kar PSK jaayein" }
+        ],
+        officialWebsite: "https://www.passportindia.gov.in",
+        officeName: "Passport Seva Kendra",
+        warnings: ["Normal: 30-45 din | Tatkal: 1-3 din", "Appointment miss mat karein", "Original documents le jaayein", "Police verification hogi"]
+      },
+      {
+        id: "gst-portal",
+        title: "GST Portal",
+        titleHi: "जीएसटी पोर्टल",
+        description: "GST registration, return filing, e-way bill",
+        eligibility: ["Business with turnover Rs. 20 lakh+ (services) / Rs. 40 lakh+ (goods)", "Inter-state suppliers", "E-commerce operators"],
+        documents: ["PAN Card", "Aadhaar Card", "Business registration proof", "Bank Account", "Address Proof of business"],
+        steps: [
+          { step: 1, title: "gst.gov.in Jaayein", description: "GST portal par register karein" },
+          { step: 2, title: "Registration Apply", description: "New registration ke liye Part A + Part B form bharein" },
+          { step: 3, title: "Documents Upload", description: "Business documents upload karein" },
+          { step: 4, title: "GSTIN Milega", description: "Verification ke baad GST number milega" },
+          { step: 5, title: "Returns File", description: "Monthly/Quarterly returns file karein" }
+        ],
+        officialWebsite: "https://www.gst.gov.in",
+        officeName: "GST Portal / Tax Department",
+        warnings: ["GST return late file karne par penalty", "E-way bill Rs. 50,000+ goods transport ke liye", "Input tax credit claim karein", "Composition scheme small business ke liye"]
+      },
+      {
+        id: "myscheme-portal",
+        title: "MyScheme Portal",
+        titleHi: "मेरी योजना पोर्टल",
+        description: "Sabhi government schemes ek jagah - eligibility check karein",
+        eligibility: ["Sabhi Indian citizens", "Free service"],
+        documents: ["Basic personal details for eligibility check"],
+        steps: [
+          { step: 1, title: "myscheme.gov.in Jaayein", description: "MyScheme portal kholein" },
+          { step: 2, title: "Profile Banayein", description: "Age, income, category, state details bharein" },
+          { step: 3, title: "Eligible Schemes Dekhein", description: "Automatic matching se eligible schemes dikhenge" },
+          { step: 4, title: "Apply Karein", description: "Direct scheme portal par redirect ho jayenge" }
+        ],
+        officialWebsite: "https://www.myscheme.gov.in",
+        officeName: "MyScheme / Government of India",
+        warnings: ["200+ central schemes listed hain", "Auto-matching se eligible schemes milti hain", "State schemes bhi add ho rahi hain", "Mobile friendly hai"]
       }
     ]
   },
