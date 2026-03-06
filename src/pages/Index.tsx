@@ -95,7 +95,7 @@ const Index = () => {
                   <div className="flex-1 text-center opacity-0 animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
                     <div className="flex items-center justify-center gap-1">
                       <Zap className="w-4 h-4 text-accent" />
-                      <span className="text-lg font-bold text-white">15+</span>
+                      <span className="text-lg font-bold text-white">40+</span>
                     </div>
                     <div className="text-xs text-white/75">{t("Services", "Services")}</div>
                   </div>
@@ -103,7 +103,7 @@ const Index = () => {
                   <div className="flex-1 text-center opacity-0 animate-fade-in" style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}>
                     <div className="flex items-center justify-center gap-1">
                       <Users className="w-4 h-4 text-white/80" />
-                      <span className="text-lg font-bold text-white">100+</span>
+                      <span className="text-lg font-bold text-white">200+</span>
                     </div>
                     <div className="text-xs text-white/75">{t("Guides", "Guides")}</div>
                   </div>

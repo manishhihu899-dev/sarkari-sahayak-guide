@@ -16,7 +16,54 @@ import {
   Baby,
   Skull,
   Building2,
-  LucideIcon
+  LucideIcon,
+  Train,
+  Zap,
+  Droplets,
+  Flame,
+  ShieldCheck,
+  Wallet,
+  Scale,
+  Siren,
+  FileSearch,
+  Receipt,
+  PiggyBank,
+  Stethoscope,
+  HardHat,
+  ScrollText,
+  Home,
+  MapPin,
+  Accessibility,
+  UserCircle,
+  Tractor,
+  Truck,
+  CreditCard as CreditCardIcon,
+  Mail,
+  Building,
+  HeartPulse,
+  Pickaxe,
+  Wifi,
+  Globe,
+  Briefcase,
+  Package,
+  Bus,
+  Clock,
+  Users,
+  Wrench,
+  BookOpen,
+  Gavel,
+  Eye,
+  AlertTriangle,
+  PhoneCall,
+  Megaphone,
+  HandHeart,
+  TreePine,
+  Factory,
+  Store,
+  Utensils,
+  BadgeCheck,
+  CircleDollarSign,
+  Newspaper
 } from "lucide-react";
 
 export interface Service {
@@ -62,6 +109,26 @@ export const categories = [
   { id: "schemes", name: "Govt Schemes", nameHi: "सरकारी योजनाएं", icon: Gift },
   { id: "security", name: "Digital Security", nameHi: "डिजिटल सुरक्षा", icon: Shield },
   { id: "mobile", name: "SIM & Mobile", nameHi: "सिम और मोबाइल", icon: Smartphone },
+  { id: "transport", name: "Transport & Travel", nameHi: "परिवहन और यात्रा", icon: Train },
+  { id: "bills", name: "Bills & Payments", nameHi: "बिल और भुगतान", icon: Receipt },
+  { id: "legal", name: "Legal & Courts", nameHi: "कानूनी और कोर्ट", icon: Gavel },
+  { id: "health", name: "Health & Medical", nameHi: "स्वास्थ्य और चिकित्सा", icon: HeartPulse },
+  { id: "agriculture", name: "Agriculture", nameHi: "कृषि", icon: Tractor },
+  { id: "housing", name: "Housing & Property", nameHi: "आवास और संपत्ति", icon: Home },
+  { id: "employment", name: "Employment & Labour", nameHi: "रोजगार और श्रम", icon: Briefcase },
+  { id: "welfare", name: "Social Welfare", nameHi: "सामाजिक कल्याण", icon: HandHeart },
+  { id: "energy", name: "Energy & Gas", nameHi: "ऊर्जा और गैस", icon: Flame },
+  { id: "insurance", name: "Insurance & Pension", nameHi: "बीमा और पेंशन", icon: ShieldCheck },
+  { id: "digital", name: "Digital Services", nameHi: "डिजिटल सेवाएं", icon: Globe },
+  { id: "municipal", name: "Municipal Services", nameHi: "नगर निगम सेवाएं", icon: Building },
+  { id: "senior", name: "Senior Citizens", nameHi: "वरिष्ठ नागरिक", icon: UserCircle },
+  { id: "disability", name: "Disability Services", nameHi: "दिव्यांग सेवाएं", icon: Accessibility },
+  { id: "business", name: "Business & GST", nameHi: "व्यापार और जीएसटी", icon: Store },
+  { id: "postoffice", name: "Post Office", nameHi: "डाकघर", icon: Mail },
+  { id: "police", name: "Police & Safety", nameHi: "पुलिस और सुरक्षा", icon: Siren },
+  { id: "rti", name: "RTI & Grievance", nameHi: "आरटीआई और शिकायत", icon: FileSearch },
+  { id: "food", name: "Food & Ration", nameHi: "खाद्य और राशन", icon: Utensils },
+  { id: "environment", name: "Environment", nameHi: "पर्यावरण", icon: TreePine },
   { id: "help", name: "Help & FAQs", nameHi: "मदद और प्रश्न", icon: HelpCircle },
 ];
 
@@ -4028,6 +4095,1165 @@ export const services: Service[] = [
           "Laminate karke safe jagah rakhein",
           "Khoye documents ki FIR zaroor file karein"
         ]
+      }
+    ]
+  },
+  {
+    id: "railway",
+    title: "Railway & IRCTC Services",
+    titleHi: "रेलवे और आईआरसीटीसी सेवाएं",
+    description: "Train ticket booking, PNR status, refund",
+    icon: Train,
+    category: "transport",
+    themeColor: "0 70% 45%",
+    subServices: [
+      {
+        id: "irctc-booking",
+        title: "IRCTC Ticket Booking",
+        titleHi: "आईआरसीटीसी टिकट बुकिंग",
+        description: "Online train ticket kaise book karein",
+        eligibility: ["Koi bhi Indian citizen", "IRCTC account hona chahiye"],
+        documents: ["Aadhaar Card", "Mobile Number", "Email ID", "Debit/Credit Card ya UPI"],
+        steps: [
+          { step: 1, title: "IRCTC Account Banayein", description: "irctc.co.in par register karein email aur mobile se" },
+          { step: 2, title: "Login Karein", description: "Username aur password se login karein" },
+          { step: 3, title: "Train Search", description: "From, To station, date dalein aur trains search karein" },
+          { step: 4, title: "Seat Select Karein", description: "Class (Sleeper/AC) aur seat choose karein" },
+          { step: 5, title: "Payment Karein", description: "UPI, card ya net banking se payment karein" }
+        ],
+        officialWebsite: "https://www.irctc.co.in",
+        officeName: "Indian Railway Catering and Tourism Corporation",
+        warnings: ["Tatkal booking subah 10 baje (AC) aur 11 baje (Sleeper) shuru hoti hai", "Fake IRCTC apps se bachein"]
+      },
+      {
+        id: "pnr-status",
+        title: "PNR Status Check",
+        titleHi: "पीएनआर स्टेटस चेक",
+        description: "Train ticket ka PNR status kaise check karein",
+        documents: ["PNR Number (10 digit)"],
+        steps: [
+          { step: 1, title: "IRCTC Website/App Kholein", description: "irctc.co.in ya IRCTC Rail Connect app kholein" },
+          { step: 2, title: "PNR Number Dalein", description: "10 digit PNR number enter karein" },
+          { step: 3, title: "Status Dekhein", description: "Confirmed, RAC ya Waitlist status dikhega" }
+        ],
+        officialWebsite: "https://www.indianrail.gov.in",
+        officeName: "Indian Railways",
+        warnings: ["PNR status chart banne ke baad final hota hai", "Sirf official website use karein"]
+      },
+      {
+        id: "train-refund",
+        title: "Train Ticket Refund",
+        titleHi: "ट्रेन टिकट रिफंड",
+        description: "Cancel ticket ka refund kaise milega",
+        documents: ["PNR Number", "IRCTC Login", "Bank Account Details"],
+        steps: [
+          { step: 1, title: "IRCTC Login Karein", description: "apni IRCTC account mein login karein" },
+          { step: 2, title: "Booked Tickets Jaayein", description: "My Transactions > Booked Ticket History" },
+          { step: 3, title: "Cancel Karein", description: "Jo ticket cancel karni hai usse select karein" },
+          { step: 4, title: "Refund Wait", description: "Refund 5-7 working days mein bank account mein aayega" }
+        ],
+        officialWebsite: "https://www.irctc.co.in",
+        officeName: "IRCTC",
+        warnings: ["Tatkal tickets par refund nahi milta", "Chart banne ke baad cancellation charges zyada lagte hain"]
+      }
+    ]
+  },
+  {
+    id: "electricity",
+    title: "Electricity Services",
+    titleHi: "बिजली सेवाएं",
+    description: "Bijli bill, new connection, complaint",
+    icon: Zap,
+    category: "bills",
+    themeColor: "45 85% 48%",
+    subServices: [
+      {
+        id: "electricity-bill",
+        title: "Electricity Bill Payment",
+        titleHi: "बिजली बिल भुगतान",
+        description: "Online bijli bill kaise bhare",
+        documents: ["Consumer Number", "Bill Number", "Mobile Number"],
+        steps: [
+          { step: 1, title: "State Electricity Board Website", description: "Apne state ki electricity board website kholein" },
+          { step: 2, title: "Consumer Number Dalein", description: "Bill par likha consumer number enter karein" },
+          { step: 3, title: "Amount Check Karein", description: "Outstanding amount verify karein" },
+          { step: 4, title: "Payment Karein", description: "UPI, card ya net banking se pay karein" }
+        ],
+        officialWebsite: "https://www.bijlibill.com",
+        officeName: "State Electricity Board",
+        warnings: ["Due date ke baad late fee lagti hai", "Meter reading verify karein bill par"]
+      },
+      {
+        id: "new-electricity-connection",
+        title: "New Electricity Connection",
+        titleHi: "नया बिजली कनेक्शन",
+        description: "Naya bijli connection kaise lein",
+        documents: ["Aadhaar Card", "Address Proof", "Property Documents", "Passport Size Photo", "Application Form"],
+        steps: [
+          { step: 1, title: "Application Form Bharein", description: "Local electricity office se form lein ya online download karein" },
+          { step: 2, title: "Documents Attach Karein", description: "Saare required documents ke copies lagayein" },
+          { step: 3, title: "Fees Jama Karein", description: "Connection charges aur security deposit jama karein" },
+          { step: 4, title: "Inspection", description: "Lineman aayega inspection ke liye" },
+          { step: 5, title: "Meter Lagega", description: "Approval ke baad meter install hoga" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "State Electricity Board",
+        warnings: ["Unauthorized connection par heavy fine lagta hai", "Load requirement sahi batayein"]
+      }
+    ]
+  },
+  {
+    id: "water-services",
+    title: "Water Bill Services",
+    titleHi: "पानी बिल सेवाएं",
+    description: "Pani bill, new connection, complaint",
+    icon: Droplets,
+    category: "bills",
+    themeColor: "200 75% 48%",
+    subServices: [
+      {
+        id: "water-bill-payment",
+        title: "Water Bill Payment",
+        titleHi: "पानी बिल भुगतान",
+        description: "Online pani bill kaise bhare",
+        documents: ["Consumer Number", "Connection ID"],
+        steps: [
+          { step: 1, title: "Jal Board Website Kholein", description: "Apne city/state ke jal board ki website par jaayein" },
+          { step: 2, title: "Connection ID Dalein", description: "Apna consumer/connection number enter karein" },
+          { step: 3, title: "Bill Dekhein", description: "Current bill amount check karein" },
+          { step: 4, title: "Pay Karein", description: "Online payment karein UPI/card se" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Jal Board / Water Authority",
+        warnings: ["Pani ki barbadi par fine lag sakta hai", "Meter tamper karna illegal hai"]
+      },
+      {
+        id: "new-water-connection",
+        title: "New Water Connection",
+        titleHi: "नया पानी कनेक्शन",
+        description: "Naya pani connection kaise lein",
+        documents: ["Property Papers", "Aadhaar Card", "Application Form", "NOC from Society", "Photo"],
+        steps: [
+          { step: 1, title: "Application Dein", description: "Local Jal Board office mein application submit karein" },
+          { step: 2, title: "Documents Jama Karein", description: "Property proof aur ID proof dein" },
+          { step: 3, title: "Fees Bharein", description: "Connection charges pay karein" },
+          { step: 4, title: "Inspection & Installation", description: "Team aayegi aur pipeline lagayegi" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Municipal Water Department",
+        warnings: ["Illegal boring par penalty lagti hai", "Pipeline damage karna offense hai"]
+      }
+    ]
+  },
+  {
+    id: "gas-services",
+    title: "Gas Connection Services",
+    titleHi: "गैस कनेक्शन सेवाएं",
+    description: "LPG gas connection, refill, transfer",
+    icon: Flame,
+    category: "energy",
+    themeColor: "15 85% 52%",
+    subServices: [
+      {
+        id: "new-gas-connection",
+        title: "New LPG Gas Connection",
+        titleHi: "नया एलपीजी गैस कनेक्शन",
+        description: "Naya gas connection kaise lein",
+        eligibility: ["Koi bhi Indian citizen", "18 saal se zyada umar", "Pehle se connection nahi hona chahiye"],
+        documents: ["Aadhaar Card", "Address Proof", "Passport Photo", "Ration Card (optional)", "Bank Account Details"],
+        steps: [
+          { step: 1, title: "Distributor Choose Karein", description: "HP, Bharat Gas ya Indane mein se choose karein" },
+          { step: 2, title: "Online Apply Karein", description: "Company ki website par apply karein" },
+          { step: 3, title: "KYC Complete Karein", description: "Documents submit karein distributor ke paas" },
+          { step: 4, title: "Payment Karein", description: "Security deposit aur cylinder charge pay karein" },
+          { step: 5, title: "Delivery", description: "Cylinder ghar par deliver hoga" }
+        ],
+        officialWebsite: "https://www.pmuy.gov.in",
+        officeName: "HP Gas / Bharat Gas / Indane",
+        warnings: ["Duplicate connection lena illegal hai", "Cylinder ka commercial use mat karein"]
+      },
+      {
+        id: "gas-refill-booking",
+        title: "Gas Cylinder Refill Booking",
+        titleHi: "गैस सिलेंडर रिफिल बुकिंग",
+        description: "Online gas cylinder kaise book karein",
+        documents: ["Consumer Number", "Registered Mobile Number"],
+        steps: [
+          { step: 1, title: "Missed Call/SMS Dein", description: "HP: 9555060460, Bharat: 7718955555, Indane: 7718955555 par missed call dein" },
+          { step: 2, title: "App Se Book Karein", description: "Company ki app se bhi book kar sakte hain" },
+          { step: 3, title: "Delivery Wait Karein", description: "2-5 din mein cylinder deliver hoga" }
+        ],
+        officialWebsite: "https://www.bharatpetroleum.in",
+        officeName: "Gas Distribution Company",
+        warnings: ["Subsidy bank account mein aati hai (PAHAL scheme)", "Cylinder ka weight check karein delivery par"]
+      }
+    ]
+  },
+  {
+    id: "insurance-services",
+    title: "Insurance Services",
+    titleHi: "बीमा सेवाएं",
+    description: "Life, health, vehicle insurance",
+    icon: ShieldCheck,
+    category: "insurance",
+    themeColor: "160 65% 42%",
+    subServices: [
+      {
+        id: "life-insurance",
+        title: "Life Insurance (LIC)",
+        titleHi: "जीवन बीमा (एलआईसी)",
+        description: "LIC policy kaise lein",
+        eligibility: ["18-65 saal umar", "Indian citizen"],
+        documents: ["Aadhaar Card", "PAN Card", "Age Proof", "Income Proof", "Medical Reports", "Photos"],
+        steps: [
+          { step: 1, title: "LIC Agent Se Milein", description: "Nearest LIC office ya authorized agent se milein" },
+          { step: 2, title: "Plan Choose Karein", description: "Jeevan Labh, Jeevan Umang etc. mein se choose karein" },
+          { step: 3, title: "Proposal Form Bharein", description: "Personal aur medical details dein" },
+          { step: 4, title: "Medical Test", description: "Agar required hai toh medical test hoga" },
+          { step: 5, title: "Premium Pay Karein", description: "First premium pay karein aur policy bond lein" }
+        ],
+        officialWebsite: "https://www.licindia.in",
+        officeName: "Life Insurance Corporation of India",
+        warnings: ["Premium time par bharein warna policy lapse ho jayegi", "Fake agents se savdhan rahein"]
+      },
+      {
+        id: "vehicle-insurance",
+        title: "Vehicle Insurance",
+        titleHi: "वाहन बीमा",
+        description: "Car/bike insurance kaise karein",
+        documents: ["RC Book", "Previous Insurance Policy", "Driving License", "PAN/Aadhaar"],
+        steps: [
+          { step: 1, title: "Company Choose Karein", description: "Online comparison websites par best rate dekhein" },
+          { step: 2, title: "Vehicle Details Dalein", description: "Registration number, model, year etc. dalein" },
+          { step: 3, title: "Coverage Choose Karein", description: "Third party ya comprehensive plan select karein" },
+          { step: 4, title: "Payment Karein", description: "Premium pay karein aur policy download karein" }
+        ],
+        officialWebsite: "https://www.irdai.gov.in",
+        officeName: "Insurance Regulatory Authority",
+        warnings: ["Bina insurance vehicle chalana illegal hai - ₹2000 fine", "Third party insurance mandatory hai"]
+      }
+    ]
+  },
+  {
+    id: "pension-services",
+    title: "Pension Services",
+    titleHi: "पेंशन सेवाएं",
+    description: "Old age, widow, disability pension",
+    icon: Wallet,
+    category: "welfare",
+    themeColor: "280 55% 50%",
+    subServices: [
+      {
+        id: "old-age-pension",
+        title: "Old Age Pension",
+        titleHi: "वृद्धा पेंशन",
+        description: "Budhape ki pension kaise milegi",
+        eligibility: ["60 saal se zyada umar", "BPL family", "Income limit as per state"],
+        documents: ["Aadhaar Card", "Age Proof", "BPL Card", "Bank Passbook", "Income Certificate", "Photo"],
+        steps: [
+          { step: 1, title: "Online/Offline Apply", description: "State pension portal ya tehsil office mein apply karein" },
+          { step: 2, title: "Documents Submit", description: "Saare documents jama karein" },
+          { step: 3, title: "Verification", description: "Block/Tehsil level par verification hoga" },
+          { step: 4, title: "Approval", description: "Approve hone par pension bank account mein aayegi" }
+        ],
+        officialWebsite: "https://nsap.nic.in",
+        officeName: "National Social Assistance Programme",
+        warnings: ["Har saal life certificate (Jeevan Pramaan) dena zaroori hai", "Bank account Aadhaar se link hona chahiye"]
+      },
+      {
+        id: "widow-pension",
+        title: "Widow Pension",
+        titleHi: "विधवा पेंशन",
+        description: "Vidhwa pension ke liye apply karein",
+        eligibility: ["Vidhwa mahila", "18-65 saal umar", "BPL ya low income family"],
+        documents: ["Aadhaar Card", "Husband ka Death Certificate", "Income Certificate", "Bank Passbook", "Photo"],
+        steps: [
+          { step: 1, title: "SDM/Tehsil Office Jaayein", description: "Application form lein aur bharein" },
+          { step: 2, title: "Documents Lagayein", description: "Death certificate aur ID proof attach karein" },
+          { step: 3, title: "Verification", description: "Field verification hoga" },
+          { step: 4, title: "Pension Shuru", description: "Approve hone par monthly pension milegi" }
+        ],
+        officialWebsite: "https://nsap.nic.in",
+        officeName: "District Social Welfare Office",
+        warnings: ["Dobara shaadi karne par pension band ho jayegi", "Sahi information dein - galat info par penalty"]
+      }
+    ]
+  },
+  {
+    id: "court-legal",
+    title: "Court & Legal Services",
+    titleHi: "कोर्ट और कानूनी सेवाएं",
+    description: "e-Court, case status, legal aid",
+    icon: Gavel,
+    category: "legal",
+    themeColor: "220 60% 40%",
+    subServices: [
+      {
+        id: "ecourt-case-status",
+        title: "e-Court Case Status",
+        titleHi: "ई-कोर्ट केस स्टेटस",
+        description: "Court case ka status online check karein",
+        documents: ["Case Number / CNR Number", "Party Name"],
+        steps: [
+          { step: 1, title: "eCourts Website Kholein", description: "ecourts.gov.in par jaayein" },
+          { step: 2, title: "Court Select Karein", description: "District Court ya High Court select karein" },
+          { step: 3, title: "Case Details Dalein", description: "CNR number ya party name se search karein" },
+          { step: 4, title: "Status Dekhein", description: "Next date, order, judgment sab dikhega" }
+        ],
+        officialWebsite: "https://ecourts.gov.in",
+        officeName: "e-Courts Services",
+        warnings: ["CNR number 16 digit ka hota hai", "Har court ka alag jurisdiction hai"]
+      },
+      {
+        id: "free-legal-aid",
+        title: "Free Legal Aid (NALSA)",
+        titleHi: "मुफ्त कानूनी सहायता",
+        description: "Gareeb logon ke liye free vakeel",
+        eligibility: ["SC/ST community", "Women & Children", "Disabled persons", "Annual income ₹3 lakh se kam", "Industrial workers"],
+        documents: ["Aadhaar Card", "Income Certificate", "BPL Card", "Case details"],
+        steps: [
+          { step: 1, title: "DLSA Office Jaayein", description: "District Legal Services Authority office jaayein" },
+          { step: 2, title: "Application Dein", description: "Free legal aid ke liye application form bharein" },
+          { step: 3, title: "Documents Submit", description: "Income proof aur ID proof dein" },
+          { step: 4, title: "Vakeel Milega", description: "Free advocate assign kiya jayega" }
+        ],
+        officialWebsite: "https://nalsa.gov.in",
+        officeName: "National Legal Services Authority",
+        warnings: ["Ye bilkul free service hai - koi fees nahi lagti", "Toll-free number: 15100"]
+      }
+    ]
+  },
+  {
+    id: "police-services",
+    title: "Police & FIR Services",
+    titleHi: "पुलिस और एफआईआर सेवाएं",
+    description: "FIR, complaint, verification",
+    icon: Siren,
+    category: "police",
+    themeColor: "210 70% 35%",
+    subServices: [
+      {
+        id: "online-fir",
+        title: "Online FIR / e-FIR",
+        titleHi: "ऑनलाइन एफआईआर",
+        description: "Online FIR kaise darj karein",
+        documents: ["Aadhaar Card", "Mobile Number", "Incident Details", "Evidence (if any)"],
+        steps: [
+          { step: 1, title: "State Police Website", description: "Apne state ki police website par jaayein" },
+          { step: 2, title: "e-FIR Section", description: "Online FIR/Complaint section mein jaayein" },
+          { step: 3, title: "Details Bharein", description: "Ghatna ka poora vivran, date, time, jagah likhein" },
+          { step: 4, title: "Submit Karein", description: "Form submit karein - complaint number milega" },
+          { step: 5, title: "Police Station Visit", description: "Serious cases mein police station jaana padega" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "State Police Department",
+        warnings: ["Emergency ke liye 112 dial karein", "Jhoothi FIR dalna punishable offense hai", "Zero FIR kisi bhi thane mein ho sakti hai"]
+      },
+      {
+        id: "police-verification",
+        title: "Police Verification Certificate",
+        titleHi: "पुलिस वेरिफिकेशन सर्टिफिकेट",
+        description: "Police character certificate kaise banwayein",
+        documents: ["Aadhaar Card", "Address Proof", "Passport Size Photos", "Application Form"],
+        steps: [
+          { step: 1, title: "Online/Offline Apply", description: "State police portal ya local thane mein apply karein" },
+          { step: 2, title: "Documents Dein", description: "ID proof aur address proof submit karein" },
+          { step: 3, title: "Verification", description: "Police aapke ghar/area mein verification karegi" },
+          { step: 4, title: "Certificate Milega", description: "15-30 din mein certificate ready hoga" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Local Police Station",
+        warnings: ["Passport ke liye police verification zaroori hai", "Criminal record check hota hai"]
+      }
+    ]
+  },
+  {
+    id: "rti-services",
+    title: "RTI Services",
+    titleHi: "आरटीआई सेवाएं",
+    description: "Right to Information application",
+    icon: FileSearch,
+    category: "rti",
+    themeColor: "142 60% 38%",
+    subServices: [
+      {
+        id: "rti-online",
+        title: "RTI Application Online",
+        titleHi: "आरटीआई ऑनलाइन आवेदन",
+        description: "Online RTI kaise file karein",
+        eligibility: ["Koi bhi Indian citizen"],
+        documents: ["Mobile Number", "Email ID", "₹10 fee (BPL free)"],
+        steps: [
+          { step: 1, title: "RTI Portal Kholein", description: "rtionline.gov.in par jaayein" },
+          { step: 2, title: "Register/Login", description: "Account banayein ya login karein" },
+          { step: 3, title: "Department Select", description: "Jis ministry/dept se info chahiye wo choose karein" },
+          { step: 4, title: "Application Likhein", description: "Apna sawal clearly likhein - specific rahein" },
+          { step: 5, title: "₹10 Fee Pay Karein", description: "Online payment karein (BPL holders free)" },
+          { step: 6, title: "30 Din Wait", description: "30 din mein jawab aana chahiye by law" }
+        ],
+        officialWebsite: "https://rtionline.gov.in",
+        officeName: "RTI Online Portal",
+        warnings: ["30 din mein jawab nahi aaye toh First Appeal karein", "RTI mein sirf factual information maang sakte hain, opinion nahi"]
+      }
+    ]
+  },
+  {
+    id: "gst-services",
+    title: "GST & Business Registration",
+    titleHi: "जीएसटी और व्यापार पंजीकरण",
+    description: "GST registration, returns, MSME",
+    icon: Store,
+    category: "business",
+    themeColor: "170 60% 42%",
+    subServices: [
+      {
+        id: "gst-registration",
+        title: "GST Registration",
+        titleHi: "जीएसटी रजिस्ट्रेशन",
+        description: "GST number kaise lein",
+        eligibility: ["Turnover ₹40 lakh+ (goods)", "₹20 lakh+ (services)", "Inter-state business"],
+        documents: ["PAN Card", "Aadhaar Card", "Business Address Proof", "Bank Statement", "Photos", "Business Registration"],
+        steps: [
+          { step: 1, title: "GST Portal Jaayein", description: "gst.gov.in par jaayein aur 'Register Now' click karein" },
+          { step: 2, title: "Part A - TRN Generate", description: "PAN, mobile, email dalein - TRN milega" },
+          { step: 3, title: "Part B - Full Application", description: "Business details, bank details, documents upload karein" },
+          { step: 4, title: "Verification", description: "Aadhaar OTP ya DSC se verify karein" },
+          { step: 5, title: "GSTIN Milega", description: "3-7 working days mein GSTIN number milega" }
+        ],
+        officialWebsite: "https://www.gst.gov.in",
+        officeName: "GST Portal",
+        warnings: ["GST return time par file karein - late fee lagti hai", "Fake GST practitioners se bachein"]
+      },
+      {
+        id: "msme-udyam",
+        title: "MSME/Udyam Registration",
+        titleHi: "एमएसएमई/उद्यम रजिस्ट्रेशन",
+        description: "Udyam registration kaise karein - free hai",
+        eligibility: ["Micro: ₹1 Cr investment", "Small: ₹10 Cr investment", "Medium: ₹50 Cr investment"],
+        documents: ["Aadhaar Card", "PAN Card", "Business Details", "Bank Account"],
+        steps: [
+          { step: 1, title: "Udyam Portal Kholein", description: "udyamregistration.gov.in par jaayein" },
+          { step: 2, title: "Aadhaar Dalein", description: "Proprietor/Partner ka Aadhaar number dalein" },
+          { step: 3, title: "OTP Verify", description: "Aadhaar linked mobile par OTP aayega" },
+          { step: 4, title: "Business Details Bharein", description: "Business type, activity, investment details dalein" },
+          { step: 5, title: "Certificate Download", description: "Turant Udyam Registration Certificate milega" }
+        ],
+        officialWebsite: "https://udyamregistration.gov.in",
+        officeName: "Ministry of MSME",
+        warnings: ["Ye bilkul FREE hai - kisi ko fees mat dein", "Ek business ka ek hi Udyam number hota hai"]
+      }
+    ]
+  },
+  {
+    id: "epf-services",
+    title: "EPF/PF Services",
+    titleHi: "ईपीएफ/पीएफ सेवाएं",
+    description: "PF balance, withdrawal, transfer, UAN",
+    icon: PiggyBank,
+    category: "employment",
+    themeColor: "210 70% 48%",
+    subServices: [
+      {
+        id: "pf-balance-check",
+        title: "PF Balance Check",
+        titleHi: "पीएफ बैलेंस चेक",
+        description: "Apna PF balance kaise check karein",
+        documents: ["UAN Number", "Aadhaar linked mobile"],
+        steps: [
+          { step: 1, title: "UMANG App/EPFO Portal", description: "UMANG app ya epfindia.gov.in par jaayein" },
+          { step: 2, title: "UAN Number Dalein", description: "Apna Universal Account Number enter karein" },
+          { step: 3, title: "Balance Dekhein", description: "Employee share, employer share, interest sab dikhega" }
+        ],
+        officialWebsite: "https://www.epfindia.gov.in",
+        officeName: "Employees' Provident Fund Organisation",
+        warnings: ["Missed call se bhi check kar sakte hain: 011-22901406", "UAN Aadhaar se link karna zaroori hai"]
+      },
+      {
+        id: "pf-withdrawal",
+        title: "PF Withdrawal Online",
+        titleHi: "पीएफ निकासी ऑनलाइन",
+        description: "PF ka paisa online kaise nikalein",
+        eligibility: ["Naukri chhodni ke 2 months baad", "Retirement par", "Emergency mein partial withdrawal"],
+        documents: ["UAN Number", "Aadhaar Card", "Bank Account (Aadhaar linked)", "PAN Card"],
+        steps: [
+          { step: 1, title: "EPFO Portal Login", description: "unifiedportal-mem.epfindia.gov.in par login karein" },
+          { step: 2, title: "Online Services", description: "Claim (Form-31, 19, 10C) select karein" },
+          { step: 3, title: "Bank Account Verify", description: "Bank account number verify karein" },
+          { step: 4, title: "Claim Submit", description: "Full/Partial withdrawal claim submit karein" },
+          { step: 5, title: "Amount Credit", description: "15-20 din mein bank account mein paisa aayega" }
+        ],
+        officialWebsite: "https://www.epfindia.gov.in",
+        officeName: "EPFO",
+        warnings: ["5 saal se pehle nikalne par tax lagta hai", "KYC complete hona zaroori hai online claim ke liye"]
+      }
+    ]
+  },
+  {
+    id: "esi-services",
+    title: "ESI Services",
+    titleHi: "ईएसआई सेवाएं",
+    description: "ESI card, hospital, claim",
+    icon: HeartPulse,
+    category: "health",
+    themeColor: "340 70% 48%",
+    subServices: [
+      {
+        id: "esi-card",
+        title: "ESI Card / Pehchan Card",
+        titleHi: "ईएसआई कार्ड",
+        description: "ESI card kaise banwayein",
+        eligibility: ["₹21,000/month se kam salary wale workers", "10+ employees wali company mein kaam karna"],
+        documents: ["Aadhaar Card", "Employer's Details", "Family Details", "Bank Account", "Photos"],
+        steps: [
+          { step: 1, title: "Employer Se Baat Karein", description: "Company HR se ESI registration karwayein" },
+          { step: 2, title: "IP Number Milega", description: "Insured Person (IP) number milega" },
+          { step: 3, title: "Online Registration", description: "esic.in par family details dalein" },
+          { step: 4, title: "Pehchan Card Download", description: "ESI Pehchan Card online download karein" }
+        ],
+        officialWebsite: "https://www.esic.in",
+        officeName: "Employees' State Insurance Corporation",
+        warnings: ["ESI hospital mein free ilaaj milta hai", "Family members bhi covered hain"]
+      }
+    ]
+  },
+  {
+    id: "labour-card",
+    title: "Labour Card Services",
+    titleHi: "लेबर कार्ड सेवाएं",
+    description: "Shramik card, construction worker card",
+    icon: HardHat,
+    category: "employment",
+    themeColor: "35 80% 48%",
+    subServices: [
+      {
+        id: "labour-card-registration",
+        title: "Labour/Shramik Card Registration",
+        titleHi: "श्रमिक कार्ड रजिस्ट्रेशन",
+        description: "Majdoor/shramik card kaise banwayein",
+        eligibility: ["Construction worker ya unorganized sector worker", "18-60 saal umar", "90 din kaam ka proof"],
+        documents: ["Aadhaar Card", "Bank Passbook", "Passport Photos", "Age Proof", "90 din kaam ka certificate (employer/contractor se)"],
+        steps: [
+          { step: 1, title: "Labour Office Jaayein", description: "District Labour Office ya online portal par jaayein" },
+          { step: 2, title: "Form Bharein", description: "Registration form bharein - Hindi/English mein available" },
+          { step: 3, title: "Documents Submit", description: "Saare documents ki copies jama karein" },
+          { step: 4, title: "Card Milega", description: "Verification ke baad Shramik Card issue hoga" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Labour Department",
+        warnings: ["Har saal renewal karwana zaroori hai", "Shramik card se kai schemes ka laabh milta hai"]
+      }
+    ]
+  },
+  {
+    id: "caste-certificate",
+    title: "Caste Certificate",
+    titleHi: "जाति प्रमाणपत्र",
+    description: "SC/ST/OBC caste certificate",
+    icon: ScrollText,
+    category: "certificates",
+    themeColor: "270 55% 50%",
+    subServices: [
+      {
+        id: "caste-cert-apply",
+        title: "Caste Certificate Apply",
+        titleHi: "जाति प्रमाणपत्र आवेदन",
+        description: "SC/ST/OBC certificate kaise banwayein",
+        eligibility: ["SC/ST/OBC category ke log", "State ke permanent resident"],
+        documents: ["Aadhaar Card", "Ration Card", "Pita/Dada ka Caste Certificate", "School Certificate", "Affidavit", "Photos"],
+        steps: [
+          { step: 1, title: "Online/Tehsil Apply", description: "State e-District portal ya Tehsil office mein apply karein" },
+          { step: 2, title: "Documents Lagayein", description: "Family ka purana caste certificate + ID proof attach karein" },
+          { step: 3, title: "Field Verification", description: "Patwari/Lekhpal verification karega" },
+          { step: 4, title: "SDM Approval", description: "SDM approve karega aur certificate issue hoga" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Revenue Department / SDM Office",
+        warnings: ["Fake caste certificate banwana serious crime hai", "School admission aur govt job ke liye zaroori hai"]
+      }
+    ]
+  },
+  {
+    id: "domicile-certificate",
+    title: "Domicile Certificate",
+    titleHi: "मूल निवास प्रमाणपत्र",
+    description: "Mool niwas praman patra",
+    icon: MapPin,
+    category: "certificates",
+    themeColor: "145 55% 42%",
+    subServices: [
+      {
+        id: "domicile-apply",
+        title: "Domicile Certificate Apply",
+        titleHi: "मूल निवास प्रमाणपत्र आवेदन",
+        description: "Domicile/bonafide certificate kaise banwayein",
+        eligibility: ["State ka permanent resident", "Kam se kam 3 saal se ek state mein rahna"],
+        documents: ["Aadhaar Card", "Ration Card", "Voter ID", "Electricity/Water Bill", "Rent Agreement", "School Certificate", "Affidavit"],
+        steps: [
+          { step: 1, title: "e-District Portal", description: "Apne state ke e-District portal par apply karein" },
+          { step: 2, title: "Form Bharein", description: "Personal details aur address proof dalein" },
+          { step: 3, title: "Documents Upload", description: "Scanned documents upload karein" },
+          { step: 4, title: "Fees Pay Karein", description: "Nominal processing fee pay karein" },
+          { step: 5, title: "Certificate Download", description: "Verification ke baad download kar sakte hain" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Tehsil / SDM Office",
+        warnings: ["Govt job aur college admission ke liye zaroori hai", "Har state ka apna format hota hai"]
+      }
+    ]
+  },
+  {
+    id: "income-certificate",
+    title: "Income Certificate",
+    titleHi: "आय प्रमाणपत्र",
+    description: "Income certificate for schemes & admissions",
+    icon: CircleDollarSign,
+    category: "certificates",
+    themeColor: "50 75% 45%",
+    subServices: [
+      {
+        id: "income-cert-apply",
+        title: "Income Certificate Apply",
+        titleHi: "आय प्रमाणपत्र आवेदन",
+        description: "Aay praman patra kaise banwayein",
+        eligibility: ["Koi bhi Indian citizen", "Income proof ke liye"],
+        documents: ["Aadhaar Card", "Ration Card", "Salary Slip / Self Declaration", "Bank Statement", "Affidavit on stamp paper"],
+        steps: [
+          { step: 1, title: "e-District Portal", description: "State ke e-District website par jaayein" },
+          { step: 2, title: "Application Bharein", description: "Income details aur family details dalein" },
+          { step: 3, title: "Documents Upload", description: "Salary slip ya self-declaration affidavit upload karein" },
+          { step: 4, title: "Patwari Verification", description: "Patwari/Lekhpal ghar aakar verify karega" },
+          { step: 5, title: "Certificate Issue", description: "SDM approve karega - usually 15-30 din" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Revenue Department",
+        warnings: ["Galat income batana legal offense hai", "Scholarship aur schemes ke liye zaroori hai"]
+      }
+    ]
+  },
+  {
+    id: "disability-certificate",
+    title: "Disability Certificate",
+    titleHi: "दिव्यांग प्रमाणपत्र",
+    description: "UDID card, disability certificate",
+    icon: Accessibility,
+    category: "disability",
+    themeColor: "200 65% 45%",
+    subServices: [
+      {
+        id: "udid-card",
+        title: "UDID Card (Disability ID)",
+        titleHi: "यूडीआईडी कार्ड",
+        description: "Unique Disability ID card kaise banwayein",
+        eligibility: ["40% ya usse zyada disability wale", "Indian citizen"],
+        documents: ["Aadhaar Card", "Medical Reports", "Passport Photos", "Address Proof", "Disability Assessment Report"],
+        steps: [
+          { step: 1, title: "Online Registration", description: "swavlambancard.gov.in par register karein" },
+          { step: 2, title: "Form Bharein", description: "Personal details aur disability details dalein" },
+          { step: 3, title: "Medical Board Visit", description: "District hospital mein medical board se assessment karwayein" },
+          { step: 4, title: "Certificate & UDID", description: "Assessment ke baad disability certificate aur UDID card milega" }
+        ],
+        officialWebsite: "https://www.swavlambancard.gov.in",
+        officeName: "Department of Empowerment of PwD",
+        warnings: ["UDID card puri India mein valid hai", "Ye card train concession, schemes ke liye zaroori hai"]
+      }
+    ]
+  },
+  {
+    id: "senior-citizen",
+    title: "Senior Citizen Services",
+    titleHi: "वरिष्ठ नागरिक सेवाएं",
+    description: "Senior citizen card, benefits",
+    icon: UserCircle,
+    category: "senior",
+    themeColor: "25 70% 48%",
+    subServices: [
+      {
+        id: "senior-citizen-card",
+        title: "Senior Citizen Card",
+        titleHi: "वरिष्ठ नागरिक कार्ड",
+        description: "Senior citizen ID card kaise banwayein",
+        eligibility: ["60 saal se zyada umar", "Indian citizen"],
+        documents: ["Aadhaar Card", "Age Proof", "Address Proof", "Photos", "Medical Certificate (if needed)"],
+        steps: [
+          { step: 1, title: "Municipal Office Jaayein", description: "Local municipal corporation ya nagar palika office jaayein" },
+          { step: 2, title: "Form Bharein", description: "Senior Citizen ID application form bharein" },
+          { step: 3, title: "Documents Submit", description: "Age proof aur photos submit karein" },
+          { step: 4, title: "Card Milega", description: "15-30 din mein card ban jayega" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Municipal Corporation",
+        warnings: ["Train mein 40% concession milta hai senior citizens ko", "Bank mein zyada interest rate milta hai FD par"]
+      }
+    ]
+  },
+  {
+    id: "farmer-services",
+    title: "Farmer Registration",
+    titleHi: "किसान पंजीकरण सेवाएं",
+    description: "Kisan registration, KCC, mandi prices",
+    icon: Tractor,
+    category: "agriculture",
+    themeColor: "120 65% 38%",
+    subServices: [
+      {
+        id: "kisan-registration",
+        title: "Farmer/Kisan Registration",
+        titleHi: "किसान रजिस्ट्रेशन",
+        description: "Sarkari schemes ke liye kisan registration",
+        documents: ["Aadhaar Card", "Land Documents (Khatauni/Fard)", "Bank Passbook", "Mobile Number", "Photo"],
+        steps: [
+          { step: 1, title: "Agriculture Dept Portal", description: "State agriculture department ki website par jaayein" },
+          { step: 2, title: "Registration Form", description: "Kisan registration form bharein" },
+          { step: 3, title: "Land Details Dalein", description: "Khata number, khasra, rajaswa gaon details dalein" },
+          { step: 4, title: "Bank Details", description: "Bank account details dalein (DBT ke liye)" },
+          { step: 5, title: "Kisan ID", description: "Registration complete hone par Kisan ID milega" }
+        ],
+        officialWebsite: "https://pmkisan.gov.in",
+        officeName: "Agriculture Department",
+        warnings: ["PM-KISAN, fasal bima sabke liye registration zaroori hai", "Land records updated hone chahiye"]
+      },
+      {
+        id: "kcc-loan",
+        title: "Kisan Credit Card (KCC)",
+        titleHi: "किसान क्रेडिट कार्ड",
+        description: "KCC loan kaise lein - 4% interest",
+        eligibility: ["Koi bhi kisan", "Land documents hone chahiye", "Share croppers bhi eligible"],
+        documents: ["Aadhaar Card", "Land Papers", "Passport Photos", "Bank Account", "Crop Details"],
+        steps: [
+          { step: 1, title: "Bank Branch Jaayein", description: "Nearest bank branch jaayein (cooperative ya commercial)" },
+          { step: 2, title: "KCC Application", description: "KCC application form bharein" },
+          { step: 3, title: "Land Documents Dein", description: "Zameen ke kagzaat submit karein" },
+          { step: 4, title: "Credit Limit Decide", description: "Bank crop aur land ke hisab se limit decide karega" },
+          { step: 5, title: "KCC Issue", description: "Approve hone par KCC card milega - ATM ki tarah use karein" }
+        ],
+        officialWebsite: "https://www.pmkisan.gov.in",
+        officeName: "Bank / Agriculture Dept",
+        warnings: ["₹3 lakh tak 4% interest (with subsidy)", "Time par loan repay karein - warna interest badhega"]
+      }
+    ]
+  },
+  {
+    id: "vehicle-registration",
+    title: "Vehicle Registration",
+    titleHi: "वाहन पंजीकरण सेवाएं",
+    description: "RC, fitness, transfer, NOC",
+    icon: Truck,
+    category: "transport",
+    themeColor: "225 65% 48%",
+    subServices: [
+      {
+        id: "rc-transfer",
+        title: "Vehicle RC Transfer",
+        titleHi: "वाहन आरसी ट्रांसफर",
+        description: "Purane vehicle ki RC apne naam kaise karein",
+        documents: ["Form 29 & 30", "Insurance", "PUC Certificate", "Seller's RC", "Aadhaar Card", "Address Proof"],
+        steps: [
+          { step: 1, title: "Parivahan Portal", description: "parivahan.gov.in par jaayein" },
+          { step: 2, title: "Application Bharein", description: "Transfer ke liye Form 29 aur 30 bharein" },
+          { step: 3, title: "Fee Pay Karein", description: "State ke hisab se transfer fee pay karein" },
+          { step: 4, title: "RTO Visit", description: "Buyer aur seller dono ko RTO jaana hoga" },
+          { step: 5, title: "New RC", description: "30-60 din mein naye naam ki RC milegi" }
+        ],
+        officialWebsite: "https://parivahan.gov.in",
+        officeName: "Regional Transport Office",
+        warnings: ["Transfer 15 din ke andar karna zaroori hai by law", "Challan pending nahi hona chahiye"]
+      },
+      {
+        id: "vehicle-fitness",
+        title: "Vehicle Fitness Certificate",
+        titleHi: "वाहन फिटनेस प्रमाणपत्र",
+        description: "Commercial vehicle fitness renewal",
+        documents: ["RC Book", "Insurance", "PUC Certificate", "Road Tax Receipt"],
+        steps: [
+          { step: 1, title: "Online Appointment", description: "Parivahan portal par fitness test ka appointment lein" },
+          { step: 2, title: "Vehicle Le Jaayein", description: "RTO testing centre par vehicle le jaayein" },
+          { step: 3, title: "Inspection", description: "Vehicle ka physical inspection hoga" },
+          { step: 4, title: "Certificate", description: "Pass hone par fitness certificate issue hoga" }
+        ],
+        officialWebsite: "https://parivahan.gov.in",
+        officeName: "RTO",
+        warnings: ["15 saal purane vehicles ki re-registration zaroori hai", "Fitness expire par ₹10,000 fine lag sakta hai"]
+      }
+    ]
+  },
+  {
+    id: "fastag",
+    title: "FASTag Services",
+    titleHi: "फास्टैग सेवाएं",
+    description: "FASTag buy, recharge, link",
+    icon: Car,
+    category: "transport",
+    themeColor: "240 60% 50%",
+    subServices: [
+      {
+        id: "fastag-buy",
+        title: "Buy & Activate FASTag",
+        titleHi: "फास्टैग खरीदें और एक्टिवेट करें",
+        description: "Naya FASTag kaise lein",
+        documents: ["Vehicle RC", "Owner's Aadhaar/PAN", "Vehicle Photo", "KYC Documents"],
+        steps: [
+          { step: 1, title: "Bank/Online Purchase", description: "Bank, Paytm, Amazon se FASTag khareedein" },
+          { step: 2, title: "KYC Complete", description: "RC copy aur ID proof submit karein" },
+          { step: 3, title: "Vehicle Link", description: "Vehicle registration number link karein" },
+          { step: 4, title: "Recharge", description: "Minimum ₹200 recharge karein" },
+          { step: 5, title: "Windshield Par Lagayein", description: "FASTag sticker gaadi ke windshield par lagayein" }
+        ],
+        officialWebsite: "https://www.npci.org.in/what-we-do/netc-fastag/product-overview",
+        officeName: "NPCI / Bank",
+        warnings: ["FASTag ke bina toll double lagega", "Har vehicle ke liye alag FASTag chahiye"]
+      },
+      {
+        id: "fastag-recharge",
+        title: "FASTag Recharge",
+        titleHi: "फास्टैग रिचार्ज",
+        description: "FASTag balance kaise add karein",
+        documents: ["FASTag Number / Vehicle Number", "UPI/Card"],
+        steps: [
+          { step: 1, title: "Paytm/PhonePe/Bank App", description: "Kisi bhi payment app mein FASTag section jaayein" },
+          { step: 2, title: "Vehicle Number Dalein", description: "Apni gaadi ka registration number dalein" },
+          { step: 3, title: "Amount Dalein", description: "Recharge amount enter karein" },
+          { step: 4, title: "Pay Karein", description: "UPI ya card se payment karein" }
+        ],
+        officialWebsite: "https://www.npci.org.in",
+        officeName: "Bank / Payment Apps",
+        warnings: ["Low balance hone par toll plaza par issue hoga", "Auto-recharge enable kar sakte hain"]
+      }
+    ]
+  },
+  {
+    id: "post-office",
+    title: "Post Office Services",
+    titleHi: "डाकघर सेवाएं",
+    description: "Savings, speed post, money order",
+    icon: Mail,
+    category: "postoffice",
+    themeColor: "0 75% 48%",
+    subServices: [
+      {
+        id: "post-office-savings",
+        title: "Post Office Savings Account",
+        titleHi: "डाकघर बचत खाता",
+        description: "Post office mein savings account kaise kholein",
+        eligibility: ["Koi bhi Indian citizen", "10 saal se zyada umar"],
+        documents: ["Aadhaar Card", "PAN Card", "Address Proof", "Photos", "₹500 minimum deposit"],
+        steps: [
+          { step: 1, title: "Nearest Post Office", description: "Apne area ke post office jaayein" },
+          { step: 2, title: "Form Bharein", description: "Account opening form bharein" },
+          { step: 3, title: "KYC Documents Dein", description: "Aadhaar, PAN aur photo submit karein" },
+          { step: 4, title: "Initial Deposit", description: "Minimum ₹500 deposit karein" },
+          { step: 5, title: "Passbook Milegi", description: "Turant passbook mil jayegi" }
+        ],
+        officialWebsite: "https://www.indiapost.gov.in",
+        officeName: "India Post",
+        warnings: ["Post office mein 4% interest milta hai savings par", "PPF, NSC, KVP bhi available hain"]
+      },
+      {
+        id: "speed-post-tracking",
+        title: "Speed Post Tracking",
+        titleHi: "स्पीड पोस्ट ट्रैकिंग",
+        description: "Speed post ka status track karein",
+        documents: ["Tracking Number / Consignment Number"],
+        steps: [
+          { step: 1, title: "India Post Website", description: "indiapost.gov.in par jaayein" },
+          { step: 2, title: "Track Consignment", description: "Track & Trace section mein jaayein" },
+          { step: 3, title: "Number Dalein", description: "13 digit consignment number dalein" },
+          { step: 4, title: "Status Dekhein", description: "Current location aur delivery status dikhega" }
+        ],
+        officialWebsite: "https://www.indiapost.gov.in",
+        officeName: "India Post",
+        warnings: ["Tracking number receipt par hota hai", "International parcels ka alag tracking hai"]
+      }
+    ]
+  },
+  {
+    id: "municipal-services",
+    title: "Municipal/Nagar Nigam Services",
+    titleHi: "नगर निगम सेवाएं",
+    description: "Property tax, birth/death, trade license",
+    icon: Building,
+    category: "municipal",
+    themeColor: "190 60% 42%",
+    subServices: [
+      {
+        id: "property-tax-payment",
+        title: "Property Tax Payment",
+        titleHi: "संपत्ति कर भुगतान",
+        description: "Online property tax kaise bharein",
+        documents: ["Property ID / House Number", "Owner Details", "Previous Tax Receipt"],
+        steps: [
+          { step: 1, title: "Municipal Website", description: "Apne city ki municipal corporation website kholein" },
+          { step: 2, title: "Property ID Dalein", description: "Property ID ya address se search karein" },
+          { step: 3, title: "Tax Amount Dekhein", description: "Current year ka tax amount check karein" },
+          { step: 4, title: "Online Pay", description: "UPI, card ya net banking se pay karein" },
+          { step: 5, title: "Receipt Download", description: "Payment receipt download karein" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Municipal Corporation",
+        warnings: ["Early payment par 5-10% discount milta hai", "Late payment par penalty lagti hai"]
+      },
+      {
+        id: "trade-license",
+        title: "Trade License",
+        titleHi: "व्यापार लाइसेंस",
+        description: "Dukaan/business ka trade license kaise lein",
+        documents: ["Aadhaar Card", "PAN Card", "Property Proof (Ownership/Rent)", "NOC from fire dept", "Photos", "Business Details"],
+        steps: [
+          { step: 1, title: "Municipal Portal", description: "City municipal corporation ki website par jaayein" },
+          { step: 2, title: "Application Bharein", description: "Trade license application form online bharein" },
+          { step: 3, title: "Documents Upload", description: "Property papers aur ID proof upload karein" },
+          { step: 4, title: "Fees Pay", description: "Trade license fees pay karein (business type ke hisab se)" },
+          { step: 5, title: "Inspection", description: "Inspector visit karega - phir license milega" }
+        ],
+        officialWebsite: "https://www.india.gov.in",
+        officeName: "Municipal Corporation",
+        warnings: ["Bina trade license dukaan chalana illegal hai", "Har saal renewal zaroori hai"]
+      }
+    ]
+  },
+  {
+    id: "health-services",
+    title: "Health Card & Medical",
+    titleHi: "हेल्थ कार्ड और चिकित्सा",
+    description: "ABHA card, health ID, hospitals",
+    icon: Stethoscope,
+    category: "health",
+    themeColor: "350 75% 50%",
+    subServices: [
+      {
+        id: "abha-card",
+        title: "ABHA Health ID Card",
+        titleHi: "आभा हेल्थ आईडी कार्ड",
+        description: "ABHA (Ayushman Bharat Health Account) card kaise banwayein",
+        eligibility: ["Koi bhi Indian citizen"],
+        documents: ["Aadhaar Card", "Mobile Number"],
+        steps: [
+          { step: 1, title: "ABHA Website", description: "abha.abdm.gov.in par jaayein" },
+          { step: 2, title: "Aadhaar se Register", description: "Aadhaar number dalein aur OTP verify karein" },
+          { step: 3, title: "ABHA Number Milega", description: "14 digit ABHA number generate hoga" },
+          { step: 4, title: "ABHA Address Choose", description: "username@abdm format mein address choose karein" },
+          { step: 5, title: "Card Download", description: "ABHA card download aur print karein" }
+        ],
+        officialWebsite: "https://abha.abdm.gov.in",
+        officeName: "National Health Authority",
+        warnings: ["Ye card free hai - kisi ko paisa mat dein", "Medical records digitally store honge"]
+      }
+    ]
+  },
+  {
+    id: "nrega-services",
+    title: "NREGA/MGNREGA Job Card",
+    titleHi: "नरेगा/मनरेगा जॉब कार्ड",
+    description: "NREGA job card, payment, complaint",
+    icon: Pickaxe,
+    category: "employment",
+    themeColor: "28 75% 45%",
+    subServices: [
+      {
+        id: "nrega-job-card",
+        title: "NREGA Job Card Apply",
+        titleHi: "नरेगा जॉब कार्ड आवेदन",
+        description: "NREGA job card kaise banwayein - 100 din kaam guarantee",
+        eligibility: ["Rural area ke 18+ umar ke adult", "Unskilled manual work karne ko taiyar"],
+        documents: ["Aadhaar Card", "Address Proof", "Passport Photos", "Bank Account Details"],
+        steps: [
+          { step: 1, title: "Gram Panchayat Jaayein", description: "Apni gram panchayat office mein jaayein" },
+          { step: 2, title: "Application Dein", description: "Job card ke liye application form bharein" },
+          { step: 3, title: "Family Details", description: "Ghar ke sabhi adults ke naam dalein" },
+          { step: 4, title: "Photo Lagayein", description: "Family photo lagega job card par" },
+          { step: 5, title: "15 Din Mein Card", description: "15 din mein job card issue hoga" }
+        ],
+        officialWebsite: "https://nrega.nic.in",
+        officeName: "Ministry of Rural Development",
+        warnings: ["100 din kaam nahi milne par unemployment allowance milta hai", "Payment bank account mein honi chahiye - cash nahi"]
+      },
+      {
+        id: "nrega-payment-check",
+        title: "NREGA Payment Status",
+        titleHi: "नरेगा पेमेंट स्टेटस",
+        description: "NREGA ka paisa aaya ya nahi check karein",
+        documents: ["Job Card Number", "Aadhaar Number"],
+        steps: [
+          { step: 1, title: "NREGA Website", description: "nrega.nic.in par jaayein" },
+          { step: 2, title: "State Select Karein", description: "Apna state, district, block, panchayat select karein" },
+          { step: 3, title: "Job Card Search", description: "Naam ya job card number se search karein" },
+          { step: 4, title: "Payment Details", description: "Kitne din kaam kiya aur kitna paisa mila - sab dikhega" }
+        ],
+        officialWebsite: "https://nrega.nic.in",
+        officeName: "MGNREGA",
+        warnings: ["Minimum wages se kam payment ho toh complaint karein", "Helpline: 1800-345-22-44"]
+      }
+    ]
+  },
+  {
+    id: "telecom-services",
+    title: "Telecom & DTH Services",
+    titleHi: "टेलीकॉम और डीटीएच सेवाएं",
+    description: "Mobile recharge, port, DTH plans",
+    icon: Wifi,
+    category: "digital",
+    themeColor: "260 65% 52%",
+    subServices: [
+      {
+        id: "mobile-number-port",
+        title: "Mobile Number Portability (MNP)",
+        titleHi: "मोबाइल नंबर पोर्टेबिलिटी",
+        description: "Apna number rakhte hue company badle",
+        documents: ["Current SIM", "Aadhaar Card", "New SIM of desired operator"],
+        steps: [
+          { step: 1, title: "SMS Bhejein", description: "PORT <10 digit number> type karke 1900 par SMS karein" },
+          { step: 2, title: "UPC Code Milega", description: "Unique Porting Code (UPC) SMS se milega - 4 din valid" },
+          { step: 3, title: "New Operator Store", description: "Jis company mein jaana hai uske store jaayein" },
+          { step: 4, title: "Port Form Bharein", description: "UPC code aur ID proof dein" },
+          { step: 5, title: "7 Din Wait", description: "7 working days mein number port ho jayega" }
+        ],
+        officialWebsite: "https://www.trai.gov.in",
+        officeName: "TRAI",
+        warnings: ["Outstanding bill clear karna zaroori hai", "Corporate numbers port nahi ho sakte easily"]
+      },
+      {
+        id: "trai-dnd",
+        title: "DND (Do Not Disturb) Activate",
+        titleHi: "डीएनडी (डू नॉट डिस्टर्ब)",
+        description: "Spam calls aur SMS band karein",
+        documents: ["Registered Mobile Number"],
+        steps: [
+          { step: 1, title: "SMS Method", description: "START 0 type karke 1909 par SMS karein" },
+          { step: 2, title: "Call Method", description: "1909 par call karke DND activate karein" },
+          { step: 3, title: "TRAI App", description: "TRAI DND app download karein spam report ke liye" },
+          { step: 4, title: "7 Din Wait", description: "7 din mein DND activate ho jayega" }
+        ],
+        officialWebsite: "https://www.trai.gov.in",
+        officeName: "TRAI",
+        warnings: ["DND ke baad bhi call aaye toh TRAI app se report karein", "Service messages (bank OTP etc.) band nahi honge"]
+      }
+    ]
+  },
+  {
+    id: "digilocker-services",
+    title: "DigiLocker Services",
+    titleHi: "डिजीलॉकर सेवाएं",
+    description: "Digital documents, certificates store",
+    icon: Globe,
+    category: "digital",
+    themeColor: "215 75% 50%",
+    subServices: [
+      {
+        id: "digilocker-register",
+        title: "DigiLocker Registration",
+        titleHi: "डिजीलॉकर रजिस्ट्रेशन",
+        description: "DigiLocker account kaise banayein",
+        eligibility: ["Aadhaar card holder"],
+        documents: ["Aadhaar Card", "Mobile Number (Aadhaar linked)"],
+        steps: [
+          { step: 1, title: "DigiLocker App/Website", description: "digilocker.gov.in ya app download karein" },
+          { step: 2, title: "Sign Up", description: "Aadhaar number dalein" },
+          { step: 3, title: "OTP Verify", description: "Aadhaar linked mobile par OTP verify karein" },
+          { step: 4, title: "Username Set", description: "Username aur password set karein" },
+          { step: 5, title: "Documents Fetch", description: "Driving License, Vehicle RC, Marksheets auto fetch hongi" }
+        ],
+        officialWebsite: "https://www.digilocker.gov.in",
+        officeName: "Ministry of Electronics & IT",
+        warnings: ["DigiLocker documents legally valid hain", "1GB free cloud storage milta hai"]
+      }
+    ]
+  },
+  {
+    id: "grievance-services",
+    title: "Grievance & Complaint Portal",
+    titleHi: "शिकायत पोर्टल सेवाएं",
+    description: "CPGRAMS, consumer complaint, helpline",
+    icon: Megaphone,
+    category: "rti",
+    themeColor: "0 65% 48%",
+    subServices: [
+      {
+        id: "cpgrams-complaint",
+        title: "CPGRAMS Complaint",
+        titleHi: "सीपीजीआरएएमएस शिकायत",
+        description: "Sarkari department ke khilaf online complaint karein",
+        eligibility: ["Koi bhi Indian citizen"],
+        documents: ["Mobile Number", "Email ID", "Complaint Details"],
+        steps: [
+          { step: 1, title: "CPGRAMS Portal", description: "pgportal.gov.in par jaayein" },
+          { step: 2, title: "Register/Login", description: "Account banayein ya login karein" },
+          { step: 3, title: "Ministry/Dept Select", description: "Jis department ki complaint hai wo select karein" },
+          { step: 4, title: "Complaint Likhein", description: "Apni shikayat detail mein likhein" },
+          { step: 5, title: "Track Karein", description: "Grievance ID se status track karein - 30 din mein jawab aana chahiye" }
+        ],
+        officialWebsite: "https://pgportal.gov.in",
+        officeName: "Directorate of Public Grievances",
+        warnings: ["30 din mein action lena zaroori hai by rule", "PM ko bhi direct complaint kar sakte hain"]
+      },
+      {
+        id: "consumer-complaint",
+        title: "Consumer Complaint Online",
+        titleHi: "उपभोक्ता शिकायत ऑनलाइन",
+        description: "Cheating, defective product ki online complaint",
+        documents: ["Bill/Receipt", "Product Details", "Communication proof", "Aadhaar Card"],
+        steps: [
+          { step: 1, title: "Consumer Helpline", description: "consumerhelpline.gov.in par jaayein ya 1800-11-4000 call karein" },
+          { step: 2, title: "Complaint Register", description: "Online complaint form bharein" },
+          { step: 3, title: "Documents Upload", description: "Bill, warranty card, communication proof upload karein" },
+          { step: 4, title: "Mediation", description: "Consumer forum mediation karega" },
+          { step: 5, title: "Consumer Court", description: "Resolve nahi hua toh consumer court mein case file karein" }
+        ],
+        officialWebsite: "https://consumerhelpline.gov.in",
+        officeName: "National Consumer Helpline",
+        warnings: ["₹5 crore tak ke cases District Forum mein", "E-filing bhi available hai consumer courts mein"]
+      }
+    ]
+  },
+  {
+    id: "food-ration",
+    title: "Food & Ration Services",
+    titleHi: "खाद्य और राशन सेवाएं",
+    description: "Ration card, PDS, food security",
+    icon: Utensils,
+    category: "food",
+    themeColor: "22 80% 48%",
+    subServices: [
+      {
+        id: "ration-card-online",
+        title: "Ration Card Status Check",
+        titleHi: "राशन कार्ड स्टेटस चेक",
+        description: "Ration card status online kaise check karein",
+        documents: ["Application Number", "Aadhaar Number"],
+        steps: [
+          { step: 1, title: "NFSA Portal", description: "nfsa.gov.in par jaayein" },
+          { step: 2, title: "State Select", description: "Apna state select karein" },
+          { step: 3, title: "Search Karein", description: "Ration card number ya Aadhaar se search karein" },
+          { step: 4, title: "Details Dekhein", description: "Card type, family members, entitlement dekhein" }
+        ],
+        officialWebsite: "https://nfsa.gov.in",
+        officeName: "Department of Food & Public Distribution",
+        warnings: ["One Nation One Ration Card se kahi bhi ration le sakte hain", "Ration dealer ne maal nahi diya toh helpline par complaint karein"]
+      }
+    ]
+  },
+  {
+    id: "environment-services",
+    title: "Pollution & Environment",
+    titleHi: "प्रदूषण और पर्यावरण",
+    description: "PUC certificate, pollution complaint",
+    icon: TreePine,
+    category: "environment",
+    themeColor: "155 55% 38%",
+    subServices: [
+      {
+        id: "puc-certificate",
+        title: "PUC Certificate",
+        titleHi: "पीयूसी प्रमाणपत्र",
+        description: "Vehicle ka pollution certificate kaise banwayein",
+        documents: ["Vehicle RC", "Previous PUC (if any)"],
+        steps: [
+          { step: 1, title: "PUC Center Jaayein", description: "Authorized PUC testing center par vehicle le jaayein" },
+          { step: 2, title: "Emission Test", description: "Vehicle ka emission test hoga" },
+          { step: 3, title: "Certificate Milega", description: "Pass hone par PUC certificate milega" },
+          { step: 4, title: "Online Verify", description: "parivahan.gov.in par PUC verify kar sakte hain" }
+        ],
+        officialWebsite: "https://parivahan.gov.in",
+        officeName: "Transport Department",
+        warnings: ["PUC ke bina chalana ₹10,000 fine", "6 months validity hoti hai PUC ki"]
       }
     ]
   }
