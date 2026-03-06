@@ -5,7 +5,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { ServiceCard } from "@/components/ServiceCard";
 import { BottomNav } from "@/components/BottomNav";
 import { QuickActions } from "@/components/QuickActions";
-import { AdBanner } from "@/components/AdBanner";
+
 
 import { services, searchServices } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
@@ -119,8 +119,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Banner Ad after Hero */}
-            <AdBanner slot="auto" format="auto" className="my-4 rounded-xl" />
 
             {/* Quick Actions with 3D Cards */}
             
@@ -157,8 +155,6 @@ const Index = () => {
                 {services.map((service, index) => <ServiceCard key={service.id} title={service.title} titleHi={service.titleHi} description={service.description} icon={service.icon} themeColor={service.themeColor} onClick={() => navigate(`/service/${service.id}`)} delay={700 + index * 50} />)}
               </div>
 
-              {/* Banner Ad after services list */}
-              <AdBanner slot="auto" format="horizontal" className="mt-4 rounded-xl" />
             </div>
           </>}
       </main>
