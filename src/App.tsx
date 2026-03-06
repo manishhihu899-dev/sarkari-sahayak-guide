@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { InterstitialAd } from "@/components/InterstitialAd";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/use-theme";
@@ -33,7 +33,7 @@ const App = () => (
               <Toaster />
               <Sonner />
               <BrowserRouter>
-                <InterstitialAd />
+                
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/service/:serviceId" element={<ServicePage />} />
