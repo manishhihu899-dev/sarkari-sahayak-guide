@@ -10,7 +10,9 @@ import { QuickActions } from "@/components/QuickActions";
 import { services, searchServices } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { useLanguage } from "@/hooks/use-language";
-import { Zap, Shield, Users, CheckCircle2 } from "lucide-react";
+import { Zap, Shield, Users, CheckCircle2, Briefcase, Award, FileText } from "lucide-react";
+import { getJobsByCategory } from "@/data/jobs";
+import { JobCard } from "@/components/JobCard";
 import appLogo from "@/assets/app-logo.png";
 import govtEmblem from "@/assets/govt-emblem.png";
 const Index = () => {
