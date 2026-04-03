@@ -1,0 +1,87 @@
+import { Header } from "@/components/Header";
+import { BottomNav } from "@/components/BottomNav";
+import { useNavigate } from "react-router-dom";
+import { useLanguage } from "@/hooks/use-language";
+import {
+  Grid3X3, Globe, Gift, HelpCircle, Info, Briefcase, Calculator,
+  ClipboardList, Bookmark, FileText, Shield, ChevronRight
+} from "lucide-react";
+
+const MorePage = () => {
+  const navigate = useNavigate();
+  const { t } = useLanguage();
+
+  const sections = [
+    {
+      title: t("सेवाएं और गाइड", "Services & Guides"),
+      items: [
+        { icon: Grid3X3, label: t("सभी सेवाएं", "All Services"), desc: t("40+ सरकारी सेवाओं की गाइड", "40+ government service guides"), path: "/categories", color: "bg-blue-500" },
+        { icon: Gift, label: t("सरकारी योजनाएं", "Govt Schemes"), desc: t("70+ केंद्र और राज्य योजनाएं", "70+ central & state schemes"), path: "/schemes", color: "bg-purple-500" },
+        { icon: Globe, label: t("सरकारी डायरेक्टरी", "Govt Directory"), desc: t("100+ सरकारी पोर्टल लिंक", "100+ govt portal links"), path: "/govt-directory", color: "bg-teal-500" },
+        { icon: Briefcase, label: t("सरकारी नौकरी", "Government Jobs"), desc: t("नौकरी, रिजल्ट, एडमिट कार्ड", "Jobs, results, admit cards"), path: "/jobs", color: "bg-indigo-500" },
+      ],
+    },
+    {
+      title: t("टूल्स", "Tools"),
+      items: [
+        { icon: Calculator, label: t("पात्रता जांचें", "Eligibility Checker"), desc: t("योजना पात्रता जांचें", "Check scheme eligibility"), path: "/eligibility-checker", color: "bg-emerald-500" },
+        { icon: ClipboardList, label: t("आवेदन ट्रैकर", "Application Tracker"), desc: t("अपने आवेदन ट्रैक करें", "Track your applications"), path: "/application-tracker", color: "bg-amber-500" },
+        { icon: Bookmark, label: t("सेव की गई गाइड", "Saved Guides"), desc: t("बुकमार्क की गई सेवाएं", "Bookmarked services"), path: "/saved", color: "bg-rose-500" },
+      ],
+    },
+    {
+      title: t("सहायता और जानकारी", "Help & Info"),
+      items: [
+        { icon: HelpCircle, label: t("सहायता केंद्र", "Help Center"), desc: t("FAQ, हेल्पलाइन नंबर", "FAQ, helpline numbers"), path: "/help", color: "bg-cyan-500" },
+        { icon: Info, label: t("हमारे बारे में", "About"), desc: t("ऐप जानकारी और गोपनीयता", "App info & privacy"), path: "/about", color: "bg-gray-500" },
+      ],
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-background pb-24">
+      <Header title={t("और अधिक", "More")} showBack />
+      <div className="px-4 py-4 space-y-6">
+        {sections.map((section, si) => (
+          <div key={si} className="space-y-2">
+            <h3 className="text-sm font-semibold text-muted-foreground px-1 uppercase tracking-wide">
+              {section.title}
+            </h3>
+            <div className="bg-card border border-border rounded-xl overflow-hidden divide-y divide-border">
+              {section.items.map((item, ii) => (
+                <button
+                  key={ii}
+                  onClick={() => navigate(item.path)}
+                  className="w-full flex items-center gap-3 p-4 hover:bg-muted/50 transition-colors active:scale-[0.99]"
+                >
+                  <div className={`w-10 h-10 rounded-xl ${item.color} flex items-center justify-center shrink-0`}>
+                    <item.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1 text-left min-w-0">
+                    <p className="text-sm font-semibold text-foreground">{item.label}</p>
+                    <p className="text-xs text-muted-foreground line-clamp-1">{item.desc}</p>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* Disclaimer footer */}
+        <div className="flex items-start gap-2 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 mt-4">
+          <Shield className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <p className="text-[11px] text-muted-foreground leading-relaxed">
+            {t(
+              "यह ऐप किसी भी सरकारी संगठन से संबद्ध नहीं है। यह केवल सार्वजनिक रूप से उपलब्ध स्रोतों से जानकारी प्रदान करता है।",
+              "This app is not affiliated with any government organization. It only provides information from publicly available sources."
+            )}
+          </p>
+        </div>
+      </div>
+      <BottomNav />
+    </div>
+  );
+};
+
+export default MorePage;

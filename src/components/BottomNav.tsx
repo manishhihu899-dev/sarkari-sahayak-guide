@@ -1,4 +1,4 @@
-import { Home, Briefcase, Search, Bookmark, Info } from "lucide-react";
+import { Home, Bookmark, Search, Menu } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/use-language";
 
@@ -9,10 +9,9 @@ export const BottomNav = () => {
   
   const navItems = [
     { icon: Home, label: t("Home", "Home"), path: "/" },
-    { icon: Briefcase, label: t("Jobs", "Jobs"), path: "/jobs" },
-    { icon: Search, label: t("Search", "Search"), path: "/search-jobs" },
     { icon: Bookmark, label: t("Saved", "Saved"), path: "/saved-jobs" },
-    { icon: Info, label: t("About", "About"), path: "/about" },
+    { icon: Search, label: t("Search", "Search"), path: "/search-jobs" },
+    { icon: Menu, label: t("More", "More"), path: "/more" },
   ];
 
   return (

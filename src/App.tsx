@@ -25,6 +25,7 @@ import JobsPage from "./pages/JobsPage";
 import SavedJobsPage from "./pages/SavedJobsPage";
 import SearchJobsPage from "./pages/SearchJobsPage";
 import AboutPage from "./pages/AboutPage";
+import MorePage from "./pages/MorePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -61,6 +62,7 @@ const App = () => {
                       <Route path="/saved-jobs" element={<SavedJobsPage />} />
                       <Route path="/search-jobs" element={<SearchJobsPage />} />
                       <Route path="/about" element={<AboutPage />} />
+                      <Route path="/more" element={<MorePage />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </BrowserRouter>
