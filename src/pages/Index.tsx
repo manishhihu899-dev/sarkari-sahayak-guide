@@ -10,7 +10,9 @@ import { QuickActions } from "@/components/QuickActions";
 import { services, searchServices } from "@/data/services";
 import { SubServiceCard } from "@/components/SubServiceCard";
 import { useLanguage } from "@/hooks/use-language";
-import { Zap, Shield, Users, CheckCircle2 } from "lucide-react";
+import { Zap, Shield, Users, CheckCircle2, Briefcase, Award, FileText } from "lucide-react";
+import { getJobsByCategory } from "@/data/jobs";
+import { JobCard } from "@/components/JobCard";
 import appLogo from "@/assets/app-logo.png";
 import govtEmblem from "@/assets/govt-emblem.png";
 const Index = () => {
@@ -120,8 +122,27 @@ const Index = () => {
             </div>
 
 
-            {/* Quick Actions with 3D Cards */}
-            
+            {/* Native Dashboard Cards */}
+            <div className="grid grid-cols-3 gap-3 opacity-0 animate-fade-up" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
+              {[
+                { icon: Briefcase, label: t("नई भर्ती", "Latest Jobs"), count: getJobsByCategory("latest").length, path: "/jobs", gradient: "from-blue-500 to-blue-600" },
+                { icon: Award, label: t("परिणाम", "Results"), count: getJobsByCategory("result").length, path: "/jobs", gradient: "from-green-500 to-green-600" },
+                { icon: FileText, label: t("एडमिट कार्ड", "Admit Card"), count: getJobsByCategory("admit-card").length, path: "/jobs", gradient: "from-orange-500 to-orange-600" },
+              ].map((item, i) => (
+                <button
+                  key={i}
+                  onClick={() => navigate(item.path)}
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-card border border-border shadow-sm hover:shadow-md transition-all active:scale-95"
+                >
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-md`}>
+                    <item.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="text-xs font-semibold text-foreground text-center leading-tight">{item.label}</span>
+                  <span className="text-[10px] font-medium text-muted-foreground">{item.count}+ {t("उपलब्ध", "Available")}</span>
+                </button>
+              ))}
+            </div>
+
 
             {/* Government Verification Badge */}
             <div className="flex items-center justify-center gap-3 py-3 opacity-0 animate-fade-up" style={{
@@ -137,7 +158,22 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Services Grid with Enhanced Cards */}
+            {/* Latest Jobs Preview */}
+            <div className="space-y-3 opacity-0 animate-fade-up" style={{ animationDelay: '620ms', animationFillMode: 'forwards' }}>
+              <div className="flex items-center justify-between px-1">
+                <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
+                  <Briefcase className="w-5 h-5 text-primary" />
+                  {t("ताज़ा नौकरियां", "Latest Jobs")}
+                </h2>
+                <button onClick={() => navigate("/jobs")} className="text-xs font-medium text-accent">
+                  {t("सभी देखें →", "View All →")}
+                </button>
+              </div>
+              {getJobsByCategory("latest").slice(0, 3).map((job, i) => (
+                <JobCard key={job.id} job={job} delay={630 + i * 60} />
+              ))}
+            </div>
+
             <div className="space-y-4">
               <div className="flex items-center justify-between px-1 opacity-0 animate-fade-up" style={{
             animationDelay: '650ms',
