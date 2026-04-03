@@ -158,7 +158,22 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Services Grid with Enhanced Cards */}
+            {/* Latest Jobs Preview */}
+            <div className="space-y-3 opacity-0 animate-fade-up" style={{ animationDelay: '620ms', animationFillMode: 'forwards' }}>
+              <div className="flex items-center justify-between px-1">
+                <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
+                  <Briefcase className="w-5 h-5 text-primary" />
+                  {t("ताज़ा नौकरियां", "Latest Jobs")}
+                </h2>
+                <button onClick={() => navigate("/jobs")} className="text-xs font-medium text-accent">
+                  {t("सभी देखें →", "View All →")}
+                </button>
+              </div>
+              {getJobsByCategory("latest").slice(0, 3).map((job, i) => (
+                <JobCard key={job.id} job={job} delay={630 + i * 60} />
+              ))}
+            </div>
+
             <div className="space-y-4">
               <div className="flex items-center justify-between px-1 opacity-0 animate-fade-up" style={{
             animationDelay: '650ms',
