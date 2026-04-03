@@ -25,6 +25,7 @@ import JobsPage from "./pages/JobsPage";
 import SavedJobsPage from "./pages/SavedJobsPage";
 import SearchJobsPage from "./pages/SearchJobsPage";
 import AboutPage from "./pages/AboutPage";
+import MorePage from "./pages/MorePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
