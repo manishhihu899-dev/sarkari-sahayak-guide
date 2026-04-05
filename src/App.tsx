@@ -48,6 +48,7 @@ const App = () => {
                   <Toaster />
                   <Sonner />
                   {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+                  {!showSplash && showOnboarding && <OnboardingSlides onComplete={handleOnboardingComplete} />}
                   <BrowserRouter>
                     <Routes>
                       <Route path="/" element={<Index />} />
