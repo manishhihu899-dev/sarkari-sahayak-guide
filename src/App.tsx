@@ -10,6 +10,7 @@ import { BookmarkProvider } from "@/hooks/use-bookmarks";
 import { ApplicationsProvider } from "@/hooks/use-applications";
 import { SavedJobsProvider } from "@/hooks/use-saved-jobs";
 import { SplashScreen } from "@/components/SplashScreen";
+import { OnboardingSlides } from "@/components/OnboardingSlides";
 import Index from "./pages/Index";
 import ServicePage from "./pages/ServicePage";
 import SubServicePage from "./pages/SubServicePage";
@@ -32,7 +33,9 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true);
+  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem("onboarding_done"));
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);
+  const handleOnboardingComplete = useCallback(() => setShowOnboarding(false), []);
 
   return (
     <QueryClientProvider client={queryClient}>
