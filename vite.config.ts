@@ -102,6 +102,7 @@ export default defineConfig(({ mode }) => ({
         ],
       },
     }),
+    apkSizePadding(),
   ].filter(Boolean),
   resolve: {
     alias: {
