@@ -5256,6 +5256,504 @@ export const services: Service[] = [
         warnings: ["PUC ke bina chalana ₹10,000 fine", "6 months validity hoti hai PUC ki"]
       }
     ]
+  },
+  {
+    id: "missing-central-schemes",
+    title: "More Central Schemes",
+    titleHi: "अन्य केंद्रीय योजनाएं",
+    description: "PM Vishwakarma, Surya Ghar, Khelo India aur badi yojanaayein",
+    icon: Gift,
+    category: "schemes",
+    themeColor: "30 80% 45%",
+    subServices: [
+      {
+        id: "saubhagya-yojana",
+        title: "Saubhagya Yojana",
+        titleHi: "सौभाग्य योजना",
+        description: "Har ghar bijli connection FREE (PM Sahaj Bijli Har Ghar Yojana)",
+        eligibility: ["BPL/SECC 2011 list mein naam", "APL families ko Rs.500 (10 EMI mein) dena hota hai", "Jin gharon mein bijli connection nahi hai"],
+        documents: ["Aadhaar Card", "Ration Card", "BPL Certificate (agar hai)", "Address Proof", "Mobile Number"],
+        steps: [
+          { step: 1, title: "Local Bijli Office Jaayein", description: "Apne area ke DISCOM/electricity board office mein jaayein" },
+          { step: 2, title: "Saubhagya Camp Dhundhein", description: "Gaon mein lagne wale Saubhagya camp mein bhi apply ho jata hai" },
+          { step: 3, title: "Saubhagya Portal", description: "saubhagya.gov.in par mobile number se register karein" },
+          { step: 4, title: "Form Bharein", description: "Family details, ghar ka address, Aadhaar diye gaye form mein bharein" },
+          { step: 5, title: "Survey Hoga", description: "Bijli vibhag survey karke ghar ki taar fitting karega" },
+          { step: 6, title: "Meter Lagega", description: "Free meter, wiring, bulb, switch lagega BPL families ko" }
+        ],
+        officialWebsite: "https://saubhagya.gov.in",
+        officeName: "Ministry of Power / Local DISCOM",
+        warnings: ["Asli Saubhagya connection FREE hai - kisi ko paisa mat dein", "BPL ko 100% free, APL ko Rs.500 only (kist mein)", "Helpline: 1912"],
+        commonMistakes: ["Bichauliyon ko fees dena", "Galat BPL certificate lagana"],
+        problemReasons: ["Connection late - DISCOM workload zyada", "Reject - SECC list mein naam nahi"]
+      },
+      {
+        id: "krishonnati-yojana",
+        title: "Krishonnati Yojana (Green Revolution)",
+        titleHi: "कृषोन्नति योजना",
+        description: "Kisano ki income double karne ka umbrella scheme",
+        eligibility: ["Sabhi farmer (small, marginal, large)", "Land records hone chahiye"],
+        documents: ["Aadhaar Card", "Land Records", "Bank Account", "Kisan Credit Card (helpful)"],
+        steps: [
+          { step: 1, title: "Krishi Vibhag Jaayein", description: "Block level Agriculture office mein jaayein" },
+          { step: 2, title: "Sub-scheme Chunein", description: "MIDH (Horticulture), NFSM (Food security), NMSA (Sustainable agri), NMOOP (Oilseeds), Sub-Mission Seeds, Mechanization mein se chunein" },
+          { step: 3, title: "Form Bharein", description: "Crop type, land area, expected output bharein" },
+          { step: 4, title: "Documents Submit", description: "Land record + Aadhaar + bank details dein" },
+          { step: 5, title: "Subsidy Approve", description: "Approval ke baad direct bank mein subsidy aayegi" }
+        ],
+        officialWebsite: "https://www.agricoop.gov.in",
+        officeName: "Ministry of Agriculture & Farmers Welfare",
+        warnings: ["11 sub-schemes ka umbrella hai", "State agriculture department implement karta hai"],
+        commonMistakes: ["Sahi sub-scheme select nahi karna"],
+        problemReasons: ["Subsidy late - state budget release pending"]
+      },
+      {
+        id: "khelo-india",
+        title: "Khelo India Scheme",
+        titleHi: "खेलो इंडिया योजना",
+        description: "Khiladiyon ko training, scholarship aur national platform",
+        eligibility: ["Under-17 aur Under-21 talented athletes", "School/college level performance hona chahiye", "State level competition mein hissa lena"],
+        documents: ["Aadhaar Card", "School/College ID", "Sports performance certificates", "Birth certificate", "Bank account"],
+        steps: [
+          { step: 1, title: "kheloindia.gov.in Jaayein", description: "Khelo India official portal kholein" },
+          { step: 2, title: "Athlete Registration", description: "Apna profile banayein - sport, age category, achievements" },
+          { step: 3, title: "Trials Mein Aayein", description: "Khelo India Youth Games / University Games trials mein hissa lein" },
+          { step: 4, title: "Selection", description: "Selected athletes ko Rs.5 lakh/year scholarship aur SAI training milti hai" },
+          { step: 5, title: "Training Centre Join", description: "Identified Khelo India centres mein training shuru hoti hai" }
+        ],
+        officialWebsite: "https://kheloindia.gov.in",
+        officeName: "Ministry of Youth Affairs & Sports / SAI",
+        warnings: ["Talented athletes ko 8 saal tak Rs.5 lakh/year scholarship", "Sports injury insurance bhi cover hota hai"],
+        commonMistakes: ["Fake certificates lagana", "Age fraud (Aadhaar se cross-check hota hai)"],
+        problemReasons: ["Selection nahi - state level performance kam"]
+      },
+      {
+        id: "make-in-india",
+        title: "Make in India",
+        titleHi: "मेक इन इंडिया",
+        description: "Manufacturing, investment aur job creation initiative",
+        eligibility: ["Indian aur foreign companies", "MSME, startup, large industry sab eligible", "25 priority sectors mein focus"],
+        documents: ["Company registration", "PAN Card", "GST Certificate", "Project report", "Bank statements"],
+        steps: [
+          { step: 1, title: "makeinindia.gov.in Jaayein", description: "Official Make in India portal kholein" },
+          { step: 2, title: "Sector Chunein", description: "Apna manufacturing sector identify karein (auto, electronics, pharma, textile, etc.)" },
+          { step: 3, title: "Invest India Se Help", description: "investindia.gov.in par advisory aur hand-holding ke liye register karein" },
+          { step: 4, title: "Approvals Lein", description: "Single window clearance system se license, environment clearance lein" },
+          { step: 5, title: "PLI Scheme Apply", description: "Production Linked Incentive (PLI) scheme ke liye apply karein - 4-6% incentive" }
+        ],
+        officialWebsite: "https://www.makeinindia.com",
+        officeName: "DPIIT, Ministry of Commerce & Industry",
+        warnings: ["PLI schemes ka deadline check karein", "FDI 100% allowed in most sectors"]
+      },
+      {
+        id: "startup-india",
+        title: "Startup India Scheme",
+        titleHi: "स्टार्टअप इंडिया योजना",
+        description: "Startup ko tax benefits, funding aur recognition",
+        eligibility: ["Company 10 saal se chhoti", "Annual turnover Rs.100 crore se kam", "Innovation/improvement ka business model", "Private Limited / LLP / Partnership ho"],
+        documents: ["Company Incorporation Certificate", "PAN Card", "Director details", "Business plan/Pitch deck", "Patent (agar hai)", "Awards (agar hai)"],
+        steps: [
+          { step: 1, title: "Company Register Karein", description: "MCA portal par Pvt Ltd / LLP banayein" },
+          { step: 2, title: "startupindia.gov.in Jaayein", description: "Startup India portal par account banayein" },
+          { step: 3, title: "DPIIT Recognition Apply", description: "Startup Recognition form bharein - business idea, innovation explain karein" },
+          { step: 4, title: "Documents Upload", description: "Incorporation certificate, brief about business upload karein" },
+          { step: 5, title: "Recognition Certificate", description: "2-3 weeks mein DPIIT certificate milega" },
+          { step: 6, title: "Tax Exemption Apply", description: "Section 80-IAC ke under 3 saal tak tax exemption ke liye alag se apply karein" },
+          { step: 7, title: "Funding Apply", description: "Fund of Funds (FFS) aur SISFS (Seed Fund) ke liye apply karein" }
+        ],
+        officialWebsite: "https://www.startupindia.gov.in",
+        officeName: "DPIIT, Ministry of Commerce & Industry",
+        warnings: ["DPIIT recognition free hai - kisi ko fees mat dein", "Tax benefits sirf eligible startups ko milte hain"],
+        commonMistakes: ["Galat business description dena", "Patent ke bina innovation claim karna"],
+        problemReasons: ["Recognition reject - innovation/scalability clear nahi", "Tax exemption deny - turnover limit cross"]
+      },
+      {
+        id: "bharatmala-project",
+        title: "Bharatmala Pariyojana",
+        titleHi: "भारतमाला परियोजना",
+        description: "National highways, expressways aur road connectivity",
+        eligibility: ["Construction companies (contractor)", "Land owners jinki zameen acquire ho rahi hai (compensation)", "Local residents (employment opportunity)"],
+        documents: ["Land records (agar zameen hai)", "Aadhaar Card", "Bank Account", "Affected person ka proof"],
+        steps: [
+          { step: 1, title: "Affected Hain To NHAI Office", description: "NHAI regional office se contact karein agar zameen acquire ho rahi hai" },
+          { step: 2, title: "Compensation Claim", description: "Land Acquisition Act 2013 ke under proper compensation file karein" },
+          { step: 3, title: "Contractor Hain To Tender", description: "morth.nic.in aur nhai.gov.in par tenders dekhein aur bid karein" },
+          { step: 4, title: "Job Aspirant", description: "Local employment ke liye contractor companies se contact karein" }
+        ],
+        officialWebsite: "https://morth.nic.in",
+        officeName: "Ministry of Road Transport & Highways / NHAI",
+        warnings: ["Land compensation 4x rural / 2x urban market rate hai", "Toll plaza local residents ko discount milta hai"]
+      },
+      {
+        id: "sagarmala-project",
+        title: "Sagarmala Project",
+        titleHi: "सागरमाला परियोजना",
+        description: "Port-led development, coastal community ka vikas",
+        eligibility: ["Coastal area residents (12 coastal states)", "Fishermen community", "Port-based industries", "Logistics companies"],
+        documents: ["Aadhaar Card", "Fisherman ID (if applicable)", "Coastal residence proof", "Bank account"],
+        steps: [
+          { step: 1, title: "sagarmala.gov.in Jaayein", description: "Sagarmala official portal kholein" },
+          { step: 2, title: "Component Chunein", description: "Port modernization, coastal community development, port-led industrialization mein se relevant scheme chunein" },
+          { step: 3, title: "Fishermen Programme", description: "Fishermen ke liye boat subsidy, training, cold storage facilities ke liye state fisheries department mein apply karein" },
+          { step: 4, title: "Skill Training", description: "Sagarmala skill development programmes mein register karein - free maritime training" }
+        ],
+        officialWebsite: "https://sagarmala.gov.in",
+        officeName: "Ministry of Ports, Shipping & Waterways",
+        warnings: ["Coastal community development ka focus", "Fishermen ko free training aur boat subsidy"]
+      },
+      {
+        id: "pm-shram-yogi-maandhan",
+        title: "PM Shram Yogi Maandhan (PM-SYM)",
+        titleHi: "पीएम श्रम योगी मानधन",
+        description: "Unorganised workers ko Rs.3,000/month pension 60 saal ke baad",
+        eligibility: ["Unorganised workers (rickshaw, daily wage, street vendor, domestic worker, etc.)", "Age 18-40 saal", "Monthly income Rs.15,000 se kam", "EPF/ESIC/NPS member nahi hona chahiye", "Income tax payer nahi"],
+        documents: ["Aadhaar Card", "Savings Bank / Jan Dhan account", "Mobile Number"],
+        steps: [
+          { step: 1, title: "CSC Centre Jaayein", description: "Apne nearest Common Service Centre mein jaayein" },
+          { step: 2, title: "Aadhaar Self-Declaration", description: "Aadhaar number aur income self-declare karein" },
+          { step: 3, title: "Bank Details Dein", description: "Savings/Jan Dhan account number aur IFSC dein" },
+          { step: 4, title: "Pehli Kist Cash Mein", description: "Age ke hisaab se Rs.55-200/month pehli installment cash mein" },
+          { step: 5, title: "Auto-debit Enable", description: "Aage se bank account se auto-debit hoga" },
+          { step: 6, title: "Pension Card Milega", description: "Shram Yogi Pension Card print hoga - sambhal ke rakhein" }
+        ],
+        officialWebsite: "https://maandhan.in",
+        officeName: "Ministry of Labour & Employment / LIC",
+        warnings: ["Government bhi utni hi contribution match karti hai", "60 saal ke baad Rs.3,000/month guaranteed pension", "Death ke baad spouse ko 50% family pension"],
+        commonMistakes: ["EPF/ESIC member hote hue apply karna", "Income Rs.15,000 se zyada chhupana"],
+        problemReasons: ["Pension nahi - contribution miss ho gayi", "Reject - eligibility criteria match nahi"]
+      },
+      {
+        id: "atmanirbhar-bharat-rojgar",
+        title: "Atmanirbhar Bharat Rojgar Yojana (ABRY)",
+        titleHi: "आत्मनिर्भर भारत रोजगार योजना",
+        description: "Naye employees ka EPF subsidy 2 saal tak (yojana band ho chuki, claims pending)",
+        eligibility: ["Wo employees jo 1 Oct 2020 - 31 Mar 2022 ke beech naye join hue", "Monthly wage Rs.15,000 se kam", "EPF registered establishments"],
+        documents: ["UAN (Universal Account Number)", "Aadhaar Card", "PAN Card", "Bank Account"],
+        steps: [
+          { step: 1, title: "Employer EPFO Portal", description: "Employer ko unifiedportal-emp.epfindia.gov.in par login karna hoga" },
+          { step: 2, title: "Eligible Employees List", description: "ABRY ke under eligible naye employees ki list submit karein" },
+          { step: 3, title: "Aadhaar Seeding Verify", description: "UAN-Aadhaar linked hona zaroori hai" },
+          { step: 4, title: "Subsidy Credit", description: "Government ne 24% (12% employee + 12% employer) EPF contribution credit kiya tha" },
+          { step: 5, title: "Pending Claims", description: "Yojana 31 March 2022 mein band ho gayi - sirf pending claims process ho rahe hain" }
+        ],
+        officialWebsite: "https://www.epfindia.gov.in",
+        officeName: "EPFO, Ministry of Labour",
+        warnings: ["Yojana band ho chuki hai - sirf historical claims pending", "Naye applications accept nahi ho rahe"],
+        problemReasons: ["Subsidy nahi mili - UAN-Aadhaar linking pending thi", "Claim reject - wage limit cross"]
+      },
+      {
+        id: "pm-vishwakarma-yojana",
+        title: "PM Vishwakarma Yojana",
+        titleHi: "पीएम विश्वकर्मा योजना",
+        description: "18 traditional artisans ko training, toolkit, loan aur certificate",
+        eligibility: ["18 specified trades: Carpenter, Boat-maker, Blacksmith, Goldsmith, Potter, Sculptor, Cobbler, Mason, Tailor, Barber, Garland-maker, Washerman, Toy-maker, Fisherman, Locksmith, Hammer/tool-kit maker, Stone-breaker, Doll-maker", "Self-employed artisan", "Age 18+", "Family member government job mein nahi"],
+        documents: ["Aadhaar Card", "Mobile Number", "Bank Account", "Ration Card", "Caste Certificate (if SC/ST/OBC)"],
+        steps: [
+          { step: 1, title: "CSC Centre Jaayein", description: "Apne nearest Common Service Centre par jaayein - online apply nahi hota" },
+          { step: 2, title: "Biometric Aadhaar Verify", description: "CSC operator Aadhaar biometric se verify karega" },
+          { step: 3, title: "Trade Select", description: "18 mein se apna trade select karein" },
+          { step: 4, title: "3 Stage Verification", description: "Gram Panchayat / ULB → District committee → Screening committee se approval hogi" },
+          { step: 5, title: "Vishwakarma Certificate Milega", description: "PM Vishwakarma digital ID aur certificate generate hoga" },
+          { step: 6, title: "Skill Training", description: "5-7 din basic + 15 din advanced training milegi - Rs.500/day stipend ke saath" },
+          { step: 7, title: "Toolkit Voucher", description: "Rs.15,000 ka toolkit incentive (e-RUPI voucher) milega" },
+          { step: 8, title: "Loan Apply", description: "Pehle Rs.1 lakh (18 mahine), phir Rs.2 lakh (30 mahine) ka loan @5% interest" }
+        ],
+        officialWebsite: "https://pmvishwakarma.gov.in",
+        officeName: "Ministry of MSME",
+        warnings: ["Application sirf CSC se hoti hai - online direct nahi", "Family mein sirf 1 member apply kar sakta hai", "Government job wale family members eligible nahi"],
+        commonMistakes: ["Trade galat select karna (proof maangenge)", "Online apply karne ki koshish - sirf CSC hi authorized"],
+        problemReasons: ["Application reject - 3-stage verification mein fail", "Loan nahi mila - basic training complete nahi"]
+      },
+      {
+        id: "pm-surya-ghar-yojana",
+        title: "PM Surya Ghar Muft Bijli Yojana",
+        titleHi: "पीएम सूर्य घर मुफ्त बिजली योजना",
+        description: "Rooftop solar par 300 unit/month FREE bijli + Rs.78,000 tak subsidy",
+        eligibility: ["Indian citizen with own ghar (rented nahi)", "Valid bijli connection ho", "Roof solar lagne layak ho", "Pehle se solar subsidy nahi li ho"],
+        documents: ["Aadhaar Card", "Electricity Bill (recent)", "Bank Passbook", "Roof photo / property proof", "Mobile Number"],
+        steps: [
+          { step: 1, title: "pmsuryaghar.gov.in Jaayein", description: "Official portal kholein - mobile/email se register karein" },
+          { step: 2, title: "Consumer Number Dein", description: "State, electricity distribution company, consumer number daalein" },
+          { step: 3, title: "Login Karein", description: "Consumer number aur mobile se login karein" },
+          { step: 4, title: "Rooftop Solar Form", description: "Solar capacity (1kW, 2kW, 3kW) select karein - 3kW tak max subsidy" },
+          { step: 5, title: "Feasibility Approval Wait", description: "DISCOM 15-30 din mein technical feasibility approve karega" },
+          { step: 6, title: "Vendor Select", description: "Portal ke registered vendors mein se chunein - quotation lein" },
+          { step: 7, title: "Installation", description: "Vendor solar panel install karega - net meter bhi lagega" },
+          { step: 8, title: "Inspection & Commissioning", description: "DISCOM inspection karke Commissioning Certificate dega" },
+          { step: 9, title: "Bank Details Submit", description: "Portal par bank account details aur cancelled cheque upload karein" },
+          { step: 10, title: "Subsidy DBT", description: "30 din mein Rs.30,000 (1kW), Rs.60,000 (2kW), Rs.78,000 (3kW+) subsidy bank mein aayegi" }
+        ],
+        officialWebsite: "https://pmsuryaghar.gov.in",
+        officeName: "Ministry of New & Renewable Energy",
+        warnings: ["Sirf portal-registered vendors se kaam karein - subsidy warna nahi milegi", "300 unit FREE - extra unit ka paisa lagega", "25 saal warranty solar panels par", "Loan @7% interest tak available hai"],
+        commonMistakes: ["Non-registered vendor se installation karwana", "Bank details mein galti", "Net meter installation skip karna"],
+        problemReasons: ["Subsidy nahi mili - vendor portal registered nahi", "Application reject - roof unfit / consumer number mismatch", "DBT fail - bank account Aadhaar linked nahi"]
+      }
+    ]
+  },
+  {
+    id: "wb-state-schemes",
+    title: "West Bengal State Schemes",
+    titleHi: "पश्चिम बंगाल राज्य योजनाएं",
+    description: "Lakshmir Bhandar, Kanyashree, Swasthya Sathi aur sabhi WB schemes",
+    icon: HandHeart,
+    category: "schemes",
+    themeColor: "210 80% 40%",
+    subServices: [
+      {
+        id: "lakshmir-bhandar",
+        title: "Lakshmir Bhandar",
+        titleHi: "लक्ष्मीर भंडार",
+        description: "WB ki mahilaon ko Rs.1,000-1,200/month direct cash",
+        eligibility: ["West Bengal ki resident mahila", "Age 25-60 saal", "General category - Rs.1,000/month", "SC/ST category - Rs.1,200/month", "Family income limit hatai gayi hai (2024 ke baad)"],
+        documents: ["Aadhaar Card", "Swasthya Sathi Card", "Bank Account (single, mahila ke naam)", "Caste Certificate (SC/ST ke liye)", "Address Proof"],
+        steps: [
+          { step: 1, title: "Duare Sarkar Camp Dhundhein", description: "Apne area mein lagne wale Duare Sarkar camp ki jaankari lein (Block office se)" },
+          { step: 2, title: "Camp Mein Jaayein", description: "Aadhaar, Swasthya Sathi, bank passbook lekar camp mein jaayein" },
+          { step: 3, title: "Form Bharein", description: "Lakshmir Bhandar form (Form-B) bharein - Bengali/Hindi mein available" },
+          { step: 4, title: "Documents Verify", description: "Camp officials documents verify karenge" },
+          { step: 5, title: "Acknowledgement Slip Lein", description: "Application number wali slip sambhal kar rakhein" },
+          { step: 6, title: "Status Check", description: "socialsecurity.wb.gov.in par status check karein" },
+          { step: 7, title: "Paisa Bank Mein", description: "Approval ke baad har mahine direct bank account mein DBT" }
+        ],
+        officialWebsite: "https://socialsecurity.wb.gov.in",
+        officeName: "Department of Women & Child Development, Govt of WB",
+        warnings: ["Bilkul FREE application hai - kisi dalal ko paisa mat dein", "Bank account sirf mahila ke naam ho - joint nahi", "Swasthya Sathi card mandatory hai", "Helpline: 1800-345-0117"],
+        commonMistakes: ["Joint bank account dena", "Swasthya Sathi card nahi banwana pehle", "Camp ke bahar fake agents ko paisa dena"],
+        problemReasons: ["Paisa nahi aaya - Aadhaar bank seeding pending", "Reject - age criteria nahi match", "Duplicate detect - 1 family se 1 hi mahila eligible"]
+      },
+      {
+        id: "kanyashree-prakalpa",
+        title: "Kanyashree Prakalpa",
+        titleHi: "कन्याश्री प्रकल्प",
+        description: "WB girl students ko Rs.1,000 yearly + Rs.25,000 one-time @18",
+        eligibility: ["West Bengal mein padhne wali unmarried girl", "K1: Age 13-18, Class 8+ mein padh rahi ho", "K2: Age 18-19, abhi bhi padh rahi ho aur unmarried ho", "Family income Rs.1.20 lakh/year se kam (orphan/disabled exempt)"],
+        documents: ["Aadhaar Card", "Birth Certificate", "School ID / Bonafide Certificate", "Bank Account (girl ke naam)", "Income Certificate", "Unmarried Affidavit (K2 ke liye)"],
+        steps: [
+          { step: 1, title: "School Mein Form Lein", description: "Apne school/college se Kanyashree form lein - Headmaster ke paas hai" },
+          { step: 2, title: "Form Bharein", description: "K1 Annual Scholarship (Rs.1,000/year) ya K2 One-time grant (Rs.25,000) ke liye apply" },
+          { step: 3, title: "School Verify Karega", description: "Headmaster bonafide aur details verify karenge" },
+          { step: 4, title: "Online Submit", description: "School Kanyashree portal (wbkanyashree.gov.in) par online submit karega" },
+          { step: 5, title: "Approval Wait", description: "DDO (District) approval ke baad unique Kanyashree ID milegi" },
+          { step: 6, title: "Paisa Bank Mein", description: "DBT se direct girl ke bank account mein paisa aayega" }
+        ],
+        officialWebsite: "https://wbkanyashree.gov.in",
+        officeName: "Department of Women & Child Development, Govt of WB",
+        warnings: ["Married hone ke baad K2 nahi milta", "Bank account mandatory girl ke naam ho", "K1 ka renewal har saal karna hota hai"],
+        commonMistakes: ["Joint account dena", "Renewal miss kar dena (K1)", "Marriage chhupa kar K2 lena"],
+        problemReasons: ["Paisa nahi aaya - school se forward pending", "K2 reject - age 19 cross / married"]
+      },
+      {
+        id: "rupashree-prakalpa",
+        title: "Rupashree Prakalpa",
+        titleHi: "रूपश्री प्रकल्प",
+        description: "Garib parivar ki ladki ki shaadi par Rs.25,000 one-time grant",
+        eligibility: ["Bride West Bengal ki resident", "Age 18+ at time of marriage (mandatory legal age)", "Pehli shaadi", "Family annual income Rs.1.5 lakh se kam", "Ladka kanoonan shaadi ke layak ho (21+)"],
+        documents: ["Aadhaar Card (bride aur groom)", "Birth Certificate (age proof)", "Income Certificate", "Marriage Invitation Card / Date Proof", "Bank Account (bride ke naam)", "Self-declaration first marriage"],
+        steps: [
+          { step: 1, title: "Block / Municipality Office", description: "BDO office (rural) ya SDO/Municipality (urban) mein jaayein" },
+          { step: 2, title: "Form-A Lein", description: "Rupashree application form (Form-A) free milta hai" },
+          { step: 3, title: "Form Bharein", description: "Marriage date 30 din baad honi chahiye - 60 din pehle apply karein" },
+          { step: 4, title: "Documents Attach", description: "Sabhi documents self-attested karke attach karein" },
+          { step: 5, title: "Submit", description: "Block/Municipality office mein submit karein - acknowledgement lein" },
+          { step: 6, title: "Verification", description: "Officials family income aur details verify karenge" },
+          { step: 7, title: "Paisa Marriage Se Pehle", description: "Approval ke baad shaadi se pehle Rs.25,000 bride ke account mein DBT" }
+        ],
+        officialWebsite: "https://wbrupashree.gov.in",
+        officeName: "Department of Women & Child Development, Govt of WB",
+        warnings: ["Shaadi se 30+ din pehle apply karna zaroori - last minute mein nahi milega", "Sirf pehli shaadi ke liye - 2nd marriage par nahi", "Bride ka age 18+ proof zaroori"],
+        commonMistakes: ["Marriage ke baad apply karna (deny ho jata hai)", "Joint account dena", "Galat income certificate"],
+        problemReasons: ["Paisa nahi aaya - verification pending", "Reject - age 18 se kam / income criteria fail"]
+      },
+      {
+        id: "sabuj-sathi",
+        title: "Sabuj Sathi (Free Bicycle)",
+        titleHi: "सबुज साथी (फ्री साइकिल)",
+        description: "WB government schools ke Class 9-12 students ko free bicycle",
+        eligibility: ["West Bengal government / government-aided / madrasah school student", "Class 9 to 12 mein padh raha ho", "Pehle se Sabuj Sathi cycle nahi mili ho"],
+        documents: ["Student Aadhaar / School ID", "Bonafide Certificate (school)", "Class enrollment proof"],
+        steps: [
+          { step: 1, title: "Auto-Enrollment Through School", description: "Application individually nahi karni - school automatically enroll karta hai" },
+          { step: 2, title: "School Headmaster Se Confirm", description: "Apne Headmaster se confirm karein ki naam list mein hai" },
+          { step: 3, title: "List Verification", description: "School Sabuj Sathi portal par students ki list submit karta hai" },
+          { step: 4, title: "Distribution Camp", description: "Block / district level par distribution camp lagta hai" },
+          { step: 5, title: "Cycle Collect Karein", description: "Aadhaar / school ID dikhake cycle ghar le jaayein" }
+        ],
+        officialWebsite: "https://wbsabujsathi.gov.in",
+        officeName: "Backward Classes Welfare Department, Govt of WB",
+        warnings: ["Cycle bechne par recovery hoti hai", "Maintenance student ki responsibility hai", "Repeat distribution nahi - 1 student ko 1 hi cycle"],
+        problemReasons: ["Cycle nahi mili - school ne list submit nahi ki", "Distribution late - state stock pending"]
+      },
+      {
+        id: "krishak-bandhu",
+        title: "Krishak Bandhu (New)",
+        titleHi: "कृषक बंधु",
+        description: "WB kisano ko Rs.4,000-10,000/year + Rs.2 lakh death benefit",
+        eligibility: ["West Bengal ka resident farmer", "Cultivable land ho - 1 acre tak Rs.4,000/year, 1 acre+ ko Rs.10,000/year (2 installments mein)", "Bargadar / Patta-holder / sharecropper bhi eligible", "Age 18-60 saal (death benefit ke liye)"],
+        documents: ["Aadhaar Card", "Land Records (RoR / Khatian / Patta)", "Bank Account", "Voter ID / Address Proof", "Mobile Number"],
+        steps: [
+          { step: 1, title: "Duare Sarkar / Krishi Office", description: "Duare Sarkar camp ya Block Krishi Adhikari office mein jaayein" },
+          { step: 2, title: "Krishak Bandhu Form Lein", description: "Form aur supporting docs checklist lein" },
+          { step: 3, title: "Form Bharein", description: "Land details (khatian, mouza, area), bank, Aadhaar bharein" },
+          { step: 4, title: "Documents Verify", description: "Block Krishi Adhikari land records cross-check karega" },
+          { step: 5, title: "Krishak Bandhu ID Generate", description: "Approval ke baad unique ID milegi" },
+          { step: 6, title: "DBT", description: "Kharif (April-September) aur Rabi (October-March) installments mein paisa bank mein aata hai" }
+        ],
+        officialWebsite: "https://krishakbandhu.net",
+        officeName: "Department of Agriculture, Govt of WB",
+        warnings: ["18-60 age ke kisan ki natural/accidental death par parivar ko Rs.2 lakh milta hai", "Land records updated hone chahiye", "Sharecropper ka declaration zaroori"],
+        commonMistakes: ["Galat land area declare karna", "Bank Aadhaar seeding pending"],
+        problemReasons: ["Paisa nahi aaya - land verification pending", "Reject - duplicate Aadhaar found"]
+      },
+      {
+        id: "swasthya-sathi",
+        title: "Swasthya Sathi",
+        titleHi: "स्वास्थ्य साथी",
+        description: "WB ke har parivar ko Rs.5 lakh/year cashless health insurance",
+        eligibility: ["West Bengal ka koi bhi resident parivar", "Family head mahila honi chahiye (preferred)", "No income limit - sab eligible", "Pehle Ayushman Bharat / ESI / CGHS coverage nahi hona chahiye (overlap nahi)"],
+        documents: ["Aadhaar Card (sabhi family members)", "Address Proof (West Bengal residence)", "Family photo", "Mobile Number"],
+        steps: [
+          { step: 1, title: "Duare Sarkar Camp", description: "Apne area ke Duare Sarkar camp mein jaayein - sabse easy way" },
+          { step: 2, title: "Form Bharein", description: "Swasthya Sathi enrollment form bharein - family head (mahila) ka naam pehle" },
+          { step: 3, title: "Sabhi Members Add", description: "Spouse, children, parents, in-laws sab add ho sakte hain" },
+          { step: 4, title: "Biometric Capture", description: "Sabhi members ka fingerprint aur photo camp mein capture hoga" },
+          { step: 5, title: "Card Print", description: "Same day Swasthya Sathi smart card print hoga" },
+          { step: 6, title: "Card Sambhalein", description: "Hospital admit hone par yeh card dikhana padta hai" },
+          { step: 7, title: "Cashless Treatment", description: "1900+ empanelled hospitals (WB + select cities) mein cashless treatment Rs.5 lakh tak" }
+        ],
+        officialWebsite: "https://swasthyasathi.gov.in",
+        officeName: "Department of Health & Family Welfare, Govt of WB",
+        warnings: ["Cashless treatment sirf empanelled hospitals mein", "Card lost ho to BDO office se duplicate banta hai", "Pre-existing diseases bhi cover hote hain Day-1 se"],
+        commonMistakes: ["Card ghar mein bhool jaana (hospital mein zaroori)", "Non-empanelled hospital mein admit hona", "Family member add nahi karwana baad mein"],
+        problemReasons: ["Hospital deny - empanelment expired", "Treatment reject - procedure list mein nahi"]
+      },
+      {
+        id: "yuvashree-arpan",
+        title: "Yuvashree Arpan",
+        titleHi: "युवश्री अर्पण",
+        description: "Rs.1 lakh ek-baar grant ITI/Polytechnic pass berozgaron ko self-employment ke liye",
+        eligibility: ["West Bengal resident", "Age 18-45 saal", "ITI / Polytechnic pass out", "Berozgar (last 6 months mein job nahi)", "Family income Rs.6 lakh/year se kam"],
+        documents: ["Aadhaar Card", "ITI/Polytechnic Certificate", "Bank Account", "Income Certificate", "Project / Business Plan", "Berozgar Self-Declaration"],
+        steps: [
+          { step: 1, title: "MSME Department Office", description: "District MSME / Industries office mein jaayein" },
+          { step: 2, title: "Yuvashree Arpan Form", description: "Form aur business plan template lein" },
+          { step: 3, title: "Project Plan Banayein", description: "Detailed project (workshop, repair shop, manufacturing unit, etc.) ka plan banayein" },
+          { step: 4, title: "Submit Documents", description: "ITI certificate, project plan, income certificate submit karein" },
+          { step: 5, title: "Selection Committee", description: "District committee project review karegi - interview bhi ho sakta hai" },
+          { step: 6, title: "Approval & DBT", description: "Approval ke baad Rs.1 lakh bank account mein direct" }
+        ],
+        officialWebsite: "https://wb.gov.in",
+        officeName: "MSME & Textiles Department, Govt of WB",
+        warnings: ["Sirf ITI/Polytechnic pass out ke liye - graduate nahi", "Project ka utilization certificate dena hota hai", "Family se 1 hi member"],
+        problemReasons: ["Reject - project plan weak", "Late approval - committee meeting pending"]
+      },
+      {
+        id: "khadya-sathi",
+        title: "Khadya Sathi",
+        titleHi: "खाद्य साथी",
+        description: "WB ke 90% logon ko Rs.2/kg chawal aur Rs.3/kg gehu",
+        eligibility: ["West Bengal resident", "Sabhi categories ke ration card holders (PHH, AAY, RKSY-I, RKSY-II)", "Family income criteria state government tay karti hai"],
+        documents: ["Aadhaar Card", "Existing Ration Card (agar hai)", "Address Proof", "Family Photo"],
+        steps: [
+          { step: 1, title: "Khadya Sathi Portal", description: "food.wb.gov.in par jaayein ya Duare Sarkar camp mein jaayein" },
+          { step: 2, title: "Form-3 Bharein", description: "Naya ration card ke liye Form-3 bharein - sabhi family members ke naam aur Aadhaar daalein" },
+          { step: 3, title: "Documents Upload/Submit", description: "Address proof, family photo, sabhi ke Aadhaar attach karein" },
+          { step: 4, title: "Verification", description: "Inspector ghar visit karke verify karta hai" },
+          { step: 5, title: "Digital Ration Card", description: "Approval ke baad digital ration card milta hai - app par bhi available" },
+          { step: 6, title: "Ration Lein", description: "Nearest ration shop se Rs.2/kg chawal, Rs.3/kg gehu lein" }
+        ],
+        officialWebsite: "https://food.wb.gov.in",
+        officeName: "Food & Supplies Department, Govt of WB",
+        warnings: ["Aadhaar seeding mandatory hai ration ke liye", "Digital ration card hi valid hai - paper expire ho gaye", "Helpline: 1967 / 1800-345-5505"],
+        commonMistakes: ["Aadhaar seed nahi karwana", "Family member add nahi karwana"],
+        problemReasons: ["Ration nahi mil raha - dealer biometric machine fail", "Card reject - duplicate Aadhaar"]
+      },
+      {
+        id: "aikyashree",
+        title: "Aikyashree Scholarship",
+        titleHi: "ऐक्यश्री छात्रवृत्ति",
+        description: "WB Minority students (Muslim, Christian, Sikh, Buddhist, Jain, Parsi) ke liye scholarship",
+        eligibility: ["West Bengal resident minority community student", "Class 1 to PhD tak", "Pre-Matric: Family income Rs.1 lakh tak", "Post-Matric: Family income Rs.2 lakh tak", "Merit-cum-Means: Income Rs.2.5 lakh tak", "Pichli class mein 50%+ marks"],
+        documents: ["Aadhaar Card", "Previous Mark Sheet", "Income Certificate", "Bank Account (student ke naam)", "Bonafide Certificate", "Caste/Religion Certificate", "Domicile Certificate"],
+        steps: [
+          { step: 1, title: "wbmdfcscholarship.gov.in Jaayein", description: "Aikyashree official portal kholein" },
+          { step: 2, title: "New Registration", description: "Student details aur mobile/email se registration karein" },
+          { step: 3, title: "Application ID Milegi", description: "Login karke application form bharein" },
+          { step: 4, title: "Scheme Select", description: "Pre-Matric / Post-Matric / Merit-cum-Means mein se chunein" },
+          { step: 5, title: "Documents Upload", description: "Sabhi documents scan karke upload karein (PDF, max 200KB)" },
+          { step: 6, title: "Institute Verification", description: "School/college institute level pe verify karega" },
+          { step: 7, title: "DBT", description: "Approval ke baad scholarship direct bank account mein" }
+        ],
+        officialWebsite: "https://wbmdfcscholarship.gov.in",
+        officeName: "WB Minorities Development & Finance Corporation",
+        warnings: ["Renewal har saal karna hota hai", "Bank account student ke naam ho - parents ka nahi", "Last date miss na karein - usually October-November"],
+        commonMistakes: ["Documents 200KB se zyada upload karna", "Galat scheme select karna"],
+        problemReasons: ["Scholarship nahi mili - institute verification pending", "Reject - income certificate exceed"]
+      },
+      {
+        id: "taruner-swapna",
+        title: "Taruner Swapna (Free Tablet)",
+        titleHi: "तरुणेर स्वप्न (फ्री टैबलेट)",
+        description: "WB Class 12 students ko Rs.10,000 tablet/smartphone purchase ke liye",
+        eligibility: ["West Bengal government / aided / madrasah school ka Class 12 student", "Currently enrolled hona chahiye", "Bank account student ke naam"],
+        documents: ["Aadhaar Card", "Class 12 Admission Proof", "Bank Account Details", "School ID"],
+        steps: [
+          { step: 1, title: "School Mein Form", description: "School Class 12 students ki list aur bank details collect karta hai" },
+          { step: 2, title: "Bank Details Verify", description: "Apna bank account number aur IFSC double-check karein - galat dene par paisa nahi aayega" },
+          { step: 3, title: "School Submit Karega", description: "Banglar Shiksha portal par school list upload karega" },
+          { step: 4, title: "DBT Rs.10,000", description: "Approval ke baad Rs.10,000 direct student ke bank account mein" },
+          { step: 5, title: "Tablet/Smartphone Purchase", description: "Apni pasand se tablet ya smartphone kharidein - bill sambhal kar rakhein" }
+        ],
+        officialWebsite: "https://banglarshiksha.gov.in",
+        officeName: "School Education Department, Govt of WB",
+        warnings: ["Sirf Class 12 students - Class 11 ya 10 ke liye nahi", "Bank account student ke naam zaroori", "Paisa kisi specific brand ke liye nahi - apni marzi se kharidein"],
+        commonMistakes: ["Joint / parent account dena", "Galat IFSC code"],
+        problemReasons: ["Paisa nahi aaya - bank details mismatch", "Late - school ne late submit kiya"]
+      },
+      {
+        id: "jai-bangla-pension",
+        title: "Jai Bangla Pension (Old Age/Widow/Disabled)",
+        titleHi: "जय बांग्ला पेंशन",
+        description: "WB ke senior citizens, widows, disabled ko Rs.1,000-1,800/month pension",
+        eligibility: ["West Bengal resident", "Taposili Bandhu (SC senior 60+) - Rs.1,000/month", "Jai Johar (ST senior 60+) - Rs.1,000/month", "Manabik (Disabled 40%+) - Rs.1,000/month", "Bidhaba Bhata (widow) - Rs.1,000/month", "Family income Rs.1 lakh/year se kam"],
+        documents: ["Aadhaar Card", "Age Proof (Birth Certificate / Voter ID)", "Income Certificate", "Caste Certificate (SC/ST ke liye)", "Disability Certificate (Manabik ke liye)", "Death Certificate of husband (Widow Pension)", "Bank Account"],
+        steps: [
+          { step: 1, title: "Duare Sarkar Camp", description: "Apne area ke Duare Sarkar camp mein jaayein" },
+          { step: 2, title: "Pension Type Select", description: "Taposili Bandhu / Jai Johar / Manabik / Bidhaba Bhata mein se chunein" },
+          { step: 3, title: "Form Bharein", description: "Relevant form bharein aur sabhi documents lagayein" },
+          { step: 4, title: "BDO Verification", description: "BDO / SDO office documents verify karega" },
+          { step: 5, title: "Sanction Order", description: "Approval ke baad sanction order issue hoga" },
+          { step: 6, title: "Monthly DBT", description: "Har mahine direct bank account mein pension transfer" }
+        ],
+        officialWebsite: "https://socialsecurity.wb.gov.in",
+        officeName: "Department of Social Welfare, Govt of WB",
+        warnings: ["Pehle se central pension (PMVVY etc.) le rahe ho to WB pension nahi milegi (overlap)", "Life certificate har saal November mein dena padta hai", "Helpline: 1800-345-0117"],
+        commonMistakes: ["Life certificate miss karna (pension band ho jati hai)", "Bank account inactive"],
+        problemReasons: ["Pension band - life certificate pending", "Reject - already central pension le rahe"]
+      },
+      {
+        id: "bangla-awas-yojana",
+        title: "Bangla Awas Yojana",
+        titleHi: "बांग्ला आवास योजना",
+        description: "WB gareeb parivaron ke liye pucca ghar Rs.1.20 lakh sahayata",
+        eligibility: ["West Bengal rural resident", "SECC 2011 list / state survey mein homeless ya kaccha ghar", "Pehle se PMAY / IAY / koi housing scheme nahi li", "Family ka koi member sarkari naukri mein nahi"],
+        documents: ["Aadhaar Card", "BPL / Income Certificate", "Land ownership document (pucca ghar banane ke liye apni zameen ho)", "Bank Account", "Photo of existing kaccha ghar"],
+        steps: [
+          { step: 1, title: "Gram Panchayat Jaayein", description: "Apni gram panchayat office mein jaayein - Pradhan se baat karein" },
+          { step: 2, title: "Bangla Awas Form", description: "Bangla Awas Yojana ka form bharein" },
+          { step: 3, title: "Survey", description: "Panchayat secretary ghar visit karke kaccha ghar verify karega" },
+          { step: 4, title: "Beneficiary List", description: "Block level beneficiary list mein naam check karein" },
+          { step: 5, title: "Sanction & 1st Installment", description: "Approval ke baad Rs.45,000 (foundation), Rs.45,000 (lintel level), Rs.30,000 (completion) ki 3 installments mein paisa aayega" },
+          { step: 6, title: "Geo-Tagged Photos", description: "Har stage par geo-tagged photo upload karwana hota hai" },
+          { step: 7, title: "Final Inspection", description: "Construction complete hone par BDO inspection karke final installment release karega" }
+        ],
+        officialWebsite: "https://wbprd.gov.in",
+        officeName: "Panchayats & Rural Development Department, Govt of WB",
+        warnings: ["Apni zameen honi chahiye - sirf construction cost milta hai", "Construction time-bound hai - 12 mahine mein complete karna hota hai", "MGNREGA se 90 din ki labour additional milti hai"],
+        commonMistakes: ["Geo-tag photo skip karna (next installment ruk jati hai)", "Zameen ka document nahi dena"],
+        problemReasons: ["Naam list mein nahi - SECC list mein name absent", "Installment ruki - geo-tag photo pending", "Reject - pehle se PMAY le chuke"]
+      }
+    ]
   }
 ];
 
