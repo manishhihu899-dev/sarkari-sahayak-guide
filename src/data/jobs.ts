@@ -267,12 +267,32 @@ export const getJobsByCategory = (category: JobListing["category"]) =>
   jobListings.filter(j => j.category === category);
 
 export const searchJobs = (query: string) => {
-  const q = query.toLowerCase();
-  return jobListings.filter(j => 
-    j.title.toLowerCase().includes(q) || 
-    j.titleHi.includes(q) ||
-    j.department.toLowerCase().includes(q) ||
-    j.departmentHi.includes(q) ||
-    j.description.toLowerCase().includes(q)
-  );
+  const q = query.toLowerCase().trim();
+  if (!q) return [];
+  const words = q.split(/\s+/).filter(Boolean);
+
+  const scored = jobListings
+    .map(j => {
+      const haystack = [
+        j.title, j.titleHi, j.department, j.departmentHi,
+        j.description, j.descriptionHi, j.id.replace(/-/g, " "),
+        j.category,
+      ].join(" ").toLowerCase();
+
+      const phraseMatch = haystack.includes(q) || j.titleHi.includes(query);
+      const everyWord = words.every(w => haystack.includes(w));
+      const anyWord = words.some(w => haystack.includes(w));
+
+      let score = -1;
+      if (phraseMatch) score = 0;
+      else if (everyWord) score = 1;
+      else if (anyWord) score = 2;
+
+      return { j, score };
+    })
+    .filter(x => x.score >= 0)
+    .sort((a, b) => a.score - b.score);
+
+  return scored.map(x => x.j);
 };
+
