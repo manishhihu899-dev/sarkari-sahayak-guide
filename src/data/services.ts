@@ -5504,25 +5504,51 @@ export const getSubServiceById = (serviceId: string, subServiceId: string): SubS
 
 export const searchServices = (query: string): SubService[] => {
   const lowerQuery = query.toLowerCase().trim();
+  if (!lowerQuery) return [];
   const queryWords = lowerQuery.split(/\s+/).filter(w => w.length > 0);
   const results: SubService[] = [];
-  
+  const seen = new Set<string>();
+
   services.forEach(service => {
+    const cat = categories.find(c => c.id === service.category);
+    const parentText = `${service.title} ${service.titleHi} ${service.description} ${cat?.name || ""} ${cat?.nameHi || ""}`.toLowerCase();
+
     service.subServices.forEach(sub => {
-      // Check if any query word matches
-      const searchText = `${sub.title} ${sub.titleHi} ${sub.description} ${service.title} ${service.titleHi}`.toLowerCase();
-      
-      const matches = queryWords.some(word => searchText.includes(word)) ||
-        sub.title.toLowerCase().includes(lowerQuery) ||
-        sub.titleHi.includes(query) ||
-        sub.description.toLowerCase().includes(lowerQuery) ||
-        service.title.toLowerCase().includes(lowerQuery);
-      
-      if (matches) {
+      const idText = sub.id.replace(/-/g, " ").toLowerCase();
+      const searchText = [
+        sub.title,
+        sub.titleHi,
+        sub.description,
+        idText,
+        sub.officeName || "",
+        (sub.eligibility || []).join(" "),
+        parentText,
+      ].join(" ").toLowerCase();
+
+      const everyWordMatches = queryWords.every(w => searchText.includes(w));
+      const anyWordMatches = queryWords.some(w => searchText.includes(w));
+      const directMatch =
+        searchText.includes(lowerQuery) ||
+        sub.titleHi.includes(query);
+
+      if ((everyWordMatches || anyWordMatches || directMatch) && !seen.has(sub.id)) {
+        seen.add(sub.id);
         results.push(sub);
       }
     });
   });
-  
+
+  // Rank: exact title match first, then full-phrase matches, then word matches
+  results.sort((a, b) => {
+    const score = (s: SubService) => {
+      const t = `${s.title} ${s.titleHi}`.toLowerCase();
+      if (t.includes(lowerQuery)) return 0;
+      if (queryWords.every(w => t.includes(w))) return 1;
+      return 2;
+    };
+    return score(a) - score(b);
+  });
+
   return results;
 };
+
