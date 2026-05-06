@@ -10,8 +10,12 @@ import { useLanguage } from "@/hooks/use-language";
 
 const popularSearches = [
   "Aadhaar", "PAN", "Passport", "Bank", "SIM",
-  "Scholarship", "PM Awas Yojana", "Ayushman Bharat", "Voter ID", "Ration Card"
+  "Scholarship", "PM Awas Yojana", "Ayushman Bharat", "Voter ID", "Ration Card",
+  "PM Kisan", "Mudra Loan", "Ujjwala", "MGNREGA", "Atal Pension",
+  "Sukanya Samriddhi", "DigiLocker", "UMANG", "MyScheme", "e-Shram",
+  "GST Portal", "BharatNet", "CSC", "Digital India", "Jal Jeevan"
 ];
+
 
 const commonDocuments = [
   { id: "aadhaar", label: "Aadhaar Card" },
