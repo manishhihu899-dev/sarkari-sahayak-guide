@@ -22,7 +22,17 @@ const popularSearches = [
   { hi: "राशन कार्ड", en: "Ration Card" },
   { hi: "वोटर ID", en: "Voter ID" },
   { hi: "ड्राइविंग लाइसेंस", en: "Driving License" },
+  { hi: "सरकारी योजना", en: "Government Scheme" },
+  { hi: "PM आवास", en: "PM Awas" },
+  { hi: "मुद्रा लोन", en: "Mudra Loan" },
+  { hi: "उज्ज्वला", en: "Ujjwala" },
+  { hi: "DigiLocker", en: "DigiLocker" },
+  { hi: "UMANG ऐप", en: "UMANG App" },
+  { hi: "MyScheme पोर्टल", en: "MyScheme Portal" },
+  { hi: "e-Shram पोर्टल", en: "e-Shram Portal" },
+  { hi: "GST पोर्टल", en: "GST Portal" },
 ];
+
 
 export const SearchModal = ({ open, onOpenChange }: SearchModalProps) => {
   const { t, language } = useLanguage();
