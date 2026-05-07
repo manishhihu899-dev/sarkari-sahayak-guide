@@ -72,6 +72,11 @@ const App = () => {
                       <Route path="/search-jobs" element={<SearchJobsPage />} />
                       <Route path="/about" element={<AboutPage />} />
                       <Route path="/more" element={<MorePage />} />
+                      <Route path="/privacy" element={<PrivacyPage />} />
+                      <Route path="/terms" element={<TermsPage />} />
+                      <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/feedback" element={<FeedbackPage />} />
+                      <Route path="/updates" element={<UpdatesPage />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </BrowserRouter>
