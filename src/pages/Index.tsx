@@ -195,8 +195,9 @@ const Index = () => {
           </>}
       </main>
 
+      <AppFooter />
       <QuickActions />
-      
+      <FloatingHelp />
       <BottomNav />
     </div>;
 };
