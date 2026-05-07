@@ -118,8 +118,15 @@
   }
 
   html {
-    font-family: 'Noto Sans', system-ui, sans-serif;
+    font-family: 'Inter', 'Poppins', system-ui, sans-serif;
     -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
   body {
