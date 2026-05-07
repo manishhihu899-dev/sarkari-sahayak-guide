@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/use-language";
 import {
   Grid3X3, Globe, Gift, HelpCircle, Info, Briefcase, Calculator,
-  ClipboardList, Bookmark, FileText, Shield, ChevronRight
+  ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock
 } from "lucide-react";
 
 const MorePage = () => {
