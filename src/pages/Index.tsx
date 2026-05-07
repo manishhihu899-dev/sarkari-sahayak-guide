@@ -4,6 +4,8 @@ import { Header } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
 import { ServiceCard } from "@/components/ServiceCard";
 import { BottomNav } from "@/components/BottomNav";
+import { AppFooter } from "@/components/AppFooter";
+import { FloatingHelp } from "@/components/FloatingHelp";
 import { QuickActions } from "@/components/QuickActions";
 
 
