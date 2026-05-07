@@ -1,18 +1,35 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { BottomNav } from "@/components/BottomNav";
 import { SearchBar } from "@/components/SearchBar";
 import { JobCard } from "@/components/JobCard";
+import { SubServiceCard } from "@/components/SubServiceCard";
 import { searchJobs, jobListings } from "@/data/jobs";
+import { services, searchServices } from "@/data/services";
 import { useLanguage } from "@/hooks/use-language";
-import { Search, TrendingUp } from "lucide-react";
+import { TrendingUp, Briefcase, FileText } from "lucide-react";
 
 const SearchJobsPage = () => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const { t } = useLanguage();
-  const results = query.length > 1 ? searchJobs(query) : [];
 
-  const popularSearches = ["SSC", "IBPS", "Railway", "UPSC", "SBI", "Police"];
+  const jobResults = query.length > 1 ? searchJobs(query) : [];
+  const serviceResults = useMemo(
+    () => (query.length > 1 ? searchServices(query) : []),
+    [query]
+  );
+
+  const findParentId = (subId: string) =>
+    services.find(s => s.subServices.some(ss => ss.id === subId))?.id;
+
+  const popularSearches = [
+    "SSC", "IBPS", "Railway", "UPSC", "SBI", "Police",
+    "PM Awas", "Mudra Loan", "Ujjwala", "DigiLocker", "UMANG", "MyScheme", "e-Shram", "GST Portal"
+  ];
+
+  const totalResults = jobResults.length + serviceResults.length;
 
   return (
     <div className="min-h-screen bg-background pb-24">
@@ -21,7 +38,7 @@ const SearchJobsPage = () => {
         <SearchBar
           value={query}
           onChange={setQuery}
-          placeholder={t("SSC, IBPS, Railway खोजें...", "Search SSC, IBPS, Railway...")}
+          placeholder={t("नौकरी, योजना, पोर्टल खोजें...", "Search jobs, schemes, portals...")}
         />
 
         {query.length <= 1 && (
@@ -54,17 +71,51 @@ const SearchJobsPage = () => {
         )}
 
         {query.length > 1 && (
-          <div>
-            <p className="text-sm text-muted-foreground mb-3">
-              {results.length > 0
-                ? `${results.length} ${t("परिणाम मिले", "results found")}`
+          <div className="space-y-5">
+            <p className="text-sm text-muted-foreground">
+              {totalResults > 0
+                ? `${totalResults} ${t("परिणाम मिले", "results found")}`
                 : t("कोई परिणाम नहीं मिला", "No results found")}
             </p>
-            <div className="space-y-3">
-              {results.map((job, i) => (
-                <JobCard key={job.id} job={job} delay={i * 80} />
-              ))}
-            </div>
+
+            {jobResults.length > 0 && (
+              <div>
+                <h3 className="text-sm font-semibold text-foreground flex items-center gap-1.5 mb-3">
+                  <Briefcase className="w-4 h-4 text-accent" />
+                  {t("नौकरियां", "Jobs")} ({jobResults.length})
+                </h3>
+                <div className="space-y-3">
+                  {jobResults.map((job, i) => (
+                    <JobCard key={job.id} job={job} delay={i * 60} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {serviceResults.length > 0 && (
+              <div>
+                <h3 className="text-sm font-semibold text-foreground flex items-center gap-1.5 mb-3">
+                  <FileText className="w-4 h-4 text-success" />
+                  {t("योजनाएं और पोर्टल", "Schemes & Portals")} ({serviceResults.length})
+                </h3>
+                <div className="space-y-3">
+                  {serviceResults.map((sub, i) => {
+                    const parentId = findParentId(sub.id);
+                    if (!parentId) return null;
+                    return (
+                      <SubServiceCard
+                        key={sub.id}
+                        title={sub.title}
+                        titleHi={sub.titleHi}
+                        description={sub.description}
+                        onClick={() => navigate(`/service/${parentId}/${sub.id}`)}
+                        delay={i * 40}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
