@@ -27,6 +27,11 @@ import SavedJobsPage from "./pages/SavedJobsPage";
 import SearchJobsPage from "./pages/SearchJobsPage";
 import AboutPage from "./pages/AboutPage";
 import MorePage from "./pages/MorePage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
+import ContactPage from "./pages/ContactPage";
+import FeedbackPage from "./pages/FeedbackPage";
+import UpdatesPage from "./pages/UpdatesPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
