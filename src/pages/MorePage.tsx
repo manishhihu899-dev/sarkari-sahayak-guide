@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/use-language";
 import {
   Grid3X3, Globe, Gift, HelpCircle, Info, Briefcase, Calculator,
-  ClipboardList, Bookmark, FileText, Shield, ChevronRight
+  ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock
 } from "lucide-react";
 
 const MorePage = () => {
@@ -32,8 +32,18 @@ const MorePage = () => {
     {
       title: t("सहायता और जानकारी", "Help & Info"),
       items: [
+        { icon: Bell, label: t("अपडेट्स", "Updates"), desc: t("नई योजनाएं और नौकरियां", "Latest news & alerts"), path: "/updates", color: "bg-blue-500" },
         { icon: HelpCircle, label: t("सहायता केंद्र", "Help Center"), desc: t("FAQ, हेल्पलाइन नंबर", "FAQ, helpline numbers"), path: "/help", color: "bg-cyan-500" },
-        { icon: Info, label: t("हमारे बारे में", "About"), desc: t("ऐप जानकारी और गोपनीयता", "App info & privacy"), path: "/about", color: "bg-gray-500" },
+        { icon: Info, label: t("हमारे बारे में", "About"), desc: t("ऐप जानकारी", "App info"), path: "/about", color: "bg-gray-500" },
+      ],
+    },
+    {
+      title: t("कानूनी और संपर्क", "Legal & Contact"),
+      items: [
+        { icon: Lock, label: t("गोपनीयता नीति", "Privacy Policy"), desc: t("Data kaise handle hota hai", "How we handle data"), path: "/privacy", color: "bg-slate-500" },
+        { icon: FileText, label: t("नियम व शर्तें", "Terms & Conditions"), desc: t("App use karne ke niyam", "App usage terms"), path: "/terms", color: "bg-slate-600" },
+        { icon: Mail, label: t("संपर्क करें", "Contact Us"), desc: t("Email aur support", "Email & support"), path: "/contact", color: "bg-emerald-600" },
+        { icon: MessageCircle, label: t("फीडबैक", "Feedback / Report"), desc: t("Suggestion ya bug report", "Send suggestion or bug"), path: "/feedback", color: "bg-pink-500" },
       ],
     },
   ];

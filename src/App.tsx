@@ -27,6 +27,11 @@ import SavedJobsPage from "./pages/SavedJobsPage";
 import SearchJobsPage from "./pages/SearchJobsPage";
 import AboutPage from "./pages/AboutPage";
 import MorePage from "./pages/MorePage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
+import ContactPage from "./pages/ContactPage";
+import FeedbackPage from "./pages/FeedbackPage";
+import UpdatesPage from "./pages/UpdatesPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -67,6 +72,11 @@ const App = () => {
                       <Route path="/search-jobs" element={<SearchJobsPage />} />
                       <Route path="/about" element={<AboutPage />} />
                       <Route path="/more" element={<MorePage />} />
+                      <Route path="/privacy" element={<PrivacyPage />} />
+                      <Route path="/terms" element={<TermsPage />} />
+                      <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/feedback" element={<FeedbackPage />} />
+                      <Route path="/updates" element={<UpdatesPage />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </BrowserRouter>
