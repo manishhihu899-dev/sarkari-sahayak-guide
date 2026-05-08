@@ -4,12 +4,43 @@ import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/use-language";
 import {
   Grid3X3, Globe, Gift, HelpCircle, Info, Briefcase, Calculator,
-  ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock
+  ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock,
+  Share2, Star, Smartphone
 } from "lucide-react";
+import { toast } from "sonner";
+import appLogo from "@/assets/app-logo.png";
+
+const APP_VERSION = "1.0.4";
+const APP_URL = "https://sarkarisahayak.lovable.app";
 
 const MorePage = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
+
+  const handleShare = async () => {
+    const shareData = {
+      title: "Sarkari Sahayak",
+      text: t(
+        "सरकारी सेवाओं की आसान गाइड — Sarkari Sahayak app try karein!",
+        "Easy guide for govt services — try Sarkari Sahayak!"
+      ),
+      url: APP_URL,
+    };
+    try {
+      if (navigator.share) await navigator.share(shareData);
+      else {
+        await navigator.clipboard.writeText(`${shareData.text} ${APP_URL}`);
+        toast.success(t("लिंक कॉपी हो गया", "Link copied"));
+      }
+    } catch {/* cancelled */}
+  };
+
+  const handleRate = () => {
+    navigate("/feedback");
+    toast(t("अपनी राय दें ⭐", "Share your rating ⭐"), {
+      description: t("Aapka feedback hamare liye important hai", "Your feedback matters"),
+    });
+  };
 
   const sections = [
     {
@@ -52,6 +83,40 @@ const MorePage = () => {
     <div className="min-h-screen bg-background pb-24">
       <Header title={t("और अधिक", "More")} showBack />
       <div className="px-4 py-4 space-y-6">
+        {/* App identity card */}
+        <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-4 text-primary-foreground shadow-elevated flex items-center gap-3">
+          <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-md">
+            <img src={appLogo} alt="App logo" className="w-10 h-10 object-contain" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h2 className="text-base font-bold leading-tight">Sarkari Sahayak</h2>
+            <p className="text-[11px] text-white/80 truncate">{t("सरकारी सेवाओं की गाइड", "Government Services Guide")}</p>
+            <p className="text-[10px] text-white/60 mt-0.5">v{APP_VERSION} · {t("निःशुल्क", "Free")}</p>
+          </div>
+        </div>
+
+        {/* Quick actions: Share + Rate */}
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            onClick={handleShare}
+            className="flex flex-col items-center justify-center gap-1.5 bg-card border border-border rounded-xl py-4 hover:bg-muted/50 active:scale-95 transition-all shadow-card"
+          >
+            <div className="w-10 h-10 rounded-full bg-success/15 flex items-center justify-center">
+              <Share2 className="w-5 h-5 text-success" />
+            </div>
+            <span className="text-xs font-semibold text-foreground">{t("ऐप शेयर करें", "Share App")}</span>
+          </button>
+          <button
+            onClick={handleRate}
+            className="flex flex-col items-center justify-center gap-1.5 bg-card border border-border rounded-xl py-4 hover:bg-muted/50 active:scale-95 transition-all shadow-card"
+          >
+            <div className="w-10 h-10 rounded-full bg-warning/20 flex items-center justify-center">
+              <Star className="w-5 h-5 text-warning fill-warning" />
+            </div>
+            <span className="text-xs font-semibold text-foreground">{t("रेट करें", "Rate Us")}</span>
+          </button>
+        </div>
+
         {sections.map((section, si) => (
           <div key={si} className="space-y-2">
             <h3 className="text-sm font-semibold text-muted-foreground px-1 uppercase tracking-wide">
@@ -79,14 +144,20 @@ const MorePage = () => {
         ))}
 
         {/* Disclaimer footer */}
-        <div className="flex items-start gap-2 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 mt-4">
-          <Shield className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+        <div className="flex items-start gap-2 bg-warning/10 border border-warning/20 rounded-xl p-3 mt-4">
+          <Shield className="w-4 h-4 text-warning shrink-0 mt-0.5" />
           <p className="text-[11px] text-muted-foreground leading-relaxed">
             {t(
               "यह ऐप किसी भी सरकारी संगठन से संबद्ध नहीं है। यह केवल सार्वजनिक रूप से उपलब्ध स्रोतों से जानकारी प्रदान करता है।",
               "This app is not affiliated with any government organization. It only provides information from publicly available sources."
             )}
           </p>
+        </div>
+
+        {/* App version footer */}
+        <div className="flex items-center justify-center gap-1.5 text-muted-foreground pt-2">
+          <Smartphone className="w-3 h-3" />
+          <p className="text-[10px] font-medium">Sarkari Sahayak · v{APP_VERSION} · Made in 🇮🇳</p>
         </div>
       </div>
       <BottomNav />
