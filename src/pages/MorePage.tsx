@@ -17,6 +17,31 @@ const MorePage = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
 
+  const handleShare = async () => {
+    const shareData = {
+      title: "Sarkari Sahayak",
+      text: t(
+        "सरकारी सेवाओं की आसान गाइड — Sarkari Sahayak app try karein!",
+        "Easy guide for govt services — try Sarkari Sahayak!"
+      ),
+      url: APP_URL,
+    };
+    try {
+      if (navigator.share) await navigator.share(shareData);
+      else {
+        await navigator.clipboard.writeText(`${shareData.text} ${APP_URL}`);
+        toast.success(t("लिंक कॉपी हो गया", "Link copied"));
+      }
+    } catch {/* cancelled */}
+  };
+
+  const handleRate = () => {
+    navigate("/feedback");
+    toast(t("अपनी राय दें ⭐", "Share your rating ⭐"), {
+      description: t("Aapka feedback hamare liye important hai", "Your feedback matters"),
+    });
+  };
+
   const sections = [
     {
       title: t("सेवाएं और गाइड", "Services & Guides"),
