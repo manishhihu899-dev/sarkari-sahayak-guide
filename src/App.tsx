@@ -11,6 +11,7 @@ import { ApplicationsProvider } from "@/hooks/use-applications";
 import { SavedJobsProvider } from "@/hooks/use-saved-jobs";
 import { SplashScreen } from "@/components/SplashScreen";
 import { OnboardingSlides } from "@/components/OnboardingSlides";
+import { NetworkStatus } from "@/components/NetworkStatus";
 import Index from "./pages/Index";
 import ServicePage from "./pages/ServicePage";
 import SubServicePage from "./pages/SubServicePage";
@@ -52,6 +53,7 @@ const App = () => {
                 <TooltipProvider>
                   <Toaster />
                   <Sonner />
+                  <NetworkStatus />
                   {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
                   {!showSplash && showOnboarding && <OnboardingSlides onComplete={handleOnboardingComplete} />}
                   <BrowserRouter>
