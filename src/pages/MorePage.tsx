@@ -4,8 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/use-language";
 import {
   Grid3X3, Globe, Gift, HelpCircle, Info, Briefcase, Calculator,
-  ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock
+  ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock,
+  Share2, Star, Smartphone
 } from "lucide-react";
+import { toast } from "@/components/ui/sonner";
+import appLogo from "@/assets/app-logo.png";
+
+const APP_VERSION = "1.0.4";
+const APP_URL = "https://sarkarisahayak.lovable.app";
 
 const MorePage = () => {
   const navigate = useNavigate();
