@@ -15,16 +15,16 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
       className={`fixed inset-0 z-[100] flex flex-col items-center justify-center transition-opacity duration-400 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
-      style={{ background: "linear-gradient(160deg, #1E293B 0%, #1E40AF 60%, #2563EB 100%)" }}
+      style={{ background: "linear-gradient(180deg, #FF9933 0%, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%, #138808 100%)" }}
     >
-      <div className="w-24 h-24 rounded-3xl overflow-hidden bg-white shadow-2xl mb-6 animate-scale-in flex items-center justify-center">
+      <div className="w-24 h-24 rounded-3xl overflow-hidden bg-white shadow-2xl mb-6 animate-scale-in flex items-center justify-center ring-4 ring-[#000080]/30">
         <img src={appLogo} alt="Sarkari Sahayak" className="w-16 h-16 object-contain" />
       </div>
 
-      <h1 className="text-2xl font-bold text-white mb-1.5 animate-fade-up" style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <h1 className="text-2xl font-bold text-[#000080] mb-1.5 animate-fade-up">
         Sarkari Sahayak
       </h1>
-      <p className="text-xs text-white/70 animate-fade-up" style={{ animationDelay: "150ms", animationFillMode: "both" }}>
+      <p className="text-xs text-[#000080]/80 font-semibold animate-fade-up" style={{ animationDelay: "150ms", animationFillMode: "both" }}>
         सरकारी सेवाओं की गाइड
       </p>
 
@@ -32,13 +32,13 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         {[0, 1, 2].map(i => (
           <div
             key={i}
-            className="w-2 h-2 rounded-full bg-white/70 animate-bounce"
+            className="w-2 h-2 rounded-full bg-[#000080]/70 animate-bounce"
             style={{ animationDelay: `${i * 150}ms` }}
           />
         ))}
       </div>
 
-      <p className="absolute bottom-6 text-[10px] text-white/45 px-6 text-center">
+      <p className="absolute bottom-6 text-[10px] text-[#000080]/70 px-6 text-center font-medium">
         Not an official government app · Guidance only
       </p>
     </div>

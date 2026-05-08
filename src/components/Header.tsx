@@ -20,6 +20,14 @@ export const Header = ({ title, showBack = false }: HeaderProps) => {
 
   return (
     <header className="sticky top-0 z-50 bg-primary text-primary-foreground shadow-card">
+      {/* Indian Tricolor Strip */}
+      <div className="flex h-1 w-full">
+        <div className="flex-1" style={{ background: "#FF9933" }} />
+        <div className="flex-1 bg-white relative flex items-center justify-center">
+          <div className="w-2 h-2 rounded-full border border-[#000080]" />
+        </div>
+        <div className="flex-1" style={{ background: "#138808" }} />
+      </div>
       <div className="px-4 py-3">
         <div className="flex items-center gap-3">
           {showBack && (
