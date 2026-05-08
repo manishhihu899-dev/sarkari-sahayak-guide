@@ -83,6 +83,40 @@ const MorePage = () => {
     <div className="min-h-screen bg-background pb-24">
       <Header title={t("और अधिक", "More")} showBack />
       <div className="px-4 py-4 space-y-6">
+        {/* App identity card */}
+        <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-4 text-primary-foreground shadow-elevated flex items-center gap-3">
+          <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-md">
+            <img src={appLogo} alt="App logo" className="w-10 h-10 object-contain" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h2 className="text-base font-bold leading-tight">Sarkari Sahayak</h2>
+            <p className="text-[11px] text-white/80 truncate">{t("सरकारी सेवाओं की गाइड", "Government Services Guide")}</p>
+            <p className="text-[10px] text-white/60 mt-0.5">v{APP_VERSION} · {t("निःशुल्क", "Free")}</p>
+          </div>
+        </div>
+
+        {/* Quick actions: Share + Rate */}
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            onClick={handleShare}
+            className="flex flex-col items-center justify-center gap-1.5 bg-card border border-border rounded-xl py-4 hover:bg-muted/50 active:scale-95 transition-all shadow-card"
+          >
+            <div className="w-10 h-10 rounded-full bg-success/15 flex items-center justify-center">
+              <Share2 className="w-5 h-5 text-success" />
+            </div>
+            <span className="text-xs font-semibold text-foreground">{t("ऐप शेयर करें", "Share App")}</span>
+          </button>
+          <button
+            onClick={handleRate}
+            className="flex flex-col items-center justify-center gap-1.5 bg-card border border-border rounded-xl py-4 hover:bg-muted/50 active:scale-95 transition-all shadow-card"
+          >
+            <div className="w-10 h-10 rounded-full bg-warning/20 flex items-center justify-center">
+              <Star className="w-5 h-5 text-warning fill-warning" />
+            </div>
+            <span className="text-xs font-semibold text-foreground">{t("रेट करें", "Rate Us")}</span>
+          </button>
+        </div>
+
         {sections.map((section, si) => (
           <div key={si} className="space-y-2">
             <h3 className="text-sm font-semibold text-muted-foreground px-1 uppercase tracking-wide">
