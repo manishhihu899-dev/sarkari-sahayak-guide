@@ -7,7 +7,7 @@ import {
   ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock,
   Share2, Star, Smartphone
 } from "lucide-react";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 import appLogo from "@/assets/app-logo.png";
 
 const APP_VERSION = "1.0.4";
