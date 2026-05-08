@@ -110,14 +110,20 @@ const MorePage = () => {
         ))}
 
         {/* Disclaimer footer */}
-        <div className="flex items-start gap-2 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 mt-4">
-          <Shield className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+        <div className="flex items-start gap-2 bg-warning/10 border border-warning/20 rounded-xl p-3 mt-4">
+          <Shield className="w-4 h-4 text-warning shrink-0 mt-0.5" />
           <p className="text-[11px] text-muted-foreground leading-relaxed">
             {t(
               "यह ऐप किसी भी सरकारी संगठन से संबद्ध नहीं है। यह केवल सार्वजनिक रूप से उपलब्ध स्रोतों से जानकारी प्रदान करता है।",
               "This app is not affiliated with any government organization. It only provides information from publicly available sources."
             )}
           </p>
+        </div>
+
+        {/* App version footer */}
+        <div className="flex items-center justify-center gap-1.5 text-muted-foreground pt-2">
+          <Smartphone className="w-3 h-3" />
+          <p className="text-[10px] font-medium">Sarkari Sahayak · v{APP_VERSION} · Made in 🇮🇳</p>
         </div>
       </div>
       <BottomNav />
