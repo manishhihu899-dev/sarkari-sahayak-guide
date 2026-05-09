@@ -10,7 +10,7 @@ import {
 import { toast } from "sonner";
 import appLogo from "@/assets/app-logo.png";
 
-const APP_VERSION = "1.0.4";
+const APP_VERSION = "1.0.1";
 const APP_URL = "https://sarkarisahayak.lovable.app";
 
 const MorePage = () => {
