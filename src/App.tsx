@@ -66,7 +66,8 @@ const App = () => {
                   <Sonner />
                   <NetworkStatus />
                   {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-                  {!showSplash && showOnboarding && <OnboardingSlides onComplete={handleOnboardingComplete} />}
+                  {!showSplash && showIntro && <IntroVideo onComplete={handleIntroComplete} isReplay={introReplay} />}
+                  {!showSplash && !showIntro && showOnboarding && <OnboardingSlides onComplete={handleOnboardingComplete} />}
                   <BrowserRouter>
                     <Routes>
                       <Route path="/" element={<Index />} />
