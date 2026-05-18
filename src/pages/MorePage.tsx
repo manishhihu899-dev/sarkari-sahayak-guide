@@ -63,6 +63,7 @@ const MorePage = () => {
     {
       title: t("सहायता और जानकारी", "Help & Info"),
       items: [
+        { icon: PlayCircle, label: t("इंट्रो दोबारा देखें", "Replay Intro"), desc: t("ऐप का इंट्रो वीडियो फिर से देखें", "Watch the app intro again"), action: "replay-intro", color: "bg-orange-500" },
         { icon: Bell, label: t("अपडेट्स", "Updates"), desc: t("नई योजनाएं और नौकरियां", "Latest news & alerts"), path: "/updates", color: "bg-blue-500" },
         { icon: HelpCircle, label: t("सहायता केंद्र", "Help Center"), desc: t("FAQ, हेल्पलाइन नंबर", "FAQ, helpline numbers"), path: "/help", color: "bg-cyan-500" },
         { icon: Info, label: t("हमारे बारे में", "About"), desc: t("ऐप जानकारी", "App info"), path: "/about", color: "bg-gray-500" },
