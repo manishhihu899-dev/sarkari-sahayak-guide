@@ -11,7 +11,9 @@ import { ApplicationsProvider } from "@/hooks/use-applications";
 import { SavedJobsProvider } from "@/hooks/use-saved-jobs";
 import { SplashScreen } from "@/components/SplashScreen";
 import { OnboardingSlides } from "@/components/OnboardingSlides";
+import { IntroVideo } from "@/components/IntroVideo";
 import { NetworkStatus } from "@/components/NetworkStatus";
+import { useEffect } from "react";
 import Index from "./pages/Index";
 import ServicePage from "./pages/ServicePage";
 import SubServicePage from "./pages/SubServicePage";
@@ -39,9 +41,18 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true);
+  const [showIntro, setShowIntro] = useState(() => !localStorage.getItem("intro_done"));
+  const [introReplay, setIntroReplay] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem("onboarding_done"));
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);
+  const handleIntroComplete = useCallback(() => { setShowIntro(false); setIntroReplay(false); }, []);
   const handleOnboardingComplete = useCallback(() => setShowOnboarding(false), []);
+
+  useEffect(() => {
+    const handler = () => { setIntroReplay(true); setShowIntro(true); };
+    window.addEventListener("replay-intro", handler);
+    return () => window.removeEventListener("replay-intro", handler);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -55,7 +66,8 @@ const App = () => {
                   <Sonner />
                   <NetworkStatus />
                   {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-                  {!showSplash && showOnboarding && <OnboardingSlides onComplete={handleOnboardingComplete} />}
+                  {!showSplash && showIntro && <IntroVideo onComplete={handleIntroComplete} isReplay={introReplay} />}
+                  {!showSplash && !showIntro && showOnboarding && <OnboardingSlides onComplete={handleOnboardingComplete} />}
                   <BrowserRouter>
                     <Routes>
                       <Route path="/" element={<Index />} />

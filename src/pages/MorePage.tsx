@@ -5,7 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 import {
   Grid3X3, Globe, Gift, HelpCircle, Info, Briefcase, Calculator,
   ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock,
-  Share2, Star, Smartphone
+  Share2, Star, Smartphone, PlayCircle
 } from "lucide-react";
 import { toast } from "sonner";
 import appLogo from "@/assets/app-logo.png";
@@ -63,6 +63,7 @@ const MorePage = () => {
     {
       title: t("सहायता और जानकारी", "Help & Info"),
       items: [
+        { icon: PlayCircle, label: t("इंट्रो दोबारा देखें", "Replay Intro"), desc: t("ऐप का इंट्रो वीडियो फिर से देखें", "Watch the app intro again"), action: "replay-intro", color: "bg-orange-500" },
         { icon: Bell, label: t("अपडेट्स", "Updates"), desc: t("नई योजनाएं और नौकरियां", "Latest news & alerts"), path: "/updates", color: "bg-blue-500" },
         { icon: HelpCircle, label: t("सहायता केंद्र", "Help Center"), desc: t("FAQ, हेल्पलाइन नंबर", "FAQ, helpline numbers"), path: "/help", color: "bg-cyan-500" },
         { icon: Info, label: t("हमारे बारे में", "About"), desc: t("ऐप जानकारी", "App info"), path: "/about", color: "bg-gray-500" },
@@ -123,10 +124,18 @@ const MorePage = () => {
               {section.title}
             </h3>
             <div className="bg-card border border-border rounded-xl overflow-hidden divide-y divide-border">
-              {section.items.map((item, ii) => (
+              {section.items.map((item: any, ii) => (
                 <button
                   key={ii}
-                  onClick={() => navigate(item.path)}
+                  onClick={() => {
+                    if (item.action === "replay-intro") {
+                      localStorage.removeItem("intro_done");
+                      window.dispatchEvent(new Event("replay-intro"));
+                      toast.success(t("इंट्रो शुरू हो रहा है...", "Starting intro..."));
+                    } else if (item.path) {
+                      navigate(item.path);
+                    }
+                  }}
                   className="w-full flex items-center gap-3 p-4 hover:bg-muted/50 transition-colors active:scale-[0.99]"
                 >
                   <div className={`w-10 h-10 rounded-xl ${item.color} flex items-center justify-center shrink-0`}>
