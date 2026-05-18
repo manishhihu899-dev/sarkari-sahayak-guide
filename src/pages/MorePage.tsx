@@ -124,10 +124,18 @@ const MorePage = () => {
               {section.title}
             </h3>
             <div className="bg-card border border-border rounded-xl overflow-hidden divide-y divide-border">
-              {section.items.map((item, ii) => (
+              {section.items.map((item: any, ii) => (
                 <button
                   key={ii}
-                  onClick={() => navigate(item.path)}
+                  onClick={() => {
+                    if (item.action === "replay-intro") {
+                      localStorage.removeItem("intro_done");
+                      window.dispatchEvent(new Event("replay-intro"));
+                      toast.success(t("इंट्रो शुरू हो रहा है...", "Starting intro..."));
+                    } else if (item.path) {
+                      navigate(item.path);
+                    }
+                  }}
                   className="w-full flex items-center gap-3 p-4 hover:bg-muted/50 transition-colors active:scale-[0.99]"
                 >
                   <div className={`w-10 h-10 rounded-xl ${item.color} flex items-center justify-center shrink-0`}>
