@@ -41,9 +41,18 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true);
+  const [showIntro, setShowIntro] = useState(() => !localStorage.getItem("intro_done"));
+  const [introReplay, setIntroReplay] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem("onboarding_done"));
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);
+  const handleIntroComplete = useCallback(() => { setShowIntro(false); setIntroReplay(false); }, []);
   const handleOnboardingComplete = useCallback(() => setShowOnboarding(false), []);
+
+  useEffect(() => {
+    const handler = () => { setIntroReplay(true); setShowIntro(true); };
+    window.addEventListener("replay-intro", handler);
+    return () => window.removeEventListener("replay-intro", handler);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
