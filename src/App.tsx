@@ -41,7 +41,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true);
-  const [showIntro, setShowIntro] = useState(() => !localStorage.getItem("intro_done"));
+  const [showIntro, setShowIntro] = useState(() => !localStorage.getItem("intro_done_v2"));
   const [introReplay, setIntroReplay] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem("onboarding_done"));
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);

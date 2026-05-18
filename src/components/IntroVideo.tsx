@@ -55,7 +55,7 @@ export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) =>
         trackEvent("completed", scene, isReplay);
         setFadeOut(true);
         setTimeout(() => {
-          localStorage.setItem("intro_done", "1");
+          localStorage.setItem("intro_done_v2", "1");
           onComplete();
         }, 500);
       }
@@ -69,7 +69,7 @@ export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) =>
     trackEvent("skipped", scene, isReplay);
     setFadeOut(true);
     setTimeout(() => {
-      localStorage.setItem("intro_done", "1");
+      localStorage.setItem("intro_done_v2", "1");
       onComplete();
     }, 300);
   }, [scene, onComplete, isReplay]);
