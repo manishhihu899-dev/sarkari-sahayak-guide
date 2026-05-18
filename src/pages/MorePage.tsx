@@ -5,7 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 import {
   Grid3X3, Globe, Gift, HelpCircle, Info, Briefcase, Calculator,
   ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock,
-  Share2, Star, Smartphone
+  Share2, Star, Smartphone, PlayCircle
 } from "lucide-react";
 import { toast } from "sonner";
 import appLogo from "@/assets/app-logo.png";
