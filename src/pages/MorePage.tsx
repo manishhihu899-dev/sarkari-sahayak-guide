@@ -129,7 +129,7 @@ const MorePage = () => {
                   key={ii}
                   onClick={() => {
                     if (item.action === "replay-intro") {
-                      localStorage.removeItem("intro_done");
+                      localStorage.removeItem("intro_done_v2");
                       window.dispatchEvent(new Event("replay-intro"));
                       toast.success(t("इंट्रो शुरू हो रहा है...", "Starting intro..."));
                     } else if (item.path) {
