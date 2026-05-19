@@ -3,7 +3,8 @@ import { useLanguage } from "@/hooks/use-language";
 import appLogo from "@/assets/app-logo.png";
 import {
   Briefcase, Gift, Globe, Shield, Sparkles, CheckCircle2,
-  Search, Calculator, Bell, Lock, Rocket, X
+  Search, Calculator, Bell, Lock, Rocket, X, Volume2, VolumeX,
+  Bookmark, FileText, Building2, WifiOff, Languages, ClipboardList
 } from "lucide-react";
 
 interface IntroVideoProps {
@@ -14,7 +15,7 @@ interface IntroVideoProps {
 const STORAGE_KEY = "sarkarisahayakguide-intro_seen";
 
 type AnalyticsEvent = {
-  event: "viewed" | "skipped" | "completed" | "scene_view" | "replayed";
+  event: "viewed" | "skipped" | "completed" | "scene_view" | "replayed" | "music_on" | "music_off";
   scene?: number;
   timestamp: number;
   isReplay?: boolean;
@@ -24,23 +25,121 @@ const trackEvent = (event: AnalyticsEvent["event"], scene?: number, isReplay?: b
   try {
     const existing: AnalyticsEvent[] = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     existing.push({ event, scene, timestamp: Date.now(), isReplay });
-    const trimmed = existing.slice(-100);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing.slice(-100)));
   } catch { /* ignore */ }
 };
 
 const SCENE_DURATION = 3200;
-const TOTAL_SCENES = 6;
+const TOTAL_SCENES = 8;
+
+// Patriotic uplifting melody (notes in Hz) - inspired Indian tune feel
+const MELODY: Array<{ f: number; d: number }> = [
+  { f: 523.25, d: 0.4 }, // C5
+  { f: 587.33, d: 0.4 }, // D5
+  { f: 659.25, d: 0.4 }, // E5
+  { f: 783.99, d: 0.6 }, // G5
+  { f: 659.25, d: 0.4 }, // E5
+  { f: 587.33, d: 0.4 }, // D5
+  { f: 523.25, d: 0.6 }, // C5
+  { f: 440.00, d: 0.4 }, // A4
+  { f: 523.25, d: 0.4 }, // C5
+  { f: 659.25, d: 0.4 }, // E5
+  { f: 783.99, d: 0.8 }, // G5
+  { f: 880.00, d: 0.8 }, // A5
+];
+const BASS: Array<{ f: number; d: number }> = [
+  { f: 130.81, d: 1.6 }, // C3
+  { f: 146.83, d: 1.6 }, // D3
+  { f: 174.61, d: 1.6 }, // F3
+  { f: 196.00, d: 1.6 }, // G3
+];
+
+function playTone(ctx: AudioContext, dest: AudioNode, freq: number, start: number, duration: number, type: OscillatorType, gain: number) {
+  const osc = ctx.createOscillator();
+  const g = ctx.createGain();
+  osc.type = type;
+  osc.frequency.value = freq;
+  g.gain.setValueAtTime(0, ctx.currentTime + start);
+  g.gain.linearRampToValueAtTime(gain, ctx.currentTime + start + 0.02);
+  g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + start + duration);
+  osc.connect(g);
+  g.connect(dest);
+  osc.start(ctx.currentTime + start);
+  osc.stop(ctx.currentTime + start + duration + 0.05);
+}
 
 export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) => {
   const { t } = useLanguage();
   const [scene, setScene] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
+  const [musicOn, setMusicOn] = useState(true);
   const completedRef = useRef(false);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const masterGainRef = useRef<GainNode | null>(null);
+  const loopTimerRef = useRef<number | null>(null);
+
+  const scheduleLoop = useCallback(() => {
+    const ctx = audioCtxRef.current;
+    const master = masterGainRef.current;
+    if (!ctx || !master) return;
+    let t = 0;
+    MELODY.forEach((n) => {
+      playTone(ctx, master, n.f, t, n.d * 0.95, "triangle", 0.18);
+      playTone(ctx, master, n.f * 2, t, n.d * 0.6, "sine", 0.05);
+      t += n.d;
+    });
+    let bt = 0;
+    BASS.forEach((n) => {
+      playTone(ctx, master, n.f, bt, n.d * 0.9, "sine", 0.12);
+      bt += n.d;
+    });
+    // hi-hat shimmer
+    for (let i = 0; i < 16; i++) {
+      playTone(ctx, master, 6000 + (i % 2) * 1500, i * 0.4, 0.06, "square", 0.008);
+    }
+    loopTimerRef.current = window.setTimeout(scheduleLoop, t * 1000);
+  }, []);
+
+  const startMusic = useCallback(() => {
+    try {
+      if (!audioCtxRef.current) {
+        const Ctx = (window.AudioContext || (window as any).webkitAudioContext);
+        if (!Ctx) return;
+        const ctx = new Ctx();
+        const master = ctx.createGain();
+        master.gain.value = 0.45;
+        master.connect(ctx.destination);
+        audioCtxRef.current = ctx;
+        masterGainRef.current = master;
+      }
+      audioCtxRef.current.resume();
+      scheduleLoop();
+    } catch { /* ignore */ }
+  }, [scheduleLoop]);
+
+  const stopMusic = useCallback(() => {
+    if (loopTimerRef.current) {
+      clearTimeout(loopTimerRef.current);
+      loopTimerRef.current = null;
+    }
+    if (masterGainRef.current && audioCtxRef.current) {
+      try {
+        masterGainRef.current.gain.exponentialRampToValueAtTime(0.001, audioCtxRef.current.currentTime + 0.3);
+      } catch { /* ignore */ }
+    }
+    setTimeout(() => {
+      try { audioCtxRef.current?.close(); } catch { /* ignore */ }
+      audioCtxRef.current = null;
+      masterGainRef.current = null;
+    }, 400);
+  }, []);
 
   useEffect(() => {
     trackEvent(isReplay ? "replayed" : "viewed", 0, isReplay);
-  }, [isReplay]);
+    startMusic();
+    return () => stopMusic();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     trackEvent("scene_view", scene, isReplay);
@@ -54,6 +153,7 @@ export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) =>
         completedRef.current = true;
         trackEvent("completed", scene, isReplay);
         setFadeOut(true);
+        stopMusic();
         setTimeout(() => {
           localStorage.setItem("intro_done_v2", "1");
           onComplete();
@@ -61,18 +161,28 @@ export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) =>
       }
     }, SCENE_DURATION);
     return () => clearTimeout(timer);
-  }, [scene, onComplete, isReplay]);
+  }, [scene, onComplete, isReplay, stopMusic]);
 
   const handleSkip = useCallback(() => {
     if (completedRef.current) return;
     completedRef.current = true;
     trackEvent("skipped", scene, isReplay);
     setFadeOut(true);
+    stopMusic();
     setTimeout(() => {
       localStorage.setItem("intro_done_v2", "1");
       onComplete();
     }, 300);
-  }, [scene, onComplete, isReplay]);
+  }, [scene, onComplete, isReplay, stopMusic]);
+
+  const toggleMusic = useCallback(() => {
+    setMusicOn((on) => {
+      const next = !on;
+      if (next) startMusic(); else stopMusic();
+      trackEvent(next ? "music_on" : "music_off", scene, isReplay);
+      return next;
+    });
+  }, [scene, isReplay, startMusic, stopMusic]);
 
   return (
     <div
@@ -90,13 +200,15 @@ export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) =>
             scene === 2 ? "radial-gradient(circle at 70% 30%, #7c3aed 0%, #0a1535 70%)" :
             scene === 3 ? "radial-gradient(circle at 50% 70%, #0d9488 0%, #0a1535 70%)" :
             scene === 4 ? "radial-gradient(circle at 30% 70%, #16a34a 0%, #0a1535 70%)" :
+            scene === 5 ? "radial-gradient(circle at 70% 50%, #d97706 0%, #0a1535 70%)" :
+            scene === 6 ? "radial-gradient(circle at 40% 40%, #0891b2 0%, #0a1535 70%)" :
             "radial-gradient(circle at 50% 50%, #FF9933 0%, #138808 70%, #0a1535 100%)",
           transition: "background 1.2s ease-in-out",
         }}
       />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 24 }).map((_, i) => (
+        {Array.from({ length: 32 }).map((_, i) => (
           <div
             key={i}
             className="absolute w-1.5 h-1.5 rounded-full bg-white/30 animate-pulse"
@@ -108,10 +220,26 @@ export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) =>
             }}
           />
         ))}
+        {/* Music wave bars when playing */}
+        {musicOn && (
+          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex items-end gap-1 h-8 opacity-50">
+            {Array.from({ length: 7 }).map((_, i) => (
+              <div
+                key={i}
+                className="w-1 bg-white rounded-full animate-pulse"
+                style={{
+                  height: `${30 + (i % 3) * 25}%`,
+                  animationDelay: `${i * 0.12}s`,
+                  animationDuration: "0.8s",
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="absolute top-0 left-0 right-0 z-20 p-4 pt-safe">
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-1 mb-3">
           {Array.from({ length: TOTAL_SCENES }).map((_, i) => (
             <div key={i} className="flex-1 h-1 rounded-full bg-white/20 overflow-hidden">
               <div
@@ -124,7 +252,15 @@ export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) =>
             </div>
           ))}
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-between items-center">
+          <button
+            onClick={toggleMusic}
+            aria-label={musicOn ? "Mute music" : "Play music"}
+            className="flex items-center gap-1 text-xs font-semibold text-white/90 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full active:scale-95 transition-transform border border-white/20"
+          >
+            {musicOn ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
+            {t("संगीत", "Music")}
+          </button>
           <button
             onClick={handleSkip}
             className="flex items-center gap-1 text-xs font-semibold text-white/90 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full active:scale-95 transition-transform border border-white/20"
@@ -232,7 +368,51 @@ export const IntroVideo = ({ onComplete, isReplay = false }: IntroVideoProps) =>
         )}
 
         {scene === 5 && (
-          <div key="s5" className="text-center max-w-sm">
+          <SceneFeature
+            icon={<ClipboardList className="w-16 h-16 text-white" />}
+            title={t("एप्लिकेशन ट्रैकर", "Application Tracker")}
+            subtitle={t("अपनी एप्लिकेशन को मैनेज करें", "Manage your applications")}
+            items={[
+              t("स्टेटस ट्रैक करें", "Track application status"),
+              t("Bookmark & Saved Items", "Bookmark & saved items"),
+              t("रिमाइंडर और नोट्स", "Reminders & notes"),
+            ]}
+            color="from-amber-500 to-orange-600"
+          />
+        )}
+
+        {scene === 6 && (
+          <div key="s6" className="text-center max-w-sm">
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {[
+                { icon: Building2, label: t("सरकारी डायरेक्टरी", "Govt Directory"), color: "bg-cyan-500" },
+                { icon: Bookmark, label: t("सेव सेवाएं", "Saved Items"), color: "bg-rose-500" },
+                { icon: WifiOff, label: t("ऑफलाइन काम", "Works Offline"), color: "bg-slate-500" },
+                { icon: FileText, label: t("स्टेप-बाय-स्टेप", "Step-by-Step"), color: "bg-indigo-500" },
+              ].map((f, i) => (
+                <div
+                  key={i}
+                  className="bg-white/15 backdrop-blur-md border border-white/25 rounded-2xl p-4 flex flex-col items-center gap-2 animate-scale-in shadow-xl"
+                  style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
+                >
+                  <div className={`w-12 h-12 rounded-xl ${f.color} flex items-center justify-center shadow-lg`}>
+                    <f.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="text-xs font-bold text-white text-center">{f.label}</span>
+                </div>
+              ))}
+            </div>
+            <h2 className="text-2xl font-bold text-white mb-2 animate-fade-up">
+              {t("और भी बहुत कुछ", "And Much More")}
+            </h2>
+            <p className="text-sm text-white/85 animate-fade-up" style={{ animationDelay: "150ms", animationFillMode: "both" }}>
+              {t("हर ज़रूरत का जवाब", "Answers to every need")}
+            </p>
+          </div>
+        )}
+
+        {scene === 7 && (
+          <div key="s7" className="text-center max-w-sm">
             <div className="relative inline-block mb-6">
               <div className="absolute inset-0 rounded-full bg-green-400/40 blur-3xl scale-150 animate-pulse" />
               <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-2xl animate-scale-in">
