@@ -10,8 +10,10 @@ const ServicePage = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
   const { t } = useLanguage();
-  
-  const service = getServiceById(serviceId || "");
+
+  // Defense-in-depth: only allow safe slug characters
+  const safeServiceId = serviceId?.match(/^[a-z0-9-]{1,64}$/i)?.[0] ?? "";
+  const service = getServiceById(safeServiceId);
 
   if (!service) {
     return (
