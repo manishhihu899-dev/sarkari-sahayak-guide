@@ -200,6 +200,7 @@ const Index = () => {
 
       <AppFooter />
       <QuickActions />
+      <PwaInstallBanner />
       <FloatingHelp />
       <BottomNav />
     </div>;
