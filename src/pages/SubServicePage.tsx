@@ -20,13 +20,17 @@ const SubServicePage = () => {
   const { toast } = useToast();
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { t, language } = useLanguage();
-  
-  const subService = getSubServiceById(serviceId || "", subServiceId || "");
-  const parentService = getServiceById(serviceId || "");
+
+  // Defense-in-depth: only allow safe slug characters
+  const safeServiceId = serviceId?.match(/^[a-z0-9-]{1,64}$/i)?.[0] ?? "";
+  const safeSubServiceId = subServiceId?.match(/^[a-z0-9-]{1,64}$/i)?.[0] ?? "";
+
+  const subService = getSubServiceById(safeServiceId, safeSubServiceId);
+  const parentService = getServiceById(safeServiceId);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
-  
-  const bookmarked = isBookmarked(serviceId || "", subServiceId || "");
-  const isScheme = serviceId === "schemes";
+
+  const bookmarked = isBookmarked(safeServiceId, safeSubServiceId);
+  const isScheme = safeServiceId === "schemes";
   const themeColor = parentService?.themeColor || "220 65% 28%";
 
   if (!subService) {
