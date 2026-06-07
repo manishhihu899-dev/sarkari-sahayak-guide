@@ -7,6 +7,7 @@ import { BottomNav } from "@/components/BottomNav";
 import { AppFooter } from "@/components/AppFooter";
 import { FloatingHelp } from "@/components/FloatingHelp";
 import { QuickActions } from "@/components/QuickActions";
+import { PwaInstallBanner } from "@/components/PwaInstallBanner";
 
 
 import { services, searchServices } from "@/data/services";
@@ -199,6 +200,7 @@ const Index = () => {
 
       <AppFooter />
       <QuickActions />
+      <PwaInstallBanner />
       <FloatingHelp />
       <BottomNav />
     </div>;
