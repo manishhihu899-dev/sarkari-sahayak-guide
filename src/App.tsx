@@ -35,6 +35,8 @@ import TermsPage from "./pages/TermsPage";
 import ContactPage from "./pages/ContactPage";
 import FeedbackPage from "./pages/FeedbackPage";
 import UpdatesPage from "./pages/UpdatesPage";
+import ResourcesPage from "./pages/ResourcesPage";
+import PremiumPage from "./pages/PremiumPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -91,6 +93,8 @@ const App = () => {
                       <Route path="/contact" element={<ContactPage />} />
                       <Route path="/feedback" element={<FeedbackPage />} />
                       <Route path="/updates" element={<UpdatesPage />} />
+                      <Route path="/resources" element={<ResourcesPage />} />
+                      <Route path="/premium" element={<PremiumPage />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </BrowserRouter>

@@ -5,6 +5,8 @@ import { StepCard } from "@/components/StepCard";
 import { InfoSection } from "@/components/InfoSection";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { BottomNav } from "@/components/BottomNav";
+import { ServiceModule } from "@/components/ServiceModule";
+import { AppFooter } from "@/components/AppFooter";
 import { Button } from "@/components/ui/button";
 import { getSubServiceById, getServiceById } from "@/data/services";
 import { 
@@ -168,7 +170,10 @@ const SubServicePage = () => {
             </p>
           </div>
         </div>
+
+        <ServiceModule context={subService.title} compact />
       </main>
+      <AppFooter />
       <BottomNav />
     </div>
   );
