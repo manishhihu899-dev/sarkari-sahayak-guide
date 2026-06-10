@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { SubServiceCard } from "@/components/SubServiceCard";
+import { ServiceModule } from "@/components/ServiceModule";
+import { AppFooter } from "@/components/AppFooter";
 import { BottomNav } from "@/components/BottomNav";
 import { getServiceById } from "@/data/services";
 import { Sparkles } from "lucide-react";
@@ -117,8 +119,11 @@ const ServicePage = () => {
             />
           ))}
         </div>
+
+        <ServiceModule context={service.title} />
       </main>
 
+      <AppFooter />
       <BottomNav />
     </div>
   );
