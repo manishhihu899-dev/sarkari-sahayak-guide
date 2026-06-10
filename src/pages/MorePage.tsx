@@ -5,7 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 import {
   Grid3X3, Globe, Gift, HelpCircle, Info, Briefcase, Calculator,
   ClipboardList, Bookmark, FileText, Shield, ChevronRight, Bell, Mail, MessageCircle, Lock,
-  Share2, Star, Smartphone, PlayCircle
+  Share2, Star, Smartphone, PlayCircle, Crown, Download
 } from "lucide-react";
 import { toast } from "sonner";
 import appLogo from "@/assets/app-logo.png";
@@ -43,6 +43,13 @@ const MorePage = () => {
   };
 
   const sections = [
+    {
+      title: t("प्रीमियम और रिसोर्सेज़", "Premium & Resources"),
+      items: [
+        { icon: Crown, label: t("प्रीमियम मेम्बरशिप", "Premium Membership"), desc: t("Exclusive guides व priority support", "Exclusive guides & priority support"), path: "/premium", color: "bg-amber-500" },
+        { icon: Download, label: t("रिसोर्सेज़ (PDF)", "Resources (PDF)"), desc: t("Guides, notes, resume templates", "Guides, notes, resume templates"), path: "/resources", color: "bg-violet-500" },
+      ],
+    },
     {
       title: t("सेवाएं और गाइड", "Services & Guides"),
       items: [
